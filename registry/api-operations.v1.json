@@ -1,21 +1,21 @@
 {
   "schema": "yai.api.operations.v1",
-  "apiOperationRegistryVersion": "16B-v1",
+  "apiOperationRegistryVersion": "21-v1",
   "operations": [
     {
       "operation_id": "runtime.status.inspect",
       "plane": "runtime",
       "stability": "readiness",
       "request_schema_ref": null,
-      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "response_schema_ref": "schemas/runtime-service-status.v1.schema.json",
       "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
       "sdk_target": "@yailabs/sdk.typescript.runtime.status",
       "client_targets": [
         "loom",
         "design"
       ],
-      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
-      "implementation_status": "transport-required",
+      "runtime_adapter_ref": "../yai/runtime/boundary/api",
+      "implementation_status": "readiness-projection",
       "execution_claim": false
     },
     {
@@ -125,6 +125,54 @@
       ],
       "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
       "implementation_status": "deferred",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "runtime.service.lifecycle.inspect",
+      "plane": "runtime",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/runtime-service-status.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.runtime.lifecycle",
+      "client_targets": [
+        "loom",
+        "cli"
+      ],
+      "runtime_adapter_ref": "../yai/runtime/boundary/api",
+      "implementation_status": "readiness-projection",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "runtime.service.health.inspect",
+      "plane": "runtime",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/runtime-service-status.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.runtime.health",
+      "client_targets": [
+        "loom",
+        "cli"
+      ],
+      "runtime_adapter_ref": "../yai/runtime/boundary/api",
+      "implementation_status": "readiness-projection",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "runtime.service.control.plan",
+      "plane": "runtime",
+      "stability": "scaffolded",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/runtime-service-status.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.runtime.controlPlan",
+      "client_targets": [
+        "loom",
+        "cli"
+      ],
+      "runtime_adapter_ref": "../yai/runtime/boundary/api",
+      "implementation_status": "planned-control-contract",
       "execution_claim": false
     }
   ]

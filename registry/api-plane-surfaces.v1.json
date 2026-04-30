@@ -1,18 +1,19 @@
 {
   "schema": "yai.api.plane-surfaces.v1",
-  "apiPlaneSurfaceModelVersion": "16B-v1",
+  "apiPlaneSurfaceModelVersion": "21-v1",
   "canonicalModel": "plane-surface",
   "familiesRole": "compatibility-grouping",
   "planes": [
     {
       "plane": "runtime",
-      "coreOwnerPath": "../yai/core/runtime",
-      "apiContractStatus": "scaffolded",
+      "coreOwnerPath": "../yai/runtime",
+      "apiContractStatus": "runtime-service-lifecycle-readiness",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
       "apiSources": [
-        "families/runtime/README.md",
-        "contracts/runtime/*"
+        "registry/api-operations.v1.json",
+        "schemas/runtime-service-status.v1.schema.json",
+        "families/runtime/README.md"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",
@@ -20,7 +21,7 @@
     },
     {
       "plane": "case",
-      "coreOwnerPath": "../yai/core/case",
+      "coreOwnerPath": "../yai/case",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
@@ -33,7 +34,7 @@
     },
     {
       "plane": "records",
-      "coreOwnerPath": "../yai/core/records",
+      "coreOwnerPath": "../yai/records",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
@@ -46,7 +47,7 @@
     },
     {
       "plane": "flow",
-      "coreOwnerPath": "../yai/core/flow",
+      "coreOwnerPath": "../yai/flow",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
@@ -59,7 +60,7 @@
     },
     {
       "plane": "governance",
-      "coreOwnerPath": "../yai/core/governance",
+      "coreOwnerPath": "../yai/governance",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
@@ -72,7 +73,7 @@
     },
     {
       "plane": "supervisor",
-      "coreOwnerPath": "../yai/core/supervisor",
+      "coreOwnerPath": "../yai/supervisor",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
@@ -85,7 +86,7 @@
     },
     {
       "plane": "orchestration",
-      "coreOwnerPath": "../yai/core/orchestration",
+      "coreOwnerPath": "../yai/orchestration",
       "apiContractStatus": "deferred",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "not-exposed",
@@ -98,7 +99,7 @@
     },
     {
       "plane": "agents",
-      "coreOwnerPath": "../yai/core/agents",
+      "coreOwnerPath": "../yai/agents",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
@@ -111,7 +112,7 @@
     },
     {
       "plane": "knowledge",
-      "coreOwnerPath": "../yai/core/knowledge",
+      "coreOwnerPath": "../yai/knowledge",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "deferred",
       "clientExposureStatus": "planned",
@@ -124,7 +125,7 @@
     },
     {
       "plane": "skills",
-      "coreOwnerPath": "../yai/core/skills",
+      "coreOwnerPath": "../yai/skills",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "deferred",
       "clientExposureStatus": "planned",
@@ -137,7 +138,7 @@
     },
     {
       "plane": "providers",
-      "coreOwnerPath": "../yai/core/providers",
+      "coreOwnerPath": "../yai/providers",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "deferred",
       "clientExposureStatus": "planned",
@@ -150,7 +151,7 @@
     },
     {
       "plane": "models",
-      "coreOwnerPath": "../yai/core/models",
+      "coreOwnerPath": "../yai/models",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "deferred",
       "clientExposureStatus": "planned",
@@ -163,7 +164,7 @@
     },
     {
       "plane": "analytics",
-      "coreOwnerPath": "../yai/core/analytics",
+      "coreOwnerPath": "../yai/analytics",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "deferred",
       "clientExposureStatus": "planned",
@@ -176,7 +177,7 @@
     },
     {
       "plane": "identity",
-      "coreOwnerPath": "../yai/core/identity",
+      "coreOwnerPath": "../yai/identity",
       "apiContractStatus": "planned",
       "sdkAvailability": "deferred",
       "clientExposureStatus": "planned",
