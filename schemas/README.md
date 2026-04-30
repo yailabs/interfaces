@@ -1,5 +1,8 @@
-# API Schemas
+# Schemas
 
-Schema surface scaffold for extraction readiness.
+Schemas are versioned contract assets.
 
-Wave 12G keeps schema material primarily in existing registries/contracts while preparing dedicated schema curation for Wave 13.
+Requirements:
+- explicit versioned identifiers
+- stable envelope/error/lifecycle vocabulary references
+- no raw core runtime struct exposure

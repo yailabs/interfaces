@@ -98,3 +98,9 @@ python3 -m json.tool extraction/source-manifest.json >/dev/null
 
 > [!IMPORTANT]
 > YAI is the **YAI Community Source Tree**. Development and non-production use are permitted under the applicable license terms. Commercial licensing is required for production, organizational, persistent, collaborative, customer-affecting, or business-critical use.
+
+
+## Branch Alignment
+
+Active cross-repo hardening branch: `feature/topology-refactor-7`.
+

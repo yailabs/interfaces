@@ -38,3 +38,8 @@ Wave 13D status: root `yai/api/` removed. Contracts remain canonical in `api`; r
 - `api` is the canonical contract source, not the normal application dependency.
 - Clients should normally consume SDK packages built from/bound to this contract surface.
 - Direct API consumption is limited to low-level conformance, debug integrations, and temporary bootstrap.
+
+
+## Wave 14C3
+
+API enterprise hardening is active on `feature/topology-refactor-7`. OpenAPI and conformance remain scaffolded; SDK generation remains contract-bound.

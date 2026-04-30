@@ -51,7 +51,7 @@
   "mirrorPath": "api/",
   "mirrorStatus": "compatibility-mirror",
   "mirrorDrainStatus": "pending-runtime-consumer-audit",
-  "coreApiStatus": "forbidden-or-absent",
+  "coreApiStatus": "absent",
   "sdkSourceRepository": "api",
   "sdkGenerationWave": "14",
   "activeImplementationMoved": false,
@@ -98,5 +98,19 @@
   "sdkGeneratedFromCoreStructs": false,
   "agentOrchestrationEntryStatus": "proposal-entry-ready",
   "agentExecutionStatus": "deferred",
-  "providerModelExecutionStatus": "deferred"
+  "providerModelExecutionStatus": "deferred",
+  "conceptualRepository": "yai-api",
+  "contractMaturityStatus": "enterprise-hardened-scaffolded",
+  "enterpriseStandardStatus": "hardened-contract-boundary-declared",
+  "envelopeVersion": "v1-scaffold",
+  "schemaVersioningStatus": "versioned-scaffold",
+  "sdkSourceStatus": "canonical-contract-source",
+  "clientImplementationIncluded": false,
+  "leakageAuditStatus": "completed-or-classified",
+  "sdkConsumerRepository": "../sdk",
+  "runtimeRepository": "../yai",
+  "nextWaveBlockers": [
+    "openapi coverage still scaffolded",
+    "conformance automation still scaffolded"
+  ]
 }
