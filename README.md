@@ -17,7 +17,7 @@ a commercial license.
 
 <div align="center">
   <img
-    src="docs/reference/figures/yai.svg"
+    src="docs/reference/figures/yai-transp.png"
     alt="YAI"
     width="180"
   />
@@ -29,21 +29,25 @@ a commercial license.
 
   <br /><br />
 
-  ![Stage](https://img.shields.io/badge/stage-active%20development-2563eb?style=for-the-badge&labelColor=1f2937)
-  ![Scope](https://img.shields.io/badge/scope-contracts%20%2F%20schemas%20%2F%20lifecycle-0f766e?style=for-the-badge&labelColor=1f2937)
-  ![Repo](https://img.shields.io/badge/repo-yai--labs%2Fapi-334155?style=for-the-badge&labelColor=1f2937)
-  ![License](https://img.shields.io/badge/license-community%20source-374151?style=for-the-badge&labelColor=1f2937)
+  ![Stage](https://img.shields.io/badge/stage-active%20development-2563eb?style=flat&labelColor=1f2937)
+  ![Scope](https://img.shields.io/badge/scope-contracts%20%2F%20schemas%20%2F%20lifecycle-0f766e?style=flat&labelColor=1f2937)
+  ![Repo](https://img.shields.io/badge/repo-yai--labs%2Fapi-334155?style=flat&labelColor=1f2937)
+  ![License](https://img.shields.io/badge/license-community%20source-374151?style=flat&labelColor=1f2937)
 
   <br /><br />
 
-  <a href="#why-this-repository-exists">Why this repository exists</a> ·
-  <a href="#repository-identity-local-vs-remote">Repository identity</a> ·
-  <a href="#contract-boundary">Contract boundary</a> ·
-  <a href="#sdk-consumption-boundary">SDK consumption boundary</a> ·
-  <a href="#wave-status">Wave status</a> ·
-  <a href="#build-and-validation">Build and validation</a> ·
-  <a href="#licensing">Licensing</a>
+
 </div>
+
+## Contents
+
+- [Why this repository exists](#why-this-repository-exists)
+- [Repository identity](#repository-identity-local-vs-remote)
+- [Contract boundary](#contract-boundary)
+- [SDK consumption boundary](#sdk-consumption-boundary)
+- [Wave status](#wave-status)
+- [Build and validation](#build-and-validation)
+- [Licensing](#licensing)
 
 <br />
 
