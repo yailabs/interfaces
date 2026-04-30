@@ -1,0 +1,9 @@
+openapi: 3.1.0
+info:
+  title: api placeholder
+  version: 0.1.0-placeholder
+  description: |
+    Placeholder contract scaffold. This file does not claim complete endpoint coverage.
+servers: []
+paths: {}
+components: {}

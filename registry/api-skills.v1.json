@@ -1,0 +1,48 @@
+{
+  "version": "v1",
+  "type": "yai.skills.api.v1",
+  "family": "skills",
+  "owner": "core/skills",
+  "operations": [
+    {
+      "name": "registry",
+      "description": "List available skill registry entries"
+    },
+    {
+      "name": "families", 
+      "description": "List skill taxonomy families"
+    },
+    {
+      "name": "bundles",
+      "description": "List available skill bundles"
+    },
+    {
+      "name": "protocols",
+      "description": "List available skill protocols"
+    },
+    {
+      "name": "audio",
+      "description": "Audio skill plane operations"
+    },
+    {
+      "name": "explain",
+      "description": "Explain skill semantics",
+      "args": ["skill-id"]
+    },
+    {
+      "name": "resolve",
+      "description": "Resolve agent intent to skills",
+      "args": ["agent", "intent"]
+    },
+    {
+      "name": "admissibility",
+      "description": "Check skill admissibility",
+      "args": ["skill-id", "scope-id"]
+    },
+    {
+      "name": "proof-obligations",
+      "description": "Show proof obligations for skill",
+      "args": ["skill-id"]
+    }
+  ]
+}

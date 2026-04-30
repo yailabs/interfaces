@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "surfaces": {
+    "ai": ["ask", "chat", "console"],
+    "case": ["status", "enter", "leave"],
+    "flow": ["status", "review", "execution"],
+    "session": ["status", "attach", "detach"],
+    "runtime": ["status", "watch", "carrier"],
+    "govern": ["legal", "authority", "review", "publication", "intake"],
+    "knowledge": ["ingest", "records", "lineage", "topology", "context", "memory", "retrieval", "inference", "query", "summarize", "maintenance"],
+    "analytics": ["summary", "show", "emit-summary"],
+    "provider": ["list", "status", "current", "select", "set", "connect", "disconnect", "probe", "doctor", "models", "view"],
+    "agent": ["crew-status", "bindings", "packs"],
+    "inspect": ["runtime", "watch"]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": "v1",
+  "families": [
+    "ai",
+    "case",
+    "flow",
+    "session",
+    "runtime",
+    "govern",
+    "knowledge",
+    "analytics",
+    "provider",
+    "agent",
+    "inspect",
+    "skills"
+  ]
+}

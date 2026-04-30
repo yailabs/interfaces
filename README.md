@@ -1,0 +1,90 @@
+<!--
+YAI API — Canonical Contract Surface for Governed Action
+
+Copyright (c) 2026 Francesco Maiomascio.
+All rights reserved.
+
+This file is part of the YAI Community Source Tree.
+Use, copying, modification, distribution, and production operation
+are governed by the repository licensing documents, including
+LICENSE, LICENSING.md, and COMMERCIAL.md.
+
+Development and non-production use is permitted under the applicable
+YAI license terms. Production, organizational, persistent,
+collaborative, customer-affecting, or business-critical use requires
+a commercial license.
+-->
+
+<div align="center">
+  <strong>YAI API</strong>
+  <br />
+  <span>Canonical contracts for accountable runtime interaction.</span>
+
+  <br /><br />
+
+  ![Stage](https://img.shields.io/badge/stage-active%20development-2563eb?style=flat-square&labelColor=111827)
+  ![Scope](https://img.shields.io/badge/scope-contracts%20%2F%20schemas%20%2F%20lifecycle-0f766e?style=flat-square&labelColor=111827)
+  ![Repo](https://img.shields.io/badge/repo-yai--labs%2Fapi-334155?style=flat-square&labelColor=111827)
+  ![License](https://img.shields.io/badge/license-community%20source-374151?style=flat-square&labelColor=111827)
+
+  <br /><br />
+
+  <a href="#why-this-repository-exists">Why this repository exists</a> ·
+  <a href="#repository-identity-local-vs-remote">Repository identity</a> ·
+  <a href="#contract-boundary">Contract boundary</a> ·
+  <a href="#sdk-consumption-boundary">SDK consumption boundary</a> ·
+  <a href="#wave-status">Wave status</a> ·
+  <a href="#licensing">Licensing</a>
+</div>
+
+<br />
+
+## Why This Repository Exists
+
+`api` is the canonical API contract surface for YAI. It defines schemas, envelopes, lifecycle states, error models, family contracts, and conformance direction used by SDK and client surfaces.
+
+This repository does not implement runtime execution. Runtime implementation remains in `../yai`.
+
+## Repository Identity (Local vs Remote)
+
+- Local workspace path: `../api`
+- Remote repository identity: `yai-labs/api`
+- Conceptual product identity may still reference: `yai-api`
+
+## Contract Boundary
+
+Canonical contract source lives here (`api`).
+
+- Owns: contracts, schemas, envelopes, lifecycle, errors, OpenAPI scaffolds, conformance scaffolds.
+- Does not own: runtime execution, CLI behavior, SDK package implementations, provider backends.
+
+Boundary guarantees:
+- Root `../yai/api` remains physically drained.
+- `../yai/core/api` remains absent.
+- Runtime adapters remain in `../yai/core/runtime/boundary/api`.
+
+## SDK Consumption Boundary
+
+Clients should normally consume SDK packages, not runtime adapters directly.
+
+- SDK workspace path: `../sdk`
+- SDK packages: `packages/c`, `packages/typescript`, `packages/python`
+- Direct API usage policy: debug/conformance/bootstrap only
+
+## Wave Status
+
+- Wave 13: contract extraction and lifecycle closure completed.
+- Wave 14: SDK contract-bound generation/normalization in progress.
+
+## Build and Validation
+
+Typical validation in this repository:
+
+```sh
+python3 -m json.tool extraction/source-manifest.json >/dev/null
+```
+
+## Licensing
+
+> [!IMPORTANT]
+> YAI is the **YAI Community Source Tree**. Development and non-production use are permitted under the applicable license terms. Commercial licensing is required for production, organizational, persistent, collaborative, customer-affecting, or business-critical use.

@@ -1,0 +1,8 @@
+{
+  "version": "v1",
+  "clients": [
+    "experience/clients/cli/source",
+    "legacy-desktop",
+    "vscode-yai-official"
+  ]
+}

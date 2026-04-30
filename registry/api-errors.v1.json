@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "errors": [
+    "ok",
+    "invalid_request",
+    "unknown_family",
+    "unknown_surface",
+    "session_required",
+    "capability_denied",
+    "execution_failed",
+    "not_implemented"
+  ]
+}

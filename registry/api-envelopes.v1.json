@@ -1,0 +1,12 @@
+{
+  "version": "v1",
+  "request": {
+    "required": ["family_ref", "surface_ref", "command_ref"]
+  },
+  "response": {
+    "required": ["status", "message"]
+  },
+  "error": {
+    "required": ["code", "message"]
+  }
+}

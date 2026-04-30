@@ -1,0 +1,49 @@
+{
+  "apiExtractionReadinessVersion": "0.1.0",
+  "futureRepository": "api",
+  "currentSourceRoot": "api/",
+  "targetRepositoryRoot": "api/",
+  "extractionWave": "13",
+  "sdkWave": "14",
+  "families": [
+    "ai",
+    "case",
+    "flow",
+    "session",
+    "runtime",
+    "govern",
+    "knowledge",
+    "analytics",
+    "provider",
+    "agent",
+    "inspect",
+    "skills"
+  ],
+  "contractSurfaces": [
+    "api/contracts",
+    "api/model",
+    "api/registry",
+    "api/families"
+  ],
+  "schemaSurfaces": [
+    "api/schemas",
+    "api/registry"
+  ],
+  "envelopeVersion": "v1-scaffold",
+  "errorModelVersion": "v1-scaffold",
+  "lifecycleVersion": "v1-scaffold",
+  "openApiStatus": "planned",
+  "conformanceStatus": "scaffolded",
+  "knownCouplings": [
+    "session compatibility semantics (attach --user, active-case)",
+    "runtime/core include coupling in multiple families",
+    "CLI-oriented output phrasing in selected family responses"
+  ],
+  "deferredItems": [
+    "family-by-family envelope normalization",
+    "session/account/operator-context boundary hard split",
+    "dedicated supervisor/models family extraction strategy",
+    "OpenAPI first contract slices",
+    "SDK generation pipeline"
+  ]
+}
