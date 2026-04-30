@@ -1,0 +1,22 @@
+<!--
+YAI — Governed Case-Native Runtime
+
+Copyright (c) 2026 Francesco Maiomascio.
+All rights reserved.
+
+This file is part of the YAI Community Source Tree.
+Use, copying, modification, distribution, and production operation
+are governed by the repository licensing documents, including
+LICENSE, LICENSING.md, COMMERCIAL.md, and COPYING.
+
+Development and non-production use is permitted under the applicable
+YAI license terms. Production, organizational, persistent,
+collaborative, customer-affecting, or business-critical use requires
+a commercial license.
+-->
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="28" fill="#102A43"/>
+  <path d="M22 28H42L64 78L86 28H106L74 100H54L22 28Z" fill="#F0B429"/>
+</svg>

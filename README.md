@@ -16,16 +16,23 @@ a commercial license.
 -->
 
 <div align="center">
+  <img
+    src="docs/reference/figures/yai.svg"
+    alt="YAI"
+    width="180"
+  />
+  <br />
+
   <strong>YAI API</strong>
   <br />
   <span>Canonical contracts for accountable runtime interaction.</span>
 
   <br /><br />
 
-  ![Stage](https://img.shields.io/badge/stage-active%20development-2563eb?style=flat-square&labelColor=111827)
-  ![Scope](https://img.shields.io/badge/scope-contracts%20%2F%20schemas%20%2F%20lifecycle-0f766e?style=flat-square&labelColor=111827)
-  ![Repo](https://img.shields.io/badge/repo-yai--labs%2Fapi-334155?style=flat-square&labelColor=111827)
-  ![License](https://img.shields.io/badge/license-community%20source-374151?style=flat-square&labelColor=111827)
+  ![Stage](https://img.shields.io/badge/stage-active%20development-2563eb?style=for-the-badge&labelColor=1f2937)
+  ![Scope](https://img.shields.io/badge/scope-contracts%20%2F%20schemas%20%2F%20lifecycle-0f766e?style=for-the-badge&labelColor=1f2937)
+  ![Repo](https://img.shields.io/badge/repo-yai--labs%2Fapi-334155?style=for-the-badge&labelColor=1f2937)
+  ![License](https://img.shields.io/badge/license-community%20source-374151?style=for-the-badge&labelColor=1f2937)
 
   <br /><br />
 
@@ -34,6 +41,7 @@ a commercial license.
   <a href="#contract-boundary">Contract boundary</a> ·
   <a href="#sdk-consumption-boundary">SDK consumption boundary</a> ·
   <a href="#wave-status">Wave status</a> ·
+  <a href="#build-and-validation">Build and validation</a> ·
   <a href="#licensing">Licensing</a>
 </div>
 
@@ -43,11 +51,10 @@ a commercial license.
 
 `api` is the canonical API contract surface for YAI. It defines schemas, envelopes, lifecycle states, error models, family contracts, and conformance direction used by SDK and client surfaces.
 
-This repository does not implement runtime execution. Runtime implementation remains in `../yai`.
+This repository does not implement runtime execution. Runtime implementation remains in `yai-labs/yai`.
 
 ## Repository Identity (Local vs Remote)
 
-- Local workspace path: `../api`
 - Remote repository identity: `yai-labs/api`
 - Conceptual product identity may still reference: `yai-api`
 
@@ -59,15 +66,14 @@ Canonical contract source lives here (`api`).
 - Does not own: runtime execution, CLI behavior, SDK package implementations, provider backends.
 
 Boundary guarantees:
-- Root `../yai/api` remains physically drained.
-- `../yai/core/api` remains absent.
-- Runtime adapters remain in `../yai/core/runtime/boundary/api`.
+- Root `yai/api` remains physically drained.
+- `yai/core/api` remains absent.
+- Runtime adapters remain in `yai/core/runtime/boundary/api`.
 
 ## SDK Consumption Boundary
 
 Clients should normally consume SDK packages, not runtime adapters directly.
 
-- SDK workspace path: `../sdk`
 - SDK packages: `packages/c`, `packages/typescript`, `packages/python`
 - Direct API usage policy: debug/conformance/bootstrap only
 
