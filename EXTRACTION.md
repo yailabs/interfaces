@@ -43,3 +43,11 @@ Wave 13D status: root `yai/api/` removed. Contracts remain canonical in `api`; r
 ## Wave 14C3
 
 API enterprise hardening is active on `feature/topology-refactor-7`. OpenAPI and conformance remain scaffolded; SDK generation remains contract-bound.
+
+
+## Wave 14D Alignment
+
+- API remains canonical contract source and client-neutral.
+- SDK is the official client consumption layer.
+- Clients should not use this repo as an application dependency except debug/conformance/bootstrap cases.
+- API does not own client UI behavior or SDK convenience semantics.

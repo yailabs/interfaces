@@ -1,8 +1,5 @@
 # Schemas
 
-Schemas are versioned contract assets.
+This directory contains contract schemas used by API registry and SDK clients.
 
-Requirements:
-- explicit versioned identifiers
-- stable envelope/error/lifecycle vocabulary references
-- no raw core runtime struct exposure
+Wave 16B adds readiness-oriented envelope and operation reference schemas for Loom/SDK verticalization.

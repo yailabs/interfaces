@@ -13,3 +13,8 @@ Canonical statuses:
 - `blocked`
 - `denied`
 - `error`
+
+
+Consumption rule:
+- SDK is the official client consumption layer.
+- Direct API repo consumption is limited to debug/conformance/bootstrap integrations.

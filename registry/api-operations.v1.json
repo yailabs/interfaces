@@ -1,0 +1,131 @@
+{
+  "schema": "yai.api.operations.v1",
+  "apiOperationRegistryVersion": "16B-v1",
+  "operations": [
+    {
+      "operation_id": "runtime.status.inspect",
+      "plane": "runtime",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.runtime.status",
+      "client_targets": [
+        "loom",
+        "design"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "transport-required",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "case.watch.snapshot",
+      "plane": "case",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.case.watchSnapshot",
+      "client_targets": [
+        "loom",
+        "design"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "transport-required",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "case.memory.projection.inspect",
+      "plane": "case",
+      "stability": "scaffolded",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.case.memoryProjection",
+      "client_targets": [
+        "loom"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "deferred",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "records.projection.list",
+      "plane": "records",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.records.projections",
+      "client_targets": [
+        "loom",
+        "design"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "transport-required",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "flow.binding.readiness.inspect",
+      "plane": "flow",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.flow.readiness",
+      "client_targets": [
+        "loom"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "transport-required",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "governance.readiness.inspect",
+      "plane": "governance",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.governance.readiness",
+      "client_targets": [
+        "loom",
+        "design"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "transport-required",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "supervisor.readiness.inspect",
+      "plane": "supervisor",
+      "stability": "readiness",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.supervisor.readiness",
+      "client_targets": [
+        "loom",
+        "design"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "transport-required",
+      "execution_claim": false
+    },
+    {
+      "operation_id": "agent.orchestration.entry.propose",
+      "plane": "agents",
+      "stability": "deferred",
+      "request_schema_ref": null,
+      "response_schema_ref": "schemas/readiness-envelope.v1.schema.json",
+      "envelope_schema": "schemas/readiness-envelope.v1.schema.json",
+      "sdk_target": "@yailabs/sdk.typescript.agent.entryProposal",
+      "client_targets": [
+        "loom"
+      ],
+      "runtime_adapter_ref": "../yai/core/runtime/boundary/api",
+      "implementation_status": "deferred",
+      "execution_claim": false
+    }
+  ]
+}

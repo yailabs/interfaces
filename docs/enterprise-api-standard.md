@@ -24,3 +24,9 @@ API does not own:
 
 Status honesty:
 - `openApiStatus` and `conformanceStatus` are scaffolded until fully implemented and automated.
+
+
+Client neutrality:
+- API contracts are client-neutral.
+- API does not own client UI/product behavior.
+- API does not own SDK convenience behavior.

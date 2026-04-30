@@ -76,6 +76,7 @@ Boundary guarantees:
 
 ## SDK Consumption Boundary
 
+SDK is the official client consumption layer.
 Clients should normally consume SDK packages, not runtime adapters directly.
 
 - SDK packages: `packages/c`, `packages/typescript`, `packages/python`

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.readiness-envelope.v1",
+  "title": "YAI Readiness Envelope v1",
+  "type": "object",
+  "required": [
+    "operation_id",
+    "status",
+    "execution_claim"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "partial",
+        "pending",
+        "ready",
+        "unavailable",
+        "blocked",
+        "denied",
+        "error"
+      ]
+    },
+    "execution_claim": {
+      "type": "boolean"
+    },
+    "implementation_status": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {}
+  },
+  "additionalProperties": false
+}

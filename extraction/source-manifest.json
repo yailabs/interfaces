@@ -112,5 +112,8 @@
   "nextWaveBlockers": [
     "openapi coverage still scaffolded",
     "conformance automation still scaffolded"
-  ]
+  ],
+  "apiPlaneSurfaceModelVersion": "16B-v1",
+  "apiOperationRegistryVersion": "16B-v1",
+  "familiesArchitectureRole": "compatibility-grouping"
 }
