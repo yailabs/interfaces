@@ -18,3 +18,4 @@ Canonical statuses:
 Consumption rule:
 - SDK is the official client consumption layer.
 - Direct API repo consumption is limited to debug/conformance/bootstrap integrations.
+- Legacy session contracts remain compatibility surfaces and do not redefine identity/operator-context ownership.

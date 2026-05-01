@@ -67,12 +67,12 @@ This repository does not implement runtime execution. Runtime implementation rem
 Canonical contract source lives here (`api`).
 
 - Owns: contracts, schemas, envelopes, lifecycle, errors, OpenAPI scaffolds, conformance scaffolds.
-- Does not own: runtime execution, CLI behavior, SDK package implementations, provider backends.
+- Does not own: runtime execution, client product behavior, SDK package implementations, provider backends, account backend behavior.
 
 Boundary guarantees:
 - Root `yai/api` remains physically drained.
 - `yai/core/api` remains absent.
-- Runtime adapters remain in `yai/core/runtime/boundary/api`.
+- Runtime adapters remain in `yai/runtime/boundary/api`.
 
 ## SDK Consumption Boundary
 
@@ -104,4 +104,3 @@ python3 -m json.tool extraction/source-manifest.json >/dev/null
 ## Branch Alignment
 
 Active cross-repo hardening branch: `feature/topology-refactor-7`.
-

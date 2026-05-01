@@ -7,7 +7,7 @@
     {
       "plane": "runtime",
       "coreOwnerPath": "../yai/runtime",
-      "apiContractStatus": "runtime-service-lifecycle-readiness",
+      "apiContractStatus": "runtime-service-boundary-sealed-readiness",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
       "apiSources": [

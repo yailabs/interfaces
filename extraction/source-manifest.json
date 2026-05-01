@@ -83,7 +83,7 @@
   ],
   "mirrorDrainNextStep": "migrate or rename active runtime adapter consumers",
   "rootYaiApiStatus": "physically-drained",
-  "runtimeAdapterPath": "core/runtime/boundary/api",
+  "runtimeAdapterPath": "runtime/boundary/api",
   "sdkWorkspacePath": "../sdk",
   "sdkWaveStatus": "started",
   "sdkSourceMode": "contract-bound-from-api",

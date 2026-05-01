@@ -22,6 +22,10 @@ API does not own:
 - raw core struct exposure
 - local provider/model assumptions
 
+Wave 22D8 boundary:
+- API may expose account/auth/entitlement references and posture states;
+- API does not define account database, billing endpoints, subscription flows, or login provider behavior.
+
 Status honesty:
 - `openApiStatus` and `conformanceStatus` are scaffolded until fully implemented and automated.
 
@@ -30,3 +34,4 @@ Client neutrality:
 - API contracts are client-neutral.
 - API does not own client UI/product behavior.
 - API does not own SDK convenience behavior.
+- clients should not bypass SDK except debug/conformance/bootstrap.
