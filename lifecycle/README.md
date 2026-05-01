@@ -1,6 +1,6 @@
-# API Lifecycle States
+# Lifecycle Vocabulary
 
-Lifecycle/readiness states used by API projections:
+Lifecycle vocabulary must use canonical statuses:
 - `ok`
 - `partial`
 - `pending`
@@ -10,4 +10,4 @@ Lifecycle/readiness states used by API projections:
 - `denied`
 - `error`
 
-These states are contract-facing and should be used consistently across families as extraction progresses.
+Family compatibility and readiness claims must be explicit and version-aware.

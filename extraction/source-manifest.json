@@ -51,7 +51,7 @@
   "mirrorPath": "api/",
   "mirrorStatus": "compatibility-mirror",
   "mirrorDrainStatus": "pending-runtime-consumer-audit",
-  "coreApiStatus": "forbidden-or-absent",
+  "coreApiStatus": "absent",
   "sdkSourceRepository": "api",
   "sdkGenerationWave": "14",
   "activeImplementationMoved": false,
@@ -83,7 +83,7 @@
   ],
   "mirrorDrainNextStep": "migrate or rename active runtime adapter consumers",
   "rootYaiApiStatus": "physically-drained",
-  "runtimeAdapterPath": "core/runtime/boundary/api",
+  "runtimeAdapterPath": "runtime/boundary/api",
   "sdkWorkspacePath": "../sdk",
   "sdkWaveStatus": "started",
   "sdkSourceMode": "contract-bound-from-api",
@@ -98,5 +98,22 @@
   "sdkGeneratedFromCoreStructs": false,
   "agentOrchestrationEntryStatus": "proposal-entry-ready",
   "agentExecutionStatus": "deferred",
-  "providerModelExecutionStatus": "deferred"
+  "providerModelExecutionStatus": "deferred",
+  "conceptualRepository": "yai-api",
+  "contractMaturityStatus": "enterprise-hardened-scaffolded",
+  "enterpriseStandardStatus": "hardened-contract-boundary-declared",
+  "envelopeVersion": "v1-scaffold",
+  "schemaVersioningStatus": "versioned-scaffold",
+  "sdkSourceStatus": "canonical-contract-source",
+  "clientImplementationIncluded": false,
+  "leakageAuditStatus": "completed-or-classified",
+  "sdkConsumerRepository": "../sdk",
+  "runtimeRepository": "../yai",
+  "nextWaveBlockers": [
+    "openapi coverage still scaffolded",
+    "conformance automation still scaffolded"
+  ],
+  "apiPlaneSurfaceModelVersion": "16B-v1",
+  "apiOperationRegistryVersion": "16B-v1",
+  "familiesArchitectureRole": "compatibility-grouping"
 }

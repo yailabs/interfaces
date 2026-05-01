@@ -1,27 +1,15 @@
-# API Envelopes
+# Envelopes
 
-Canonical response envelope direction (Wave 12G):
-
+Canonical envelope shape:
 - `schema`
 - `status`
 - `reason`
 - `message`
-- typed payload (`data` or family payload)
 - `refs`
 - `warnings`
 - `errors`
 
-Canonical status vocabulary:
-- `ok`
-- `partial`
-- `pending`
-- `ready`
-- `unavailable`
-- `blocked`
-- `denied`
-- `error`
+Canonical statuses:
+- `ok`, `partial`, `pending`, `ready`, `unavailable`, `blocked`, `denied`, `error`
 
-Notes:
-- `unavailable` is valid for honest absence.
-- `pending` is valid readiness posture.
-- CLI-only phrasing must not become canonical API contract semantics.
+Pending/unavailable/deferred conditions must be explicitly represented and never implied as success.

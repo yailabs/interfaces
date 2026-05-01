@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.runtime-service-status.v1",
+  "title": "YAI Runtime Service Status v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "status",
+    "lifecycleState",
+    "readiness",
+    "health",
+    "sealed",
+    "sealedPosture",
+    "sealReason",
+    "allowedSurfaces",
+    "blockedSurfaces",
+    "identityPosture",
+    "operatorContextPosture",
+    "activeCasePosture",
+    "activeCaseReason",
+    "activeCaseRef",
+    "serviceLifecycle",
+    "serviceManagerPosture",
+    "serviceControlPosture",
+    "serviceInstallPosture",
+    "devWrapperStatus",
+    "systemServiceStatus",
+    "operationalReadiness",
+    "operationalReadinessReason",
+    "mode",
+    "controlPosture",
+    "message"
+  ],
+  "properties": {
+    "schema": {
+      "const": "api.runtime.service.status.v1"
+    },
+    "serviceId": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "unknown",
+        "unavailable",
+        "stopped",
+        "starting",
+        "running",
+        "stopping",
+        "degraded",
+        "error"
+      ]
+    },
+    "lifecycleState": {
+      "enum": [
+        "unknown",
+        "unavailable",
+        "stopped",
+        "starting",
+        "running",
+        "stopping",
+        "degraded",
+        "error"
+      ]
+    },
+    "readiness": {
+      "enum": [
+        "ready",
+        "pending",
+        "unavailable",
+        "degraded",
+        "error"
+      ]
+    },
+    "health": {
+      "enum": [
+        "available",
+        "pending",
+        "unavailable",
+        "degraded",
+        "error",
+        "unknown"
+      ]
+    },
+    "sealed": {
+      "type": "boolean"
+    },
+    "sealedPosture": {
+      "enum": [
+        "sealed",
+        "unsealed",
+        "pending"
+      ]
+    },
+    "sealReason": {
+      "enum": [
+        "client_connection_unavailable",
+        "operator_context_unavailable",
+        "authorization_context_unavailable",
+        "active_case_unselected",
+        "unsealed"
+      ]
+    },
+    "allowedSurfaces": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "health",
+          "status",
+          "readiness"
+        ]
+      }
+    },
+    "blockedSurfaces": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "operational-actions"
+        ]
+      }
+    },
+    "identityPosture": {
+      "enum": [
+        "unavailable",
+        "local-dev",
+        "available"
+      ]
+    },
+    "operatorContextPosture": {
+      "enum": [
+        "unavailable",
+        "pending",
+        "planned",
+        "available"
+      ]
+    },
+    "activeCasePosture": {
+      "enum": [
+        "unavailable",
+        "unselected",
+        "pending",
+        "planned",
+        "selected"
+      ]
+    },
+    "activeCaseReason": {
+      "enum": [
+        "active_case_unselected",
+        "active_case_unavailable",
+        "active_case_blocked",
+        "active_case_error",
+        "none"
+      ]
+    },
+    "activeCaseRef": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "local-dev",
+        "local-service-planned",
+        "remote-service-planned"
+      ]
+    },
+    "controlPosture": {
+      "enum": [
+        "dev-wrapper",
+        "service-manager-planned",
+        "unavailable"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "serviceLifecycle": {
+      "enum": [
+        "unknown",
+        "unavailable",
+        "stopped",
+        "starting",
+        "running",
+        "stopping",
+        "degraded",
+        "error"
+      ]
+    },
+    "serviceManagerPosture": {
+      "enum": [
+        "service-manager-planned",
+        "unavailable"
+      ]
+    },
+    "serviceControlPosture": {
+      "enum": [
+        "dev-wrapper",
+        "service-manager-planned",
+        "unavailable"
+      ]
+    },
+    "serviceInstallPosture": {
+      "enum": [
+        "not-installed",
+        "installed",
+        "unavailable"
+      ]
+    },
+    "devWrapperStatus": {
+      "enum": [
+        "running",
+        "starting",
+        "stopped",
+        "degraded",
+        "pending",
+        "unavailable"
+      ]
+    },
+    "systemServiceStatus": {
+      "enum": [
+        "running",
+        "pending",
+        "unavailable",
+        "not-installed",
+        "error"
+      ]
+    },
+    "operationalReadiness": {
+      "enum": [
+        "ready",
+        "sealed",
+        "pending",
+        "blocked",
+        "unavailable",
+        "error"
+      ]
+    },
+    "operationalReadinessReason": {
+      "enum": [
+        "client_connection_unavailable",
+        "operator_context_unavailable",
+        "authorization_context_unavailable",
+        "active_case_unselected",
+        "unsealed",
+        "none"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

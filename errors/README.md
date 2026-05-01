@@ -1,10 +1,14 @@
-# API Error Model
+# Error Model
 
-Error model direction (Wave 12G):
+Canonical error object shape:
+- `code`
+- `message`
+- `details` (optional structured fields)
+- `retryable` (optional bool)
 
-- errors are structured
-- error surfaces expose stable codes and messages
-- readiness absence uses `unavailable` + explicit `reason`, not fake failure/success
-- warnings are distinct from errors
+Canonical warning object shape:
+- `code`
+- `message`
+- `details` (optional)
 
-This wave documents and scaffolds extraction posture; family-by-family normalization continues in Wave 13.
+`refs` values in envelopes should identify command/surface/family/runtime context when applicable.

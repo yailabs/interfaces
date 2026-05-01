@@ -1,5 +1,5 @@
-# API Schemas
+# Schemas
 
-Schema surface scaffold for extraction readiness.
+This directory contains contract schemas used by API registry and SDK clients.
 
-Wave 12G keeps schema material primarily in existing registries/contracts while preparing dedicated schema curation for Wave 13.
+Wave 16B adds readiness-oriented envelope and operation reference schemas for Loom/SDK verticalization.

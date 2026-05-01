@@ -1,0 +1,192 @@
+{
+  "schema": "yai.api.plane-surfaces.v1",
+  "apiPlaneSurfaceModelVersion": "21-v1",
+  "canonicalModel": "plane-surface",
+  "familiesRole": "compatibility-grouping",
+  "planes": [
+    {
+      "plane": "runtime",
+      "coreOwnerPath": "../yai/runtime",
+      "apiContractStatus": "runtime-service-boundary-sealed-readiness",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "registry/api-operations.v1.json",
+        "schemas/runtime-service-status.v1.schema.json",
+        "families/runtime/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "case",
+      "coreOwnerPath": "../yai/case",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "families/case/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "records",
+      "coreOwnerPath": "../yai/records",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "families/knowledge/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "flow",
+      "coreOwnerPath": "../yai/flow",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "families/flow/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "governance",
+      "coreOwnerPath": "../yai/governance",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "families/govern/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "supervisor",
+      "coreOwnerPath": "../yai/supervisor",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "families/supervisor/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "orchestration",
+      "coreOwnerPath": "../yai/orchestration",
+      "apiContractStatus": "deferred",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "not-exposed",
+      "apiSources": [
+        "docs/agent-orchestration-entry.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "agents",
+      "coreOwnerPath": "../yai/agents",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "families/agent/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "knowledge",
+      "coreOwnerPath": "../yai/knowledge",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "families/knowledge/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "skills",
+      "coreOwnerPath": "../yai/skills",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "families/skills/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "providers",
+      "coreOwnerPath": "../yai/providers",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "families/provider/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "models",
+      "coreOwnerPath": "../yai/models",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "families/models/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "analytics",
+      "coreOwnerPath": "../yai/analytics",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "families/analytics/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "identity",
+      "coreOwnerPath": "../yai/identity",
+      "apiContractStatus": "planned",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "contracts/identity/*"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    }
+  ]
+}

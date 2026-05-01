@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.client-surface-status.v1",
+  "title": "YAI Client Surface Status v1",
+  "type": "object",
+  "required": [
+    "surface",
+    "status"
+  ],
+  "properties": {
+    "surface": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ok",
+        "partial",
+        "pending",
+        "ready",
+        "unavailable",
+        "blocked",
+        "denied",
+        "error"
+      ]
+    },
+    "detail": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

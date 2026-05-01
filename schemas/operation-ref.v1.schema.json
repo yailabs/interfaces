@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.operation-ref.v1",
+  "title": "YAI Operation Ref v1",
+  "type": "object",
+  "required": [
+    "operation_id",
+    "plane",
+    "stability"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "plane": {
+      "type": "string"
+    },
+    "stability": {
+      "enum": [
+        "scaffolded",
+        "readiness",
+        "active",
+        "deferred"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

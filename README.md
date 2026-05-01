@@ -67,15 +67,16 @@ This repository does not implement runtime execution. Runtime implementation rem
 Canonical contract source lives here (`api`).
 
 - Owns: contracts, schemas, envelopes, lifecycle, errors, OpenAPI scaffolds, conformance scaffolds.
-- Does not own: runtime execution, CLI behavior, SDK package implementations, provider backends.
+- Does not own: runtime execution, client product behavior, SDK package implementations, provider backends, account backend behavior.
 
 Boundary guarantees:
 - Root `yai/api` remains physically drained.
 - `yai/core/api` remains absent.
-- Runtime adapters remain in `yai/core/runtime/boundary/api`.
+- Runtime adapters remain in `yai/runtime/boundary/api`.
 
 ## SDK Consumption Boundary
 
+SDK is the official client consumption layer.
 Clients should normally consume SDK packages, not runtime adapters directly.
 
 - SDK packages: `packages/c`, `packages/typescript`, `packages/python`
@@ -98,3 +99,8 @@ python3 -m json.tool extraction/source-manifest.json >/dev/null
 
 > [!IMPORTANT]
 > YAI is the **YAI Community Source Tree**. Development and non-production use are permitted under the applicable license terms. Commercial licensing is required for production, organizational, persistent, collaborative, customer-affecting, or business-critical use.
+
+
+## Branch Alignment
+
+Active cross-repo hardening branch: `feature/topology-refactor-7`.
