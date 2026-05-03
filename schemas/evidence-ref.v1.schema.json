@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.evidence-ref.v1",
+  "type": "object",
+  "required": [
+    "evidence_ref"
+  ],
+  "properties": {
+    "evidence_ref": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.operation-contract.v1",
+  "type": "object",
+  "required": [
+    "operation_id",
+    "family",
+    "resource",
+    "verb",
+    "scope",
+    "status",
+    "mutation_class",
+    "input_schema",
+    "output_schema",
+    "errors",
+    "watchable",
+    "records_emitted",
+    "evidence_emitted",
+    "governance_required",
+    "control_required",
+    "runtime_handler_readiness",
+    "projections"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "family": {
+      "type": "string"
+    },
+    "resource": {
+      "type": "string"
+    },
+    "verb": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "mutation_class": {
+      "type": "string"
+    },
+    "input_schema": {
+      "type": "string"
+    },
+    "output_schema": {
+      "type": "string"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "watchable": {
+      "type": "boolean"
+    },
+    "records_emitted": {
+      "type": "boolean"
+    },
+    "evidence_emitted": {
+      "type": "boolean"
+    },
+    "governance_required": {
+      "type": "boolean"
+    },
+    "control_required": {
+      "type": "boolean"
+    },
+    "runtime_handler_readiness": {
+      "type": "string",
+      "enum": [
+        "implemented",
+        "partial",
+        "planned",
+        "not_implemented"
+      ]
+    },
+    "projections": {
+      "type": "object",
+      "required": [
+        "sdk",
+        "cli",
+        "tui",
+        "agent"
+      ],
+      "properties": {
+        "sdk": {
+          "type": "string"
+        },
+        "cli": {
+          "type": "string"
+        },
+        "tui": {
+          "type": "string"
+        },
+        "agent": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

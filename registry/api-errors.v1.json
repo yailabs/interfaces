@@ -1,13 +1,19 @@
 {
+  "kind": "yai.api.error_registry",
   "version": "v1",
   "errors": [
-    "ok",
-    "invalid_request",
-    "unknown_family",
-    "unknown_surface",
-    "session_required",
-    "capability_denied",
-    "execution_failed",
-    "not_implemented"
+    "validation_error",
+    "unauthorized",
+    "forbidden",
+    "not_found",
+    "conflict",
+    "unsupported_operation",
+    "not_implemented",
+    "precondition_failed",
+    "governance_required",
+    "control_gate_required",
+    "runtime_unavailable",
+    "provider_unavailable",
+    "internal_error"
   ]
 }

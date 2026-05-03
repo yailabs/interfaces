@@ -1,9 +1,11 @@
 # Conformance
 
-Conformance status is currently **scaffolded**.
+Run:
+- `python3 conformance/check_operation_registry.py`
+- `python3 conformance/check_api_contracts.py`
 
-Current posture:
-- partial/manual checks
-- no claim of complete automated family conformance
-
-Conformance claims must remain aligned with actual automation coverage.
+Coverage:
+- registry grammar integrity
+- schema reference integrity
+- OpenAPI parse + operationId/family-tag consistency
+- forbidden lifecycle/policy/supervisor checks

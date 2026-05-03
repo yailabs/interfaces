@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.workflow-ref.v1",
+  "type": "object",
+  "required": [
+    "workflow_ref"
+  ],
+  "properties": {
+    "workflow_ref": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.operation-projection.v1",
+  "type": "object",
+  "required": [
+    "id",
+    "composes",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "composes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

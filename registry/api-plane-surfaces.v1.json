@@ -72,13 +72,13 @@
       "conformanceStatus": "scaffolded"
     },
     {
-      "plane": "supervisor",
-      "coreOwnerPath": "../yai/supervisor",
+      "plane": "control",
+      "coreOwnerPath": "../yai/control",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
       "apiSources": [
-        "families/supervisor/README.md"
+        "families/control/README.md"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",

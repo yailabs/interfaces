@@ -1,6 +1,10 @@
 # OpenAPI
 
-OpenAPI status is currently **scaffolded**.
+OpenAPI is now projected as a real Wave 18 vertical slice in `openapi/yai-api.v1.yaml`.
 
-This repository does not claim complete endpoint coverage yet.
-SDK generation remains contract-bound rather than OpenAPI-generated at this stage.
+Status:
+- Not full coverage.
+- Canonical subset only.
+- Operation IDs must match `registry/api-operations.v1.json`.
+
+Canonical ownership remains: registry + schemas first, OpenAPI as projection.
