@@ -1,16 +1,117 @@
 {
   "version": "v1",
   "surfaces": {
-    "ai": ["ask", "chat", "console"],
-    "case": ["status", "enter", "leave"],
-    "flow": ["status", "review", "execution"],
-    "session": ["status", "attach", "detach"],
-    "runtime": ["status", "watch", "carrier"],
-    "govern": ["legal", "authority", "review", "publication", "intake"],
-    "knowledge": ["ingest", "records", "lineage", "topology", "context", "memory", "retrieval", "inference", "query", "summarize", "maintenance"],
-    "analytics": ["summary", "show", "emit-summary"],
-    "provider": ["list", "status", "current", "select", "set", "connect", "disconnect", "probe", "doctor", "models", "view"],
-    "agent": ["crew-status", "bindings", "packs"],
-    "inspect": ["runtime", "watch"]
+    "system": [
+      "status",
+      "check",
+      "runtime.inspect"
+    ],
+    "case": [
+      "current",
+      "list",
+      "show",
+      "records.tail"
+    ],
+    "conversation": [
+      "current",
+      "messages.send"
+    ],
+    "prompting": [
+      "context.assemble"
+    ],
+    "workflow": [
+      "list",
+      "show",
+      "steps.pending",
+      "runs.watch"
+    ],
+    "governance": [
+      "posture",
+      "policy.resolve"
+    ],
+    "control": [
+      "decisions.explain",
+      "gates.list",
+      "gates.show"
+    ],
+    "knowledge": [
+      "lineage.trace",
+      "query"
+    ],
+    "state": [
+      "records.query",
+      "records.tail",
+      "show",
+      "snapshot",
+      "diff"
+    ],
+    "skills": [
+      "list",
+      "resolve",
+      "admissibility.check",
+      "run",
+      "proof-obligations.list"
+    ],
+    "providers": [
+      "list",
+      "status",
+      "set",
+      "connect",
+      "probe"
+    ],
+    "models": [
+      "list",
+      "capabilities.show",
+      "use",
+      "evaluate"
+    ],
+    "agents": [
+      "list",
+      "plan",
+      "run",
+      "trace"
+    ],
+    "orchestrator": [
+      "plans.create",
+      "routes.resolve",
+      "handoffs.request",
+      "recovery.plan"
+    ],
+    "analytics": [
+      "query",
+      "report",
+      "workflows.summary",
+      "control.gates"
+    ],
+    "output": [
+      "show",
+      "render",
+      "preview",
+      "export"
+    ],
+    "identity": [
+      "principal.current",
+      "machine.current",
+      "authorization.check",
+      "entitlement.status"
+    ],
+    "auth": [
+      "status",
+      "whoami",
+      "login",
+      "logout"
+    ],
+    "session": [
+      "current",
+      "status",
+      "attach",
+      "detach"
+    ],
+    "client": [
+      "list",
+      "status",
+      "case.show",
+      "permissions.check"
+    ]
   }
 }

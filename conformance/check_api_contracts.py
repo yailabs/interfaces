@@ -16,6 +16,23 @@ families = {f["id"] for f in json.loads((registry / "api-families.v1.json").read
 errors = set(json.loads((registry / "api-errors.v1.json").read_text())["errors"])
 subset = set(json.loads((registry / "api-operations.v1.json").read_text()).get("openapi_vertical_subset", []))
 
+errors_out=[]
+plane_surfaces = json.loads((registry / "api-plane-surfaces.v1.json").read_text())
+surfaces = json.loads((registry / "api-surfaces.v1.json").read_text())
+forbidden_public_planes = {"flow","records","orchestration"}
+forbidden_surface_keys = {"ai","flow","runtime","govern","provider","agent","inspect","records","orchestration"}
+canonical_surface_keys = {"system","case","conversation","prompting","workflow","governance","control","knowledge","state","skills","providers","models","agents","orchestrator","analytics","output","identity","auth","session","client"}
+for pl in plane_surfaces.get("planes", []):
+    name = pl.get("plane")
+    if name in forbidden_public_planes:
+        errors_out.append(f"forbidden public plane key: {name}")
+for key in surfaces.get("surfaces", {}).keys():
+    if key in forbidden_surface_keys:
+        errors_out.append(f"forbidden canonical surface key: {key}")
+for key in surfaces.get("surfaces", {}).keys():
+    if key not in canonical_surface_keys:
+        errors_out.append(f"unknown canonical surface key: {key}")
+
 # yaml parsing with fallback
 raw = openapi_file.read_text()
 paths = set()
@@ -46,10 +63,9 @@ except Exception:
         if s.startswith('- name:'):
             tags.add(s.split(':',1)[1].strip())
 
-errors_out=[]
 for op in ops:
-    if op["operation_id"].startswith("policy."):
-        errors_out.append(f"forbidden root policy op: {op['operation_id']}")
+    if op["operation_id"].startswith(("flow.","records.","orchestration.","supervisor.","policy.")):
+        errors_out.append(f"forbidden operation namespace: {op['operation_id']}")
     if op["operation_id"] in {"runtime.start","runtime.stop","runtime.restart","system.start","system.stop","system.restart","system.service.start","system.service.stop"}:
         errors_out.append(f"forbidden lifecycle op: {op['operation_id']}")
     if op["family"] == "supervisor":

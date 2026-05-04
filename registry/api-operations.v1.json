@@ -810,7 +810,7 @@
       "cli_projection": "cli.case.records.tail",
       "tui_projection": "tui.case.records.tail",
       "agent_projection": "agent.case.records.tail",
-      "runtime_handler_readiness": "partial",
+      "runtime_handler_readiness": "planned",
       "status": "seed",
       "custom_verb_justification": "seeded-domain-verb-wave17",
       "errors": [
@@ -1425,7 +1425,7 @@
       "cli_projection": "cli.control.gates.list",
       "tui_projection": "tui.control.gates.list",
       "agent_projection": "agent.control.gates.list",
-      "runtime_handler_readiness": "partial",
+      "runtime_handler_readiness": "planned",
       "status": "seed",
       "errors": [
         "control_gate_required",
@@ -4130,7 +4130,7 @@
       "cli_projection": "cli.state.records.tail",
       "tui_projection": "tui.state.records.tail",
       "agent_projection": "agent.state.records.tail",
-      "runtime_handler_readiness": "partial",
+      "runtime_handler_readiness": "planned",
       "status": "seed",
       "custom_verb_justification": "seeded-domain-verb-wave17",
       "errors": [
@@ -4745,7 +4745,7 @@
       "cli_projection": "cli.workflow.runs.watch",
       "tui_projection": "tui.workflow.runs.watch",
       "agent_projection": "agent.workflow.runs.watch",
-      "runtime_handler_readiness": "partial",
+      "runtime_handler_readiness": "planned",
       "status": "seed",
       "errors": [
         "control_gate_required",

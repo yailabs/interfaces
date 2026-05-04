@@ -18,6 +18,7 @@ forbidden = {
     "system.service.start","system.service.stop",
 }
 errors = []
+forbidden_prefixes = ("flow.","records.","orchestration.","supervisor.","policy.")
 for op in ops["operations"]:
     miss = sorted(required - set(op.keys()))
     if miss:
@@ -29,8 +30,8 @@ for op in ops["operations"]:
         errors.append(f"unknown verb {op['verb']} in {op['operation_id']} (no custom_verb_justification)")
     if op["operation_id"] in forbidden:
         errors.append(f"forbidden lifecycle operation present: {op['operation_id']}")
-    if op["operation_id"].startswith("policy."):
-        errors.append(f"forbidden root policy operation: {op['operation_id']}")
+    if op["operation_id"].startswith(forbidden_prefixes):
+        errors.append(f"forbidden operation namespace: {op['operation_id']}")
     if op["family"] == "supervisor":
         errors.append(f"forbidden public family supervisor in {op['operation_id']}")
 for op in ops["operations"]:

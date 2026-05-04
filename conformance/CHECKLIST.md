@@ -8,3 +8,6 @@
 - [ ] no raw core struct leakage in exported contracts
 - [ ] no fake provider/model/agent success claims
 - [ ] schema names versioned
+- [ ] registry canonical public plane keys do not include `flow`, root `records`, `orchestration`
+- [ ] registry canonical surface keys do not include CLI aliases (`ai`, `runtime`, `govern`, `provider`, `agent`, `inspect`)
+- [ ] operation IDs do not use forbidden root namespaces (`flow.*`, `records.*`, `orchestration.*`, `supervisor.*`, `policy.*`)
