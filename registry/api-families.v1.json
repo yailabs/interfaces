@@ -130,14 +130,14 @@
       "public_name": "prompting",
       "internal_plane_hint": "knowledge",
       "status": "seed",
-      "description": "Prompt context, template, preview, and trace replay contracts",
+      "description": "Prompt context assembly and future template, preview, and trace contracts distinct from conversation and execution families",
       "canonical_resources": [
         "context",
         "templates",
         "previews",
         "traces"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family. `prompting.context.assemble` is the current partial canonical operation; template/preview/trace render or replay surfaces remain planned and must not imply model, provider, or agent execution."
     },
     {
       "id": "workflow",
