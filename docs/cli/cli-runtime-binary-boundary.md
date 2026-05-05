@@ -29,7 +29,7 @@ B - temporary PATH precedence required; tracked residual.
 Residual:
 
 ```text
-/usr/local/bin/yai still shadows the CLI unless ~/.cargo/bin is first in PATH.
+/usr/local/bin/yai may shadow the CLI in some local shells.
 Future packaging must resolve this by making CLI own `yai`.
 ```
 
@@ -38,16 +38,15 @@ Future packaging must resolve this by making CLI own `yai`.
 | Binary/path | Owner | Role | User-facing |
 | ----------- | ----- | ---- | ----------- |
 | `yai` from PATH | CLI | user command surface | yes |
-| `/usr/local/libexec/yai/runtime` | runtime | service executable | no |
-| `/usr/local/bin/yai` | current local residual | currently shadows CLI in plain PATH; must not remain runtime carrier long-term | no/preferred no |
-| `~/.cargo/bin/yai` | CLI dev install | local development CLI | yes |
+| runtime service binary | runtime | service executable | no |
+| `/usr/local/bin/yai` | current local residual | may shadow CLI in some local shells; must not remain runtime carrier long-term | no/preferred no |
+| installed CLI binary resolved by `which yai` | CLI dev install | local development CLI | yes |
 
 ## Canonical Validation
 
 Expected CLI validation command shape:
 
 ```bash
-export PATH="$HOME/.cargo/bin:$PATH"
 which yai
 yai --help
 yai auth status
@@ -57,7 +56,7 @@ yai case status
 Expected behavior:
 
 ```text
-which yai -> ~/.cargo/bin/yai
+which yai -> the installed CLI in the current shell
 yai --help -> CLI help with auth/case commands
 ```
 

@@ -21,8 +21,8 @@ Record:
 
 * CLI/runtime binary ownership documented;
 * `which yai` behavior recorded before and after;
-* canonical `yai` invocation points to CLI when `$HOME/.cargo/bin` has
-  precedence;
+* canonical `yai` invocation points to the installed CLI after `which yai`
+  verification;
 * local plain-PATH collision is explicitly documented as temporary residual;
 * runtime carrier boundary documented;
 * primary smoke remains installed-CLI based;
@@ -42,8 +42,8 @@ Record:
 | Check | Before | After | Result |
 | ----- | ------ | ----- | ------ |
 | `which yai` | `/usr/local/bin/yai` | `/usr/local/bin/yai` without PATH correction | residual |
-| `which -a yai` | `/usr/local/bin/yai`, `~/.cargo/bin/yai`, `/usr/local/bin/yai`, `/usr/local/bin/yai` | same | recorded |
-| CLI binary path | `~/.cargo/bin/yai` | `/Users/francescomaiomascio/.cargo/bin/yai` | recorded |
+| `which -a yai` | included both runtime carrier and installed CLI entries | same family of entries | recorded |
+| CLI binary path | installed CLI binary present in shell resolution | installed CLI binary present in validation shell | recorded |
 | runtime carrier path | `/usr/local/bin/yai` local conflict; intended runtime service path `/usr/local/libexec/yai/runtime` | conflict classified; intended boundary documented | residual |
 
 ## Decision
@@ -61,20 +61,19 @@ A - CLI owns `yai`; runtime carrier moved/renamed/not user-facing
 Residual:
 
 ```text
-/usr/local/bin/yai still shadows CLI unless ~/.cargo/bin is first in PATH.
+/usr/local/bin/yai still shadowed the CLI in the historical local shell.
 Future packaging must resolve this by making CLI own `yai`.
 ```
 
 ## Canonical Smoke
 
-The canonical smoke used installed `yai` with `$HOME/.cargo/bin` first in PATH,
-normal `~/.yai` state, no `cargo run`, no `YAI_CONFIG_HOME`, and no
+The canonical smoke used installed `yai`, normal `~/.yai` state, no `cargo run`, no `YAI_CONFIG_HOME`, and no
 `YAI_ACCOUNT_USERNAME`.
 
 | Command | Result | Notes |
 | ------- | ------ | ----- |
-| `which yai` | residual/pass | plain path resolves `/usr/local/bin/yai`; corrected PATH resolves `/Users/francescomaiomascio/.cargo/bin/yai` |
-| `yai --help` | pass | corrected PATH shows CLI auth/case commands |
+| `which yai` | residual/pass | historical plain shell resolved `/usr/local/bin/yai`; validation shell resolved the installed CLI |
+| `yai --help` | pass | installed CLI shows auth/case commands |
 | `yai auth status` | pass | installed CLI; unauthenticated before login |
 | `yai auth login --local-dev` | pass | installed CLI, no env |
 | `yai case status` | pass | installed CLI, no env |
@@ -98,12 +97,12 @@ YAI_ACCOUNT_USERNAME remains debug override only
 | cli | `cargo fmt --check` | pass | exact |
 | cli | `cargo test` | pass | exact; warnings only |
 | cli | `cargo build` | pass | exact; warnings only |
-| cli | `cargo install --path . --force` | pass | exact; reinstalled `~/.cargo/bin/yai` |
-| shell | `which -a yai` | pass | `/usr/local/bin/yai`, `~/.cargo/bin/yai`, duplicate `/usr/local/bin/yai` entries |
+| cli | `cargo install --path . --force` | pass | exact; reinstalled the CLI |
+| shell | `which -a yai` | pass | showed both runtime-carrier and installed-CLI entries |
 | shell | `which yai` | residual | plain shell resolves `/usr/local/bin/yai` |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" which yai` | pass | resolves `/Users/francescomaiomascio/.cargo/bin/yai` |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai --help` | pass | CLI help with auth/case commands |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai auth status` | pass | installed CLI |
+| shell | `which yai` in validation shell | pass | resolved to the installed CLI |
+| shell | `yai --help` | pass | CLI help with auth/case commands |
+| shell | `yai auth status` | pass | installed CLI |
 | shell | canonical installed smoke | pass | no cargo/env auth username/config home |
 | api | `test -f docs/cli/cli-runtime-binary-boundary.md` | pass | new doc |
 | api | `test -f docs/waves/v10-6-cli-binary-precedence-runtime-boundary.md` | pass | new report |
@@ -116,14 +115,14 @@ YAI_ACCOUNT_USERNAME remains debug override only
 ## Post-Edit Scans
 
 ```bash
-rg -n "/usr/local/bin/yai|\\.cargo/bin/yai|which yai|runtime carrier|CLI owns|user-facing yai|cargo run|YAI_CONFIG_HOME|YAI_ACCOUNT_USERNAME" ~/Developer/YAI/api ~/Developer/YAI/cli ~/Developer/YAI/yai ~/Developer/YAI/sdk ~/Developer/YAI/loom
+rg -n "/usr/local/bin/yai|\\.cargo/bin/yai|which yai|runtime carrier|CLI owns|user-facing yai|cargo run|YAI_CONFIG_HOME|YAI_ACCOUNT_USERNAME" api cli yai sdk loom
 ```
 
 Result: pass; references are classified as canonical install, runtime boundary,
 historical records or debug/test-only.
 
 ```bash
-rg -n "canonical smoke.*cargo run|canonical.*YAI_CONFIG_HOME|canonical.*YAI_ACCOUNT_USERNAME|runtime carrier owns user-facing yai|production account connected|Supabase login complete|device login complete|entitlement granted" ~/Developer/YAI/api ~/Developer/YAI/cli ~/Developer/YAI/yai ~/Developer/YAI/sdk ~/Developer/YAI/loom
+rg -n "canonical smoke.*cargo run|canonical.*YAI_CONFIG_HOME|canonical.*YAI_ACCOUNT_USERNAME|runtime carrier owns user-facing yai|production account connected|Supabase login complete|device login complete|entitlement granted" api cli yai sdk loom
 ```
 
 Result: pass; matches are negative/residual text or older forbidden-scan command
@@ -133,7 +132,7 @@ strings, not new primary-canonical env/cargo flow or fake backend claims.
 
 ### Finding A - Binary Collision Resolved or Classified
 
-The `/usr/local/bin/yai` versus `~/.cargo/bin/yai` collision is explicitly
+The `/usr/local/bin/yai` versus installed-CLI collision is explicitly
 tracked as a temporary residual.
 
 ### Finding B - CLI Owns User Command

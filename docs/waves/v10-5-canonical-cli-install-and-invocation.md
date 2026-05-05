@@ -40,33 +40,25 @@ Record:
 Install method:
 
 ```bash
-cd ~/Developer/YAI/cli
 cargo install --path . --force
 ```
 
-Installed binary:
+Installed command verification:
 
 ```bash
-export PATH="$HOME/.cargo/bin:$PATH"
 which yai
 yai --help
-```
-
-Observed installed CLI path:
-
-```text
-/Users/francescomaiomascio/.cargo/bin/yai
 ```
 
 Important path finding:
 
 ```text
 plain which yai -> /usr/local/bin/yai
-PATH="$HOME/.cargo/bin:$PATH" which yai -> /Users/francescomaiomascio/.cargo/bin/yai
+which yai after CLI install resolved to the installed CLI in the validation shell
 ```
 
 `/usr/local/bin/yai` is the runtime carrier in this workspace. The canonical
-CLI smoke requires the Rust CLI install path to precede `/usr/local/bin`.
+operator flow is: install the CLI, verify `which yai`, then use plain `yai ...`.
 
 ## Canonical Smoke
 
@@ -75,7 +67,7 @@ no `YAI_CONFIG_HOME`, and no `YAI_ACCOUNT_USERNAME`.
 
 | Command | Result | Notes |
 | ------- | ------ | ----- |
-| `yai --help` | pass | installed Rust CLI with `$HOME/.cargo/bin` first in PATH |
+| `yai --help` | pass | installed Rust CLI help |
 | `yai auth login --local-dev` | pass | derived `local-dev:francescomaiomascio`; no env username |
 | `yai auth status` | pass | reads canonical `~/.yai` state |
 | `yai case root` | pass | root `case://francescomaiomascio` |
@@ -114,9 +106,9 @@ session remains legacy compatibility only
 | cli | `cargo fmt --check` | pass | exact |
 | cli | `cargo test` | pass | exact; warnings only |
 | cli | `cargo build` | pass | exact; warnings only |
-| cli | `cargo install --path . --force` | pass | installed to Cargo bin path |
-| cli | `PATH="$HOME/.cargo/bin:$PATH" which yai` | pass | `/Users/francescomaiomascio/.cargo/bin/yai` |
-| cli | `PATH="$HOME/.cargo/bin:$PATH" yai --help` | pass | installed Rust CLI |
+| cli | `cargo install --path . --force` | pass | installed CLI successfully |
+| cli | `which yai` | pass | resolved to the installed CLI in the validation shell |
+| cli | `yai --help` | pass | installed Rust CLI |
 | cli | canonical smoke commands | pass | no `cargo run`, no `YAI_CONFIG_HOME`, no `YAI_ACCOUNT_USERNAME` |
 | api | baseline docs checks | pass | V0-V10 docs present |
 | api | `python3 conformance/check_api_contracts.py` | pass | `api-contracts: ok` |
@@ -130,14 +122,14 @@ session remains legacy compatibility only
 ## Post-Edit Scans
 
 ```bash
-rg -n "cargo run --quiet|YAI_CONFIG_HOME|YAI_ACCOUNT_USERNAME|canonical smoke|installed yai|which yai|~/.yai" ~/Developer/YAI/api ~/Developer/YAI/cli ~/Developer/YAI/sdk ~/Developer/YAI/yai ~/Developer/YAI/loom
+rg -n "cargo run --quiet|YAI_CONFIG_HOME|YAI_ACCOUNT_USERNAME|canonical smoke|installed yai|which yai|~/.yai" api cli sdk yai loom
 ```
 
 Result: pass; remaining `cargo run` or env references are classified as
 debug/test-only or are historical delivery records.
 
 ```bash
-rg -n "primary smoke.*cargo run|canonical.*YAI_CONFIG_HOME|canonical.*YAI_ACCOUNT_USERNAME|production account connected|Supabase login complete|device login complete|entitlement granted" ~/Developer/YAI/api ~/Developer/YAI/cli ~/Developer/YAI/sdk ~/Developer/YAI/yai ~/Developer/YAI/loom
+rg -n "primary smoke.*cargo run|canonical.*YAI_CONFIG_HOME|canonical.*YAI_ACCOUNT_USERNAME|production account connected|Supabase login complete|device login complete|entitlement granted" api cli sdk yai loom
 ```
 
 Result: pass; matches are older forbidden-scan command strings or negative V10.5

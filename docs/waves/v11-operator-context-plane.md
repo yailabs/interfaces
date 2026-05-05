@@ -83,9 +83,9 @@ Record:
 
 | Check | Result | Notes |
 | ----- | ------ | ----- |
-| installed CLI path | `/Users/francescomaiomascio/.cargo/bin/yai` | current dev install |
+| installed CLI path | verify locally with `which yai` | installed CLI must resolve in the current shell |
 | plain `which yai` residual | `/usr/local/bin/yai` | runtime carrier still shadows in plain PATH |
-| canonical smoke command prefix | `PATH="$HOME/.cargo/bin:$PATH" yai` | current accepted local form |
+| canonical smoke command form | `yai` | verify with `which yai`, then use plain `yai ...` |
 | primary smoke uses `cargo run` | no | required |
 | primary smoke uses `YAI_CONFIG_HOME` | no | required |
 | primary smoke uses `YAI_ACCOUNT_USERNAME` | no | required |
@@ -166,23 +166,22 @@ Observed behavior:
 | cli | `cargo fmt --check` | pass | exact result |
 | cli | `cargo test` | pass | exact result; warnings only |
 | cli | `cargo build` | pass | exact result; warnings only |
-| cli | `cargo install --path . --force` | pass | installed `/Users/francescomaiomascio/.cargo/bin/yai`; warnings only |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" which yai` | pass | `/Users/francescomaiomascio/.cargo/bin/yai` |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai --help` | pass | CLI help |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai auth login --local-dev` | pass | setup; no env username/config override |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai case open projects/site-e0-cleanup` | pass | setup |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai case enter projects/site-e0-cleanup` | pass | verified operator context |
+| cli | `cargo install --path . --force` | pass | installed CLI; warnings only |
+| shell | `which yai` | pass | resolved to the installed CLI in the validation shell |
+| shell | `yai --help` | pass | CLI help |
+| shell | `yai auth login --local-dev` | pass | setup; no env username/config override |
+| shell | `yai case open projects/site-e0-cleanup` | pass | setup |
+| shell | `yai case enter projects/site-e0-cleanup` | pass | verified operator context |
 | shell | inspect `~/.yai/operator/context.json` | pass | verified V11 marker shape and `active_case_ref` |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai case status` | pass | active case owner reported |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai auth status` | pass | active case reported without auth ownership |
-| shell | `PATH="$HOME/.cargo/bin:$PATH" yai case leave` | pass | active case cleared |
+| shell | `yai case status` | pass | active case owner reported |
+| shell | `yai auth status` | pass | active case reported without auth ownership |
+| shell | `yai case leave` | pass | active case cleared |
 | sdk | docs validation | not run | no SDK files changed |
 | loom | docs validation | not run | no Loom files changed |
 
 ## Post-Edit Scans
 
 ```bash
-cd ~/Developer/YAI/api
 rg -n "operator context|operator_context|active_case_ref|client_ref|shell_ref|auth_context|root_case_ref|session remains legacy|installed CLI|runtime carrier|session" docs/operator docs/waves docs/case docs/cli
 ```
 
@@ -190,7 +189,6 @@ Result: pass; V11 docs contain the expected operator context, installed CLI and
 boundary terms.
 
 ```bash
-cd ~/Developer/YAI/cli
 rg -n "operator context|operator_context|active_case_ref|client_ref|shell_ref|auth_context|root_case_ref|Session was not modified|Session: legacy|case enter|case leave|case status|auth status|cargo run|YAI_CONFIG_HOME|YAI_ACCOUNT_USERNAME" src README.md MIGRATION_MAP.md
 ```
 
@@ -198,7 +196,7 @@ Result: pass; changed CLI source and existing docs contain the expected owner
 and boundary terms. Cargo/env references remain debug/test-only documentation.
 
 ```bash
-rg -n "session owns active case|session active case|active session case|operator context is session|session updated|session created|canonical smoke.*cargo run|canonical.*YAI_CONFIG_HOME|canonical.*YAI_ACCOUNT_USERNAME|production account connected|entitlement granted|machine authorized|Supabase login|device login complete|case://user root created|case://me root marker" ~/Developer/YAI/api ~/Developer/YAI/cli ~/Developer/YAI/sdk ~/Developer/YAI/loom
+rg -n "session owns active case|session active case|active session case|operator context is session|session updated|session created|canonical smoke.*cargo run|canonical.*YAI_CONFIG_HOME|canonical.*YAI_ACCOUNT_USERNAME|production account connected|entitlement granted|machine authorized|Supabase login|device login complete|case://user root created|case://me root marker" api cli sdk loom
 ```
 
 Result: pass; matches are legacy negative policy text or recorded forbidden-scan

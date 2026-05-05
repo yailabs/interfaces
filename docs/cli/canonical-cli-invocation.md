@@ -36,37 +36,29 @@ YAI_ACCOUNT_USERNAME=...
 Install the Rust CLI with:
 
 ```bash
-cd ~/Developer/YAI/cli
 cargo install --path . --force
 ```
 
-The installed CLI binary is:
-
-```text
-~/.cargo/bin/yai
-```
-
-The shell PATH must resolve that binary before older runtime carrier binaries:
+Verify the installed command in the current shell:
 
 ```bash
-export PATH="$HOME/.cargo/bin:$PATH"
 which yai
 yai --help
 ```
 
-In the current workspace, plain PATH initially resolved:
+Historical local residual:
 
 ```text
 /usr/local/bin/yai
 ```
 
-That binary is the runtime carrier, not the Rust CLI. The canonical CLI path
-therefore requires `$HOME/.cargo/bin` to be first for CLI smoke validation.
+That binary is the runtime carrier, not the Rust CLI. If `which yai` resolves a
+non-CLI binary in the current shell, fix the local installation or shell PATH
+before continuing.
 
 V10.6 records this as a temporary local residual. Product direction remains:
 the CLI owns the user-facing `yai` command, and runtime carrier execution is
-service/internal under `/usr/local/libexec/yai/runtime` or equivalent packaging
-paths.
+service/internal rather than the primary operator entry point.
 
 ## State
 
