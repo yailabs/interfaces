@@ -24,7 +24,7 @@ Result shape (contract-level):
 - provider_status
 - model_status
 - governance_status
-- supervisor_status
+- control_status (legacy alias: `supervisor_status`)
 - warnings
 
 Wave 15 posture:

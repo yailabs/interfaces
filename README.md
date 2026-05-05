@@ -53,7 +53,7 @@ a commercial license.
 
 ## Why This Repository Exists
 
-`api` is the canonical API contract surface for YAI. It defines schemas, envelopes, lifecycle states, error models, family contracts, and conformance direction used by SDK and client surfaces.
+`api` is the canonical API contract surface for YAI. It owns operation grammar (families, verbs, operations, projections), schemas, envelopes, lifecycle states, and conformance direction used by SDK and client surfaces.
 
 This repository does not implement runtime execution. Runtime implementation remains in `yai-labs/yai`.
 

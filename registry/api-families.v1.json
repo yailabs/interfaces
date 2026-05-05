@@ -1,17 +1,347 @@
 {
+  "kind": "yai.api.operation_families",
   "version": "v1",
+  "canonical_owner": "../api",
   "families": [
-    "ai",
-    "case",
-    "flow",
-    "session",
-    "runtime",
-    "state",
-    "knowledge",
-    "analytics",
-    "provider",
-    "agent",
-    "inspect",
-    "skills"
+    {
+      "id": "auth",
+      "display_name": "Authentication",
+      "ownership": "api",
+      "public_name": "auth",
+      "internal_plane_hint": "identity",
+      "status": "seed",
+      "description": "Authentication posture and session admission contracts",
+      "canonical_resources": [
+        "status",
+        "whoami",
+        "login",
+        "logout"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "identity",
+      "display_name": "Identity",
+      "ownership": "api",
+      "public_name": "identity",
+      "internal_plane_hint": "identity",
+      "status": "seed",
+      "description": "Principal, machine, entitlement, and authorization posture",
+      "canonical_resources": [
+        "principal",
+        "machine",
+        "entitlement",
+        "authorization"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "session",
+      "display_name": "Session",
+      "ownership": "api",
+      "public_name": "session",
+      "internal_plane_hint": "runtime",
+      "status": "seed",
+      "description": "Client-session attachment and status contracts",
+      "canonical_resources": [
+        "current",
+        "status",
+        "attach",
+        "detach"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "client",
+      "display_name": "Client",
+      "ownership": "api",
+      "public_name": "client",
+      "internal_plane_hint": "runtime",
+      "status": "seed",
+      "description": "Connected client visibility and permissions projections",
+      "canonical_resources": [
+        "list",
+        "status",
+        "case",
+        "permissions"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "system",
+      "display_name": "System",
+      "ownership": "api",
+      "public_name": "system",
+      "internal_plane_hint": "runtime",
+      "status": "seed",
+      "description": "System/runtime status and diagnostics projections",
+      "canonical_resources": [
+        "status",
+        "check",
+        "doctor",
+        "service",
+        "runtime"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "case",
+      "display_name": "Case",
+      "ownership": "api",
+      "public_name": "case",
+      "internal_plane_hint": "case",
+      "status": "seed",
+      "description": "Case identity, selection, graph, and record context",
+      "canonical_resources": [
+        "list",
+        "current",
+        "create",
+        "use",
+        "show",
+        "tree",
+        "pending",
+        "graph",
+        "records"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "conversation",
+      "display_name": "Conversation",
+      "ownership": "api",
+      "public_name": "conversation",
+      "internal_plane_hint": "knowledge",
+      "status": "seed",
+      "description": "Conversation lifecycle, messages, and intent/context linkage",
+      "canonical_resources": [
+        "create",
+        "current",
+        "messages",
+        "intent",
+        "context",
+        "workflow"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "prompting",
+      "display_name": "Prompting",
+      "ownership": "api",
+      "public_name": "prompting",
+      "internal_plane_hint": "knowledge",
+      "status": "seed",
+      "description": "Prompt context assembly and future template, preview, and trace contracts distinct from conversation and execution families",
+      "canonical_resources": [
+        "context",
+        "templates",
+        "previews",
+        "traces"
+      ],
+      "notes": "Public operation grammar family. `prompting.context.assemble` is the current partial canonical operation; template/preview/trace render or replay surfaces remain planned and must not imply model, provider, or agent execution."
+    },
+    {
+      "id": "workflow",
+      "display_name": "Workflow",
+      "ownership": "api",
+      "public_name": "workflow",
+      "internal_plane_hint": "flow",
+      "status": "seed",
+      "description": "Workflow composition, validation, execution, and watch contracts",
+      "canonical_resources": [
+        "list",
+        "show",
+        "compose",
+        "validate",
+        "nodes",
+        "branches",
+        "loops",
+        "runs",
+        "steps"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "governance",
+      "display_name": "Governance",
+      "ownership": "api",
+      "public_name": "governance",
+      "internal_plane_hint": "governance",
+      "status": "seed",
+      "description": "Governance posture, policy resolution, decisions, and obligations",
+      "canonical_resources": [
+        "status",
+        "posture",
+        "policy",
+        "decisions",
+        "obligations"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "control",
+      "display_name": "Control",
+      "ownership": "api",
+      "public_name": "control",
+      "internal_plane_hint": "control",
+      "status": "seed",
+      "description": "Control-plane subject/boundary/gate/evidence operations",
+      "canonical_resources": [
+        "status",
+        "subjects",
+        "boundaries",
+        "gates",
+        "decisions",
+        "evidence"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "knowledge",
+      "display_name": "Knowledge",
+      "ownership": "api",
+      "public_name": "knowledge",
+      "internal_plane_hint": "knowledge",
+      "status": "seed",
+      "description": "Knowledge query, context, lineage, graph, and memory promotion",
+      "canonical_resources": [
+        "query",
+        "context",
+        "lineage",
+        "graph",
+        "memory"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "state",
+      "display_name": "State",
+      "ownership": "api",
+      "public_name": "state",
+      "internal_plane_hint": "state",
+      "status": "seed",
+      "description": "State snapshots, diffs, and record query/tail contracts",
+      "canonical_resources": [
+        "show",
+        "diff",
+        "snapshot",
+        "records"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "skills",
+      "display_name": "Skills",
+      "ownership": "api",
+      "public_name": "skills",
+      "internal_plane_hint": "skills",
+      "status": "seed",
+      "description": "Skill registry, admissibility, execution, and proof obligations",
+      "canonical_resources": [
+        "list",
+        "resolve",
+        "admissibility",
+        "run",
+        "proof-obligations"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "providers",
+      "display_name": "Providers",
+      "ownership": "api",
+      "public_name": "providers",
+      "internal_plane_hint": "providers",
+      "status": "seed",
+      "description": "Provider inventory, selection, connectivity, and probe operations",
+      "canonical_resources": [
+        "list",
+        "status",
+        "set",
+        "connect",
+        "probe"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "models",
+      "display_name": "Models",
+      "ownership": "api",
+      "public_name": "models",
+      "internal_plane_hint": "models",
+      "status": "seed",
+      "description": "Model inventory, selection, capability inspection, and evaluation",
+      "canonical_resources": [
+        "list",
+        "use",
+        "capabilities",
+        "evaluate"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "agents",
+      "display_name": "Agents",
+      "ownership": "api",
+      "public_name": "agents",
+      "internal_plane_hint": "agents",
+      "status": "seed",
+      "description": "Agent listing, planning, execution, and tracing",
+      "canonical_resources": [
+        "list",
+        "plan",
+        "run",
+        "trace"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "orchestrator",
+      "display_name": "Orchestrator",
+      "ownership": "api",
+      "public_name": "orchestrator",
+      "internal_plane_hint": "orchestration",
+      "status": "seed",
+      "description": "Planning, routing, handoff, and recovery orchestration",
+      "canonical_resources": [
+        "plans",
+        "routes",
+        "handoffs",
+        "recovery"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "analytics",
+      "display_name": "Analytics",
+      "ownership": "api",
+      "public_name": "analytics",
+      "internal_plane_hint": "analytics",
+      "status": "seed",
+      "description": "Analytics query, report, workflow summary, and gate analysis",
+      "canonical_resources": [
+        "query",
+        "report",
+        "workflows",
+        "control"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "output",
+      "display_name": "Output",
+      "ownership": "api",
+      "public_name": "output",
+      "internal_plane_hint": "runtime",
+      "status": "seed",
+      "description": "Output listing, preview, render, and export contracts",
+      "canonical_resources": [
+        "list",
+        "show",
+        "preview",
+        "render",
+        "export"
+      ],
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    }
   ]
 }

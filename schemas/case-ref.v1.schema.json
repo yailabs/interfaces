@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.case-ref.v1",
+  "type": "object",
+  "required": [
+    "case_ref"
+  ],
+  "properties": {
+    "case_ref": {
+      "type": "string"
+    }
+  }
+}

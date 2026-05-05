@@ -1,0 +1,68 @@
+{
+  "kind": "yai.api.operation_projections",
+  "version": "v1",
+  "high_level_projections": [
+    {
+      "id": "chat",
+      "composes": [
+        "conversation.create",
+        "conversation.messages.send",
+        "prompting.context.assemble"
+      ],
+      "status": "seed"
+    },
+    {
+      "id": "guide",
+      "composes": [
+        "knowledge.query",
+        "prompting.templates.render",
+        "conversation.intent.detect"
+      ],
+      "status": "seed"
+    },
+    {
+      "id": "plan",
+      "composes": [
+        "workflow.compose",
+        "orchestrator.plans.create",
+        "governance.policy.resolve"
+      ],
+      "status": "seed"
+    },
+    {
+      "id": "act",
+      "composes": [
+        "workflow.runs.start",
+        "control.gates.approve",
+        "output.render"
+      ],
+      "status": "seed"
+    },
+    {
+      "id": "gate",
+      "composes": [
+        "governance.decisions.show",
+        "control.gates.approve"
+      ],
+      "status": "seed"
+    },
+    {
+      "id": "proof",
+      "composes": [
+        "control.evidence.show",
+        "state.records.query",
+        "output.export"
+      ],
+      "status": "seed"
+    },
+    {
+      "id": "recall",
+      "composes": [
+        "knowledge.query",
+        "knowledge.lineage.trace",
+        "state.records.tail"
+      ],
+      "status": "seed"
+    }
+  ]
+}

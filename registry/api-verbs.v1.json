@@ -1,0 +1,190 @@
+{
+  "kind": "yai.api.operation_verbs",
+  "version": "v1",
+  "verbs": [
+    {
+      "id": "status",
+      "meaning": "Read current status",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "health/posture visibility",
+      "incompatible_use_notes": "not for lifecycle control"
+    },
+    {
+      "id": "whoami",
+      "meaning": "Read current principal identity",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "identity introspection",
+      "incompatible_use_notes": "not authentication itself"
+    },
+    {
+      "id": "login",
+      "meaning": "Request authenticated context",
+      "mutation_class": "control",
+      "expected_idempotency": "non-idempotent",
+      "common_use": "session admission",
+      "incompatible_use_notes": "no provider/backend auth implied"
+    },
+    {
+      "id": "logout",
+      "meaning": "End authenticated context",
+      "mutation_class": "control",
+      "expected_idempotency": "idempotent",
+      "common_use": "session termination",
+      "incompatible_use_notes": "not service lifecycle"
+    },
+    {
+      "id": "list",
+      "meaning": "List resources",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "inventory projection",
+      "incompatible_use_notes": "not mutation"
+    },
+    {
+      "id": "show",
+      "meaning": "Read detailed resource projection",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "detail view",
+      "incompatible_use_notes": "not execute"
+    },
+    {
+      "id": "current",
+      "meaning": "Read active resource selection",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "active context visibility",
+      "incompatible_use_notes": "not selection mutation"
+    },
+    {
+      "id": "check",
+      "meaning": "Run diagnostic check",
+      "mutation_class": "diagnostic",
+      "expected_idempotency": "idempotent",
+      "common_use": "validation",
+      "incompatible_use_notes": "not lifecycle start/stop"
+    },
+    {
+      "id": "doctor",
+      "meaning": "Run broader diagnostics",
+      "mutation_class": "diagnostic",
+      "expected_idempotency": "idempotent",
+      "common_use": "operator troubleshooting",
+      "incompatible_use_notes": "not remediation execution"
+    },
+    {
+      "id": "create",
+      "meaning": "Create resource",
+      "mutation_class": "create",
+      "expected_idempotency": "non-idempotent",
+      "common_use": "resource creation",
+      "incompatible_use_notes": "use idempotency keys where needed"
+    },
+    {
+      "id": "use",
+      "meaning": "Select resource for active context",
+      "mutation_class": "control",
+      "expected_idempotency": "idempotent",
+      "common_use": "selection binding",
+      "incompatible_use_notes": "not creation"
+    },
+    {
+      "id": "attach",
+      "meaning": "Attach context/resource",
+      "mutation_class": "control",
+      "expected_idempotency": "idempotent",
+      "common_use": "binding",
+      "incompatible_use_notes": "not service lifecycle"
+    },
+    {
+      "id": "detach",
+      "meaning": "Detach context/resource",
+      "mutation_class": "control",
+      "expected_idempotency": "idempotent",
+      "common_use": "unbind",
+      "incompatible_use_notes": "not delete"
+    },
+    {
+      "id": "query",
+      "meaning": "Query data",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "search and retrieval",
+      "incompatible_use_notes": "must remain bounded by auth/governance"
+    },
+    {
+      "id": "render",
+      "meaning": "Render output projection",
+      "mutation_class": "compute",
+      "expected_idempotency": "idempotent",
+      "common_use": "materialized views",
+      "incompatible_use_notes": "output.open is client-local and forbidden as canonical API op"
+    },
+    {
+      "id": "export",
+      "meaning": "Export output artifact",
+      "mutation_class": "export",
+      "expected_idempotency": "idempotent",
+      "common_use": "artifact delivery",
+      "incompatible_use_notes": "destination transport is out-of-scope"
+    },
+    {
+      "id": "run",
+      "meaning": "Execute action",
+      "mutation_class": "execute",
+      "expected_idempotency": "non-idempotent",
+      "common_use": "action invocation",
+      "incompatible_use_notes": "requires explicit side-effect declaration"
+    },
+    {
+      "id": "start",
+      "meaning": "Begin run/workflow",
+      "mutation_class": "execute",
+      "expected_idempotency": "non-idempotent",
+      "common_use": "workflow run start",
+      "incompatible_use_notes": "for workflow.runs.start only; runtime/system service start is forbidden"
+    },
+    {
+      "id": "watch",
+      "meaning": "Observe streaming/updates",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "live progression",
+      "incompatible_use_notes": "watching does not mutate state"
+    },
+    {
+      "id": "resolve",
+      "meaning": "Resolve route/policy/selection",
+      "mutation_class": "compute",
+      "expected_idempotency": "idempotent",
+      "common_use": "decision support",
+      "incompatible_use_notes": "not direct mutation"
+    },
+    {
+      "id": "approve",
+      "meaning": "Approve gated action",
+      "mutation_class": "control",
+      "expected_idempotency": "non-idempotent",
+      "common_use": "governed gate transition",
+      "incompatible_use_notes": "must emit evidence/records"
+    },
+    {
+      "id": "preview",
+      "meaning": "Preview output/proposed change",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "safe inspection",
+      "incompatible_use_notes": "no side effects"
+    },
+    {
+      "id": "trace",
+      "meaning": "Read trace/lineage",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "auditability",
+      "incompatible_use_notes": "not replay execution"
+    }
+  ]
+}

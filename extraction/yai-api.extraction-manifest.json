@@ -42,7 +42,7 @@
   "deferredItems": [
     "family-by-family envelope normalization",
     "session/account/operator-context boundary hard split",
-    "dedicated supervisor/models family extraction strategy",
+    "dedicated control/models family extraction strategy",
     "OpenAPI first contract slices",
     "SDK generation pipeline"
   ]

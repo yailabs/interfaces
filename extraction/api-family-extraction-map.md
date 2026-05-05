@@ -12,7 +12,7 @@ Legend:
 | inspect | extraction-ready | yes | no (reference-only) | stable | minor consistency pass | yes |
 | flow | needs envelope normalization | yes | no (reference-only) | scaffolded | binding/readiness envelope consistency | partial after normalization |
 | govern | implementation-coupled | yes | no (reference-only) | scaffolded | runtime-coupled outputs | deferred until thinning |
-| supervisor | deferred | scaffold only | no | deferred | no dedicated first-class family surface | not yet |
+| control | deferred | scaffold only | no | deferred | no dedicated first-class family surface | not yet |
 | knowledge | implementation-coupled | yes | no (reference-only) | scaffolded | broad surface + internal coupling | deferred/sliced |
 | skills | extraction-ready | yes | no (reference-only) | stable | minor consistency pass | yes |
 | analytics | needs envelope normalization | yes | no (reference-only) | scaffolded | response normalization | partial after normalization |

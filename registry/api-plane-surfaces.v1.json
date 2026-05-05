@@ -5,7 +5,7 @@
   "familiesRole": "compatibility-grouping",
   "planes": [
     {
-      "plane": "runtime",
+      "plane": "system",
       "coreOwnerPath": "../yai/runtime",
       "apiContractStatus": "runtime-service-boundary-sealed-readiness",
       "sdkAvailability": "typescript-readiness",
@@ -33,20 +33,34 @@
       "conformanceStatus": "scaffolded"
     },
     {
-      "plane": "records",
-      "coreOwnerPath": "../yai/records",
+      "plane": "conversation",
+      "coreOwnerPath": "../yai/runtime",
       "apiContractStatus": "scaffolded",
-      "sdkAvailability": "typescript-readiness",
-      "clientExposureStatus": "loom-readiness",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
       "apiSources": [
-        "families/knowledge/README.md"
+        "registry/api-operations.v1.json"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",
       "conformanceStatus": "scaffolded"
     },
     {
-      "plane": "flow",
+      "plane": "prompting",
+      "coreOwnerPath": "../yai/runtime",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "registry/api-operations.v1.json",
+        "docs/prompting-canonical-surface.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "workflow",
       "coreOwnerPath": "../yai/flow",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
@@ -72,39 +86,13 @@
       "conformanceStatus": "scaffolded"
     },
     {
-      "plane": "supervisor",
-      "coreOwnerPath": "../yai/supervisor",
+      "plane": "control",
+      "coreOwnerPath": "../yai/control",
       "apiContractStatus": "scaffolded",
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "loom-readiness",
       "apiSources": [
-        "families/supervisor/README.md"
-      ],
-      "familiesStatus": "compatibility",
-      "openApiStatus": "scaffolded",
-      "conformanceStatus": "scaffolded"
-    },
-    {
-      "plane": "orchestration",
-      "coreOwnerPath": "../yai/orchestration",
-      "apiContractStatus": "deferred",
-      "sdkAvailability": "typescript-readiness",
-      "clientExposureStatus": "not-exposed",
-      "apiSources": [
-        "docs/agent-orchestration-entry.md"
-      ],
-      "familiesStatus": "compatibility",
-      "openApiStatus": "scaffolded",
-      "conformanceStatus": "scaffolded"
-    },
-    {
-      "plane": "agents",
-      "coreOwnerPath": "../yai/agents",
-      "apiContractStatus": "scaffolded",
-      "sdkAvailability": "typescript-readiness",
-      "clientExposureStatus": "loom-readiness",
-      "apiSources": [
-        "families/agent/README.md"
+        "families/control/README.md"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",
@@ -118,6 +106,22 @@
       "clientExposureStatus": "planned",
       "apiSources": [
         "families/knowledge/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "state",
+      "coreOwnerPath": "../yai/state",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "registry/api-operations.v1.json",
+        "schemas/record-ref.v1.schema.json",
+        "schemas/request-envelope.v1.schema.json",
+        "schemas/response-envelope.v1.schema.json"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",
@@ -163,6 +167,32 @@
       "conformanceStatus": "scaffolded"
     },
     {
+      "plane": "agents",
+      "coreOwnerPath": "../yai/agents",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "loom-readiness",
+      "apiSources": [
+        "families/agent/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "orchestrator",
+      "coreOwnerPath": "../yai/orchestration",
+      "apiContractStatus": "deferred",
+      "sdkAvailability": "typescript-readiness",
+      "clientExposureStatus": "not-exposed",
+      "apiSources": [
+        "docs/agent-orchestration-entry.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
       "plane": "analytics",
       "coreOwnerPath": "../yai/analytics",
       "apiContractStatus": "scaffolded",
@@ -170,6 +200,19 @@
       "clientExposureStatus": "planned",
       "apiSources": [
         "families/analytics/README.md"
+      ],
+      "familiesStatus": "compatibility",
+      "openApiStatus": "scaffolded",
+      "conformanceStatus": "scaffolded"
+    },
+    {
+      "plane": "output",
+      "coreOwnerPath": "../yai/output",
+      "apiContractStatus": "scaffolded",
+      "sdkAvailability": "deferred",
+      "clientExposureStatus": "planned",
+      "apiSources": [
+        "registry/api-operations.v1.json"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",

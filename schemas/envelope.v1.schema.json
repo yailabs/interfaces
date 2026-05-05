@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.envelope.v1",
+  "type": "object",
+  "required": [
+    "operation_id",
+    "request_id",
+    "metadata"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

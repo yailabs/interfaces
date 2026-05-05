@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.operation-family.v1",
+  "type": "object",
+  "required": [
+    "id",
+    "display_name",
+    "ownership",
+    "public_name",
+    "internal_plane_hint",
+    "status",
+    "description",
+    "canonical_resources",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "ownership": {
+      "type": "string"
+    },
+    "public_name": {
+      "type": "string"
+    },
+    "internal_plane_hint": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "canonical_resources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

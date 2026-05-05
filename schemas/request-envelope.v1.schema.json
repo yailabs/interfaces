@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.request-envelope.v1",
+  "allOf": [
+    {
+      "$ref": "schemas/envelope.v1.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "operation_id",
+    "request_id",
+    "client",
+    "input"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "client": {
+      "$ref": "schemas/client-ref.v1.schema.json"
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "session_ref": {
+          "type": "string"
+        }
+      }
+    },
+    "case_ref": {
+      "$ref": "schemas/case-ref.v1.schema.json"
+    },
+    "principal_ref": {
+      "type": "string"
+    },
+    "input": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "idempotency_key": {
+      "type": "string"
+    }
+  }
+}

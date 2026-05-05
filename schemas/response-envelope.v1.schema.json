@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.response-envelope.v1",
+  "allOf": [
+    {
+      "$ref": "schemas/envelope.v1.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "operation_id",
+    "request_id",
+    "status"
+  ],
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "error",
+        "partial"
+      ]
+    },
+    "result": {
+      "$ref": "schemas/operation-result.v1.schema.json"
+    },
+    "error": {
+      "$ref": "schemas/error.v1.schema.json"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "schemas/record-ref.v1.schema.json"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "schemas/evidence-ref.v1.schema.json"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

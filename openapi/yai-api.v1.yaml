@@ -1,0 +1,741 @@
+openapi: 3.1.0
+info:
+  title: YAI API
+  version: 1.0.0-wave18
+  description: |
+    Wave 18 vertical contract slice. This is a real subset, not full API coverage.
+servers: []
+tags:
+  - name: agents
+  - name: analytics
+  - name: case
+  - name: control
+  - name: conversation
+  - name: governance
+  - name: knowledge
+  - name: models
+  - name: orchestrator
+  - name: output
+  - name: prompting
+  - name: providers
+  - name: skills
+  - name: state
+  - name: system
+  - name: workflow
+paths:
+  /v1/operations:
+    get:
+      tags: [system]
+      operationId: operations.list
+      summary: List registered operations
+      responses:
+        '200':
+          description: Operation registry listing
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  operations:
+                    type: array
+                    items:
+                      type: string
+  /v1/operations/{operation_id}:
+    get:
+      tags: [system]
+      operationId: operations.show
+      summary: Show operation metadata
+      parameters:
+        - in: path
+          name: operation_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Operation metadata
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/families:
+    get:
+      tags: [system]
+      operationId: families.list
+      summary: List operation families
+      responses:
+        '200':
+          description: Family listing
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/families/{family_id}:
+    get:
+      tags: [system]
+      operationId: families.show
+      summary: Show operation family
+      parameters:
+        - in: path
+          name: family_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Family metadata
+          content:
+            application/json:
+              schema:
+                type: object
+  /v1/watch/{stream_id}:
+    get:
+      tags: [system]
+      operationId: watch.stream
+      summary: Watch stream scaffold
+      parameters:
+        - in: path
+          name: stream_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Watch event stream payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchEvent'
+  /v1/operations/agents.list:
+    post:
+      tags: [agents]
+      operationId: agents.list
+      summary: Invoke agents.list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/agents.trace:
+    post:
+      tags: [agents]
+      operationId: agents.trace
+      summary: Invoke agents.trace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/analytics.query:
+    post:
+      tags: [analytics]
+      operationId: analytics.query
+      summary: Invoke analytics.query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/case.current:
+    post:
+      tags: [case]
+      operationId: case.current
+      summary: Invoke case.current
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/case.list:
+    post:
+      tags: [case]
+      operationId: case.list
+      summary: Invoke case.list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/case.records.tail:
+    post:
+      tags: [case]
+      operationId: case.records.tail
+      summary: Invoke case.records.tail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/case.show:
+    post:
+      tags: [case]
+      operationId: case.show
+      summary: Invoke case.show
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/control.decisions.explain:
+    post:
+      tags: [control]
+      operationId: control.decisions.explain
+      summary: Invoke control.decisions.explain
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/control.gates.list:
+    post:
+      tags: [control]
+      operationId: control.gates.list
+      summary: Invoke control.gates.list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/control.gates.show:
+    post:
+      tags: [control]
+      operationId: control.gates.show
+      summary: Invoke control.gates.show
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/conversation.current:
+    post:
+      tags: [conversation]
+      operationId: conversation.current
+      summary: Invoke conversation.current
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/conversation.messages.send:
+    post:
+      tags: [conversation]
+      operationId: conversation.messages.send
+      summary: Invoke conversation.messages.send
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/governance.policy.resolve:
+    post:
+      tags: [governance]
+      operationId: governance.policy.resolve
+      summary: Invoke governance.policy.resolve
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/governance.posture:
+    post:
+      tags: [governance]
+      operationId: governance.posture
+      summary: Invoke governance.posture
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/knowledge.lineage.trace:
+    post:
+      tags: [knowledge]
+      operationId: knowledge.lineage.trace
+      summary: Invoke knowledge.lineage.trace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/knowledge.query:
+    post:
+      tags: [knowledge]
+      operationId: knowledge.query
+      summary: Invoke knowledge.query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/models.capabilities.show:
+    post:
+      tags: [models]
+      operationId: models.capabilities.show
+      summary: Invoke models.capabilities.show
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/models.list:
+    post:
+      tags: [models]
+      operationId: models.list
+      summary: Invoke models.list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/orchestrator.routes.resolve:
+    post:
+      tags: [orchestrator]
+      operationId: orchestrator.routes.resolve
+      summary: Invoke orchestrator.routes.resolve
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/output.show:
+    post:
+      tags: [output]
+      operationId: output.show
+      summary: Invoke output.show
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/prompting.context.assemble:
+    post:
+      tags: [prompting]
+      operationId: prompting.context.assemble
+      summary: Invoke prompting.context.assemble
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/providers.list:
+    post:
+      tags: [providers]
+      operationId: providers.list
+      summary: Invoke providers.list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/providers.probe:
+    post:
+      tags: [providers]
+      operationId: providers.probe
+      summary: Invoke providers.probe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/skills.admissibility.check:
+    post:
+      tags: [skills]
+      operationId: skills.admissibility.check
+      summary: Invoke skills.admissibility.check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/skills.resolve:
+    post:
+      tags: [skills]
+      operationId: skills.resolve
+      summary: Invoke skills.resolve
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/state.records.query:
+    post:
+      tags: [state]
+      operationId: state.records.query
+      summary: Invoke state.records.query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/state.records.tail:
+    post:
+      tags: [state]
+      operationId: state.records.tail
+      summary: Invoke state.records.tail
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/system.check:
+    post:
+      tags: [system]
+      operationId: system.check
+      summary: Invoke system.check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/system.runtime.inspect:
+    post:
+      tags: [system]
+      operationId: system.runtime.inspect
+      summary: Invoke system.runtime.inspect
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/system.status:
+    post:
+      tags: [system]
+      operationId: system.status
+      summary: Invoke system.status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/workflow.list:
+    post:
+      tags: [workflow]
+      operationId: workflow.list
+      summary: Invoke workflow.list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/workflow.runs.watch:
+    post:
+      tags: [workflow]
+      operationId: workflow.runs.watch
+      summary: Invoke workflow.runs.watch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/workflow.show:
+    post:
+      tags: [workflow]
+      operationId: workflow.show
+      summary: Invoke workflow.show
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+  /v1/operations/workflow.steps.pending:
+    post:
+      tags: [workflow]
+      operationId: workflow.steps.pending
+      summary: Invoke workflow.steps.pending
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEnvelope'
+      responses:
+        '200':
+          description: Operation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEnvelope'
+components:
+  schemas:
+    Envelope:
+      $ref: ../schemas/envelope.v1.schema.json
+    RequestEnvelope:
+      $ref: ../schemas/request-envelope.v1.schema.json
+    ResponseEnvelope:
+      $ref: ../schemas/response-envelope.v1.schema.json
+    Error:
+      $ref: ../schemas/error.v1.schema.json
+    WatchEvent:
+      $ref: ../schemas/watch-event.v1.schema.json
+    RecordRef:
+      $ref: ../schemas/record-ref.v1.schema.json
+    EvidenceRef:
+      $ref: ../schemas/evidence-ref.v1.schema.json
+    CaseRef:
+      $ref: ../schemas/case-ref.v1.schema.json
+    WorkflowRef:
+      $ref: ../schemas/workflow-ref.v1.schema.json
+    ClientRef:
+      $ref: ../schemas/client-ref.v1.schema.json
+    OperationResult:
+      $ref: ../schemas/operation-result.v1.schema.json

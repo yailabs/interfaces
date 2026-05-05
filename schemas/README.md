@@ -1,5 +1,9 @@
 # Schemas
 
-This directory contains contract schemas used by API registry and SDK clients.
-
-Wave 16B adds readiness-oriented envelope and operation reference schemas for Loom/SDK verticalization.
+Contract-grade base schemas include:
+- envelope, request-envelope, response-envelope
+- error vocabulary
+- watch-event
+- record/evidence/case/workflow/client refs
+- operation-result
+- operation-contract/family/projection
