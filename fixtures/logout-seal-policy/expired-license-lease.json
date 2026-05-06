@@ -1,0 +1,36 @@
+{
+  "logout_request": {
+    "logout_request_ref": "logout-request-004",
+    "principal_ref": "principal.operator.local-004",
+    "account_ref": "account.local-004",
+    "auth_context_ref": "auth-context.local-004",
+    "operator_context_ref": "operator-context.local-004",
+    "active_case_ref": "case.local-004",
+    "observed_license_lease_ref": "license-lease.local-004",
+    "requested_mode": "normal",
+    "requested_at": "2026-05-06T10:15:00Z",
+    "requested_by_client_ref": "client.vscode.local-004"
+  },
+  "logout_policy_decision": {
+    "logout_policy_decision_ref": "logout-decision-004",
+    "logout_request_ref": "logout-request-004",
+    "decision": "blocked",
+    "reason": "license_lease_expired",
+    "required_confirmation": false,
+    "next_actions": [
+      "seal operational actions",
+      "refresh authorization posture before further operations"
+    ],
+    "affected_case_refs": [
+      "case.local-004"
+    ],
+    "affected_job_refs": [],
+    "affected_execution_lease_refs": [],
+    "auth_context_action": "refresh_required",
+    "license_lease_action": "refresh_required",
+    "runtime_seal_action": "seal_operational_actions",
+    "records_evidence_action": "preserve",
+    "knowledge_action": "preserve",
+    "created_at": "2026-05-06T10:15:08Z"
+  }
+}

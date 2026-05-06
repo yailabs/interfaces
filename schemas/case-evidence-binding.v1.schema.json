@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.case-evidence-binding.v1",
+  "title": "YAI Case Evidence Binding v1",
+  "type": "object",
+  "required": [
+    "evidence"
+  ],
+  "properties": {
+    "evidence": {
+      "$ref": "#/$defs/evidence"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceKind": {
+      "type": "string",
+      "enum": [
+        "manual_note",
+        "job_output",
+        "provider_response",
+        "runtime_decision",
+        "gate_decision",
+        "file_artifact",
+        "log_excerpt",
+        "test_result",
+        "approval",
+        "rejection",
+        "warning",
+        "error",
+        "system_observation"
+      ]
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "private",
+        "case_visible",
+        "team_visible",
+        "admin_visible",
+        "system_internal"
+      ]
+    },
+    "retentionPosture": {
+      "type": "string",
+      "enum": [
+        "retain",
+        "seal_writes",
+        "redact_later",
+        "delete_only_by_explicit_policy",
+        "unknown"
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "evidence_ref",
+        "case_ref",
+        "evidence_kind",
+        "created_at",
+        "visibility",
+        "retention_posture"
+      ],
+      "properties": {
+        "evidence_ref": {
+          "type": "string"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "evidence_kind": {
+          "$ref": "#/$defs/evidenceKind"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "created_by_principal_ref": {
+          "type": "string"
+        },
+        "created_from_client_ref": {
+          "type": "string"
+        },
+        "job_ref": {
+          "type": "string"
+        },
+        "execution_lease_ref": {
+          "type": "string"
+        },
+        "record_ref": {
+          "type": "string"
+        },
+        "provider_call_ref": {
+          "type": "string"
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string"
+        },
+        "license_lease_ref": {
+          "type": "string"
+        },
+        "machine_authorization_ref": {
+          "type": "string"
+        },
+        "artifact_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "lineage_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "content_digest": {
+          "type": "string"
+        },
+        "retention_policy_ref": {
+          "type": "string"
+        },
+        "visibility": {
+          "$ref": "#/$defs/visibility"
+        },
+        "retention_posture": {
+          "$ref": "#/$defs/retentionPosture"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

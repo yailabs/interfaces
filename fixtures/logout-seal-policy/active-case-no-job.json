@@ -1,0 +1,35 @@
+{
+  "logout_request": {
+    "logout_request_ref": "logout-request-002",
+    "principal_ref": "principal.operator.local-002",
+    "account_ref": "account.local-002",
+    "auth_context_ref": "auth-context.local-002",
+    "operator_context_ref": "operator-context.local-002",
+    "active_case_ref": "case.local-002",
+    "requested_mode": "normal",
+    "requested_at": "2026-05-06T10:05:00Z",
+    "requested_by_client_ref": "client.loom.local-002"
+  },
+  "logout_policy_decision": {
+    "logout_policy_decision_ref": "logout-decision-002",
+    "logout_request_ref": "logout-request-002",
+    "decision": "requires_confirmation",
+    "reason": "active_case_present",
+    "required_confirmation": true,
+    "next_actions": [
+      "confirm leaving observed active case posture",
+      "preserve case-bound state"
+    ],
+    "affected_case_refs": [
+      "case.local-002"
+    ],
+    "affected_job_refs": [],
+    "affected_execution_lease_refs": [],
+    "auth_context_action": "clear_auth_context",
+    "license_lease_action": "not_applicable",
+    "runtime_seal_action": "retain_current_readonly",
+    "records_evidence_action": "preserve",
+    "knowledge_action": "preserve",
+    "created_at": "2026-05-06T10:05:06Z"
+  }
+}

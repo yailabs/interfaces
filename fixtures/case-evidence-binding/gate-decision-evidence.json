@@ -1,0 +1,19 @@
+{
+  "evidence": {
+    "evidence_ref": "evidence.local-004",
+    "case_ref": "case.local-004",
+    "evidence_kind": "gate_decision",
+    "title": "Runtime gate decision evidence",
+    "summary": "Gate posture is captured as evidence without becoming the owner of the evidence.",
+    "created_at": "2026-05-06T11:15:00Z",
+    "created_by_principal_ref": "principal.operator.local-004",
+    "runtime_gate_decision_ref": "runtime-gate.local-004",
+    "license_lease_ref": "license-lease.local-004",
+    "machine_authorization_ref": "machine-authorization.local-004",
+    "lineage_refs": [
+      "lineage.local-004/gate-decision"
+    ],
+    "visibility": "admin_visible",
+    "retention_posture": "delete_only_by_explicit_policy"
+  }
+}

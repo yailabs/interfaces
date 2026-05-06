@@ -1,0 +1,21 @@
+{
+  "evidence": {
+    "evidence_ref": "evidence.local-005",
+    "case_ref": "case.local-005",
+    "evidence_kind": "system_observation",
+    "title": "Evidence preserved after client detach",
+    "summary": "Client detach changed observation posture, but evidence remained preserved under the case.",
+    "created_at": "2026-05-06T11:20:00Z",
+    "created_by_principal_ref": "principal.operator.local-005",
+    "created_from_client_ref": "client.vscode.local-005",
+    "job_ref": "job.local-005",
+    "execution_lease_ref": "execution-lease.local-005",
+    "record_ref": "record.local-005",
+    "lineage_refs": [
+      "lineage.local-005/detach-observation",
+      "detach-event.local-005"
+    ],
+    "visibility": "case_visible",
+    "retention_posture": "seal_writes"
+  }
+}
