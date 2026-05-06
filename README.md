@@ -25,7 +25,7 @@ a commercial license.
 
   <strong>YAI API</strong>
   <br />
-  <span>Canonical contracts for accountable runtime interaction.</span>
+  <span>API projection for accountable runtime interaction.</span>
 
   <br /><br />
 
@@ -53,9 +53,13 @@ a commercial license.
 
 ## Why This Repository Exists
 
-`api` is the canonical API contract surface for YAI. It owns operation grammar (families, verbs, operations, projections), schemas, envelopes, lifecycle states, and conformance direction used by SDK and client surfaces.
+`api` is the API projection surface for YAI. It owns API exposure grammar
+(families, verbs, operations, projections), OpenAPI projection, API registry,
+transport mapping, and API-specific conformance used by SDK and client
+surfaces.
 
-This repository does not implement runtime execution. Runtime implementation remains in `yai-labs/yai`.
+Canonical protocol meaning now drains toward `yai/protocols`. Runtime
+implementation remains in `yai-labs/yai`.
 
 ## Repository Identity (Local vs Remote)
 
@@ -64,10 +68,11 @@ This repository does not implement runtime execution. Runtime implementation rem
 
 ## Contract Boundary
 
-Canonical contract source lives here (`api`).
+Canonical API projection source lives here (`api`).
 
-- Owns: contracts, schemas, envelopes, lifecycle, errors, OpenAPI scaffolds, conformance scaffolds.
-- Does not own: runtime execution, client product behavior, SDK package implementations, provider backends, account backend behavior.
+- Owns: OpenAPI, `registry/api-*.json`, API projection docs, HTTP/transport request-response mapping, API-specific conformance.
+- Mirrors or projects: selected protocol-neutral schemas, fixtures, and conformance while cutover to `yai/protocols` is in progress.
+- Does not own: transport-neutral protocol meaning, runtime execution, client product behavior, SDK package implementations, provider backends, account backend behavior.
 
 Boundary guarantees:
 - Root `yai/api` remains physically drained.
@@ -103,4 +108,4 @@ python3 -m json.tool extraction/source-manifest.json >/dev/null
 
 ## Branch Alignment
 
-Active cross-repo hardening branch: `feature/topology-refactor-7`.
+Active cross-repo hardening branch: `refoundation/phase-01`.

@@ -10,6 +10,8 @@
 - [ ] prompting remains distinct from conversation lifecycle and message persistence
 - [ ] prompting remains distinct from agents and does not imply provider/model execution
 - [ ] schema names versioned
+- [ ] API mirror protocol artifacts match canonical files in `../yai/protocols`
+- [ ] API conformance does not treat API mirrors as protocol source of truth
 - [ ] registry canonical public plane keys do not include `flow`, root `records`, `orchestration`
 - [ ] registry canonical surface keys do not include CLI aliases (`ai`, `runtime`, `govern`, `provider`, `agent`, `inspect`)
 - [ ] operation IDs do not use forbidden root namespaces (`flow.*`, `records.*`, `orchestration.*`, `supervisor.*`, `policy.*`)

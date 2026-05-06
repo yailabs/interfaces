@@ -1,8 +1,8 @@
-# API Source of Truth
+# API Projection Source of Truth
 
-`../api` is the canonical owner of YAI operation grammar.
+`../api` is the canonical owner of YAI API exposure grammar.
 
-Canonical grammar sources:
+Canonical API projection sources:
 - `registry/api-families.v1.json`
 - `registry/api-verbs.v1.json`
 - `registry/api-operations.v1.json`
@@ -10,6 +10,8 @@ Canonical grammar sources:
 - `schemas/operation-*.v1.schema.json`
 
 Rules:
-- runtime does not own command grammar.
-- CLI/Loom/SDK are projections/consumers, not grammar owners.
-- C under `contracts/` is reference/helper implementation, not primary grammar truth.
+- `yai/protocols` defines transport-neutral protocol meaning.
+- `api` projects that meaning into API operation grammar and API-facing schemas.
+- runtime does not own API grammar.
+- CLI/Loom/SDK are projections or consumers, not API grammar owners.
+- C under `contracts/` is reference/helper implementation, not primary protocol truth.
