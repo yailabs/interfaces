@@ -1,0 +1,23 @@
+{
+  "license_lease_consumption": {
+    "license_lease_consumption_ref": "lease-consumption.local-005",
+    "license_lease_ref": "license-lease.local-005",
+    "lease_status": "valid",
+    "consumption_status": "blocked",
+    "scope": "machine",
+    "lease_source": "platform_issued",
+    "grace_posture": "not_applicable",
+    "stale_posture": "not_stale",
+    "refresh_posture": "not_required",
+    "revocation_posture": "not_revoked",
+    "diagnostic_posture": "diagnostics_limited",
+    "sealed_posture": "sealed_missing_lease",
+    "entitlement_ref": "entitlement.safe-005",
+    "local_machine_ref": "local-machine.safe-005",
+    "blocked_reason": "machine_authorization_required",
+    "warning_codes": [
+      "machine_authorization_required",
+      "diagnostics_only"
+    ]
+  }
+}

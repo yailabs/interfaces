@@ -1,0 +1,24 @@
+{
+  "license_lease_consumption": {
+    "license_lease_consumption_ref": "lease-consumption.local-004",
+    "license_lease_ref": "license-lease.local-004",
+    "lease_status": "stale",
+    "consumption_status": "grace_active",
+    "scope": "machine",
+    "lease_source": "cached_projection",
+    "grace_posture": "grace_active",
+    "stale_posture": "stale_accepted",
+    "refresh_posture": "refresh_required",
+    "revocation_posture": "revocation_unknown",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "sealed_stale_lease",
+    "last_validated_at": "2026-05-05T09:30:00Z",
+    "machine_authorization_ref": "machine-authorization.safe-004",
+    "local_machine_ref": "local-machine.safe-004",
+    "warning_codes": [
+      "grace_active",
+      "stale_projection",
+      "refresh_required"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "machine_authorization_consumption": {
+    "machine_authorization_consumption_ref": "machine_authorization_consumption/revoked-002",
+    "machine_authorization_ref": "machine_authorization/issued-002",
+    "local_machine_ref": "local_machine/workstation-02",
+    "local_machine_identity_ref": "local_machine_identity/revoked-004",
+    "authorization_status": "revoked",
+    "consumption_status": "blocked",
+    "authorization_scope": "local_runtime",
+    "authorization_source": "platform_issued",
+    "lease_requirement_posture": "unknown",
+    "diagnostic_posture": "diagnostics_limited",
+    "sealed_posture": "sealed_revoked",
+    "consumed_at": "2026-05-07T11:05:00Z",
+    "blocked_reason": "machine_authorization_revoked",
+    "warning_codes": [
+      "diagnostics_only"
+    ]
+  }
+}

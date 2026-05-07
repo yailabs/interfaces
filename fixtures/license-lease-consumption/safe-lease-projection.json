@@ -1,0 +1,31 @@
+{
+  "license_lease_consumption": {
+    "license_lease_consumption_ref": "lease-consumption.local-006",
+    "license_lease_ref": "license-lease.local-006",
+    "lease_status": "valid",
+    "consumption_status": "consumed_readonly",
+    "scope": "principal",
+    "lease_source": "cached_projection",
+    "grace_posture": "not_applicable",
+    "stale_posture": "not_stale",
+    "refresh_posture": "refresh_available",
+    "revocation_posture": "not_revoked",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "unsealed_for_authorized_actions",
+    "safe_lease_projection": {
+      "license_lease_ref": "license-lease.local-006",
+      "lease_status": "valid",
+      "consumption_status": "consumed_readonly",
+      "scope": "principal",
+      "grace_posture": "not_applicable",
+      "stale_posture": "not_stale",
+      "refresh_posture": "refresh_available",
+      "diagnostic_posture": "diagnostics_allowed",
+      "sealed_posture": "unsealed_for_authorized_actions",
+      "expires_at": "2026-06-15T12:00:00Z",
+      "warning_codes": [
+        "lease_near_expiry"
+      ]
+    }
+  }
+}

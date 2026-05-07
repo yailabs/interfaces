@@ -1,0 +1,23 @@
+{
+  "license_lease_consumption": {
+    "license_lease_consumption_ref": "lease-consumption.local-002",
+    "license_lease_ref": "license-lease.local-002",
+    "lease_status": "expired",
+    "consumption_status": "blocked",
+    "scope": "local_runtime",
+    "lease_source": "platform_issued",
+    "grace_posture": "grace_expired",
+    "stale_posture": "not_stale",
+    "refresh_posture": "refresh_required",
+    "revocation_posture": "not_revoked",
+    "diagnostic_posture": "diagnostics_limited",
+    "sealed_posture": "sealed_expired_lease",
+    "expires_at": "2026-05-06T08:00:00Z",
+    "local_machine_ref": "local-machine.safe-002",
+    "blocked_reason": "license_lease_expired",
+    "warning_codes": [
+      "refresh_required",
+      "diagnostics_only"
+    ]
+  }
+}

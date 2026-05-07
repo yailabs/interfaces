@@ -1,0 +1,22 @@
+{
+  "machine_authorization_consumption": {
+    "machine_authorization_consumption_ref": "machine_authorization_consumption/authorized-001",
+    "machine_authorization_ref": "machine_authorization/issued-001",
+    "local_machine_ref": "local_machine/workstation-01",
+    "local_machine_identity_ref": "local_machine_identity/existing-002",
+    "authorization_status": "authorized",
+    "consumption_status": "consumed",
+    "authorization_scope": "local_runtime",
+    "authorization_source": "platform_issued",
+    "lease_requirement_posture": "not_required",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "unsealed_for_authorized_actions",
+    "consumed_at": "2026-05-07T11:00:00Z",
+    "expires_at": "2026-06-07T11:00:00Z",
+    "account_ref": "account.local-001",
+    "principal_ref": "principal.local-001",
+    "auth_context_ref": "auth-context.local-001",
+    "runtime_gate_decision_ref": "runtime_gate_decision/rgd-001",
+    "warning_codes": []
+  }
+}

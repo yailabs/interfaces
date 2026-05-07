@@ -1,0 +1,32 @@
+{
+  "machine_authorization_consumption": {
+    "machine_authorization_consumption_ref": "machine_authorization_consumption/projection-006",
+    "machine_authorization_ref": "machine_authorization/issued-006",
+    "local_machine_ref": "local_machine/workstation-06",
+    "authorization_status": "authorized",
+    "consumption_status": "consumed_readonly",
+    "authorization_scope": "update_access",
+    "authorization_source": "cached_projection",
+    "lease_requirement_posture": "required",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "sealed_license_required",
+    "warning_codes": [
+      "cached_projection_stale",
+      "license_lease_required"
+    ],
+    "safe_status_projection": {
+      "machine_authorization_ref": "machine_authorization/issued-006",
+      "local_machine_ref": "local_machine/workstation-06",
+      "authorization_status": "authorized",
+      "consumption_status": "consumed_readonly",
+      "authorization_scope": "update_access",
+      "diagnostic_posture": "diagnostics_allowed",
+      "sealed_posture": "sealed_license_required",
+      "expires_at": "2026-05-14T11:25:00Z",
+      "warning_codes": [
+        "cached_projection_stale",
+        "license_lease_required"
+      ]
+    }
+  }
+}

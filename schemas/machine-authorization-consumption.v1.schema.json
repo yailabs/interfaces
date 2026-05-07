@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/machine-authorization-consumption.v1.schema.json",
+  "title": "YAI Machine Authorization Consumption v1",
+  "type": "object",
+  "required": [
+    "machine_authorization_consumption"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authorizationStatus": {
+      "type": "string",
+      "enum": [
+        "not_present",
+        "pending",
+        "authorized",
+        "revoked",
+        "expired",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "consumptionStatus": {
+      "type": "string",
+      "enum": [
+        "not_consumed",
+        "consumed",
+        "consumed_readonly",
+        "diagnostics_only",
+        "blocked",
+        "stale",
+        "unknown"
+      ]
+    },
+    "authorizationScope": {
+      "type": "string",
+      "enum": [
+        "local_runtime",
+        "account_linked_runtime",
+        "release_access",
+        "update_access",
+        "provider_access",
+        "cloud_compute",
+        "system_internal"
+      ]
+    },
+    "authorizationSource": {
+      "type": "string",
+      "enum": [
+        "platform_issued",
+        "manual_preview",
+        "admin_override",
+        "cached_projection",
+        "not_applicable",
+        "unknown"
+      ]
+    },
+    "leaseRequirementPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "required",
+        "present",
+        "missing",
+        "expired",
+        "refresh_required",
+        "unknown"
+      ]
+    },
+    "diagnosticPosture": {
+      "type": "string",
+      "enum": [
+        "diagnostics_allowed",
+        "diagnostics_limited",
+        "diagnostics_blocked",
+        "unknown"
+      ]
+    },
+    "sealedPosture": {
+      "type": "string",
+      "enum": [
+        "unsealed_for_authorized_actions",
+        "sealed_missing_authorization",
+        "sealed_revoked",
+        "sealed_expired",
+        "sealed_pending",
+        "sealed_license_required",
+        "sealed_unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "machine_authorization_missing",
+        "machine_authorization_pending",
+        "machine_authorization_revoked",
+        "machine_authorization_expired",
+        "machine_authorization_blocked",
+        "license_lease_required",
+        "license_lease_missing",
+        "runtime_gate_blocked",
+        "local_machine_mismatch",
+        "unsafe_projection",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "authorization_near_expiry",
+        "license_lease_required",
+        "cached_projection_stale",
+        "local_identity_rotation_required",
+        "machine_limit_pressure",
+        "diagnostics_only",
+        "unknown"
+      ]
+    },
+    "safeStatusProjection": {
+      "type": "object",
+      "required": [
+        "machine_authorization_ref",
+        "local_machine_ref",
+        "authorization_status",
+        "consumption_status",
+        "authorization_scope",
+        "diagnostic_posture",
+        "sealed_posture"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "authorization_status": {
+          "$ref": "#/$defs/authorizationStatus"
+        },
+        "consumption_status": {
+          "$ref": "#/$defs/consumptionStatus"
+        },
+        "authorization_scope": {
+          "$ref": "#/$defs/authorizationScope"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "sealed_posture": {
+          "$ref": "#/$defs/sealedPosture"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        }
+      }
+    },
+    "machineAuthorizationConsumption": {
+      "type": "object",
+      "required": [
+        "machine_authorization_consumption_ref",
+        "machine_authorization_ref",
+        "local_machine_ref",
+        "authorization_status",
+        "consumption_status",
+        "authorization_scope",
+        "authorization_source",
+        "lease_requirement_posture",
+        "diagnostic_posture",
+        "sealed_posture"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "machine_authorization_consumption_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_identity_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "authorization_status": {
+          "$ref": "#/$defs/authorizationStatus"
+        },
+        "consumption_status": {
+          "$ref": "#/$defs/consumptionStatus"
+        },
+        "authorization_scope": {
+          "$ref": "#/$defs/authorizationScope"
+        },
+        "authorization_source": {
+          "$ref": "#/$defs/authorizationSource"
+        },
+        "lease_requirement_posture": {
+          "$ref": "#/$defs/leaseRequirementPosture"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "sealed_posture": {
+          "$ref": "#/$defs/sealedPosture"
+        },
+        "consumed_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "account_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "limit_projection_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "safe_status_projection": {
+          "$ref": "#/$defs/safeStatusProjection"
+        }
+      }
+    }
+  },
+  "properties": {
+    "machine_authorization_consumption": {
+      "$ref": "#/$defs/machineAuthorizationConsumption"
+    }
+  }
+}

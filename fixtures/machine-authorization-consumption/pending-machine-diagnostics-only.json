@@ -1,0 +1,20 @@
+{
+  "machine_authorization_consumption": {
+    "machine_authorization_consumption_ref": "machine_authorization_consumption/pending-004",
+    "machine_authorization_ref": "machine_authorization/issued-004",
+    "local_machine_ref": "local_machine/workstation-04",
+    "local_machine_identity_ref": "local_machine_identity/new-001",
+    "authorization_status": "pending",
+    "consumption_status": "diagnostics_only",
+    "authorization_scope": "account_linked_runtime",
+    "authorization_source": "platform_issued",
+    "lease_requirement_posture": "not_required",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "sealed_pending",
+    "consumed_at": "2026-05-07T11:15:00Z",
+    "blocked_reason": "machine_authorization_pending",
+    "warning_codes": [
+      "diagnostics_only"
+    ]
+  }
+}

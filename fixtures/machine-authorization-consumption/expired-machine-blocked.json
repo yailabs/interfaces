@@ -1,0 +1,22 @@
+{
+  "machine_authorization_consumption": {
+    "machine_authorization_consumption_ref": "machine_authorization_consumption/expired-003",
+    "machine_authorization_ref": "machine_authorization/issued-003",
+    "local_machine_ref": "local_machine/workstation-03",
+    "local_machine_identity_ref": "local_machine_identity/rotated-003",
+    "authorization_status": "expired",
+    "consumption_status": "blocked",
+    "authorization_scope": "release_access",
+    "authorization_source": "cached_projection",
+    "lease_requirement_posture": "refresh_required",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "sealed_expired",
+    "consumed_at": "2026-05-07T11:10:00Z",
+    "expires_at": "2026-05-07T10:45:00Z",
+    "blocked_reason": "machine_authorization_expired",
+    "warning_codes": [
+      "authorization_near_expiry",
+      "cached_projection_stale"
+    ]
+  }
+}
