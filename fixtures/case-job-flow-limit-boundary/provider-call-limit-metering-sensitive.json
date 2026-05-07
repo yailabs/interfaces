@@ -1,0 +1,25 @@
+{
+  "limit_projection": {
+    "limit_projection_ref": "limit-proj.provider.005",
+    "limit_key": "max_provider_calls",
+    "limit_family": "provider_call",
+    "scope": "account_global",
+    "subject_ref": "account.account-005",
+    "provider_ref": "provider.openai",
+    "runtime_action_key": "provider.call.request",
+    "runtime_gate_decision_ref": "gate.provider.call.005",
+    "entitlement_ref": "ent.provider.calls",
+    "license_lease_ref": "license.provider.calls",
+    "window": "billing_period",
+    "current_usage": 980,
+    "max_allowed": 1000,
+    "remaining": 20,
+    "soft_limit": 900,
+    "hard_limit": 1000,
+    "warning_threshold": 950,
+    "decision": "warning",
+    "observed_at": "2026-05-07T10:20:00Z",
+    "expires_at": "2026-05-31T23:59:59Z",
+    "source_ref": "projection.limit.provider.billing-period"
+  }
+}

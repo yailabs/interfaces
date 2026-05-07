@@ -1,0 +1,26 @@
+{
+  "cloud_compute_decision": {
+    "cloud_compute_decision_ref": "cloud-compute.remote-job-006",
+    "compute_target": "managed_remote_job",
+    "compute_mode": "managed_execution",
+    "case_ref": "case.local-006",
+    "job_ref": "job.local-006",
+    "flow_ref": "flow.local-006",
+    "agent_instance_ref": "agent.local-006",
+    "requested_action": "submit_remote_job",
+    "requested_at": "2026-05-07T13:25:00Z",
+    "requested_by_principal_ref": "principal.local-006",
+    "requested_from_client_ref": "client.cli.local-006",
+    "compute_region": "eu-south-1",
+    "managed_job_ref": "managed-job.local-006",
+    "runtime_action_key": "cloud.job.submit",
+    "runtime_gate_decision_ref": "runtime-gate.local-006",
+    "entitlement_ref": "entitlement.local-006",
+    "limit_projection_ref": "limit.local-006",
+    "decision": "not_implemented",
+    "reason": "managed remote job handoff remains deferred and is not live in V38",
+    "blocked_reason": "managed_execution_not_available",
+    "output_posture": "cloud_artifact_ref_only",
+    "infrastructure_boundary": "infrastructure_not_exposed_to_v"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "knowledge": {
+    "knowledge_ref": "knowledge.local-002",
+    "case_ref": "case.local-002",
+    "knowledge_kind": "evidence_summary",
+    "title": "Evidence-derived summary",
+    "summary": "Knowledge may summarize evidence while remaining owned by the case.",
+    "created_at": "2026-05-07T09:10:00Z",
+    "updated_at": "2026-05-07T09:20:00Z",
+    "source_evidence_refs": [
+      "evidence.local-002",
+      "evidence.local-002b"
+    ],
+    "source_record_refs": [
+      "record.local-002"
+    ],
+    "lineage_refs": [
+      "lineage.local-002/evidence-summary"
+    ],
+    "content_digest": "sha256:evidence-derived-knowledge-002",
+    "visibility": "team_visible",
+    "recall_policy": "authorized_context_recallable",
+    "write_policy": "mutable_with_lineage",
+    "derivation_status": "derived"
+  }
+}

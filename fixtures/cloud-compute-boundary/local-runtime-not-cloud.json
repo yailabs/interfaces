@@ -1,0 +1,18 @@
+{
+  "cloud_compute_decision": {
+    "cloud_compute_decision_ref": "cloud-compute.local-001",
+    "compute_target": "local_runtime",
+    "compute_mode": "local_only",
+    "case_ref": "case.local-001",
+    "requested_action": "inspect_status",
+    "requested_at": "2026-05-07T13:00:00Z",
+    "requested_by_principal_ref": "principal.local-001",
+    "requested_from_client_ref": "client.cli.local-001",
+    "runtime_action_key": "runtime.local.inspect",
+    "runtime_gate_decision_ref": "runtime-gate.local-001",
+    "decision": "diagnostic_allowed",
+    "reason": "local runtime execution remains local and does not imply cloud compute",
+    "output_posture": "diagnostic_only",
+    "infrastructure_boundary": "no_cloud_infrastructure"
+  }
+}

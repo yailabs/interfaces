@@ -1,0 +1,26 @@
+{
+  "model_access_decision": {
+    "model_access_decision_ref": "model-access.provider-003",
+    "access_target": "external_provider",
+    "access_mode": "platform_managed_provider",
+    "case_ref": "case.local-003",
+    "provider_ref": "provider.openai",
+    "model_ref": "model.gpt-5.5-thinking",
+    "requested_action": "invoke_external_provider",
+    "requested_at": "2026-05-07T12:10:00Z",
+    "requested_by_principal_ref": "principal.local-003",
+    "requested_from_client_ref": "client.cli.local-003",
+    "runtime_action_key": "provider.call.request",
+    "runtime_gate_decision_ref": "runtime-gate.local-003",
+    "entitlement_ref": "entitlement.local-003",
+    "machine_authorization_ref": "machine.local-003",
+    "license_lease_ref": "license.local-003",
+    "limit_projection_ref": "limit.local-003",
+    "provider_budget_ref": "provider-budget.local-003",
+    "decision": "requires_provider_budget",
+    "reason": "provider budget posture is exhausted and billing is not implemented here",
+    "blocked_reason": "provider_budget_exceeded",
+    "output_posture": "output_blocked",
+    "credential_boundary": "credentials_present_but_not_exposed"
+  }
+}

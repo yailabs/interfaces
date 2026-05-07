@@ -1,21 +1,79 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "yai.envelope.v1",
+  "title": "YAI API Envelope Base v1",
   "type": "object",
   "required": [
+    "schema",
+    "envelope_id",
     "operation_id",
     "request_id",
-    "metadata"
+    "correlation_id",
+    "client",
+    "transport",
+    "created_at"
   ],
   "properties": {
+    "schema": {
+      "type": "string"
+    },
+    "envelope_id": {
+      "type": "string"
+    },
     "operation_id": {
       "type": "string"
     },
     "request_id": {
       "type": "string"
     },
+    "correlation_id": {
+      "type": "string"
+    },
+    "client": {
+      "$ref": "schemas/client-ref.v1.schema.json"
+    },
+    "case_ref": {
+      "$ref": "schemas/case-ref.v1.schema.json"
+    },
+    "principal_ref": {
+      "type": "string"
+    },
+    "transport": {
+      "type": "object",
+      "required": [
+        "transport_class"
+      ],
+      "properties": {
+        "transport_class": {
+          "type": "string",
+          "enum": [
+            "local_ipc_rpc",
+            "local_http_loopback",
+            "lan_secure",
+            "remote_https",
+            "in_process_test",
+            "subprocess_stdio_compat"
+          ]
+        },
+        "binding": {
+          "type": "string"
+        },
+        "security_posture": {
+          "type": "string"
+        },
+        "paired": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "metadata": {
       "type": "object"
     }
-  }
+  },
+  "additionalProperties": true
 }

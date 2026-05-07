@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/machine-fingerprint-evidence-builder.v1.schema.json",
+  "title": "YAI Machine Fingerprint Evidence Builder v1",
+  "type": "object",
+  "required": [
+    "machine_fingerprint_evidence"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidenceKind": {
+      "type": "string",
+      "enum": [
+        "local_identity_attestation",
+        "privacy_bounded_fingerprint",
+        "enrollment_candidate",
+        "rotation_evidence",
+        "revocation_evidence",
+        "reboot_continuity_evidence",
+        "machine_posture_evidence"
+      ]
+    },
+    "evidenceStatus": {
+      "type": "string",
+      "enum": [
+        "not_built",
+        "built",
+        "ready_for_enrollment",
+        "requires_consent",
+        "requires_privacy_review",
+        "low_confidence",
+        "rotated",
+        "revoked",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "evidenceSourcePolicy": {
+      "type": "string",
+      "enum": [
+        "local_identity_only",
+        "privacy_bounded_signals",
+        "user_confirmed_signals",
+        "account_confirmed_signals",
+        "no_raw_hardware",
+        "not_applicable",
+        "unknown"
+      ]
+    },
+    "privacyPosture": {
+      "type": "string",
+      "enum": [
+        "privacy_bounded",
+        "minimized",
+        "raw_hardware_forbidden",
+        "redacted",
+        "requires_review",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "minimizationPosture": {
+      "type": "string",
+      "enum": [
+        "minimal",
+        "reduced",
+        "aggregated",
+        "hashed_or_derived_only",
+        "redacted",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "consentPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "required",
+        "granted",
+        "denied",
+        "deferred",
+        "unknown"
+      ]
+    },
+    "confidencePosture": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "insufficient",
+        "ambiguous",
+        "unknown"
+      ]
+    },
+    "rotationPosture": {
+      "type": "string",
+      "enum": [
+        "not_rotated",
+        "rotation_candidate",
+        "rotated",
+        "rotation_required",
+        "rotation_blocked",
+        "unknown"
+      ]
+    },
+    "enrollmentUse": {
+      "type": "string",
+      "enum": [
+        "not_for_enrollment",
+        "enrollment_ready",
+        "enrollment_pending",
+        "enrollment_blocked",
+        "authorization_refresh_candidate",
+        "unknown"
+      ]
+    },
+    "machineAuthorizationStatus": {
+      "type": "string",
+      "enum": [
+        "not_requested",
+        "pending",
+        "authorized",
+        "revoked",
+        "expired",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "consent_required",
+        "privacy_review_required",
+        "low_confidence",
+        "ambiguous_match",
+        "rotation_required",
+        "machine_authorization_missing",
+        "license_lease_missing",
+        "raw_hardware_forbidden",
+        "unknown"
+      ]
+    },
+    "machineFingerprintEvidence": {
+      "type": "object",
+      "required": [
+        "machine_fingerprint_evidence_ref",
+        "local_machine_identity_ref",
+        "local_machine_ref",
+        "evidence_kind",
+        "evidence_status",
+        "evidence_source_policy",
+        "privacy_posture",
+        "minimization_posture",
+        "consent_posture",
+        "confidence_posture",
+        "rotation_posture",
+        "enrollment_use"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "machine_fingerprint_evidence_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_identity_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_identity_store_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "evidence_kind": {
+          "$ref": "#/$defs/evidenceKind"
+        },
+        "evidence_status": {
+          "$ref": "#/$defs/evidenceStatus"
+        },
+        "evidence_source_policy": {
+          "$ref": "#/$defs/evidenceSourcePolicy"
+        },
+        "privacy_posture": {
+          "$ref": "#/$defs/privacyPosture"
+        },
+        "minimization_posture": {
+          "$ref": "#/$defs/minimizationPosture"
+        },
+        "consent_posture": {
+          "$ref": "#/$defs/consentPosture"
+        },
+        "confidence_posture": {
+          "$ref": "#/$defs/confidencePosture"
+        },
+        "rotation_posture": {
+          "$ref": "#/$defs/rotationPosture"
+        },
+        "enrollment_use": {
+          "$ref": "#/$defs/enrollmentUse"
+        },
+        "created_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "source_local_identity_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_status": {
+          "$ref": "#/$defs/machineAuthorizationStatus"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "redaction_notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "machine_fingerprint_evidence": {
+      "$ref": "#/$defs/machineFingerprintEvidence"
+    }
+  }
+}

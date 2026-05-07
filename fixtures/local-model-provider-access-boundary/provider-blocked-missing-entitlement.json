@@ -1,0 +1,24 @@
+{
+  "model_access_decision": {
+    "model_access_decision_ref": "model-access.provider-002",
+    "access_target": "external_provider",
+    "access_mode": "platform_managed_provider",
+    "case_ref": "case.local-002",
+    "provider_ref": "provider.openai",
+    "model_ref": "model.gpt-5.5-thinking",
+    "requested_action": "invoke_external_provider",
+    "requested_at": "2026-05-07T12:05:00Z",
+    "requested_by_principal_ref": "principal.local-002",
+    "requested_from_client_ref": "client.cli.local-002",
+    "runtime_action_key": "provider.call.request",
+    "runtime_gate_decision_ref": "runtime-gate.local-002",
+    "machine_authorization_ref": "machine.local-002",
+    "license_lease_ref": "license.local-002",
+    "limit_projection_ref": "limit.local-002",
+    "decision": "requires_entitlement",
+    "reason": "external provider access requires entitlement posture before admission",
+    "blocked_reason": "missing_entitlement",
+    "output_posture": "output_blocked",
+    "credential_boundary": "credentials_present_but_not_exposed"
+  }
+}

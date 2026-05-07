@@ -1,0 +1,30 @@
+{
+  "provider_authority": {
+    "provider_call_ref": "provider-call.local-005",
+    "case_ref": "case.local-005",
+    "provider_ref": "provider.local-005",
+    "model_ref": "model.local-005",
+    "requested_action": "extract",
+    "requested_at": "2026-05-07T10:20:00Z",
+    "requested_by_principal_ref": "principal.local-005",
+    "requested_from_client_ref": "client.cli.local-005",
+    "job_ref": "job.local-005",
+    "execution_lease_ref": "execution-lease.local-005",
+    "auth_context_ref": "auth-context.local-005",
+    "entitlement_ref": "entitlement.local-005",
+    "machine_authorization_ref": "machine-authorization.local-005",
+    "license_lease_ref": "license-lease.local-005",
+    "runtime_gate_decision_ref": "runtime-gate.local-005",
+    "decision": "allowed",
+    "reason": "provider output is allowed and captured as downstream case evidence",
+    "provider_output_posture": "output_as_evidence",
+    "output_evidence_refs": [
+      "evidence.local-005"
+    ],
+    "output_knowledge_refs": [
+      "knowledge.local-005-candidate"
+    ],
+    "metering_ref": "metering.local-005",
+    "limit_projection_ref": "limit.local-005"
+  }
+}

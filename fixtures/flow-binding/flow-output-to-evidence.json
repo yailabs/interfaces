@@ -1,0 +1,42 @@
+{
+  "flow_binding": {
+    "flow_ref": "flow.local-005",
+    "flow_run_ref": "flow-run.local-005",
+    "case_ref": "case.local-005",
+    "flow_kind": "knowledge_pipeline",
+    "requested_action": "write_evidence",
+    "requested_at": "2026-05-07T10:20:00Z",
+    "requested_by_principal_ref": "principal.local-005",
+    "requested_from_client_ref": "client.cli.local-005",
+    "job_refs": [
+      "job.local-005"
+    ],
+    "agent_instance_refs": [
+      "agent-instance.local-005"
+    ],
+    "provider_call_refs": [
+      "provider-call.local-005"
+    ],
+    "execution_lease_refs": [
+      "execution-lease.local-005"
+    ],
+    "evidence_refs": [
+      "evidence.local-005"
+    ],
+    "knowledge_refs": [
+      "knowledge.local-005-candidate"
+    ],
+    "flow_step_refs": [
+      "flow-step.local-005-materialize"
+    ],
+    "auth_context_ref": "auth-context.local-005",
+    "entitlement_ref": "entitlement.local-005",
+    "machine_authorization_ref": "machine-authorization.local-005",
+    "license_lease_ref": "license-lease.local-005",
+    "runtime_gate_decision_ref": "runtime-gate.local-005",
+    "limit_projection_ref": "limit.local-005",
+    "decision": "allowed",
+    "reason": "flow output is allowed and captured as downstream case evidence and knowledge candidate",
+    "flow_output_posture": "output_as_evidence"
+  }
+}

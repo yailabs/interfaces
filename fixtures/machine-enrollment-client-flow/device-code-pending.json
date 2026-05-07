@@ -1,0 +1,32 @@
+{
+  "machine_enrollment_request": {
+    "machine_enrollment_request_ref": "machine_enrollment_request/device-003",
+    "local_machine_identity_ref": "local_machine_identity/rotated-003",
+    "local_machine_ref": "local_machine/workstation-03",
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/rotated-004",
+    "enrollment_intent": "refresh_machine_authorization",
+    "enrollment_channel": "device_code",
+    "enrollment_status": "pending_device_code",
+    "account_confirmation_posture": "pending",
+    "browser_handoff_posture": "not_required",
+    "device_code_posture": "pending_poll",
+    "privacy_posture": "privacy_bounded",
+    "consent_posture": "deferred",
+    "requested_at": "2026-05-07T10:10:00Z",
+    "expires_at": "2026-05-07T11:10:00Z",
+    "requested_by_principal_ref": "principal.local-003",
+    "requested_from_client_ref": "client.cli.local-003",
+    "auth_context_ref": "auth-context.local-003",
+    "account_ref": "account.local-003",
+    "principal_ref": "principal.local-003",
+    "machine_authorization_status": "pending",
+    "next_actions": [
+      "show_device_code",
+      "wait_for_account_confirmation"
+    ],
+    "warning_codes": [
+      "device_code_expiring",
+      "evidence_rotation_required"
+    ]
+  }
+}

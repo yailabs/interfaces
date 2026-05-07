@@ -1,0 +1,21 @@
+{
+  "provider_authority": {
+    "provider_call_ref": "provider-call.local-004",
+    "case_ref": "case.local-004",
+    "provider_ref": "provider.local-004",
+    "model_ref": "model.local-004",
+    "requested_action": "provider_status",
+    "requested_at": "2026-05-07T10:15:00Z",
+    "requested_by_principal_ref": "principal.local-004",
+    "auth_context_ref": "auth-context.local-004",
+    "entitlement_ref": "entitlement.local-004",
+    "machine_authorization_ref": "machine-authorization.local-004",
+    "license_lease_ref": "license-lease.local-004",
+    "runtime_gate_decision_ref": "runtime-gate.local-004",
+    "decision": "requires_license_lease",
+    "reason": "license lease must be refreshed before provider admission",
+    "blocked_reason": "license_lease_expired",
+    "provider_output_posture": "no_output",
+    "metering_ref": "metering.local-004"
+  }
+}

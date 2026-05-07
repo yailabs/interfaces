@@ -1,0 +1,24 @@
+{
+  "agent_authority": {
+    "agent_authority_ref": "agent-authority.local-003",
+    "agent_ref": "agent.local-003",
+    "agent_instance_ref": "agent-instance.local-003",
+    "case_ref": "case.local-003",
+    "agent_role": "coder",
+    "requested_action": "delegate",
+    "requested_at": "2026-05-07T10:40:00Z",
+    "requested_by_principal_ref": "principal.local-003",
+    "job_ref": "job.local-003",
+    "flow_ref": "flow.local-003",
+    "auth_context_ref": "auth-context.local-003",
+    "entitlement_ref": "entitlement.local-003",
+    "machine_authorization_ref": "machine-authorization.local-003",
+    "license_lease_ref": "license-lease.local-003",
+    "runtime_gate_decision_ref": "runtime-gate.local-003",
+    "limit_projection_ref": "agent-limit.local-003",
+    "decision": "requires_limit_capacity",
+    "reason": "safe agent concurrency posture blocks additional delegation",
+    "blocked_reason": "agent_limit_exceeded",
+    "agent_output_posture": "output_blocked"
+  }
+}

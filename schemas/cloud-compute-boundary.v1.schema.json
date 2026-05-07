@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/cloud-compute-boundary.v1.schema.json",
+  "title": "YAI Cloud Compute Boundary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "cloud_compute_decision"
+  ],
+  "properties": {
+    "cloud_compute_decision": {
+      "$ref": "#/$defs/cloudComputeDecision"
+    }
+  },
+  "$defs": {
+    "computeTarget": {
+      "type": "string",
+      "enum": [
+        "local_runtime",
+        "local_model",
+        "external_provider",
+        "hosted_model",
+        "cloud_job",
+        "managed_remote_job",
+        "priority_queue",
+        "dedicated_capacity",
+        "cloud_artifact_build",
+        "cloud_evaluation"
+      ]
+    },
+    "computeMode": {
+      "type": "string",
+      "enum": [
+        "local_only",
+        "cloud_optional",
+        "cloud_required",
+        "hosted_platform",
+        "managed_execution",
+        "diagnostic_status",
+        "not_applicable"
+      ]
+    },
+    "requestedAction": {
+      "type": "string",
+      "enum": [
+        "inspect_status",
+        "request_cloud_capacity",
+        "submit_remote_job",
+        "resume_remote_job",
+        "cancel_remote_job",
+        "invoke_hosted_model",
+        "run_cloud_evaluation",
+        "build_cloud_artifact",
+        "enter_priority_queue",
+        "use_dedicated_capacity"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "degraded",
+        "diagnostic_allowed",
+        "requires_auth",
+        "requires_case",
+        "requires_entitlement",
+        "requires_machine_authorization",
+        "requires_license_lease",
+        "requires_runtime_gate",
+        "requires_limit_capacity",
+        "requires_cloud_capacity",
+        "requires_manual_review",
+        "not_implemented",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_auth_context",
+        "missing_case_ref",
+        "missing_entitlement",
+        "machine_not_authorized",
+        "license_lease_expired",
+        "runtime_gate_blocked",
+        "limit_exceeded",
+        "cloud_compute_not_enabled",
+        "cloud_capacity_unavailable",
+        "priority_queue_required",
+        "dedicated_capacity_required",
+        "hosted_model_not_enabled",
+        "managed_execution_not_available",
+        "region_not_available",
+        "billing_required_but_unavailable",
+        "manual_review_required",
+        "unsafe_request",
+        "unknown"
+      ]
+    },
+    "outputPosture": {
+      "type": "string",
+      "enum": [
+        "no_output",
+        "output_not_persisted",
+        "output_as_evidence_candidate",
+        "output_as_knowledge_candidate",
+        "cloud_artifact_ref_only",
+        "output_redacted",
+        "output_blocked",
+        "diagnostic_only"
+      ]
+    },
+    "infrastructureBoundary": {
+      "type": "string",
+      "enum": [
+        "no_cloud_infrastructure",
+        "platform_managed_infrastructure",
+        "customer_managed_infrastructure",
+        "hybrid_local_cloud",
+        "infrastructure_not_exposed_to_v",
+        "not_applicable"
+      ]
+    },
+    "cloudComputeDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cloud_compute_decision_ref",
+        "compute_target",
+        "compute_mode",
+        "requested_action",
+        "requested_at",
+        "decision",
+        "reason",
+        "output_posture",
+        "infrastructure_boundary"
+      ],
+      "properties": {
+        "cloud_compute_decision_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "compute_target": {
+          "$ref": "#/$defs/computeTarget"
+        },
+        "compute_mode": {
+          "$ref": "#/$defs/computeMode"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "job_ref": {
+          "type": "string"
+        },
+        "flow_ref": {
+          "type": "string"
+        },
+        "agent_instance_ref": {
+          "type": "string"
+        },
+        "requested_action": {
+          "$ref": "#/$defs/requestedAction"
+        },
+        "requested_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requested_by_principal_ref": {
+          "type": "string"
+        },
+        "requested_from_client_ref": {
+          "type": "string"
+        },
+        "compute_region": {
+          "type": "string"
+        },
+        "cloud_compute_ref": {
+          "type": "string"
+        },
+        "compute_capacity_ref": {
+          "type": "string"
+        },
+        "cloud_compute_minutes_ref": {
+          "type": "string"
+        },
+        "priority_queue_ref": {
+          "type": "string"
+        },
+        "dedicated_capacity_ref": {
+          "type": "string"
+        },
+        "managed_job_ref": {
+          "type": "string"
+        },
+        "runtime_action_key": {
+          "type": "string"
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string"
+        },
+        "entitlement_ref": {
+          "type": "string"
+        },
+        "machine_authorization_ref": {
+          "type": "string"
+        },
+        "license_lease_ref": {
+          "type": "string"
+        },
+        "limit_projection_ref": {
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "output_posture": {
+          "$ref": "#/$defs/outputPosture"
+        },
+        "infrastructure_boundary": {
+          "$ref": "#/$defs/infrastructureBoundary"
+        }
+      }
+    }
+  }
+}

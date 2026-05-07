@@ -1,0 +1,16 @@
+{
+  "provider_authority": {
+    "provider_call_ref": "provider-call.local-002",
+    "case_ref": "",
+    "provider_ref": "provider.local-002",
+    "model_ref": "model.local-002",
+    "requested_action": "summarize",
+    "requested_at": "2026-05-07T10:05:00Z",
+    "requested_from_client_ref": "client.loom.local-002",
+    "auth_context_ref": "auth-context.local-002",
+    "decision": "requires_case",
+    "reason": "case boundary is required before provider admission",
+    "blocked_reason": "missing_case_ref",
+    "provider_output_posture": "output_blocked"
+  }
+}

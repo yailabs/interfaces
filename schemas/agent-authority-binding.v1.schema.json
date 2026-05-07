@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.agent-authority-binding.v1",
+  "title": "YAI Agent Authority Binding v1",
+  "type": "object",
+  "required": [
+    "agent_authority"
+  ],
+  "properties": {
+    "agent_authority": {
+      "$ref": "#/$defs/agentAuthority"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "agentRole": {
+      "type": "string",
+      "enum": [
+        "assistant",
+        "researcher",
+        "coder",
+        "reviewer",
+        "operator",
+        "planner",
+        "critic",
+        "summarizer",
+        "specialist",
+        "system_agent"
+      ]
+    },
+    "requestedAction": {
+      "type": "string",
+      "enum": [
+        "spawn",
+        "resume",
+        "pause",
+        "stop",
+        "delegate",
+        "request_provider_call",
+        "request_tool_call",
+        "write_evidence",
+        "propose_knowledge",
+        "read_case_context"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "requires_auth",
+        "requires_case",
+        "requires_entitlement",
+        "requires_machine_authorization",
+        "requires_license_lease",
+        "requires_runtime_gate",
+        "requires_limit_capacity",
+        "requires_manual_review",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_auth_context",
+        "missing_case_ref",
+        "missing_operator_context",
+        "missing_entitlement",
+        "machine_not_authorized",
+        "license_lease_expired",
+        "runtime_gate_blocked",
+        "agent_role_not_allowed",
+        "agent_limit_exceeded",
+        "flow_not_authorized",
+        "provider_authority_missing",
+        "tool_authority_missing",
+        "manual_review_required",
+        "unsafe_request",
+        "unknown"
+      ]
+    },
+    "agentOutputPosture": {
+      "type": "string",
+      "enum": [
+        "no_output",
+        "output_not_persisted",
+        "output_as_evidence",
+        "output_as_knowledge_candidate",
+        "output_requires_review",
+        "output_redacted",
+        "output_blocked"
+      ]
+    },
+    "agentAuthority": {
+      "type": "object",
+      "required": [
+        "agent_authority_ref",
+        "agent_ref",
+        "agent_instance_ref",
+        "case_ref",
+        "agent_role",
+        "requested_action",
+        "requested_at",
+        "decision",
+        "reason",
+        "agent_output_posture"
+      ],
+      "properties": {
+        "agent_authority_ref": {
+          "type": "string"
+        },
+        "agent_ref": {
+          "type": "string"
+        },
+        "agent_instance_ref": {
+          "type": "string"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "agent_role": {
+          "$ref": "#/$defs/agentRole"
+        },
+        "requested_action": {
+          "$ref": "#/$defs/requestedAction"
+        },
+        "requested_at": {
+          "type": "string"
+        },
+        "requested_by_principal_ref": {
+          "type": "string"
+        },
+        "requested_from_client_ref": {
+          "type": "string"
+        },
+        "job_ref": {
+          "type": "string"
+        },
+        "flow_ref": {
+          "type": "string"
+        },
+        "execution_lease_ref": {
+          "type": "string"
+        },
+        "auth_context_ref": {
+          "type": "string"
+        },
+        "entitlement_ref": {
+          "type": "string"
+        },
+        "machine_authorization_ref": {
+          "type": "string"
+        },
+        "license_lease_ref": {
+          "type": "string"
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string"
+        },
+        "limit_projection_ref": {
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "agent_output_posture": {
+          "$ref": "#/$defs/agentOutputPosture"
+        },
+        "allowed_provider_action_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "allowed_tool_action_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "output_evidence_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "output_knowledge_refs": {
+          "$ref": "#/$defs/stringArray"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

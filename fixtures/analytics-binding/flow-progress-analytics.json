@@ -1,0 +1,33 @@
+{
+  "analytics_binding": {
+    "analytics_ref": "analytics.local-003",
+    "analytics_kind": "flow_progress",
+    "analytics_scope": "case_tree",
+    "case_ref": "case.local-003",
+    "metric_key": "flow.progress.completed_steps",
+    "metric_value": 3,
+    "measurement_unit": "count",
+    "observed_at": "2026-05-07T11:10:00Z",
+    "window_start": "2026-05-07T09:00:00Z",
+    "window_end": "2026-05-07T11:10:00Z",
+    "source_flow_refs": [
+      "flow.local-003"
+    ],
+    "source_agent_instance_refs": [
+      "agent-instance.local-003"
+    ],
+    "source_job_refs": [
+      "job.local-003"
+    ],
+    "runtime_gate_decision_refs": [
+      "runtime-gate.local-003"
+    ],
+    "limit_projection_refs": [
+      "limit.local-003"
+    ],
+    "visibility": "team_visible",
+    "retention_posture": "aggregate_only",
+    "decision": "aggregated_only",
+    "reason": "flow progress analytics is exposed only as aggregate derived material"
+  }
+}

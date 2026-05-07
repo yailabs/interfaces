@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/local-machine-identity-store.v1.schema.json",
+  "title": "YAI Local Machine Identity Store v1",
+  "type": "object",
+  "required": [
+    "local_machine_identity"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "storeStatus": {
+      "type": "string",
+      "enum": [
+        "not_created",
+        "created",
+        "loaded",
+        "unavailable",
+        "corrupt",
+        "rotated",
+        "revoked",
+        "stale",
+        "unknown"
+      ]
+    },
+    "identityStatus": {
+      "type": "string",
+      "enum": [
+        "unbound",
+        "local_only",
+        "enrollment_ready",
+        "enrollment_pending",
+        "authorized",
+        "revoked",
+        "expired",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "storagePosture": {
+      "type": "string",
+      "enum": [
+        "not_persisted",
+        "local_file",
+        "platform_keychain",
+        "runtime_state_store",
+        "external_secret_store",
+        "unavailable",
+        "unknown"
+      ]
+    },
+    "rotationPosture": {
+      "type": "string",
+      "enum": [
+        "not_rotated",
+        "rotation_available",
+        "rotation_required",
+        "rotated",
+        "rotation_blocked",
+        "unknown"
+      ]
+    },
+    "privacyPosture": {
+      "type": "string",
+      "enum": [
+        "privacy_bounded",
+        "raw_hardware_forbidden",
+        "minimized",
+        "requires_review",
+        "unknown"
+      ]
+    },
+    "evidenceBuilderStatus": {
+      "type": "string",
+      "enum": [
+        "not_built",
+        "ready_for_evidence_builder",
+        "evidence_builder_required",
+        "evidence_built",
+        "evidence_blocked",
+        "unknown"
+      ]
+    },
+    "enrollmentReadiness": {
+      "type": "string",
+      "enum": [
+        "not_ready",
+        "ready",
+        "pending_account_confirmation",
+        "requires_auth",
+        "requires_machine_authorization",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "machineAuthorizationStatus": {
+      "type": "string",
+      "enum": [
+        "not_requested",
+        "pending",
+        "authorized",
+        "revoked",
+        "expired",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "identity_not_persisted",
+        "identity_store_unavailable",
+        "identity_rotation_required",
+        "machine_authorization_missing",
+        "license_lease_missing",
+        "privacy_review_required",
+        "raw_hardware_forbidden",
+        "unknown"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "localMachineIdentity": {
+      "type": "object",
+      "required": [
+        "local_machine_identity_ref",
+        "local_machine_ref",
+        "machine_identity_store_ref",
+        "store_status",
+        "identity_status",
+        "storage_posture",
+        "rotation_posture",
+        "privacy_posture",
+        "evidence_builder_status",
+        "enrollment_readiness"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "local_machine_identity_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_identity_store_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "store_status": {
+          "$ref": "#/$defs/storeStatus"
+        },
+        "identity_status": {
+          "$ref": "#/$defs/identityStatus"
+        },
+        "created_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "updated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "rotated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "revoked_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "last_seen_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "storage_posture": {
+          "$ref": "#/$defs/storagePosture"
+        },
+        "rotation_posture": {
+          "$ref": "#/$defs/rotationPosture"
+        },
+        "privacy_posture": {
+          "$ref": "#/$defs/privacyPosture"
+        },
+        "evidence_builder_status": {
+          "$ref": "#/$defs/evidenceBuilderStatus"
+        },
+        "enrollment_readiness": {
+          "$ref": "#/$defs/enrollmentReadiness"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_status": {
+          "$ref": "#/$defs/machineAuthorizationStatus"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "local_machine_identity": {
+      "$ref": "#/$defs/localMachineIdentity"
+    }
+  }
+}

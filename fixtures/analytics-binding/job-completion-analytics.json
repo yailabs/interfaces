@@ -1,0 +1,33 @@
+{
+  "analytics_binding": {
+    "analytics_ref": "analytics.local-002",
+    "analytics_kind": "job_progress",
+    "analytics_scope": "case",
+    "case_ref": "case.local-002",
+    "metric_key": "job.completion.rate",
+    "metric_value": 1,
+    "measurement_unit": "ratio",
+    "observed_at": "2026-05-07T11:05:00Z",
+    "window_start": "2026-05-07T10:30:00Z",
+    "window_end": "2026-05-07T11:05:00Z",
+    "source_job_refs": [
+      "job.local-002"
+    ],
+    "source_record_refs": [
+      "record.local-002"
+    ],
+    "source_flow_refs": [
+      "flow.local-002"
+    ],
+    "license_lease_refs": [
+      "license-lease.local-002"
+    ],
+    "machine_authorization_refs": [
+      "machine-authorization.local-002"
+    ],
+    "visibility": "case_visible",
+    "retention_posture": "retain",
+    "decision": "recorded",
+    "reason": "job completion analytics remains derived and case-scoped"
+  }
+}

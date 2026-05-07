@@ -1,0 +1,21 @@
+{
+  "limit_projection": {
+    "limit_projection_ref": "limit-proj.case.001",
+    "limit_key": "max_open_cases",
+    "limit_family": "case",
+    "scope": "case",
+    "subject_ref": "case.case-001",
+    "case_ref": "case.case-001",
+    "window": "day",
+    "current_usage": 2,
+    "max_allowed": 5,
+    "remaining": 3,
+    "soft_limit": 4,
+    "hard_limit": 5,
+    "warning_threshold": 4,
+    "decision": "allowed",
+    "observed_at": "2026-05-07T10:00:00Z",
+    "expires_at": "2026-05-08T00:00:00Z",
+    "source_ref": "projection.limit.case-001.daily"
+  }
+}

@@ -1,16 +1,44 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "yai.operation-result.v1",
+  "title": "YAI Operation Result v1",
   "type": "object",
+  "required": [
+    "outcome"
+  ],
   "properties": {
-    "status": {
-      "type": "string"
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "accepted",
+        "partial",
+        "unavailable",
+        "blocked",
+        "invalid",
+        "failed"
+      ]
     },
     "data": {
       "type": "object"
     },
     "summary": {
       "type": "string"
+    },
+    "refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "records_emitted": {
+      "type": "boolean"
+    },
+    "evidence_emitted": {
+      "type": "boolean"
+    },
+    "stream_started": {
+      "type": "boolean"
     }
   },
   "additionalProperties": true

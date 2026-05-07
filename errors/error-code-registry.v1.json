@@ -1,0 +1,181 @@
+{
+  "kind": "yai.api.error_code_registry",
+  "version": "v1",
+  "categories": [
+    "validation",
+    "unauthorized",
+    "forbidden",
+    "not_found",
+    "conflict",
+    "rate_limited",
+    "unavailable",
+    "timeout",
+    "cancelled",
+    "unsupported",
+    "runtime_sealed",
+    "transport",
+    "internal"
+  ],
+  "errors": [
+    {
+      "code": "validation_error",
+      "category": "validation",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "unauthorized",
+      "category": "unauthorized",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": true
+    },
+    {
+      "code": "forbidden",
+      "category": "forbidden",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": true
+    },
+    {
+      "code": "not_found",
+      "category": "not_found",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "conflict",
+      "category": "conflict",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "rate_limited",
+      "category": "rate_limited",
+      "retryable": true,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "unsupported_operation",
+      "category": "unsupported",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "not_implemented",
+      "category": "unsupported",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "precondition_failed",
+      "category": "conflict",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "governance_required",
+      "category": "runtime_sealed",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": true
+    },
+    {
+      "code": "control_gate_required",
+      "category": "runtime_sealed",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": true
+    },
+    {
+      "code": "runtime_sealed",
+      "category": "runtime_sealed",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": true
+    },
+    {
+      "code": "runtime_unavailable",
+      "category": "unavailable",
+      "retryable": true,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "provider_unavailable",
+      "category": "unavailable",
+      "retryable": true,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "timeout",
+      "category": "timeout",
+      "retryable": true,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "cancelled",
+      "category": "cancelled",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    },
+    {
+      "code": "transport_unavailable",
+      "category": "transport",
+      "retryable": true,
+      "transport_error": true,
+      "operation_error": false,
+      "guard_error": false
+    },
+    {
+      "code": "transport_not_configured",
+      "category": "transport",
+      "retryable": false,
+      "transport_error": true,
+      "operation_error": false,
+      "guard_error": false
+    },
+    {
+      "code": "decode_error",
+      "category": "transport",
+      "retryable": false,
+      "transport_error": true,
+      "operation_error": false,
+      "guard_error": false
+    },
+    {
+      "code": "internal_error",
+      "category": "internal",
+      "retryable": false,
+      "transport_error": false,
+      "operation_error": true,
+      "guard_error": false
+    }
+  ]
+}

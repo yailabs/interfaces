@@ -1,35 +1,61 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "yai.watch-event.v1",
+  "title": "YAI Stream Event Frame v1",
   "type": "object",
   "required": [
+    "schema",
+    "stream_id",
     "event_id",
     "operation_id",
-    "stream_id",
+    "request_id",
     "sequence",
-    "timestamp",
     "event_type",
-    "payload"
+    "created_at",
+    "terminal",
+    "heartbeat"
   ],
   "properties": {
+    "schema": {
+      "const": "yai.watch-event.v1"
+    },
+    "stream_id": {
+      "type": "string"
+    },
     "event_id": {
       "type": "string"
     },
     "operation_id": {
       "type": "string"
     },
-    "stream_id": {
+    "request_id": {
       "type": "string"
     },
     "sequence": {
       "type": "integer",
       "minimum": 0
     },
-    "timestamp": {
-      "type": "string"
-    },
     "event_type": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "stream.open",
+        "stream.heartbeat",
+        "stream.data",
+        "stream.warning",
+        "stream.error",
+        "stream.cancelled",
+        "stream.closed"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "terminal": {
+      "type": "boolean"
+    },
+    "heartbeat": {
+      "type": "boolean"
     },
     "case_ref": {
       "$ref": "schemas/case-ref.v1.schema.json"
@@ -49,11 +75,22 @@
         "$ref": "schemas/evidence-ref.v1.schema.json"
       }
     },
-    "payload": {
+    "data": {
       "type": "object"
+    },
+    "error": {
+      "$ref": "schemas/error.v1.schema.json"
+    },
+    "retry_after_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "resume_token": {
+      "type": "string"
     },
     "metadata": {
       "type": "object"
     }
-  }
+  },
+  "additionalProperties": false
 }

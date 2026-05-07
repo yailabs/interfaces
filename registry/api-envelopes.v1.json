@@ -1,12 +1,118 @@
 {
+  "kind": "yai.api.envelope_registry",
   "version": "v1",
+  "status_vocabulary": [
+    "ok",
+    "accepted",
+    "partial",
+    "unavailable",
+    "blocked",
+    "invalid",
+    "failed"
+  ],
+  "base": {
+    "required": [
+      "schema",
+      "envelope_id",
+      "operation_id",
+      "request_id",
+      "correlation_id",
+      "client",
+      "transport",
+      "created_at"
+    ],
+    "optional": [
+      "case_ref",
+      "principal_ref",
+      "metadata"
+    ]
+  },
   "request": {
-    "required": ["family_ref", "surface_ref", "command_ref"]
+    "required": [
+      "schema",
+      "envelope_id",
+      "operation_id",
+      "request_id",
+      "correlation_id",
+      "client",
+      "transport",
+      "created_at",
+      "input"
+    ],
+    "optional": [
+      "case_ref",
+      "principal_ref",
+      "metadata",
+      "idempotency_key",
+      "stream_request",
+      "timeout_ms",
+      "cancellation_ref"
+    ]
   },
   "response": {
-    "required": ["status", "message"]
+    "required": [
+      "schema",
+      "envelope_id",
+      "operation_id",
+      "request_id",
+      "correlation_id",
+      "client",
+      "transport",
+      "created_at",
+      "status"
+    ],
+    "terminal_payload_rule": "exactly_one_of_result_or_error",
+    "optional": [
+      "case_ref",
+      "principal_ref",
+      "metadata",
+      "warnings",
+      "records",
+      "evidence_refs",
+      "readiness",
+      "stream_ref"
+    ]
+  },
+  "readiness": {
+    "required": [
+      "schema",
+      "status",
+      "execution_claim",
+      "implementation_status"
+    ]
   },
   "error": {
-    "required": ["code", "message"]
+    "required": [
+      "code",
+      "message",
+      "category",
+      "retryable",
+      "transport_error",
+      "operation_error",
+      "guard_error"
+    ]
+  },
+  "stream_event": {
+    "required": [
+      "schema",
+      "stream_id",
+      "event_id",
+      "operation_id",
+      "request_id",
+      "sequence",
+      "event_type",
+      "created_at",
+      "terminal",
+      "heartbeat"
+    ],
+    "event_types": [
+      "stream.open",
+      "stream.heartbeat",
+      "stream.data",
+      "stream.warning",
+      "stream.error",
+      "stream.cancelled",
+      "stream.closed"
+    ]
   }
 }

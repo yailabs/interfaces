@@ -1,0 +1,43 @@
+{
+  "runtime_gate_registry": {
+    "registry_version": "v1",
+    "runtime_actions": [
+      {
+        "runtime_action_key": "case.open",
+        "runtime_action_family": "case",
+        "runtime_action_label": "Open case boundary",
+        "action_category": "case_write",
+        "gate_classification": "auth_required",
+        "allowed_during_sealed": false,
+        "required_context": [
+          "auth_context"
+        ],
+        "required_refs": [
+          "principal_ref",
+          "auth_context_ref"
+        ],
+        "required_postures": [
+          "auth_posture_resolved"
+        ],
+        "blocked_reasons": [
+          "missing_auth_context",
+          "runtime_sealed",
+          "unknown"
+        ],
+        "decision_outputs": [
+          "allowed",
+          "blocked",
+          "requires_auth",
+          "unknown"
+        ],
+        "limit_sensitive": false,
+        "metering_sensitive": false,
+        "cloud_sensitive": false,
+        "writes_state": true,
+        "writes_evidence": false,
+        "writes_knowledge": false,
+        "controls_runtime": false
+      }
+    ]
+  }
+}

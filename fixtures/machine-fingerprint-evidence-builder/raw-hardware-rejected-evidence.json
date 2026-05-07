@@ -1,0 +1,26 @@
+{
+  "machine_fingerprint_evidence": {
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/rejected-005",
+    "local_machine_identity_ref": "local_machine_identity/privacy-005",
+    "local_machine_ref": "local_machine/workstation-05",
+    "machine_identity_store_ref": "machine_identity_store/runtime-state",
+    "evidence_kind": "machine_posture_evidence",
+    "evidence_status": "blocked",
+    "evidence_source_policy": "no_raw_hardware",
+    "privacy_posture": "blocked",
+    "minimization_posture": "blocked",
+    "consent_posture": "deferred",
+    "confidence_posture": "insufficient",
+    "rotation_posture": "unknown",
+    "enrollment_use": "enrollment_blocked",
+    "created_at": "2026-05-07T09:20:00Z",
+    "source_local_identity_status": "unbound",
+    "warning_codes": [
+      "raw_hardware_forbidden",
+      "privacy_review_required"
+    ],
+    "redaction_notes": [
+      "Raw hardware submission was rejected before any contract payload was produced."
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "knowledge": {
+    "knowledge_ref": "knowledge.local-001",
+    "case_ref": "case.local-001",
+    "knowledge_kind": "summary",
+    "title": "Manual case summary",
+    "summary": "Operator-authored summary remains case-bound governed knowledge.",
+    "created_at": "2026-05-07T09:00:00Z",
+    "created_by_principal_ref": "principal.local-001",
+    "created_from_client_ref": "client.cli.local-001",
+    "visibility": "case_visible",
+    "recall_policy": "case_recallable",
+    "write_policy": "append_only",
+    "derivation_status": "manual"
+  }
+}

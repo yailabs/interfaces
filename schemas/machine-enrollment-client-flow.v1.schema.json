@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/machine-enrollment-client-flow.v1.schema.json",
+  "title": "YAI Machine Enrollment Client Flow v1",
+  "type": "object",
+  "required": [
+    "machine_enrollment_request"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "enrollmentIntent": {
+      "type": "string",
+      "enum": [
+        "authorize_machine",
+        "refresh_machine_authorization",
+        "replace_machine",
+        "rotate_machine_identity",
+        "recover_machine_identity",
+        "inspect_enrollment_status"
+      ]
+    },
+    "enrollmentChannel": {
+      "type": "string",
+      "enum": [
+        "browser_handoff",
+        "device_code",
+        "account_portal",
+        "manual_review",
+        "local_preview",
+        "not_applicable"
+      ]
+    },
+    "enrollmentStatus": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "ready",
+        "pending_browser_handoff",
+        "pending_device_code",
+        "pending_account_confirmation",
+        "pending_manual_review",
+        "approved",
+        "rejected",
+        "expired",
+        "blocked",
+        "cancelled",
+        "unknown"
+      ]
+    },
+    "accountConfirmationPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "required",
+        "pending",
+        "confirmed",
+        "denied",
+        "expired",
+        "unknown"
+      ]
+    },
+    "browserHandoffPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "required",
+        "ready_to_open",
+        "opened",
+        "callback_pending",
+        "callback_received",
+        "failed",
+        "unknown"
+      ]
+    },
+    "deviceCodePosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "required",
+        "generated",
+        "pending_poll",
+        "confirmed",
+        "expired",
+        "failed",
+        "unknown"
+      ]
+    },
+    "privacyPosture": {
+      "type": "string",
+      "enum": [
+        "privacy_bounded",
+        "evidence_minimized",
+        "requires_consent",
+        "requires_privacy_review",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "consentPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "required",
+        "granted",
+        "denied",
+        "deferred",
+        "unknown"
+      ]
+    },
+    "machineAuthorizationStatus": {
+      "type": "string",
+      "enum": [
+        "not_requested",
+        "pending",
+        "authorized",
+        "rejected",
+        "revoked",
+        "expired",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_auth_context",
+        "missing_local_machine_identity",
+        "missing_machine_evidence",
+        "evidence_not_privacy_bounded",
+        "consent_required",
+        "privacy_review_required",
+        "account_confirmation_required",
+        "manual_review_required",
+        "machine_limit_exceeded",
+        "machine_already_authorized",
+        "machine_authorization_revoked",
+        "enrollment_expired",
+        "unsafe_request",
+        "unknown"
+      ]
+    },
+    "nextAction": {
+      "type": "string",
+      "enum": [
+        "open_browser",
+        "show_device_code",
+        "wait_for_account_confirmation",
+        "wait_for_manual_review",
+        "retry_with_fresh_evidence",
+        "rotate_local_identity",
+        "contact_support",
+        "cancel",
+        "none"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "evidence_low_confidence",
+        "evidence_rotation_required",
+        "consent_required",
+        "manual_review_possible",
+        "browser_handoff_unavailable",
+        "device_code_expiring",
+        "machine_limit_near",
+        "unknown"
+      ]
+    },
+    "machineEnrollmentRequest": {
+      "type": "object",
+      "required": [
+        "machine_enrollment_request_ref",
+        "local_machine_identity_ref",
+        "local_machine_ref",
+        "enrollment_intent",
+        "enrollment_channel",
+        "enrollment_status",
+        "account_confirmation_posture",
+        "browser_handoff_posture",
+        "device_code_posture",
+        "privacy_posture",
+        "consent_posture"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "machine_enrollment_request_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_identity_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_fingerprint_evidence_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "enrollment_intent": {
+          "$ref": "#/$defs/enrollmentIntent"
+        },
+        "enrollment_channel": {
+          "$ref": "#/$defs/enrollmentChannel"
+        },
+        "enrollment_status": {
+          "$ref": "#/$defs/enrollmentStatus"
+        },
+        "account_confirmation_posture": {
+          "$ref": "#/$defs/accountConfirmationPosture"
+        },
+        "browser_handoff_posture": {
+          "$ref": "#/$defs/browserHandoffPosture"
+        },
+        "device_code_posture": {
+          "$ref": "#/$defs/deviceCodePosture"
+        },
+        "privacy_posture": {
+          "$ref": "#/$defs/privacyPosture"
+        },
+        "consent_posture": {
+          "$ref": "#/$defs/consentPosture"
+        },
+        "requested_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "expires_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "requested_by_principal_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "requested_from_client_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "account_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_status": {
+          "$ref": "#/$defs/machineAuthorizationStatus"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "next_actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nextAction"
+          }
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "machine_enrollment_request": {
+      "$ref": "#/$defs/machineEnrollmentRequest"
+    }
+  }
+}

@@ -8,23 +8,106 @@
   ],
   "type": "object",
   "required": [
+    "schema",
+    "envelope_id",
     "operation_id",
     "request_id",
+    "correlation_id",
+    "client",
+    "transport",
+    "created_at",
     "status"
   ],
+  "oneOf": [
+    {
+      "required": [
+        "result"
+      ],
+      "not": {
+        "required": [
+          "error"
+        ]
+      }
+    },
+    {
+      "required": [
+        "error"
+      ],
+      "not": {
+        "required": [
+          "result"
+        ]
+      }
+    }
+  ],
   "properties": {
+    "schema": {
+      "const": "yai.response-envelope.v1"
+    },
+    "envelope_id": {
+      "type": "string"
+    },
     "operation_id": {
       "type": "string"
     },
     "request_id": {
       "type": "string"
     },
+    "correlation_id": {
+      "type": "string"
+    },
+    "client": {
+      "$ref": "schemas/client-ref.v1.schema.json"
+    },
+    "case_ref": {
+      "$ref": "schemas/case-ref.v1.schema.json"
+    },
+    "principal_ref": {
+      "type": "string"
+    },
+    "transport": {
+      "type": "object",
+      "required": [
+        "transport_class"
+      ],
+      "properties": {
+        "transport_class": {
+          "type": "string",
+          "enum": [
+            "local_ipc_rpc",
+            "local_http_loopback",
+            "lan_secure",
+            "remote_https",
+            "in_process_test",
+            "subprocess_stdio_compat"
+          ]
+        },
+        "binding": {
+          "type": "string"
+        },
+        "security_posture": {
+          "type": "string"
+        },
+        "paired": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "status": {
       "type": "string",
       "enum": [
         "ok",
-        "error",
-        "partial"
+        "accepted",
+        "partial",
+        "unavailable",
+        "blocked",
+        "invalid",
+        "failed"
       ]
     },
     "result": {
@@ -39,7 +122,7 @@
         "$ref": "schemas/record-ref.v1.schema.json"
       }
     },
-    "evidence": {
+    "evidence_refs": {
       "type": "array",
       "items": {
         "$ref": "schemas/evidence-ref.v1.schema.json"
@@ -48,11 +131,54 @@
     "warnings": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "details": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "readiness": {
+      "$ref": "schemas/readiness-envelope.v1.schema.json"
+    },
+    "stream_ref": {
+      "type": "object",
+      "required": [
+        "stream_id"
+      ],
+      "properties": {
+        "stream_id": {
+          "type": "string"
+        },
+        "event_transport": {
+          "type": "string",
+          "enum": [
+            "local_event_stream",
+            "local_ipc_rpc",
+            "lan_secure",
+            "remote_https"
+          ]
+        },
+        "resume_token": {
+          "type": "string"
+        }
       }
     },
     "metadata": {
       "type": "object"
     }
-  }
+  },
+  "additionalProperties": false
 }

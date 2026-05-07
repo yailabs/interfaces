@@ -1,10 +1,16 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "yai.error.v1",
+  "title": "YAI API Error v1",
   "type": "object",
   "required": [
     "code",
-    "message"
+    "message",
+    "category",
+    "retryable",
+    "transport_error",
+    "operation_error",
+    "guard_error"
   ],
   "properties": {
     "code": {
@@ -15,24 +21,75 @@
         "forbidden",
         "not_found",
         "conflict",
+        "rate_limited",
         "unsupported_operation",
         "not_implemented",
         "precondition_failed",
         "governance_required",
         "control_gate_required",
+        "runtime_sealed",
         "runtime_unavailable",
         "provider_unavailable",
+        "timeout",
+        "cancelled",
+        "transport_unavailable",
+        "transport_not_configured",
+        "decode_error",
         "internal_error"
       ]
     },
     "message": {
       "type": "string"
     },
+    "category": {
+      "type": "string",
+      "enum": [
+        "validation",
+        "unauthorized",
+        "forbidden",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "unavailable",
+        "timeout",
+        "cancelled",
+        "unsupported",
+        "runtime_sealed",
+        "transport",
+        "internal"
+      ]
+    },
+    "transport_error": {
+      "type": "boolean"
+    },
+    "operation_error": {
+      "type": "boolean"
+    },
+    "guard_error": {
+      "type": "boolean"
+    },
     "details": {
       "type": "object"
     },
     "retryable": {
       "type": "boolean"
+    },
+    "cause": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
     }
-  }
+  },
+  "additionalProperties": false
 }

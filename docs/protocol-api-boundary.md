@@ -3,7 +3,7 @@
 ## Purpose
 
 Define the cut line between canonical YAI protocol ownership and API projection
-ownership during the V28.5 filesystem cutover.
+ownership after the V28.6 cutover closure.
 
 ## Canonical Rule
 
@@ -29,9 +29,9 @@ api defines exposure, mapping, and API-facing compatibility.
 - API-specific conformance
 - compatibility mirrors needed while cutover is incomplete
 
-## Target API Shape
+## API Shape
 
-The target API projection shape for later waves is:
+The API projection shape is now explicitly documented as:
 
 ```text
 api/
@@ -47,18 +47,18 @@ api/
   tools/
 ```
 
-## Current V28.5 Reality
+## Current V28.6 Reality
 
-- `openapi/`, `registry/`, `conformance/`, `fixtures/`, and `docs/` exist now.
-- `projections/`, `mappings/`, `examples/`, and `tools/` are target surfaces,
-  but they do not exist in the current repository state.
-- V28.5 does not invent those directories prematurely.
+- `openapi/`, `registry/`, `conformance/`, `fixtures/`, `schemas/`, and `docs/`
+  remain active surfaces.
+- `projections/`, `mappings/`, `transports/`, `examples/`, and `tools/` now
+  exist as documentation-only projection roots.
 - API mirror conformance now reads canonical protocol files from
   `../yai/protocols` and fails on drift between canonical protocol artifacts and
   API mirror copies.
 
 ## Cutover Rule
 
-Until OpenAPI, registry, and API-specific validation are fully rewired, API may
-retain mirror copies of selected schemas, fixtures, and conformance checks.
-Those mirrors are compatibility surfaces, not protocol truth.
+API may retain mirror copies of selected schemas, fixtures, and conformance
+checks where projection or validation consumers still need them. Those mirrors
+are compatibility surfaces, not protocol truth.

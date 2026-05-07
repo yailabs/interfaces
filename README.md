@@ -55,10 +55,10 @@ a commercial license.
 
 `api` is the API projection surface for YAI. It owns API exposure grammar
 (families, verbs, operations, projections), OpenAPI projection, API registry,
-transport mapping, and API-specific conformance used by SDK and client
-surfaces.
+projection mappings, transport-facing documentation roots, and API-specific
+conformance used by SDK and client surfaces.
 
-Canonical protocol meaning now drains toward `yai/protocols`. Runtime
+Canonical protocol meaning now lives in `yai/protocols`. Runtime
 implementation remains in `yai-labs/yai`.
 
 ## Repository Identity (Local vs Remote)
@@ -70,9 +70,13 @@ implementation remains in `yai-labs/yai`.
 
 Canonical API projection source lives here (`api`).
 
-- Owns: OpenAPI, `registry/api-*.json`, API projection docs, HTTP/transport request-response mapping, API-specific conformance.
-- Mirrors or projects: selected protocol-neutral schemas, fixtures, and conformance while cutover to `yai/protocols` is in progress.
+- Owns: OpenAPI, `registry/api-*.json`, API projection docs, projection/mapping root definitions, HTTP/transport request-response mapping, API-specific conformance.
+- Mirrors or projects: selected protocol-neutral schemas, fixtures, and conformance as API-side compatibility surfaces over `yai/protocols`.
 - Does not own: transport-neutral protocol meaning, runtime execution, client product behavior, SDK package implementations, provider backends, account backend behavior.
+
+Transport vocabulary and transport-class ownership are frozen in:
+- `transports/`
+- `docs/transport-boundary-model.md`
 
 Boundary guarantees:
 - Root `yai/api` remains physically drained.

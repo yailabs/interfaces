@@ -1,0 +1,26 @@
+{
+  "machine_fingerprint_evidence": {
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/consent-003",
+    "local_machine_identity_ref": "local_machine_identity/new-001",
+    "local_machine_ref": "local_machine/workstation-01",
+    "machine_identity_store_ref": "machine_identity_store/runtime-state",
+    "evidence_kind": "privacy_bounded_fingerprint",
+    "evidence_status": "requires_consent",
+    "evidence_source_policy": "user_confirmed_signals",
+    "privacy_posture": "requires_review",
+    "minimization_posture": "reduced",
+    "consent_posture": "required",
+    "confidence_posture": "medium",
+    "rotation_posture": "rotation_candidate",
+    "enrollment_use": "enrollment_pending",
+    "created_at": "2026-05-07T09:10:00Z",
+    "source_local_identity_status": "local_only",
+    "warning_codes": [
+      "consent_required",
+      "privacy_review_required"
+    ],
+    "redaction_notes": [
+      "Consent must be satisfied before future enrollment use."
+    ]
+  }
+}

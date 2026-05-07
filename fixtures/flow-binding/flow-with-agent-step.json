@@ -1,0 +1,24 @@
+{
+  "flow_binding": {
+    "flow_ref": "flow.local-003",
+    "flow_run_ref": "flow-run.local-003",
+    "case_ref": "case.local-003",
+    "flow_kind": "agentic_workflow",
+    "requested_action": "delegate_to_agent",
+    "requested_at": "2026-05-07T10:10:00Z",
+    "requested_by_principal_ref": "principal.local-003",
+    "requested_from_client_ref": "client.cli.local-003",
+    "agent_instance_refs": [
+      "agent-instance.local-003"
+    ],
+    "flow_step_refs": [
+      "flow-step.local-003-review"
+    ],
+    "auth_context_ref": "auth-context.local-003",
+    "entitlement_ref": "entitlement.local-003",
+    "runtime_gate_decision_ref": "runtime-gate.local-003",
+    "decision": "allowed",
+    "reason": "flow may coordinate agent activity only through governed agent authority",
+    "flow_output_posture": "no_output"
+  }
+}

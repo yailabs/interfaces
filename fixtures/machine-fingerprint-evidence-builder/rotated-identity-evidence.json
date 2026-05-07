@@ -1,0 +1,27 @@
+{
+  "machine_fingerprint_evidence": {
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/rotated-004",
+    "local_machine_identity_ref": "local_machine_identity/rotated-003",
+    "local_machine_ref": "local_machine/workstation-03",
+    "machine_identity_store_ref": "machine_identity_store/platform-keychain",
+    "evidence_kind": "rotation_evidence",
+    "evidence_status": "rotated",
+    "evidence_source_policy": "privacy_bounded_signals",
+    "privacy_posture": "raw_hardware_forbidden",
+    "minimization_posture": "hashed_or_derived_only",
+    "consent_posture": "deferred",
+    "confidence_posture": "medium",
+    "rotation_posture": "rotated",
+    "enrollment_use": "authorization_refresh_candidate",
+    "created_at": "2026-05-07T09:15:00Z",
+    "source_local_identity_status": "enrollment_pending",
+    "machine_authorization_status": "pending",
+    "warning_codes": [
+      "rotation_required",
+      "raw_hardware_forbidden"
+    ],
+    "redaction_notes": [
+      "Rotation evidence remains privacy-bounded and does not grant authorization."
+    ]
+  }
+}

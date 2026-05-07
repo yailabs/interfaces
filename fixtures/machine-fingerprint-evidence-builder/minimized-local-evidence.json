@@ -1,0 +1,23 @@
+{
+  "machine_fingerprint_evidence": {
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/minimized-001",
+    "local_machine_identity_ref": "local_machine_identity/existing-002",
+    "local_machine_ref": "local_machine/workstation-02",
+    "machine_identity_store_ref": "machine_identity_store/local-file",
+    "evidence_kind": "local_identity_attestation",
+    "evidence_status": "built",
+    "evidence_source_policy": "local_identity_only",
+    "privacy_posture": "minimized",
+    "minimization_posture": "minimal",
+    "consent_posture": "not_required",
+    "confidence_posture": "medium",
+    "rotation_posture": "not_rotated",
+    "enrollment_use": "not_for_enrollment",
+    "created_at": "2026-05-07T09:00:00Z",
+    "source_local_identity_status": "enrollment_ready",
+    "warning_codes": [],
+    "redaction_notes": [
+      "No raw hardware material enters the evidence contract."
+    ]
+  }
+}

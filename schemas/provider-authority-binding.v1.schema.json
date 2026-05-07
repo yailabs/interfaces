@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.provider-authority-binding.v1",
+  "title": "YAI Provider Authority Binding v1",
+  "type": "object",
+  "required": [
+    "provider_authority"
+  ],
+  "properties": {
+    "provider_authority": {
+      "$ref": "#/$defs/providerAuthority"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requestedAction": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "embed",
+        "rerank",
+        "classify",
+        "summarize",
+        "extract",
+        "tool_call",
+        "model_status",
+        "provider_status"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "requires_auth",
+        "requires_case",
+        "requires_entitlement",
+        "requires_machine_authorization",
+        "requires_license_lease",
+        "requires_runtime_gate",
+        "requires_limit_capacity",
+        "requires_manual_review",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_auth_context",
+        "missing_case_ref",
+        "missing_operator_context",
+        "missing_entitlement",
+        "machine_not_authorized",
+        "license_lease_expired",
+        "runtime_gate_blocked",
+        "provider_not_configured",
+        "model_not_allowed",
+        "limit_exceeded",
+        "quota_exhausted",
+        "billing_required_but_unavailable",
+        "manual_review_required",
+        "unsafe_request",
+        "unknown"
+      ]
+    },
+    "providerOutputPosture": {
+      "type": "string",
+      "enum": [
+        "no_output",
+        "output_not_persisted",
+        "output_as_evidence",
+        "output_as_knowledge_candidate",
+        "output_redacted",
+        "output_blocked"
+      ]
+    },
+    "providerAuthority": {
+      "type": "object",
+      "required": [
+        "provider_call_ref",
+        "case_ref",
+        "provider_ref",
+        "requested_action",
+        "requested_at",
+        "decision",
+        "reason",
+        "provider_output_posture"
+      ],
+      "properties": {
+        "provider_call_ref": {
+          "type": "string"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "provider_ref": {
+          "type": "string"
+        },
+        "model_ref": {
+          "type": "string"
+        },
+        "requested_action": {
+          "$ref": "#/$defs/requestedAction"
+        },
+        "requested_at": {
+          "type": "string"
+        },
+        "requested_by_principal_ref": {
+          "type": "string"
+        },
+        "requested_from_client_ref": {
+          "type": "string"
+        },
+        "job_ref": {
+          "type": "string"
+        },
+        "execution_lease_ref": {
+          "type": "string"
+        },
+        "auth_context_ref": {
+          "type": "string"
+        },
+        "entitlement_ref": {
+          "type": "string"
+        },
+        "machine_authorization_ref": {
+          "type": "string"
+        },
+        "license_lease_ref": {
+          "type": "string"
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "provider_output_posture": {
+          "$ref": "#/$defs/providerOutputPosture"
+        },
+        "output_evidence_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "output_knowledge_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "metering_ref": {
+          "type": "string"
+        },
+        "limit_projection_ref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

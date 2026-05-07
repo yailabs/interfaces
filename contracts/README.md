@@ -25,6 +25,6 @@ Identity contracts define canonical references for family, surface and command.
 Runtime contracts define session, context and execution metadata carried across
 the boundary layer.
 
-These C `.c/.h` helpers are reference or boundary-support artifacts. They are
-not the canonical protocol root and must not be blindly moved into
+These C `.c/.h` helpers are API-side reference or boundary-support artifacts.
+They are not the canonical protocol root and must not be blindly moved into
 `yai/protocols` without a separate ABI/reference audit.

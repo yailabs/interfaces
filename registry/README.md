@@ -3,7 +3,7 @@
 Registry files are the canonical API exposure grammar source.
 
 They are not the owner of transport-neutral protocol meaning.
-That meaning now drains toward `../yai/protocols`.
+That meaning now lives in `../yai/protocols`.
 
 Primary files:
 - `api-families.v1.json`
