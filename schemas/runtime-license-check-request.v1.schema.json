@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/runtime-license-check-request.v1.schema.json",
+  "title": "YAI Runtime License Check Request v1",
+  "type": "object",
+  "required": [
+    "runtime_license_check_request"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "runtime_license_check_request": {
+      "$ref": "#/$defs/runtimeLicenseCheckRequest"
+    }
+  },
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requestKind": {
+      "type": "string",
+      "enum": [
+        "initial_check",
+        "refresh_check",
+        "revalidation_check",
+        "offline_grace_check",
+        "stale_cache_check",
+        "machine_authorization_check",
+        "limit_reconciliation_check",
+        "diagnostic_check"
+      ]
+    },
+    "checkScope": {
+      "type": "string",
+      "enum": [
+        "local_runtime",
+        "machine",
+        "account",
+        "principal",
+        "case_tree",
+        "provider_access",
+        "cloud_compute",
+        "release_update",
+        "system_internal"
+      ]
+    },
+    "requestContext": {
+      "type": "string",
+      "enum": [
+        "startup",
+        "runtime_restart",
+        "reboot_continuity",
+        "terminal_resume",
+        "before_operational_action",
+        "scheduled_refresh",
+        "manual_refresh",
+        "diagnostic"
+      ]
+    },
+    "requestFreshness": {
+      "type": "string",
+      "enum": [
+        "fresh",
+        "stale",
+        "expired",
+        "unknown"
+      ]
+    },
+    "connectivityPosture": {
+      "type": "string",
+      "enum": [
+        "online",
+        "offline",
+        "degraded",
+        "unknown"
+      ]
+    },
+    "privacyPosture": {
+      "type": "string",
+      "enum": [
+        "safe_refs_only",
+        "privacy_bounded_evidence",
+        "no_raw_hardware",
+        "redacted",
+        "requires_review",
+        "unknown"
+      ]
+    },
+    "nextExpectedResponse": {
+      "type": "string",
+      "enum": [
+        "runtime_license_check_response",
+        "diagnostic_only_response",
+        "manual_review_response",
+        "not_applicable",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "cached_lease_used",
+        "stale_limit_projection",
+        "machine_authorization_missing",
+        "license_lease_missing",
+        "auth_context_missing",
+        "offline_request",
+        "privacy_review_required",
+        "unknown"
+      ]
+    },
+    "runtimeLicenseCheckRequest": {
+      "type": "object",
+      "required": [
+        "runtime_license_check_request_ref",
+        "request_kind",
+        "check_scope",
+        "request_context",
+        "request_freshness",
+        "connectivity_posture",
+        "privacy_posture",
+        "requested_at",
+        "local_machine_ref",
+        "next_expected_response"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "runtime_license_check_request_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "request_kind": {
+          "$ref": "#/$defs/requestKind"
+        },
+        "check_scope": {
+          "$ref": "#/$defs/checkScope"
+        },
+        "request_context": {
+          "$ref": "#/$defs/requestContext"
+        },
+        "request_freshness": {
+          "$ref": "#/$defs/requestFreshness"
+        },
+        "connectivity_posture": {
+          "$ref": "#/$defs/connectivityPosture"
+        },
+        "privacy_posture": {
+          "$ref": "#/$defs/privacyPosture"
+        },
+        "requested_at": {
+          "type": "string"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_instance_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_identity_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "account_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "entitlement_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "limit_projection_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/refString"
+          }
+        },
+        "account_limit_reconciliation_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_lease_cache_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_fingerprint_evidence_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "requested_actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "client_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "next_expected_response": {
+          "$ref": "#/$defs/nextExpectedResponse"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        }
+      }
+    }
+  }
+}

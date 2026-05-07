@@ -1,0 +1,31 @@
+{
+  "account_limit_reconciliation": {
+    "account_limit_reconciliation_ref": "account_limit_reconciliation.offline_limited.v1",
+    "account_ref": "account.acct_primary",
+    "principal_ref": "principal.ops_owner",
+    "limit_projection_ref": "limit_projection.cloud_compute_minutes.account_global.cached.v1",
+    "limit_key": "cloud_compute_minutes",
+    "scope": "account_global",
+    "subject_ref": "account.acct_primary",
+    "machine_authorization_ref": "machine_authorization.machine_delta",
+    "local_machine_ref": "local_machine.delta",
+    "license_lease_ref": "license_lease.cloud_compute",
+    "runtime_gate_decision_ref": "runtime_gate_decision.cloud_compute_offline_limited",
+    "account_global_usage": 430,
+    "local_observed_usage": 35,
+    "remaining": 20,
+    "max_allowed": 450,
+    "reconciliation_status": "reconciled_with_warnings",
+    "conflict_status": "none",
+    "staleness_posture": "stale_accepted",
+    "offline_posture": "offline_limited",
+    "cache_posture": "cache_current",
+    "decision": "warning",
+    "warning_codes": [
+      "offline_limited",
+      "cache_used"
+    ],
+    "observed_at": "2026-05-07T09:05:00Z",
+    "expires_at": "2026-05-07T09:09:00Z"
+  }
+}

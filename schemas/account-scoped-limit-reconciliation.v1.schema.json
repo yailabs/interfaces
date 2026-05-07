@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/account-scoped-limit-reconciliation.v1.schema.json",
+  "title": "YAI Account-Scoped Limit Reconciliation v1",
+  "type": "object",
+  "required": [
+    "account_limit_reconciliation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "account_limit_reconciliation": {
+      "$ref": "#/$defs/accountLimitReconciliation"
+    }
+  },
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "account_global",
+        "principal",
+        "machine",
+        "case_tree",
+        "case",
+        "runtime_instance",
+        "team",
+        "organization",
+        "system_internal"
+      ]
+    },
+    "limitKey": {
+      "type": "string",
+      "enum": [
+        "max_open_cases",
+        "max_active_cases",
+        "max_nested_cases",
+        "max_parallel_jobs",
+        "max_active_flows",
+        "max_concurrent_agents",
+        "max_provider_calls",
+        "max_knowledge_writes",
+        "max_evidence_writes",
+        "max_authorized_machines",
+        "max_runtime_actions",
+        "cloud_compute_minutes"
+      ]
+    },
+    "reconciliationStatus": {
+      "type": "string",
+      "enum": [
+        "not_reconciled",
+        "reconciled",
+        "reconciled_with_warnings",
+        "stale_local",
+        "requires_refresh",
+        "conflict_detected",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "conflictStatus": {
+      "type": "string",
+      "enum": [
+        "none",
+        "local_exceeds_remote",
+        "remote_exceeds_local",
+        "machine_mismatch",
+        "lease_mismatch",
+        "cache_mismatch",
+        "requires_manual_review",
+        "unknown"
+      ]
+    },
+    "stalenessPosture": {
+      "type": "string",
+      "enum": [
+        "fresh",
+        "stale",
+        "stale_accepted",
+        "stale_requires_refresh",
+        "stale_rejected",
+        "unknown"
+      ]
+    },
+    "offlinePosture": {
+      "type": "string",
+      "enum": [
+        "online",
+        "offline_allowed",
+        "offline_limited",
+        "offline_blocked",
+        "offline_requires_refresh",
+        "unknown"
+      ]
+    },
+    "cachePosture": {
+      "type": "string",
+      "enum": [
+        "cache_not_used",
+        "cache_current",
+        "cache_stale",
+        "cache_expired",
+        "cache_invalidated",
+        "unknown"
+      ]
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "warning",
+        "blocked",
+        "requires_refresh",
+        "requires_online_check",
+        "requires_manual_review",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "limit_exceeded",
+        "quota_exhausted",
+        "missing_limit_projection",
+        "stale_limit_projection",
+        "account_global_limit_exceeded",
+        "machine_mismatch",
+        "license_lease_required",
+        "license_lease_expired",
+        "machine_authorization_required",
+        "online_check_required",
+        "manual_review_required",
+        "unsafe_projection",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "near_limit",
+        "stale_projection",
+        "offline_limited",
+        "refresh_recommended",
+        "machine_limit_pressure",
+        "cache_used",
+        "unknown"
+      ]
+    },
+    "safeReconciliationProjection": {
+      "type": "object",
+      "required": [
+        "account_ref",
+        "limit_key",
+        "scope",
+        "reconciliation_status",
+        "staleness_posture",
+        "offline_posture",
+        "cache_posture",
+        "decision"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "account_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "limit_key": {
+          "$ref": "#/$defs/limitKey"
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "reconciliation_status": {
+          "$ref": "#/$defs/reconciliationStatus"
+        },
+        "staleness_posture": {
+          "$ref": "#/$defs/stalenessPosture"
+        },
+        "offline_posture": {
+          "$ref": "#/$defs/offlinePosture"
+        },
+        "cache_posture": {
+          "$ref": "#/$defs/cachePosture"
+        },
+        "decision": {
+          "$ref": "#/$defs/decision"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "expires_at": {
+          "type": "string"
+        }
+      }
+    },
+    "accountLimitReconciliation": {
+      "type": "object",
+      "required": [
+        "account_limit_reconciliation_ref",
+        "account_ref",
+        "limit_key",
+        "scope",
+        "reconciliation_status",
+        "conflict_status",
+        "staleness_posture",
+        "offline_posture",
+        "cache_posture",
+        "decision"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "account_limit_reconciliation_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "account_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "limit_projection_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "limit_key": {
+          "$ref": "#/$defs/limitKey"
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "subject_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "account_global_usage": {
+          "type": "number"
+        },
+        "local_observed_usage": {
+          "type": "number"
+        },
+        "remote_observed_usage": {
+          "type": "number"
+        },
+        "remaining": {
+          "type": "number"
+        },
+        "max_allowed": {
+          "type": "number"
+        },
+        "reconciliation_status": {
+          "$ref": "#/$defs/reconciliationStatus"
+        },
+        "conflict_status": {
+          "$ref": "#/$defs/conflictStatus"
+        },
+        "staleness_posture": {
+          "$ref": "#/$defs/stalenessPosture"
+        },
+        "offline_posture": {
+          "$ref": "#/$defs/offlinePosture"
+        },
+        "cache_posture": {
+          "$ref": "#/$defs/cachePosture"
+        },
+        "decision": {
+          "$ref": "#/$defs/decision"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "observed_at": {
+          "type": "string"
+        },
+        "expires_at": {
+          "type": "string"
+        },
+        "safe_reconciliation_projection": {
+          "$ref": "#/$defs/safeReconciliationProjection"
+        }
+      }
+    }
+  }
+}

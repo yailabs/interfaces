@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/local-lease-cache-reboot-continuity.v1.schema.json",
+  "title": "YAI Local Lease Cache Reboot Continuity v1",
+  "type": "object",
+  "required": [
+    "local_lease_cache"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "local_lease_cache": {
+      "type": "object",
+      "required": [
+        "local_lease_cache_ref",
+        "license_lease_ref",
+        "cache_status",
+        "continuity_status",
+        "reboot_posture",
+        "terminal_close_posture",
+        "runtime_restart_posture",
+        "offline_grace_posture",
+        "stale_posture",
+        "refresh_required_posture",
+        "invalidation_posture"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "local_lease_cache_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license_lease_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cache_status": {
+          "$ref": "#/$defs/cacheStatus"
+        },
+        "continuity_status": {
+          "$ref": "#/$defs/continuityStatus"
+        },
+        "reboot_posture": {
+          "$ref": "#/$defs/rebootPosture"
+        },
+        "terminal_close_posture": {
+          "$ref": "#/$defs/terminalClosePosture"
+        },
+        "runtime_restart_posture": {
+          "$ref": "#/$defs/runtimeRestartPosture"
+        },
+        "offline_grace_posture": {
+          "$ref": "#/$defs/offlineGracePosture"
+        },
+        "stale_posture": {
+          "$ref": "#/$defs/stalePosture"
+        },
+        "refresh_required_posture": {
+          "$ref": "#/$defs/refreshRequiredPosture"
+        },
+        "invalidation_posture": {
+          "$ref": "#/$defs/invalidationPosture"
+        },
+        "cached_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "last_validated_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "local_machine_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "machine_authorization_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "account_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "principal_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entitlement_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limit_projection_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "safe_cache_projection": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "license_lease_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "cache_status": {
+              "$ref": "#/$defs/cacheStatus"
+            },
+            "continuity_status": {
+              "$ref": "#/$defs/continuityStatus"
+            },
+            "reboot_posture": {
+              "$ref": "#/$defs/rebootPosture"
+            },
+            "offline_grace_posture": {
+              "$ref": "#/$defs/offlineGracePosture"
+            },
+            "stale_posture": {
+              "$ref": "#/$defs/stalePosture"
+            },
+            "refresh_required_posture": {
+              "$ref": "#/$defs/refreshRequiredPosture"
+            },
+            "expires_at": {
+              "type": "string",
+              "minLength": 1
+            },
+            "warning_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/warningCode"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "cacheStatus": {
+      "type": "string",
+      "enum": [
+        "not_cached",
+        "cached",
+        "cache_unavailable",
+        "cache_corrupt",
+        "cache_expired",
+        "cache_revoked",
+        "cache_invalidated",
+        "cache_stale",
+        "unknown"
+      ]
+    },
+    "continuityStatus": {
+      "type": "string",
+      "enum": [
+        "no_continuity",
+        "continuity_available",
+        "continuity_active",
+        "continuity_limited",
+        "continuity_blocked",
+        "continuity_requires_refresh",
+        "unknown"
+      ]
+    },
+    "rebootPosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "survives_reboot",
+        "does_not_survive_reboot",
+        "reboot_requires_refresh",
+        "reboot_blocked",
+        "unknown"
+      ]
+    },
+    "terminalClosePosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "survives_terminal_close",
+        "terminal_close_requires_refresh",
+        "terminal_close_blocks_operations",
+        "unknown"
+      ]
+    },
+    "runtimeRestartPosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "survives_runtime_restart",
+        "restart_requires_refresh",
+        "restart_blocks_operations",
+        "unknown"
+      ]
+    },
+    "offlineGracePosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "offline_grace_available",
+        "offline_grace_active",
+        "offline_grace_expired",
+        "offline_grace_blocked",
+        "unknown"
+      ]
+    },
+    "stalePosture": {
+      "type": "string",
+      "enum": [
+        "not_stale",
+        "stale_accepted",
+        "stale_requires_refresh",
+        "stale_rejected",
+        "unknown"
+      ]
+    },
+    "refreshRequiredPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "required",
+        "pending",
+        "failed",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "invalidationPosture": {
+      "type": "string",
+      "enum": [
+        "not_invalidated",
+        "invalidated_by_revocation",
+        "invalidated_by_expiry",
+        "invalidated_by_logout",
+        "invalidated_by_machine_change",
+        "invalidated_by_policy",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "lease_not_cached",
+        "lease_cache_corrupt",
+        "lease_cache_expired",
+        "lease_cache_revoked",
+        "lease_cache_stale",
+        "refresh_required",
+        "machine_authorization_required",
+        "machine_mismatch",
+        "logout_invalidated",
+        "policy_invalidated",
+        "unsafe_projection",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "cache_near_expiry",
+        "offline_grace_active",
+        "stale_cache",
+        "refresh_required",
+        "machine_authorization_required",
+        "diagnostics_only",
+        "unknown"
+      ]
+    }
+  }
+}

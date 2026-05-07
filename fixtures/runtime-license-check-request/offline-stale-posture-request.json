@@ -1,0 +1,27 @@
+{
+  "runtime_license_check_request": {
+    "runtime_license_check_request_ref": "runtime_license_check_request.offline_stale.v1",
+    "request_kind": "offline_grace_check",
+    "check_scope": "local_runtime",
+    "request_context": "reboot_continuity",
+    "request_freshness": "stale",
+    "connectivity_posture": "offline",
+    "privacy_posture": "redacted",
+    "requested_at": "2026-05-07T10:03:00Z",
+    "local_machine_ref": "local_machine.delta",
+    "local_machine_identity_ref": "local_machine_identity.delta",
+    "license_lease_ref": "license_lease.delta",
+    "account_ref": "account.acct_primary",
+    "local_lease_cache_ref": "local_lease_cache.delta",
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence.delta",
+    "requested_actions": [
+      "diagnostic_resume"
+    ],
+    "client_ref": "client.cli.local-001",
+    "next_expected_response": "diagnostic_only_response",
+    "warning_codes": [
+      "offline_request",
+      "cached_lease_used"
+    ]
+  }
+}

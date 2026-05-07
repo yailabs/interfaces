@@ -1,0 +1,35 @@
+{
+  "runtime_license_check_request": {
+    "runtime_license_check_request_ref": "runtime_license_check_request.full_online.v1",
+    "request_kind": "initial_check",
+    "check_scope": "local_runtime",
+    "request_context": "startup",
+    "request_freshness": "fresh",
+    "connectivity_posture": "online",
+    "privacy_posture": "safe_refs_only",
+    "requested_at": "2026-05-07T10:00:00Z",
+    "local_machine_ref": "local_machine.alpha",
+    "runtime_instance_ref": "runtime_instance.alpha",
+    "local_machine_identity_ref": "local_machine_identity.alpha",
+    "machine_authorization_ref": "machine_authorization.alpha",
+    "license_lease_ref": "license_lease.alpha",
+    "auth_context_ref": "auth_context.operator_alpha",
+    "account_ref": "account.acct_primary",
+    "principal_ref": "principal.ops_owner",
+    "entitlement_ref": "entitlement.runtime_primary",
+    "limit_projection_refs": [
+      "limit_projection.max_runtime_actions.account_global.v1",
+      "limit_projection.max_provider_calls.account_global.v1"
+    ],
+    "account_limit_reconciliation_ref": "account_limit_reconciliation.runtime_actions.v1",
+    "local_lease_cache_ref": "local_lease_cache.alpha",
+    "runtime_gate_decision_ref": "runtime_gate_decision.startup_check",
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence.alpha",
+    "requested_actions": [
+      "runtime_start",
+      "provider_access"
+    ],
+    "client_ref": "client.cli.local-001",
+    "next_expected_response": "runtime_license_check_response"
+  }
+}

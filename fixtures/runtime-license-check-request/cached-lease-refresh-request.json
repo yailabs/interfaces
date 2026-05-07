@@ -1,0 +1,27 @@
+{
+  "runtime_license_check_request": {
+    "runtime_license_check_request_ref": "runtime_license_check_request.cached_lease_refresh.v1",
+    "request_kind": "refresh_check",
+    "check_scope": "local_runtime",
+    "request_context": "scheduled_refresh",
+    "request_freshness": "stale",
+    "connectivity_posture": "online",
+    "privacy_posture": "redacted",
+    "requested_at": "2026-05-07T10:02:00Z",
+    "local_machine_ref": "local_machine.gamma",
+    "runtime_instance_ref": "runtime_instance.gamma",
+    "machine_authorization_ref": "machine_authorization.gamma",
+    "license_lease_ref": "license_lease.gamma",
+    "account_ref": "account.acct_primary",
+    "local_lease_cache_ref": "local_lease_cache.gamma",
+    "runtime_gate_decision_ref": "runtime_gate_decision.lease_refresh_needed",
+    "requested_actions": [
+      "runtime_resume"
+    ],
+    "client_ref": "client.cli.local-001",
+    "next_expected_response": "runtime_license_check_response",
+    "warning_codes": [
+      "cached_lease_used"
+    ]
+  }
+}
