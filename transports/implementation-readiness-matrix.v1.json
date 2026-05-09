@@ -6,12 +6,12 @@
       "transport": "local_ipc_rpc",
       "contract_status": "frozen",
       "implementation_priority": "primary_now",
-      "runtime_readiness": "ready_for_implementation",
-      "sdk_readiness": "ready_for_client_implementation",
-      "client_default": "cli_loom_native",
-      "next_runtime_wave": "RT.01 / RT.02",
+      "runtime_readiness": "read_projection_probe_ready",
+      "sdk_readiness": "rust_client_available",
+      "client_default": "status_default_candidate_only",
+      "next_runtime_wave": "RT.04",
       "next_sdk_wave": "SDK.01",
-      "next_client_wave": "CLI.01 / LOOM.01"
+      "next_client_wave": "CLI.02 / LOOM.02"
     },
     {
       "transport": "local_http_loopback",

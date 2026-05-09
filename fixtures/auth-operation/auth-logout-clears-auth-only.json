@@ -1,0 +1,22 @@
+{
+  "auth_operation": {
+    "operation_id": "auth.logout",
+    "action_id": "auth.logout",
+    "request_kind": "logout",
+    "operation_status": "allowed",
+    "auth_posture": "unauthenticated",
+    "provider_posture": "provider_session_absent",
+    "auth_context_posture": "revoked",
+    "reason": "Logout clears auth posture only.",
+    "next_action": "Re-authenticate if later work needs auth posture.",
+    "safe_projection": {
+      "action_id": "auth.logout",
+      "operation_status": "allowed",
+      "auth_posture": "unauthenticated",
+      "provider_posture": "provider_session_absent",
+      "auth_context_posture": "revoked",
+      "reason": "Logout clears auth posture only.",
+      "next_action": "Re-authenticate if later work needs auth posture."
+    }
+  }
+}

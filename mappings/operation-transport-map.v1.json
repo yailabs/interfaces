@@ -37,7 +37,7 @@
       "sdk_projection": "sdk.projection.act.run",
       "cli_projection": "cli.projection.act.run",
       "tui_projection": "tui.projection.act.run",
-      "notes": "High-level composition registry surface; direct transport dispatch is deferred in API.02 and SDK-side projection over canonical lower-level operations may arrive later."
+      "notes": "High-level composition registry surface; direct transport dispatch is deferred in API.02 and SDK-side projection over canonical lower-level operations may arrive later. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "agents.list",
@@ -87,13 +87,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.agents.agents.plan",
       "cli_projection": "cli.agents.plan",
       "tui_projection": "tui.agents.plan",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "agents.run",
@@ -115,13 +115,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.agents.agents.run",
       "cli_projection": "cli.agents.run",
       "tui_projection": "tui.agents.run",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "agents.trace",
@@ -292,6 +292,34 @@
       "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
     },
     {
+      "operation_id": "auth.login.local_dev",
+      "family": "auth",
+      "default_transport": "remote_https",
+      "allowed_transports": [
+        "remote_https",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "local_event_stream",
+        "lan_secure",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": false,
+      "browser_recommended": true,
+      "lan_exposure": "not_applicable",
+      "remote_exposure": "platform_boundary",
+      "provider_transport_boundary": "not_applicable",
+      "dispatch_target": "platform_remote_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.auth.auth.login.local_dev",
+      "cli_projection": "cli.auth.login.local_dev",
+      "tui_projection": "tui.auth.login.local_dev",
+      "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
+    },
+    {
       "operation_id": "auth.logout",
       "family": "auth",
       "default_transport": "remote_https",
@@ -317,6 +345,146 @@
       "sdk_projection": "sdk.auth.auth.logout",
       "cli_projection": "cli.auth.logout",
       "tui_projection": "tui.auth.logout",
+      "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
+    },
+    {
+      "operation_id": "auth.context.inspect",
+      "family": "auth",
+      "default_transport": "remote_https",
+      "allowed_transports": [
+        "remote_https",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "local_event_stream",
+        "lan_secure",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": false,
+      "browser_recommended": true,
+      "lan_exposure": "not_applicable",
+      "remote_exposure": "platform_boundary",
+      "provider_transport_boundary": "not_applicable",
+      "dispatch_target": "platform_remote_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.auth.context.inspect",
+      "cli_projection": "cli.auth.context.inspect",
+      "tui_projection": "tui.auth.context.inspect",
+      "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
+    },
+    {
+      "operation_id": "auth.device_login.cancel",
+      "family": "auth",
+      "default_transport": "remote_https",
+      "allowed_transports": [
+        "remote_https",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "local_event_stream",
+        "lan_secure",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": false,
+      "browser_recommended": true,
+      "lan_exposure": "not_applicable",
+      "remote_exposure": "platform_boundary",
+      "provider_transport_boundary": "not_applicable",
+      "dispatch_target": "platform_remote_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.auth.device_login.cancel",
+      "cli_projection": "cli.auth.device_login.cancel",
+      "tui_projection": "tui.auth.device_login.cancel",
+      "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
+    },
+    {
+      "operation_id": "auth.device_login.start",
+      "family": "auth",
+      "default_transport": "remote_https",
+      "allowed_transports": [
+        "remote_https",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "local_event_stream",
+        "lan_secure",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": false,
+      "browser_recommended": true,
+      "lan_exposure": "not_applicable",
+      "remote_exposure": "platform_boundary",
+      "provider_transport_boundary": "not_applicable",
+      "dispatch_target": "platform_remote_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.auth.device_login.start",
+      "cli_projection": "cli.auth.device_login.start",
+      "tui_projection": "tui.auth.device_login.start",
+      "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
+    },
+    {
+      "operation_id": "auth.device_login.status",
+      "family": "auth",
+      "default_transport": "remote_https",
+      "allowed_transports": [
+        "remote_https",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "local_event_stream",
+        "lan_secure",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": false,
+      "browser_recommended": true,
+      "lan_exposure": "not_applicable",
+      "remote_exposure": "platform_boundary",
+      "provider_transport_boundary": "not_applicable",
+      "dispatch_target": "platform_remote_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.auth.device_login.status",
+      "cli_projection": "cli.auth.device_login.status",
+      "tui_projection": "tui.auth.device_login.status",
+      "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
+    },
+    {
+      "operation_id": "auth.provider.status",
+      "family": "auth",
+      "default_transport": "remote_https",
+      "allowed_transports": [
+        "remote_https",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "local_event_stream",
+        "lan_secure",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": false,
+      "browser_recommended": true,
+      "lan_exposure": "not_applicable",
+      "remote_exposure": "platform_boundary",
+      "provider_transport_boundary": "not_applicable",
+      "dispatch_target": "platform_remote_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.auth.provider.status",
+      "cli_projection": "cli.auth.provider.status",
+      "tui_projection": "tui.auth.provider.status",
       "notes": "Platform/account boundary operation; remote HTTPS is canonical and not local runtime execution by default."
     },
     {
@@ -401,6 +569,34 @@
       "sdk_projection": "sdk.case.case.create",
       "cli_projection": "cli.case.create",
       "tui_projection": "tui.case.create",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "case.root",
+      "family": "case",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.case.case.root",
+      "cli_projection": "cli.case.root",
+      "tui_projection": "tui.case.root",
       "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
@@ -426,10 +622,125 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "deferred",
+      "runtime_ipc_readiness": "deferred_runtime_projection",
+      "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet.",
       "sdk_projection": "sdk.case.case.current",
       "cli_projection": "cli.case.current",
       "tui_projection": "tui.case.current",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: deferred at read_projection_probe_ready. Contract still allows local_ipc_rpc, but runtime probe support is not yet claimed."
+    },
+    {
+      "operation_id": "operator_context.active_case.clear",
+      "family": "operator_context",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.operator_context.active_case.clear",
+      "cli_projection": "cli.operator_context.active_case.clear",
+      "tui_projection": "tui.operator_context.active_case.clear",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "operator_context.active_case.set",
+      "family": "operator_context",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.operator_context.active_case.set",
+      "cli_projection": "cli.operator_context.active_case.set",
+      "tui_projection": "tui.operator_context.active_case.set",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "operator_context.current",
+      "family": "operator_context",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.operator_context.current",
+      "cli_projection": "cli.operator_context.current",
+      "tui_projection": "tui.operator_context.current",
       "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "case.enter",
+      "family": "case",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.case.case.enter",
+      "cli_projection": "cli.case.enter",
+      "tui_projection": "tui.case.enter",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "case.graph.show",
@@ -460,6 +771,34 @@
       "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
+      "operation_id": "case.leave",
+      "family": "case",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.case.case.leave",
+      "cli_projection": "cli.case.leave",
+      "tui_projection": "tui.case.leave",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
       "operation_id": "case.list",
       "family": "case",
       "default_transport": "local_ipc_rpc",
@@ -482,10 +821,41 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "deferred",
+      "runtime_ipc_readiness": "deferred_runtime_projection",
+      "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet.",
       "sdk_projection": "sdk.case.case.list",
       "cli_projection": "cli.case.list",
       "tui_projection": "tui.case.list",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: deferred at read_projection_probe_ready. Contract still allows local_ipc_rpc, but runtime probe support is not yet claimed."
+    },
+    {
+      "operation_id": "case.open",
+      "family": "case",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.case.case.open",
+      "cli_projection": "cli.case.open",
+      "tui_projection": "tui.case.open",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "case.pending",
@@ -566,9 +936,68 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "deferred",
+      "runtime_ipc_readiness": "deferred_runtime_projection",
+      "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet.",
       "sdk_projection": "sdk.case.case.show",
       "cli_projection": "cli.case.show",
       "tui_projection": "tui.case.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: deferred at read_projection_probe_ready. Contract still allows local_ipc_rpc, but runtime probe support is not yet claimed."
+    },
+    {
+      "operation_id": "case.status",
+      "family": "case",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.case.case.status",
+      "cli_projection": "cli.case.status",
+      "tui_projection": "tui.case.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "operator_context.status",
+      "family": "operator_context",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.operator_context.status",
+      "cli_projection": "cli.operator_context.status",
+      "tui_projection": "tui.operator_context.status",
       "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
@@ -593,7 +1022,7 @@
       "remote_exposure": "local_only",
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
-      "runtime_handler_readiness": "planned",
+      "runtime_handler_readiness": "partial",
       "sdk_projection": "sdk.case.case.tree",
       "cli_projection": "cli.case.tree",
       "tui_projection": "tui.case.tree",
@@ -625,7 +1054,35 @@
       "sdk_projection": "sdk.case.case.use",
       "cli_projection": "cli.case.use",
       "tui_projection": "tui.case.use",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "case.close",
+      "family": "case",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.case.case.close",
+      "cli_projection": "cli.case.close",
+      "tui_projection": "tui.case.close",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "chat.send",
@@ -652,7 +1109,7 @@
       "sdk_projection": "sdk.projection.chat.send",
       "cli_projection": "cli.projection.chat.send",
       "tui_projection": "tui.projection.chat.send",
-      "notes": "High-level composition registry surface; direct transport dispatch is deferred in API.02 and SDK-side projection over canonical lower-level operations may arrive later."
+      "notes": "High-level composition registry surface; direct transport dispatch is deferred in API.02 and SDK-side projection over canonical lower-level operations may arrive later. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "chat.start",
@@ -903,7 +1360,7 @@
       "sdk_projection": "sdk.control.gates.approve",
       "cli_projection": "cli.control.gates.approve",
       "tui_projection": "tui.control.gates.approve",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "control.gates.list",
@@ -1015,7 +1472,7 @@
       "sdk_projection": "sdk.control.subjects.attach",
       "cli_projection": "cli.control.subjects.attach",
       "tui_projection": "tui.control.subjects.attach",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "conversation.context.attach",
@@ -1043,7 +1500,7 @@
       "sdk_projection": "sdk.conversation.context.attach",
       "cli_projection": "cli.conversation.context.attach",
       "tui_projection": "tui.conversation.context.attach",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "conversation.create",
@@ -1071,7 +1528,7 @@
       "sdk_projection": "sdk.conversation.conversation.create",
       "cli_projection": "cli.conversation.create",
       "tui_projection": "tui.conversation.create",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "conversation.current",
@@ -1149,13 +1606,15 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "blocked",
+      "operation_coverage_notes": "Not part of RT.04 read/projection coverage; mutating operations remain blocked over Local IPC RPC.",
       "sdk_projection": "sdk.conversation.messages.send",
       "cli_projection": "cli.conversation.messages.send",
       "tui_projection": "tui.conversation.messages.send",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "conversation.workflow.propose",
@@ -1210,7 +1669,7 @@
       "sdk_projection": "sdk.projection.gate.approve",
       "cli_projection": "cli.projection.gate.approve",
       "tui_projection": "tui.projection.gate.approve",
-      "notes": "High-level composition registry surface; direct transport dispatch is deferred in API.02 and SDK-side projection over canonical lower-level operations may arrive later."
+      "notes": "High-level composition registry surface; direct transport dispatch is deferred in API.02 and SDK-side projection over canonical lower-level operations may arrive later. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "governance.decisions.show",
@@ -1601,7 +2060,7 @@
       "sdk_projection": "sdk.knowledge.memory.promote",
       "cli_projection": "cli.knowledge.memory.promote",
       "tui_projection": "tui.knowledge.memory.promote",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "knowledge.query",
@@ -1623,13 +2082,13 @@
       "browser_recommended": true,
       "lan_exposure": "allowed_with_pairing",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
       "sdk_projection": "sdk.knowledge.knowledge.query",
       "cli_projection": "cli.knowledge.query",
       "tui_projection": "tui.knowledge.query",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "models.capabilities.show",
@@ -1710,10 +2169,13 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "deferred",
+      "runtime_ipc_readiness": "deferred_runtime_projection",
+      "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet. Does not imply model load, model invocation, or model availability.",
       "sdk_projection": "sdk.models.models.list",
       "cli_projection": "cli.models.list",
       "tui_projection": "tui.models.list",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: deferred at read_projection_probe_ready. Model load/invoke remains outside client-runtime transport mapping and this entry must not imply model execution."
     },
     {
       "operation_id": "models.use",
@@ -1741,7 +2203,7 @@
       "sdk_projection": "sdk.models.models.use",
       "cli_projection": "cli.models.use",
       "tui_projection": "tui.models.use",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "orchestrator.handoffs.request",
@@ -1763,13 +2225,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.orchestrator.handoffs.request",
       "cli_projection": "cli.orchestrator.handoffs.request",
       "tui_projection": "tui.orchestrator.handoffs.request",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "orchestrator.plans.create",
@@ -1791,13 +2253,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.orchestrator.plans.create",
       "cli_projection": "cli.orchestrator.plans.create",
       "tui_projection": "tui.orchestrator.plans.create",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "orchestrator.recovery.plan",
@@ -1819,13 +2281,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.orchestrator.recovery.plan",
       "cli_projection": "cli.orchestrator.recovery.plan",
       "tui_projection": "tui.orchestrator.recovery.plan",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "orchestrator.routes.resolve",
@@ -1847,13 +2309,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
       "sdk_projection": "sdk.orchestrator.routes.resolve",
       "cli_projection": "cli.orchestrator.routes.resolve",
       "tui_projection": "tui.orchestrator.routes.resolve",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "output.export",
@@ -1875,13 +2337,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.output.output.export",
       "cli_projection": "cli.output.export",
       "tui_projection": "tui.output.export",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "output.list",
@@ -1931,13 +2393,13 @@
       "browser_recommended": true,
       "lan_exposure": "allowed_with_pairing",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.output.output.preview",
       "cli_projection": "cli.output.preview",
       "tui_projection": "tui.output.preview",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "output.render",
@@ -1959,13 +2421,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.output.output.render",
       "cli_projection": "cli.output.render",
       "tui_projection": "tui.output.render",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "output.show",
@@ -2070,13 +2532,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.prompting.previews.render",
       "cli_projection": "cli.prompting.previews.render",
       "tui_projection": "tui.prompting.previews.render",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "prompting.templates.render",
@@ -2098,13 +2560,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.prompting.templates.render",
       "cli_projection": "cli.prompting.templates.render",
       "tui_projection": "tui.prompting.templates.render",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
     },
     {
       "operation_id": "prompting.traces.replay",
@@ -2187,7 +2649,7 @@
       "sdk_projection": "sdk.providers.providers.connect",
       "cli_projection": "cli.providers.connect",
       "tui_projection": "tui.providers.connect",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "providers.list",
@@ -2212,10 +2674,13 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "deferred",
+      "runtime_ipc_readiness": "deferred_runtime_projection",
+      "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet. Does not imply provider transport calls, credential reads, or provider availability.",
       "sdk_projection": "sdk.providers.providers.list",
       "cli_projection": "cli.providers.list",
       "tui_projection": "tui.providers.list",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: deferred at read_projection_probe_ready. Provider transport remains excluded from client-runtime transport mapping and this entry must not imply provider transport calls."
     },
     {
       "operation_id": "providers.probe",
@@ -2243,7 +2708,7 @@
       "sdk_projection": "sdk.providers.providers.probe",
       "cli_projection": "cli.providers.probe",
       "tui_projection": "tui.providers.probe",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "providers.set",
@@ -2271,7 +2736,7 @@
       "sdk_projection": "sdk.providers.providers.set",
       "cli_projection": "cli.providers.set",
       "tui_projection": "tui.providers.set",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "providers.status",
@@ -2323,9 +2788,9 @@
       "provider_transport_boundary": "not_applicable",
       "dispatch_target": "sdk_local_only",
       "runtime_handler_readiness": "planned",
-      "sdk_projection": "sdk.projection.recall.query",
-      "cli_projection": "cli.projection.recall.query",
-      "tui_projection": "tui.projection.recall.query",
+      "sdk_projection": "sdk.recall.query",
+      "cli_projection": "cli.recall.query",
+      "tui_projection": "tui.recall.query",
       "notes": "High-level composition registry surface; direct transport dispatch is deferred in API.02 and SDK-side projection over canonical lower-level operations may arrive later."
     },
     {
@@ -2572,13 +3037,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.skills.skills.run",
       "cli_projection": "cli.skills.run",
       "tui_projection": "tui.skills.run",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "state.diff",
@@ -2743,10 +3208,13 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "supported",
+      "runtime_ipc_readiness": "read_projection_probe_ready",
+      "operation_coverage_notes": "Supported by RT.04 safe read/projection dispatch.",
       "sdk_projection": "sdk.system.system.check",
       "cli_projection": "cli.system.check",
       "tui_projection": "tui.system.check",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: supported at read_projection_probe_ready. Local HTTP Loopback remains contract-allowed where mapped. Local Event Stream is not the default for this request/response surface."
     },
     {
       "operation_id": "system.doctor",
@@ -2799,10 +3267,13 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "supported",
+      "runtime_ipc_readiness": "read_projection_probe_ready",
+      "operation_coverage_notes": "Supported by RT.04 safe read/projection dispatch.",
       "sdk_projection": "sdk.system.runtime.inspect",
       "cli_projection": "cli.system.runtime.inspect",
       "tui_projection": "tui.system.runtime.inspect",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: supported at read_projection_probe_ready. Local HTTP Loopback remains contract-allowed where mapped. Local Event Stream is not the default for this request/response surface."
     },
     {
       "operation_id": "system.service.status",
@@ -2855,10 +3326,13 @@
       "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "partial",
+      "runtime_ipc_coverage": "supported",
+      "runtime_ipc_readiness": "read_projection_probe_ready",
+      "operation_coverage_notes": "Supported by RT.03 and preserved by RT.04 safe read/projection dispatch.",
       "sdk_projection": "sdk.system.system.status",
       "cli_projection": "cli.system.status",
       "tui_projection": "tui.system.status",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. RT.04 runtime IPC coverage: supported at read_projection_probe_ready. Local HTTP Loopback remains contract-allowed where mapped. Local Event Stream is not the default for this request/response surface."
     },
     {
       "operation_id": "workflow.branches.fork",
@@ -2886,7 +3360,7 @@
       "sdk_projection": "sdk.workflow.branches.fork",
       "cli_projection": "cli.workflow.branches.fork",
       "tui_projection": "tui.workflow.branches.fork",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "workflow.compose",
@@ -2970,7 +3444,7 @@
       "sdk_projection": "sdk.workflow.loops.add",
       "cli_projection": "cli.workflow.loops.add",
       "tui_projection": "tui.workflow.loops.add",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "workflow.nodes.add",
@@ -2998,7 +3472,7 @@
       "sdk_projection": "sdk.workflow.nodes.add",
       "cli_projection": "cli.workflow.nodes.add",
       "tui_projection": "tui.workflow.nodes.add",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "workflow.runs.start",
@@ -3020,13 +3494,13 @@
       "browser_recommended": true,
       "lan_exposure": "blocked_by_default",
       "remote_exposure": "local_only",
-      "provider_transport_boundary": "runtime_provider_only",
+      "provider_transport_boundary": "excluded",
       "dispatch_target": "runtime_boundary_api",
       "runtime_handler_readiness": "planned",
       "sdk_projection": "sdk.workflow.runs.start",
       "cli_projection": "cli.workflow.runs.start",
       "tui_projection": "tui.workflow.runs.start",
-      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch."
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
     },
     {
       "operation_id": "workflow.runs.watch",
@@ -3139,6 +3613,3062 @@
       "cli_projection": "cli.workflow.validate",
       "tui_projection": "tui.workflow.validate",
       "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "system.readiness",
+      "family": "system",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "subprocess_stdio_compat",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.system.readiness",
+      "cli_projection": "cli.system.readiness",
+      "tui_projection": "tui.system.readiness",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "workflow.status",
+      "family": "workflow",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.workflow.status",
+      "cli_projection": "cli.workflow.status",
+      "tui_projection": "tui.workflow.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "workflow.inspect",
+      "family": "workflow",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.workflow.inspect",
+      "cli_projection": "cli.workflow.inspect",
+      "tui_projection": "tui.workflow.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "workflow.plan",
+      "family": "workflow",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.workflow.plan",
+      "cli_projection": "cli.workflow.plan",
+      "tui_projection": "tui.workflow.plan",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "workflow.runs.stop",
+      "family": "workflow",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.workflow.runs.stop",
+      "cli_projection": "cli.workflow.runs.stop",
+      "tui_projection": "tui.workflow.runs.stop",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "workflow.outputs.show",
+      "family": "workflow",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.workflow.outputs.show",
+      "cli_projection": "cli.workflow.outputs.show",
+      "tui_projection": "tui.workflow.outputs.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "workflow.evidence.show",
+      "family": "workflow",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.workflow.evidence.show",
+      "cli_projection": "cli.workflow.evidence.show",
+      "tui_projection": "tui.workflow.evidence.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "workflow.lineage.trace",
+      "family": "workflow",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.workflow.lineage.trace",
+      "cli_projection": "cli.workflow.lineage.trace",
+      "tui_projection": "tui.workflow.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "policy_pack.list",
+      "family": "policy_pack",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.policy_pack.list",
+      "cli_projection": "cli.policy_pack.list",
+      "tui_projection": "tui.policy_pack.list",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "policy_pack.inspect",
+      "family": "policy_pack",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.policy_pack.inspect",
+      "cli_projection": "cli.policy_pack.inspect",
+      "tui_projection": "tui.policy_pack.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "policy_pack.validate",
+      "family": "policy_pack",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.policy_pack.validate",
+      "cli_projection": "cli.policy_pack.validate",
+      "tui_projection": "tui.policy_pack.validate",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "policy_pack.explain",
+      "family": "policy_pack",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.policy_pack.explain",
+      "cli_projection": "cli.policy_pack.explain",
+      "tui_projection": "tui.policy_pack.explain",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "intake.plan",
+      "family": "intake",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.intake.plan",
+      "cli_projection": "cli.intake.plan",
+      "tui_projection": "tui.intake.plan",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "intake.run",
+      "family": "intake",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.intake.run",
+      "cli_projection": "cli.intake.run",
+      "tui_projection": "tui.intake.run",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "intake.status",
+      "family": "intake",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.intake.status",
+      "cli_projection": "cli.intake.status",
+      "tui_projection": "tui.intake.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "intake.inspect",
+      "family": "intake",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.intake.inspect",
+      "cli_projection": "cli.intake.inspect",
+      "tui_projection": "tui.intake.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "intake.validate",
+      "family": "intake",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.intake.validate",
+      "cli_projection": "cli.intake.validate",
+      "tui_projection": "tui.intake.validate",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "intake.outputs.show",
+      "family": "intake",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.intake.outputs.show",
+      "cli_projection": "cli.intake.outputs.show",
+      "tui_projection": "tui.intake.outputs.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "intake.lineage.trace",
+      "family": "intake",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.intake.lineage.trace",
+      "cli_projection": "cli.intake.lineage.trace",
+      "tui_projection": "tui.intake.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "materialization.plan",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.plan",
+      "cli_projection": "cli.materialization.plan",
+      "tui_projection": "tui.materialization.plan",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "materialization.run",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.run",
+      "cli_projection": "cli.materialization.run",
+      "tui_projection": "tui.materialization.run",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "materialization.status",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.status",
+      "cli_projection": "cli.materialization.status",
+      "tui_projection": "tui.materialization.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "materialization.inspect",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.inspect",
+      "cli_projection": "cli.materialization.inspect",
+      "tui_projection": "tui.materialization.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "materialization.validate",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.validate",
+      "cli_projection": "cli.materialization.validate",
+      "tui_projection": "tui.materialization.validate",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "materialization.outputs.show",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.outputs.show",
+      "cli_projection": "cli.materialization.outputs.show",
+      "tui_projection": "tui.materialization.outputs.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "materialization.evidence.show",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.evidence.show",
+      "cli_projection": "cli.materialization.evidence.show",
+      "tui_projection": "tui.materialization.evidence.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "materialization.lineage.trace",
+      "family": "materialization",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.materialization.lineage.trace",
+      "cli_projection": "cli.materialization.lineage.trace",
+      "tui_projection": "tui.materialization.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "excerpt.list",
+      "family": "excerpt",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.excerpt.list",
+      "cli_projection": "cli.excerpt.list",
+      "tui_projection": "tui.excerpt.list",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "excerpt.show",
+      "family": "excerpt",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.excerpt.show",
+      "cli_projection": "cli.excerpt.show",
+      "tui_projection": "tui.excerpt.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "excerpt.inspect",
+      "family": "excerpt",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.excerpt.inspect",
+      "cli_projection": "cli.excerpt.inspect",
+      "tui_projection": "tui.excerpt.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "excerpt.lineage.trace",
+      "family": "excerpt",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.excerpt.lineage.trace",
+      "cli_projection": "cli.excerpt.lineage.trace",
+      "tui_projection": "tui.excerpt.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "evidence.list",
+      "family": "evidence",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.evidence.list",
+      "cli_projection": "cli.evidence.list",
+      "tui_projection": "tui.evidence.list",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "evidence.show",
+      "family": "evidence",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.evidence.show",
+      "cli_projection": "cli.evidence.show",
+      "tui_projection": "tui.evidence.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "evidence.inspect",
+      "family": "evidence",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.evidence.inspect",
+      "cli_projection": "cli.evidence.inspect",
+      "tui_projection": "tui.evidence.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "evidence.lineage.trace",
+      "family": "evidence",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.evidence.lineage.trace",
+      "cli_projection": "cli.evidence.lineage.trace",
+      "tui_projection": "tui.evidence.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "lineage.trace",
+      "family": "lineage",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.lineage.trace",
+      "cli_projection": "cli.lineage.trace",
+      "tui_projection": "tui.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "lineage.show",
+      "family": "lineage",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.lineage.show",
+      "cli_projection": "cli.lineage.show",
+      "tui_projection": "tui.lineage.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "lineage.explain",
+      "family": "lineage",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.lineage.explain",
+      "cli_projection": "cli.lineage.explain",
+      "tui_projection": "tui.lineage.explain",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "lineage.graph.show",
+      "family": "lineage",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.lineage.graph.show",
+      "cli_projection": "cli.lineage.graph.show",
+      "tui_projection": "tui.lineage.graph.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "recall.explain",
+      "family": "recall",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.recall.explain",
+      "cli_projection": "cli.recall.explain",
+      "tui_projection": "tui.recall.explain",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "recall.inspect",
+      "family": "recall",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.recall.inspect",
+      "cli_projection": "cli.recall.inspect",
+      "tui_projection": "tui.recall.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "knowledge.status",
+      "family": "knowledge",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.knowledge.status",
+      "cli_projection": "cli.knowledge.status",
+      "tui_projection": "tui.knowledge.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "knowledge.list",
+      "family": "knowledge",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.knowledge.list",
+      "cli_projection": "cli.knowledge.list",
+      "tui_projection": "tui.knowledge.list",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "knowledge.show",
+      "family": "knowledge",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.knowledge.show",
+      "cli_projection": "cli.knowledge.show",
+      "tui_projection": "tui.knowledge.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "knowledge.inspect",
+      "family": "knowledge",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.knowledge.inspect",
+      "cli_projection": "cli.knowledge.inspect",
+      "tui_projection": "tui.knowledge.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "knowledge.rebuild.plan",
+      "family": "knowledge",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.knowledge.rebuild.plan",
+      "cli_projection": "cli.knowledge.rebuild.plan",
+      "tui_projection": "tui.knowledge.rebuild.plan",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "knowledge.rebuild",
+      "family": "knowledge",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.knowledge.rebuild",
+      "cli_projection": "cli.knowledge.rebuild",
+      "tui_projection": "tui.knowledge.rebuild",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "state.status",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.status",
+      "cli_projection": "cli.state.status",
+      "tui_projection": "tui.state.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.list",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.list",
+      "cli_projection": "cli.state.list",
+      "tui_projection": "tui.state.list",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.inspect",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.inspect",
+      "cli_projection": "cli.state.inspect",
+      "tui_projection": "tui.state.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.projections.show",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.projections.show",
+      "cli_projection": "cli.state.projections.show",
+      "tui_projection": "tui.state.projections.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.materialized.show",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.materialized.show",
+      "cli_projection": "cli.state.materialized.show",
+      "tui_projection": "tui.state.materialized.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.substrate.status",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.substrate.status",
+      "cli_projection": "cli.state.substrate.status",
+      "tui_projection": "tui.state.substrate.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.substrate.inspect.shm",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.substrate.inspect.shm",
+      "cli_projection": "cli.state.substrate.inspect.shm",
+      "tui_projection": "tui.state.substrate.inspect.shm",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.substrate.inspect.lmdb",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.substrate.inspect.lmdb",
+      "cli_projection": "cli.state.substrate.inspect.lmdb",
+      "tui_projection": "tui.state.substrate.inspect.lmdb",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.substrate.inspect.duckdb",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.substrate.inspect.duckdb",
+      "cli_projection": "cli.state.substrate.inspect.duckdb",
+      "tui_projection": "tui.state.substrate.inspect.duckdb",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "state.substrate.inspect.ladybug",
+      "family": "state",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.state.substrate.inspect.ladybug",
+      "cli_projection": "cli.state.substrate.inspect.ladybug",
+      "tui_projection": "tui.state.substrate.inspect.ladybug",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "providers.inspect",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.inspect",
+      "cli_projection": "cli.providers.inspect",
+      "tui_projection": "tui.providers.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "providers.capabilities.show",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.capabilities.show",
+      "cli_projection": "cli.providers.capabilities.show",
+      "tui_projection": "tui.providers.capabilities.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "providers.config.status",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.config.status",
+      "cli_projection": "cli.providers.config.status",
+      "tui_projection": "tui.providers.config.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "providers.routes.explain",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.routes.explain",
+      "cli_projection": "cli.providers.routes.explain",
+      "tui_projection": "tui.providers.routes.explain",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "providers.calls.plan",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "runtime_provider_only",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.calls.plan",
+      "cli_projection": "cli.providers.calls.plan",
+      "tui_projection": "tui.providers.calls.plan",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "providers.calls.run",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "runtime_provider_only",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "runtime_ipc_coverage": "blocked",
+      "operation_coverage_notes": "Not part of RT.04 read/projection coverage; provider invocation remains blocked over Local IPC RPC.",
+      "sdk_projection": "sdk.providers.calls.run",
+      "cli_projection": "cli.providers.calls.run",
+      "tui_projection": "tui.providers.calls.run",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "providers.calls.inspect",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "runtime_provider_only",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.calls.inspect",
+      "cli_projection": "cli.providers.calls.inspect",
+      "tui_projection": "tui.providers.calls.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "providers.calls.logs.watch",
+      "family": "providers",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.calls.logs.watch",
+      "cli_projection": "cli.providers.calls.logs.watch",
+      "tui_projection": "tui.providers.calls.logs.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
+    },
+    {
+      "operation_id": "providers.calls.evidence.show",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.calls.evidence.show",
+      "cli_projection": "cli.providers.calls.evidence.show",
+      "tui_projection": "tui.providers.calls.evidence.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "providers.calls.lineage.trace",
+      "family": "providers",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.providers.calls.lineage.trace",
+      "cli_projection": "cli.providers.calls.lineage.trace",
+      "tui_projection": "tui.providers.calls.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "models.status",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.status",
+      "cli_projection": "cli.models.status",
+      "tui_projection": "tui.models.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "models.inspect",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.inspect",
+      "cli_projection": "cli.models.inspect",
+      "tui_projection": "tui.models.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "models.check",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.check",
+      "cli_projection": "cli.models.check",
+      "tui_projection": "tui.models.check",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "models.routes.explain",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.routes.explain",
+      "cli_projection": "cli.models.routes.explain",
+      "tui_projection": "tui.models.routes.explain",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "models.runs.plan",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "runtime_provider_only",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.runs.plan",
+      "cli_projection": "cli.models.runs.plan",
+      "tui_projection": "tui.models.runs.plan",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "models.runs.run",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "runtime_provider_only",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "runtime_ipc_coverage": "blocked",
+      "operation_coverage_notes": "Not part of RT.04 read/projection coverage; model invocation remains blocked over Local IPC RPC.",
+      "sdk_projection": "sdk.models.runs.run",
+      "cli_projection": "cli.models.runs.run",
+      "tui_projection": "tui.models.runs.run",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "models.runs.inspect",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "runtime_provider_only",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.runs.inspect",
+      "cli_projection": "cli.models.runs.inspect",
+      "tui_projection": "tui.models.runs.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Provider/model transport, when needed, begins only after runtime dispatch. Current RT.04 local_ipc_rpc probe coverage does not support provider/model execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "models.runs.evidence.show",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.runs.evidence.show",
+      "cli_projection": "cli.models.runs.evidence.show",
+      "tui_projection": "tui.models.runs.evidence.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "models.runs.lineage.trace",
+      "family": "models",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.models.runs.lineage.trace",
+      "cli_projection": "cli.models.runs.lineage.trace",
+      "tui_projection": "tui.models.runs.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "agents.status",
+      "family": "agents",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.agents.status",
+      "cli_projection": "cli.agents.status",
+      "tui_projection": "tui.agents.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "agents.inspect",
+      "family": "agents",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.agents.inspect",
+      "cli_projection": "cli.agents.inspect",
+      "tui_projection": "tui.agents.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "agents.cancel",
+      "family": "agents",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.agents.cancel",
+      "cli_projection": "cli.agents.cancel",
+      "tui_projection": "tui.agents.cancel",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "agents.logs.watch",
+      "family": "agents",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.agents.logs.watch",
+      "cli_projection": "cli.agents.logs.watch",
+      "tui_projection": "tui.agents.logs.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
+    },
+    {
+      "operation_id": "agents.outputs.show",
+      "family": "agents",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.agents.outputs.show",
+      "cli_projection": "cli.agents.outputs.show",
+      "tui_projection": "tui.agents.outputs.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "agents.evidence.show",
+      "family": "agents",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.agents.evidence.show",
+      "cli_projection": "cli.agents.evidence.show",
+      "tui_projection": "tui.agents.evidence.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "agents.lineage.trace",
+      "family": "agents",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.agents.lineage.trace",
+      "cli_projection": "cli.agents.lineage.trace",
+      "tui_projection": "tui.agents.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "job.list",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.list",
+      "cli_projection": "cli.job.list",
+      "tui_projection": "tui.job.list",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "job.status",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.status",
+      "cli_projection": "cli.job.status",
+      "tui_projection": "tui.job.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "job.inspect",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.inspect",
+      "cli_projection": "cli.job.inspect",
+      "tui_projection": "tui.job.inspect",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "job.plan",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.plan",
+      "cli_projection": "cli.job.plan",
+      "tui_projection": "tui.job.plan",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "job.start",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.start",
+      "cli_projection": "cli.job.start",
+      "tui_projection": "tui.job.start",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "job.cancel",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.cancel",
+      "cli_projection": "cli.job.cancel",
+      "tui_projection": "tui.job.cancel",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "job.logs.watch",
+      "family": "job",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.logs.watch",
+      "cli_projection": "cli.job.logs.watch",
+      "tui_projection": "tui.job.logs.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
+    },
+    {
+      "operation_id": "job.outputs.show",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.outputs.show",
+      "cli_projection": "cli.job.outputs.show",
+      "tui_projection": "tui.job.outputs.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "job.evidence.show",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.evidence.show",
+      "cli_projection": "cli.job.evidence.show",
+      "tui_projection": "tui.job.evidence.show",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "job.lineage.trace",
+      "family": "job",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.job.lineage.trace",
+      "cli_projection": "cli.job.lineage.trace",
+      "tui_projection": "tui.job.lineage.trace",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "license.status",
+      "family": "license",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.license.status",
+      "cli_projection": "cli.license.status",
+      "tui_projection": "tui.license.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "license.lease.status",
+      "family": "license",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.license.lease.status",
+      "cli_projection": "cli.license.lease.status",
+      "tui_projection": "tui.license.lease.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "license.check",
+      "family": "license",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.license.check",
+      "cli_projection": "cli.license.check",
+      "tui_projection": "tui.license.check",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "license.cache.status",
+      "family": "license",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.license.cache.status",
+      "cli_projection": "cli.license.cache.status",
+      "tui_projection": "tui.license.cache.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "machine.status",
+      "family": "machine",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.machine.status",
+      "cli_projection": "cli.machine.status",
+      "tui_projection": "tui.machine.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "machine.identity.status",
+      "family": "machine",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.machine.identity.status",
+      "cli_projection": "cli.machine.identity.status",
+      "tui_projection": "tui.machine.identity.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "machine.evidence.status",
+      "family": "machine",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.machine.evidence.status",
+      "cli_projection": "cli.machine.evidence.status",
+      "tui_projection": "tui.machine.evidence.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "machine.authorization.status",
+      "family": "machine",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.machine.authorization.status",
+      "cli_projection": "cli.machine.authorization.status",
+      "tui_projection": "tui.machine.authorization.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "machine.enroll",
+      "family": "machine",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.machine.enroll",
+      "cli_projection": "cli.machine.enroll",
+      "tui_projection": "tui.machine.enroll",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api. Current RT.04 local_ipc_rpc probe coverage does not support mutating execution and must be treated as blocked or unsupported until separately justified."
+    },
+    {
+      "operation_id": "limits.status",
+      "family": "limits",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.limits.status",
+      "cli_projection": "cli.limits.status",
+      "tui_projection": "tui.limits.status",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "limits.explain",
+      "family": "limits",
+      "default_transport": "local_ipc_rpc",
+      "allowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "in_process_test",
+        "lan_secure"
+      ],
+      "disallowed_transports": [
+        "local_event_stream",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": false,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "allowed_with_pairing",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.limits.explain",
+      "cli_projection": "cli.limits.explain",
+      "tui_projection": "tui.limits.explain",
+      "notes": "Local runtime operation; transport entrypoints normalize envelopes and dispatch through runtime/boundary/api."
+    },
+    {
+      "operation_id": "logs.runtime.watch",
+      "family": "logs",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.logs.runtime.watch",
+      "cli_projection": "cli.logs.runtime.watch",
+      "tui_projection": "tui.logs.runtime.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
+    },
+    {
+      "operation_id": "logs.job.watch",
+      "family": "logs",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.logs.job.watch",
+      "cli_projection": "cli.logs.job.watch",
+      "tui_projection": "tui.logs.job.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
+    },
+    {
+      "operation_id": "logs.workflow.watch",
+      "family": "logs",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.logs.workflow.watch",
+      "cli_projection": "cli.logs.workflow.watch",
+      "tui_projection": "tui.logs.workflow.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
+    },
+    {
+      "operation_id": "logs.agent.watch",
+      "family": "logs",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.logs.agent.watch",
+      "cli_projection": "cli.logs.agent.watch",
+      "tui_projection": "tui.logs.agent.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
+    },
+    {
+      "operation_id": "logs.provider.watch",
+      "family": "logs",
+      "default_transport": "local_event_stream",
+      "allowed_transports": [
+        "local_event_stream",
+        "in_process_test"
+      ],
+      "disallowed_transports": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "lan_secure",
+        "remote_https",
+        "subprocess_stdio_compat"
+      ],
+      "streamable": true,
+      "local_native_recommended": true,
+      "browser_recommended": true,
+      "lan_exposure": "blocked_by_default",
+      "remote_exposure": "local_only",
+      "provider_transport_boundary": "excluded",
+      "dispatch_target": "runtime_boundary_api",
+      "runtime_handler_readiness": "planned",
+      "sdk_projection": "sdk.logs.provider.watch",
+      "cli_projection": "cli.logs.provider.watch",
+      "tui_projection": "tui.logs.provider.watch",
+      "notes": "Watch/tail surface; canonical transport is local_event_stream rather than generic request/response transport."
     }
   ]
 }

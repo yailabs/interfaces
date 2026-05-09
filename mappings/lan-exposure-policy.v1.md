@@ -30,4 +30,4 @@ default network-exposed operations.
 See also:
 - `../transports/lan-secure.v1.md`
 - `../transports/lan-secure/README.md`
-- `../docs/lan-secure-remote-https-boundary.md`
+- `../Documentation/lan-secure-remote-https-boundary.md`

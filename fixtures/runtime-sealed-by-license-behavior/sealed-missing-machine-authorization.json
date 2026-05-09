@@ -1,0 +1,37 @@
+{
+  "runtime_license_seal_state": {
+    "runtime_license_seal_state_ref": "runtime-license-seal-state/ref/sealed-missing-machine-authorization",
+    "runtime_license_check_response_ref": "runtime-license-check-response/ref/blocked-missing-machine-authorization",
+    "license_lease_ref": "license-lease/ref/lease-002",
+    "local_machine_ref": "local-machine/ref/machine-002",
+    "runtime_gate_decision_ref": "runtime-gate-decision/ref/gate-002",
+    "seal_state": "sealed",
+    "seal_reason": "missing_machine_authorization",
+    "operational_readiness": "blocked",
+    "diagnostic_posture": "diagnostics_limited",
+    "allowed_surface_posture": "diagnostics_only",
+    "blocked_surface_posture": "all_operational_blocked",
+    "recovery_posture": "reenroll_machine",
+    "next_action": "request_machine_enrollment",
+    "response_freshness": "fresh",
+    "cache_posture": "not_applicable",
+    "offline_grace_posture": "blocked",
+    "warning_codes": [
+      "manual_review_required"
+    ],
+    "safe_status_projection": {
+      "seal_state": "sealed",
+      "seal_reason": "missing_machine_authorization",
+      "operational_readiness": "blocked",
+      "diagnostic_posture": "diagnostics_limited",
+      "allowed_surface_posture": "diagnostics_only",
+      "blocked_surface_posture": "all_operational_blocked",
+      "recovery_posture": "reenroll_machine",
+      "next_action": "request_machine_enrollment",
+      "response_freshness": "fresh",
+      "warning_codes": [
+        "manual_review_required"
+      ]
+    }
+  }
+}

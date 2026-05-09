@@ -30,7 +30,7 @@ subprocess_required = [
     subprocess_root / "conformance-profile.v1.md",
 ]
 doc_required = [
-    root / "docs/in-process-subprocess-compat-boundary.md",
+    root / "Documentation/in-process-subprocess-compat-boundary.md",
 ]
 
 errors = []

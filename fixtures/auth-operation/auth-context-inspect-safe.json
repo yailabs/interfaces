@@ -1,0 +1,29 @@
+{
+  "auth_operation": {
+    "operation_id": "auth.context.inspect",
+    "action_id": "auth.context.inspect",
+    "request_kind": "context_inspect",
+    "operation_status": "allowed",
+    "auth_posture": "authenticated",
+    "provider_posture": "configured",
+    "auth_context_posture": "present",
+    "principal_ref": "principal://account/francesco",
+    "account_ref": "account://francesco",
+    "auth_context_ref": "auth-context://francesco/current",
+    "provider_ref": "provider-auth://default",
+    "reason": "Auth context projection is safe and token-free.",
+    "next_action": "Inspect provider status separately if needed.",
+    "safe_projection": {
+      "action_id": "auth.context.inspect",
+      "operation_status": "allowed",
+      "auth_posture": "authenticated",
+      "provider_posture": "configured",
+      "auth_context_posture": "present",
+      "principal_ref": "principal://account/francesco",
+      "account_ref": "account://francesco",
+      "auth_context_ref": "auth-context://francesco/current",
+      "reason": "Auth context projection is safe and token-free.",
+      "next_action": "Inspect provider status separately if needed."
+    }
+  }
+}

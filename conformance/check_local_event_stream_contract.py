@@ -20,7 +20,7 @@ required_files = [
     contract_root / "security-redaction.v1.md",
     contract_root / "errors-terminal-events.v1.md",
     contract_root / "conformance-profile.v1.md",
-    root / "docs/local-event-stream-contract.md",
+    root / "Documentation/local-event-stream-contract.md",
 ]
 
 errors = []

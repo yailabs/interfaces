@@ -1,0 +1,305 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/offline-grace-stale-lease-behavior.v1.schema.json",
+  "title": "YAI Offline Grace Stale Lease Behavior v1",
+  "type": "object",
+  "required": [
+    "offline_grace_state"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "offline_grace_state": {
+      "$ref": "#/$defs/offlineGraceState"
+    }
+  },
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "graceStatus": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "grace_available",
+        "grace_active",
+        "grace_expired",
+        "grace_blocked",
+        "unknown"
+      ]
+    },
+    "staleLeaseStatus": {
+      "type": "string",
+      "enum": [
+        "not_stale",
+        "stale_accepted",
+        "stale_limited",
+        "stale_requires_refresh",
+        "stale_rejected",
+        "unknown"
+      ]
+    },
+    "offlineStatus": {
+      "type": "string",
+      "enum": [
+        "online",
+        "offline",
+        "degraded_connectivity",
+        "connectivity_unknown"
+      ]
+    },
+    "connectivityPosture": {
+      "type": "string",
+      "enum": [
+        "online_check_available",
+        "online_check_unavailable",
+        "retry_online_required",
+        "offline_allowed",
+        "offline_limited",
+        "offline_blocked",
+        "unknown"
+      ]
+    },
+    "operationalReadiness": {
+      "type": "string",
+      "enum": [
+        "ready",
+        "limited",
+        "blocked",
+        "diagnostics_only",
+        "unknown"
+      ]
+    },
+    "diagnosticPosture": {
+      "type": "string",
+      "enum": [
+        "diagnostics_allowed",
+        "diagnostics_limited",
+        "diagnostics_blocked",
+        "unknown"
+      ]
+    },
+    "allowedSurfacePosture": {
+      "type": "string",
+      "enum": [
+        "diagnostics_only",
+        "read_only_only",
+        "limited_operational",
+        "operational_allowed",
+        "none",
+        "unknown"
+      ]
+    },
+    "blockedSurfacePosture": {
+      "type": "string",
+      "enum": [
+        "none",
+        "new_jobs_blocked",
+        "provider_actions_blocked",
+        "agent_flow_job_blocked",
+        "knowledge_evidence_write_blocked",
+        "runtime_control_blocked",
+        "all_operational_blocked",
+        "unknown"
+      ]
+    },
+    "refreshPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "recommended",
+        "required",
+        "pending",
+        "failed",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "recoveryPosture": {
+      "type": "string",
+      "enum": [
+        "none",
+        "retry_online",
+        "refresh_license_lease",
+        "reauthenticate",
+        "reenroll_machine",
+        "wait_for_connectivity",
+        "diagnostics_only",
+        "contact_support",
+        "unknown"
+      ]
+    },
+    "nextAction": {
+      "type": "string",
+      "enum": [
+        "none",
+        "continue_limited",
+        "run_diagnostics",
+        "retry_online_check",
+        "refresh_license_lease",
+        "reauthenticate",
+        "request_machine_enrollment",
+        "contact_support",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "offline_grace_active",
+        "offline_grace_near_expiry",
+        "stale_lease",
+        "refresh_required",
+        "diagnostics_only",
+        "limited_operational",
+        "online_check_required",
+        "unknown"
+      ]
+    },
+    "safeGraceProjection": {
+      "type": "object",
+      "required": [
+        "grace_status",
+        "stale_lease_status",
+        "offline_status",
+        "operational_readiness",
+        "diagnostic_posture",
+        "allowed_surface_posture",
+        "blocked_surface_posture",
+        "refresh_posture",
+        "next_action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "grace_status": {
+          "$ref": "#/$defs/graceStatus"
+        },
+        "stale_lease_status": {
+          "$ref": "#/$defs/staleLeaseStatus"
+        },
+        "offline_status": {
+          "$ref": "#/$defs/offlineStatus"
+        },
+        "operational_readiness": {
+          "$ref": "#/$defs/operationalReadiness"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "allowed_surface_posture": {
+          "$ref": "#/$defs/allowedSurfacePosture"
+        },
+        "blocked_surface_posture": {
+          "$ref": "#/$defs/blockedSurfacePosture"
+        },
+        "refresh_posture": {
+          "$ref": "#/$defs/refreshPosture"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nextAction"
+        },
+        "grace_expires_at": {
+          "type": "string"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        }
+      }
+    },
+    "offlineGraceState": {
+      "type": "object",
+      "required": [
+        "offline_grace_state_ref",
+        "grace_status",
+        "stale_lease_status",
+        "offline_status",
+        "connectivity_posture",
+        "operational_readiness",
+        "diagnostic_posture",
+        "allowed_surface_posture",
+        "blocked_surface_posture",
+        "refresh_posture",
+        "recovery_posture",
+        "next_action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "offline_grace_state_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_lease_cache_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_license_check_response_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "grace_status": {
+          "$ref": "#/$defs/graceStatus"
+        },
+        "stale_lease_status": {
+          "$ref": "#/$defs/staleLeaseStatus"
+        },
+        "offline_status": {
+          "$ref": "#/$defs/offlineStatus"
+        },
+        "connectivity_posture": {
+          "$ref": "#/$defs/connectivityPosture"
+        },
+        "operational_readiness": {
+          "$ref": "#/$defs/operationalReadiness"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "allowed_surface_posture": {
+          "$ref": "#/$defs/allowedSurfacePosture"
+        },
+        "blocked_surface_posture": {
+          "$ref": "#/$defs/blockedSurfacePosture"
+        },
+        "refresh_posture": {
+          "$ref": "#/$defs/refreshPosture"
+        },
+        "recovery_posture": {
+          "$ref": "#/$defs/recoveryPosture"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nextAction"
+        },
+        "grace_started_at": {
+          "type": "string"
+        },
+        "grace_expires_at": {
+          "type": "string"
+        },
+        "last_online_at": {
+          "type": "string"
+        },
+        "last_validated_at": {
+          "type": "string"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "safe_grace_projection": {
+          "$ref": "#/$defs/safeGraceProjection"
+        }
+      }
+    }
+  }
+}

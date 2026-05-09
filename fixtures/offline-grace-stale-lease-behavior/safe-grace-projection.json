@@ -1,0 +1,33 @@
+{
+  "offline_grace_state": {
+    "offline_grace_state_ref": "offline-grace-state/ref/safe-grace-projection",
+    "grace_status": "grace_available",
+    "stale_lease_status": "not_stale",
+    "offline_status": "degraded_connectivity",
+    "connectivity_posture": "offline_allowed",
+    "operational_readiness": "limited",
+    "diagnostic_posture": "diagnostics_allowed",
+    "allowed_surface_posture": "read_only_only",
+    "blocked_surface_posture": "runtime_control_blocked",
+    "refresh_posture": "recommended",
+    "recovery_posture": "retry_online",
+    "next_action": "continue_limited",
+    "warning_codes": [
+      "unknown"
+    ],
+    "safe_grace_projection": {
+      "grace_status": "grace_available",
+      "stale_lease_status": "not_stale",
+      "offline_status": "degraded_connectivity",
+      "operational_readiness": "limited",
+      "diagnostic_posture": "diagnostics_allowed",
+      "allowed_surface_posture": "read_only_only",
+      "blocked_surface_posture": "runtime_control_blocked",
+      "refresh_posture": "recommended",
+      "next_action": "continue_limited",
+      "warning_codes": [
+        "unknown"
+      ]
+    }
+  }
+}

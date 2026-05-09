@@ -1,0 +1,42 @@
+{
+  "runtime_license_seal_state": {
+    "runtime_license_seal_state_ref": "runtime-license-seal-state/ref/diagnostics-only-stale-response",
+    "runtime_license_check_response_ref": "runtime-license-check-response/ref/grace-response",
+    "license_lease_ref": "license-lease/ref/lease-005",
+    "machine_authorization_ref": "machine-authorization/ref/authorization-005",
+    "local_machine_ref": "local-machine/ref/machine-005",
+    "runtime_gate_decision_ref": "runtime-gate-decision/ref/gate-005",
+    "seal_state": "diagnostics_only",
+    "seal_reason": "license_lease_stale",
+    "operational_readiness": "diagnostics_only",
+    "diagnostic_posture": "diagnostics_allowed",
+    "allowed_surface_posture": "diagnostics_only",
+    "blocked_surface_posture": "all_operational_blocked",
+    "recovery_posture": "retry_online",
+    "next_action": "retry_license_check",
+    "response_freshness": "stale",
+    "cache_posture": "cache_stale",
+    "offline_grace_posture": "active",
+    "warning_codes": [
+      "diagnostics_only",
+      "stale_response",
+      "offline_grace_active"
+    ],
+    "safe_status_projection": {
+      "seal_state": "diagnostics_only",
+      "seal_reason": "license_lease_stale",
+      "operational_readiness": "diagnostics_only",
+      "diagnostic_posture": "diagnostics_allowed",
+      "allowed_surface_posture": "diagnostics_only",
+      "blocked_surface_posture": "all_operational_blocked",
+      "recovery_posture": "retry_online",
+      "next_action": "retry_license_check",
+      "response_freshness": "stale",
+      "warning_codes": [
+        "diagnostics_only",
+        "stale_response",
+        "offline_grace_active"
+      ]
+    }
+  }
+}

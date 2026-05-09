@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/auth-operation.v1.schema.json",
+  "title": "YAI Auth Operation v1",
+  "type": "object",
+  "required": [
+    "auth_operation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "auth_operation": {
+      "$ref": "#/$defs/authOperation"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requestKind": {
+      "type": "string",
+      "enum": [
+        "login",
+        "login_local_dev",
+        "status",
+        "logout",
+        "context_inspect",
+        "provider_status",
+        "device_login_start",
+        "device_login_status",
+        "device_login_cancel"
+      ]
+    },
+    "operationStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "unavailable",
+        "not_implemented",
+        "legacy_alias",
+        "forbidden"
+      ]
+    },
+    "authPosture": {
+      "type": "string",
+      "enum": [
+        "authenticated",
+        "unauthenticated",
+        "local_dev_authenticated",
+        "expired",
+        "revoked",
+        "unavailable",
+        "unknown"
+      ]
+    },
+    "providerPosture": {
+      "type": "string",
+      "enum": [
+        "not_configured",
+        "configured",
+        "unavailable",
+        "provider_session_present",
+        "provider_session_absent",
+        "unknown"
+      ]
+    },
+    "authContextPosture": {
+      "type": "string",
+      "enum": [
+        "present",
+        "missing",
+        "expired",
+        "revoked",
+        "refresh_required",
+        "not_issued",
+        "unknown"
+      ]
+    },
+    "safeProjection": {
+      "type": "object",
+      "required": [
+        "action_id",
+        "operation_status",
+        "auth_posture",
+        "provider_posture",
+        "auth_context_posture"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "type": "string",
+          "pattern": "^auth\\."
+        },
+        "operation_status": {
+          "$ref": "#/$defs/operationStatus"
+        },
+        "auth_posture": {
+          "$ref": "#/$defs/authPosture"
+        },
+        "provider_posture": {
+          "$ref": "#/$defs/providerPosture"
+        },
+        "auth_context_posture": {
+          "$ref": "#/$defs/authContextPosture"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "account_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "authOperation": {
+      "type": "object",
+      "required": [
+        "operation_id",
+        "action_id",
+        "request_kind",
+        "operation_status",
+        "auth_posture",
+        "provider_posture",
+        "auth_context_posture",
+        "safe_projection"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "type": "string",
+          "pattern": "^auth\\."
+        },
+        "action_id": {
+          "type": "string",
+          "pattern": "^auth\\."
+        },
+        "request_kind": {
+          "$ref": "#/$defs/requestKind"
+        },
+        "operation_status": {
+          "$ref": "#/$defs/operationStatus"
+        },
+        "auth_posture": {
+          "$ref": "#/$defs/authPosture"
+        },
+        "provider_posture": {
+          "$ref": "#/$defs/providerPosture"
+        },
+        "auth_context_posture": {
+          "$ref": "#/$defs/authContextPosture"
+        },
+        "safe_projection": {
+          "$ref": "#/$defs/safeProjection"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "account_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "provider_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "device_login_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "local_dev_principal_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

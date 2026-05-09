@@ -11,6 +11,9 @@ transport.
   operations.
 - Generic request/response operations must not use `local_event_stream` as
   their default transport.
+- RT.04 and A1 Local IPC RPC coverage markers do not widen stream support;
+  request/response IPC audit must not be misread as Local Event Stream
+  implementation coverage.
 - `local_event_stream` may carry only stream event frames.
 - Stream frames must not be treated as normal response envelopes.
 

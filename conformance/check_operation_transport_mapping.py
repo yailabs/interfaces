@@ -57,6 +57,13 @@ allowed_runtime_readiness = {
     "planned",
     "not_implemented",
 }
+allowed_runtime_ipc_coverage = {
+    "supported",
+    "deferred",
+    "blocked",
+    "unsupported",
+    "not_applicable",
+}
 required_fields = {
     "operation_id",
     "family",
@@ -75,6 +82,11 @@ required_fields = {
     "cli_projection",
     "tui_projection",
     "notes",
+}
+optional_fields = {
+    "runtime_ipc_coverage",
+    "runtime_ipc_readiness",
+    "operation_coverage_notes",
 }
 
 errors = []
@@ -109,6 +121,68 @@ for opid in missing:
 for opid in extra:
     errors.append(f"mapping entry has unknown operation_id {opid}")
 
+rt04_runtime_ipc_expectations = {
+    "system.status": {
+        "runtime_ipc_coverage": "supported",
+        "runtime_ipc_readiness": "read_projection_probe_ready",
+        "operation_coverage_notes": "Supported by RT.03 and preserved by RT.04 safe read/projection dispatch.",
+        "notes_fragment": "supported at read_projection_probe_ready",
+    },
+    "system.check": {
+        "runtime_ipc_coverage": "supported",
+        "runtime_ipc_readiness": "read_projection_probe_ready",
+        "operation_coverage_notes": "Supported by RT.04 safe read/projection dispatch.",
+        "notes_fragment": "supported at read_projection_probe_ready",
+    },
+    "system.runtime.inspect": {
+        "runtime_ipc_coverage": "supported",
+        "runtime_ipc_readiness": "read_projection_probe_ready",
+        "operation_coverage_notes": "Supported by RT.04 safe read/projection dispatch.",
+        "notes_fragment": "supported at read_projection_probe_ready",
+    },
+    "case.current": {
+        "runtime_ipc_coverage": "deferred",
+        "runtime_ipc_readiness": "deferred_runtime_projection",
+        "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet.",
+        "notes_fragment": "deferred at read_projection_probe_ready",
+    },
+    "case.list": {
+        "runtime_ipc_coverage": "deferred",
+        "runtime_ipc_readiness": "deferred_runtime_projection",
+        "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet.",
+        "notes_fragment": "deferred at read_projection_probe_ready",
+    },
+    "case.show": {
+        "runtime_ipc_coverage": "deferred",
+        "runtime_ipc_readiness": "deferred_runtime_projection",
+        "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet.",
+        "notes_fragment": "deferred at read_projection_probe_ready",
+    },
+    "providers.list": {
+        "runtime_ipc_coverage": "deferred",
+        "runtime_ipc_readiness": "deferred_runtime_projection",
+        "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet. Does not imply provider transport calls, credential reads, or provider availability.",
+        "notes_fragment": "deferred at read_projection_probe_ready",
+    },
+    "models.list": {
+        "runtime_ipc_coverage": "deferred",
+        "runtime_ipc_readiness": "deferred_runtime_projection",
+        "operation_coverage_notes": "Audited in RT.04; not supported over IPC yet. Does not imply model load, model invocation, or model availability.",
+        "notes_fragment": "deferred at read_projection_probe_ready",
+    },
+}
+
+blocked_runtime_ipc_examples = {
+    "conversation.messages.send": "Not part of RT.04 read/projection coverage; mutating operations remain blocked over Local IPC RPC.",
+    "providers.calls.run": "Not part of RT.04 read/projection coverage; provider invocation remains blocked over Local IPC RPC.",
+    "models.runs.run": "Not part of RT.04 read/projection coverage; model invocation remains blocked over Local IPC RPC.",
+}
+supported_runtime_ipc_ops = {
+    opid
+    for opid, expectation in rt04_runtime_ipc_expectations.items()
+    if expectation["runtime_ipc_coverage"] == "supported"
+}
+
 for opid, op in registry_by_id.items():
     entry = entry_by_id.get(opid)
     if not entry:
@@ -119,8 +193,9 @@ for opid, op in registry_by_id.items():
         errors.append(f"{opid}: missing fields {', '.join(missing_fields)}")
         continue
 
+    allowed_entry_fields = required_fields | optional_fields
     if set(entry) != required_fields:
-        extra_fields = sorted(set(entry) - required_fields)
+        extra_fields = sorted(set(entry) - allowed_entry_fields)
         if extra_fields:
             errors.append(f"{opid}: unexpected fields {', '.join(extra_fields)}")
 
@@ -150,6 +225,12 @@ for opid, op in registry_by_id.items():
         errors.append(f"{opid}: invalid dispatch_target {entry['dispatch_target']}")
     if entry["runtime_handler_readiness"] not in allowed_runtime_readiness:
         errors.append(f"{opid}: invalid runtime_handler_readiness {entry['runtime_handler_readiness']}")
+    if "runtime_ipc_coverage" in entry and entry["runtime_ipc_coverage"] not in allowed_runtime_ipc_coverage:
+        errors.append(f"{opid}: invalid runtime_ipc_coverage {entry['runtime_ipc_coverage']}")
+    if "runtime_ipc_readiness" in entry and not isinstance(entry["runtime_ipc_readiness"], str):
+        errors.append(f"{opid}: runtime_ipc_readiness must be a string when present")
+    if "operation_coverage_notes" in entry and not isinstance(entry["operation_coverage_notes"], str):
+        errors.append(f"{opid}: operation_coverage_notes must be a string when present")
 
     if len(allowed) != len(set(allowed)):
         errors.append(f"{opid}: duplicate allowed_transports")
@@ -177,6 +258,9 @@ for opid, op in registry_by_id.items():
         errors.append(f"{opid}: allowed_with_pairing requires lan_secure in allowed_transports")
     if entry["lan_exposure"] != "allowed_with_pairing" and "lan_secure" in allowed:
         errors.append(f"{opid}: lan_secure may only appear when lan_exposure is allowed_with_pairing")
+    if entry.get("runtime_ipc_coverage") and entry["runtime_ipc_coverage"] != "not_applicable":
+        if "local_ipc_rpc" not in allowed:
+            errors.append(f"{opid}: runtime_ipc_coverage requires local_ipc_rpc in allowed_transports")
 
     watchable = bool(op.get("watchable"))
     if bool(entry["streamable"]) != watchable:
@@ -217,6 +301,41 @@ for opid, op in registry_by_id.items():
             errors.append(f"{opid}: session operations must remain compat_only in API.02")
         if entry["remote_exposure"] != "local_only":
             errors.append(f"{opid}: session compatibility operations must remain local_only")
+
+    if entry.get("runtime_ipc_coverage") == "supported" and opid not in supported_runtime_ipc_ops:
+        errors.append(f"{opid}: only the audited RT.04 supported IPC operations may be marked supported")
+    if entry.get("runtime_ipc_coverage") == "supported" and entry["provider_transport_boundary"] == "runtime_provider_only":
+        errors.append(f"{opid}: provider/model execution surfaces must not be marked IPC supported")
+
+for opid, expectation in rt04_runtime_ipc_expectations.items():
+    entry = entry_by_id.get(opid)
+    if not entry:
+        continue
+    for field in ["runtime_ipc_coverage", "runtime_ipc_readiness", "operation_coverage_notes"]:
+        if entry.get(field) != expectation[field]:
+            errors.append(f"{opid}: {field} must be '{expectation[field]}'")
+    if expectation["notes_fragment"] not in entry["notes"]:
+        errors.append(f"{opid}: notes must record RT.04 IPC coverage as '{expectation['notes_fragment']}'")
+
+for opid in {"providers.list", "models.list"}:
+    entry = entry_by_id.get(opid)
+    if not entry:
+        continue
+    if entry["provider_transport_boundary"] != "excluded":
+        errors.append(f"{opid}: provider_transport_boundary must remain excluded for RT.04 deferred read surfaces")
+
+for opid, expected_coverage_note in blocked_runtime_ipc_examples.items():
+    entry = entry_by_id.get(opid)
+    if not entry:
+        continue
+    if entry.get("runtime_ipc_coverage") != "blocked":
+        errors.append(f"{opid}: runtime_ipc_coverage must be 'blocked'")
+    if entry.get("operation_coverage_notes") != expected_coverage_note:
+        errors.append(f"{opid}: operation_coverage_notes must be '{expected_coverage_note}'")
+    if "blocked or unsupported" not in entry["notes"]:
+        errors.append(f"{opid}: notes must state current RT.04 IPC coverage is blocked or unsupported")
+    if "runtime_ipc_readiness" in entry:
+        errors.append(f"{opid}: blocked RT.04 examples must not claim runtime_ipc_readiness")
 
 if errors:
     print("operation-transport-map: FAIL")

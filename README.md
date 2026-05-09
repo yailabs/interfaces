@@ -17,7 +17,7 @@ a commercial license.
 
 <div align="center">
   <img
-    src="docs/reference/figures/yai-transp.png"
+    src="Documentation/reference/figures/yai-transp.png"
     alt="YAI"
     width="180"
   />
@@ -76,7 +76,7 @@ Canonical API projection source lives here (`api`).
 
 Transport vocabulary and transport-class ownership are frozen in:
 - `transports/`
-- `docs/transport-boundary-model.md`
+- `Documentation/transport-boundary-model.md`
 
 Boundary guarantees:
 - Root `yai/api` remains physically drained.

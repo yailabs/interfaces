@@ -1,0 +1,47 @@
+{
+  "runtime_invalidation_event": {
+    "runtime_invalidation_event_ref": "runtime-invalidation-event/ref/logout-seals-operational",
+    "invalidation_kind": "logout",
+    "invalidation_reason": "user_logout",
+    "affected_refs": [
+      "auth-context/ref/local-dev",
+      "license-lease/ref/lease-201"
+    ],
+    "auth_context_ref": "auth-context/ref/local-dev",
+    "license_lease_ref": "license-lease/ref/lease-201",
+    "local_machine_ref": "local-machine/ref/machine-201",
+    "local_lease_cache_ref": "local-lease-cache/ref/cache-201",
+    "seal_state": "sealed",
+    "operational_readiness": "blocked",
+    "diagnostic_posture": "diagnostics_allowed",
+    "cache_invalidation_posture": "cache_retained",
+    "lease_invalidation_posture": "lease_retained",
+    "machine_authorization_posture": "not_applicable",
+    "logout_posture": "logout_blocks_operational_actions",
+    "preservation_posture": "preserve_cases_records_evidence_knowledge",
+    "recovery_posture": "reauthenticate",
+    "next_action": "reauthenticate",
+    "warning_codes": [
+      "active_work_present",
+      "reauthentication_required"
+    ],
+    "safe_invalidation_projection": {
+      "invalidation_kind": "logout",
+      "invalidation_reason": "user_logout",
+      "seal_state": "sealed",
+      "operational_readiness": "blocked",
+      "diagnostic_posture": "diagnostics_allowed",
+      "cache_invalidation_posture": "cache_retained",
+      "lease_invalidation_posture": "lease_retained",
+      "machine_authorization_posture": "not_applicable",
+      "logout_posture": "logout_blocks_operational_actions",
+      "preservation_posture": "preserve_cases_records_evidence_knowledge",
+      "recovery_posture": "reauthenticate",
+      "next_action": "reauthenticate",
+      "warning_codes": [
+        "active_work_present",
+        "reauthentication_required"
+      ]
+    }
+  }
+}

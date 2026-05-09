@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/runtime-sealed-by-license-behavior.v1.schema.json",
+  "title": "YAI Runtime Sealed-by-License Behavior v1",
+  "type": "object",
+  "required": [
+    "runtime_license_seal_state"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "runtime_license_seal_state": {
+      "$ref": "#/$defs/runtimeLicenseSealState"
+    }
+  },
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sealState": {
+      "type": "string",
+      "enum": [
+        "unsealed",
+        "sealed",
+        "partially_sealed",
+        "diagnostics_only",
+        "unknown"
+      ]
+    },
+    "sealReason": {
+      "type": "string",
+      "enum": [
+        "none",
+        "missing_machine_authorization",
+        "machine_authorization_revoked",
+        "machine_authorization_expired",
+        "missing_license_lease",
+        "license_lease_expired",
+        "license_lease_revoked",
+        "license_lease_stale",
+        "entitlement_missing",
+        "limit_exceeded",
+        "runtime_gate_blocked",
+        "online_check_required",
+        "manual_review_required",
+        "unsafe_projection",
+        "unknown"
+      ]
+    },
+    "operationalReadiness": {
+      "type": "string",
+      "enum": [
+        "ready",
+        "blocked",
+        "degraded",
+        "diagnostics_only",
+        "unknown"
+      ]
+    },
+    "diagnosticPosture": {
+      "type": "string",
+      "enum": [
+        "diagnostics_allowed",
+        "diagnostics_limited",
+        "diagnostics_blocked",
+        "unknown"
+      ]
+    },
+    "allowedSurfacePosture": {
+      "type": "string",
+      "enum": [
+        "diagnostics_only",
+        "read_only_only",
+        "operational_allowed",
+        "limited_operational",
+        "none",
+        "unknown"
+      ]
+    },
+    "blockedSurfacePosture": {
+      "type": "string",
+      "enum": [
+        "none",
+        "operational_write_blocked",
+        "provider_actions_blocked",
+        "agent_flow_job_blocked",
+        "knowledge_evidence_write_blocked",
+        "runtime_control_blocked",
+        "all_operational_blocked",
+        "unknown"
+      ]
+    },
+    "recoveryPosture": {
+      "type": "string",
+      "enum": [
+        "none",
+        "refresh_license_lease",
+        "reenroll_machine",
+        "reauthenticate",
+        "reduce_usage",
+        "wait_for_manual_review",
+        "retry_online",
+        "contact_support",
+        "unknown"
+      ]
+    },
+    "nextAction": {
+      "type": "string",
+      "enum": [
+        "none",
+        "run_diagnostics",
+        "refresh_license_lease",
+        "request_machine_enrollment",
+        "reauthenticate",
+        "retry_license_check",
+        "reduce_usage",
+        "contact_support",
+        "manual_review",
+        "unknown"
+      ]
+    },
+    "responseFreshness": {
+      "type": "string",
+      "enum": [
+        "fresh",
+        "stale",
+        "expired",
+        "unknown"
+      ]
+    },
+    "cachePosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "cache_current",
+        "cache_stale",
+        "cache_expired",
+        "cache_invalidated",
+        "cache_update_required",
+        "unknown"
+      ]
+    },
+    "offlineGracePosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "available",
+        "active",
+        "expired",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "diagnostics_only",
+        "lease_near_expiry",
+        "stale_response",
+        "offline_grace_active",
+        "cache_update_required",
+        "limit_near",
+        "manual_review_required",
+        "unknown"
+      ]
+    },
+    "safeStatusProjection": {
+      "type": "object",
+      "required": [
+        "seal_state",
+        "seal_reason",
+        "operational_readiness",
+        "diagnostic_posture",
+        "allowed_surface_posture",
+        "blocked_surface_posture",
+        "recovery_posture",
+        "next_action",
+        "response_freshness"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "seal_state": {
+          "$ref": "#/$defs/sealState"
+        },
+        "seal_reason": {
+          "$ref": "#/$defs/sealReason"
+        },
+        "operational_readiness": {
+          "$ref": "#/$defs/operationalReadiness"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "allowed_surface_posture": {
+          "$ref": "#/$defs/allowedSurfacePosture"
+        },
+        "blocked_surface_posture": {
+          "$ref": "#/$defs/blockedSurfacePosture"
+        },
+        "recovery_posture": {
+          "$ref": "#/$defs/recoveryPosture"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nextAction"
+        },
+        "response_freshness": {
+          "$ref": "#/$defs/responseFreshness"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        }
+      }
+    },
+    "runtimeLicenseSealState": {
+      "type": "object",
+      "required": [
+        "runtime_license_seal_state_ref",
+        "seal_state",
+        "seal_reason",
+        "operational_readiness",
+        "diagnostic_posture",
+        "allowed_surface_posture",
+        "blocked_surface_posture",
+        "recovery_posture",
+        "next_action",
+        "response_freshness"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "runtime_license_seal_state_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_license_check_response_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "limit_projection_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "seal_state": {
+          "$ref": "#/$defs/sealState"
+        },
+        "seal_reason": {
+          "$ref": "#/$defs/sealReason"
+        },
+        "operational_readiness": {
+          "$ref": "#/$defs/operationalReadiness"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "allowed_surface_posture": {
+          "$ref": "#/$defs/allowedSurfacePosture"
+        },
+        "blocked_surface_posture": {
+          "$ref": "#/$defs/blockedSurfacePosture"
+        },
+        "recovery_posture": {
+          "$ref": "#/$defs/recoveryPosture"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nextAction"
+        },
+        "response_freshness": {
+          "$ref": "#/$defs/responseFreshness"
+        },
+        "cache_posture": {
+          "$ref": "#/$defs/cachePosture"
+        },
+        "offline_grace_posture": {
+          "$ref": "#/$defs/offlineGracePosture"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "safe_status_projection": {
+          "$ref": "#/$defs/safeStatusProjection"
+        }
+      }
+    }
+  }
+}

@@ -48,8 +48,8 @@ See also:
 - `implementation-readiness-matrix.v1.json`
 - `implementation-readiness-matrix.v1.md`
 - `implementation-handoff.v1.md`
-- `../docs/transport-boundary-model.md`
-- `../docs/transport-contract-index-implementation-readiness.md`
+- `../Documentation/transport-boundary-model.md`
+- `../Documentation/transport-contract-index-implementation-readiness.md`
 - `local-ipc-rpc.v1.md`
 - `local-http-loopback.v1.md`
 - `local-ipc-rpc/README.md`
@@ -60,10 +60,10 @@ See also:
 - `lan-secure/README.md`
 - `remote-https.v1.md`
 - `remote-https/README.md`
-- `../docs/lan-secure-remote-https-boundary.md`
+- `../Documentation/lan-secure-remote-https-boundary.md`
 - `provider-transport-boundary.v1.md`
 - `in-process-test.v1.md`
 - `in-process-test/README.md`
 - `subprocess-stdio-compat.v1.md`
 - `subprocess-stdio-compat/README.md`
-- `../docs/in-process-subprocess-compat-boundary.md`
+- `../Documentation/in-process-subprocess-compat-boundary.md`

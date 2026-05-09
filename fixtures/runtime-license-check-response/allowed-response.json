@@ -1,0 +1,37 @@
+{
+  "runtime_license_check_response": {
+    "runtime_license_check_response_ref": "runtime_license_check_response.allowed.v1",
+    "runtime_license_check_request_ref": "runtime_license_check_request.full_online.v1",
+    "decision": "allowed",
+    "reason": "safe machine, lease, entitlement, limit and gate posture are present",
+    "next_action": "none",
+    "response_freshness": "fresh",
+    "lease_posture": "valid",
+    "machine_authorization_posture": "authorized",
+    "entitlement_posture": "entitled",
+    "limit_posture": "within_limit",
+    "runtime_gate_posture": "gate_allowed",
+    "offline_grace_posture": "not_applicable",
+    "cache_update_posture": "cache_update_allowed",
+    "responded_at": "2026-05-08T09:00:00Z",
+    "expires_at": "2026-05-08T09:10:00Z",
+    "refresh_after": "2026-05-08T09:05:00Z",
+    "safe_license_lease_projection": {
+      "license_lease_ref": "license_lease.alpha",
+      "lease_posture": "valid",
+      "expires_at": "2026-05-08T09:10:00Z"
+    },
+    "safe_machine_authorization_projection": {
+      "machine_authorization_ref": "machine_authorization.alpha",
+      "machine_authorization_posture": "authorized"
+    },
+    "safe_limit_projection": {
+      "limit_projection_ref": "limit_projection.max_runtime_actions.account_global.v1",
+      "limit_posture": "within_limit"
+    },
+    "safe_runtime_gate_decision": {
+      "runtime_gate_decision_ref": "runtime_gate_decision.startup_check",
+      "runtime_gate_posture": "gate_allowed"
+    }
+  }
+}

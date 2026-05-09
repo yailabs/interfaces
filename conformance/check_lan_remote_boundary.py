@@ -33,7 +33,7 @@ remote_required = [
     remote_root / "conformance-profile.v1.md",
 ]
 doc_required = [
-    root / "docs/lan-secure-remote-https-boundary.md",
+    root / "Documentation/lan-secure-remote-https-boundary.md",
 ]
 
 errors = []

@@ -1,0 +1,27 @@
+{
+  "runtime_license_check_response": {
+    "runtime_license_check_response_ref": "runtime_license_check_response.missing_machine_authorization.v1",
+    "runtime_license_check_request_ref": "runtime_license_check_request.missing_machine_authorization.v1",
+    "decision": "blocked",
+    "reason": "machine authorization posture is required before operational use",
+    "blocked_reason": "missing_machine_authorization",
+    "next_action": "reenroll_machine",
+    "response_freshness": "fresh",
+    "lease_posture": "valid",
+    "machine_authorization_posture": "missing",
+    "entitlement_posture": "entitled",
+    "limit_posture": "within_limit",
+    "runtime_gate_posture": "gate_blocked",
+    "offline_grace_posture": "not_applicable",
+    "cache_update_posture": "no_cache_update",
+    "responded_at": "2026-05-08T09:01:00Z",
+    "safe_license_lease_projection": {
+      "license_lease_ref": "license_lease.beta",
+      "lease_posture": "valid"
+    },
+    "safe_runtime_gate_decision": {
+      "runtime_gate_decision_ref": "runtime_gate_decision.machine_auth_required",
+      "runtime_gate_posture": "gate_blocked"
+    }
+  }
+}

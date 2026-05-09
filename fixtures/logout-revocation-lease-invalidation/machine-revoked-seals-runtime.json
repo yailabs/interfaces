@@ -1,0 +1,45 @@
+{
+  "runtime_invalidation_event": {
+    "runtime_invalidation_event_ref": "runtime-invalidation-event/ref/machine-revoked-seals-runtime",
+    "invalidation_kind": "machine_authorization_revoked",
+    "invalidation_reason": "machine_revoked",
+    "affected_refs": [
+      "machine-authorization/ref/authorization-202",
+      "local-machine/ref/machine-202"
+    ],
+    "machine_authorization_ref": "machine-authorization/ref/authorization-202",
+    "local_machine_ref": "local-machine/ref/machine-202",
+    "local_machine_identity_ref": "local-machine-identity/ref/identity-202",
+    "runtime_license_check_response_ref": "runtime-license-check-response/ref/blocked-missing-machine-authorization",
+    "seal_state": "sealed",
+    "operational_readiness": "blocked",
+    "diagnostic_posture": "diagnostics_limited",
+    "cache_invalidation_posture": "cache_requires_refresh",
+    "lease_invalidation_posture": "lease_retained",
+    "machine_authorization_posture": "machine_authorization_revoked",
+    "logout_posture": "not_logout",
+    "preservation_posture": "preserve_cases_records_evidence_knowledge",
+    "recovery_posture": "reenroll_machine",
+    "next_action": "request_machine_enrollment",
+    "warning_codes": [
+      "machine_authorization_invalidated"
+    ],
+    "safe_invalidation_projection": {
+      "invalidation_kind": "machine_authorization_revoked",
+      "invalidation_reason": "machine_revoked",
+      "seal_state": "sealed",
+      "operational_readiness": "blocked",
+      "diagnostic_posture": "diagnostics_limited",
+      "cache_invalidation_posture": "cache_requires_refresh",
+      "lease_invalidation_posture": "lease_retained",
+      "machine_authorization_posture": "machine_authorization_revoked",
+      "logout_posture": "not_logout",
+      "preservation_posture": "preserve_cases_records_evidence_knowledge",
+      "recovery_posture": "reenroll_machine",
+      "next_action": "request_machine_enrollment",
+      "warning_codes": [
+        "machine_authorization_invalidated"
+      ]
+    }
+  }
+}

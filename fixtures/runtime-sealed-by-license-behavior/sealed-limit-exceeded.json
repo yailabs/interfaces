@@ -1,0 +1,38 @@
+{
+  "runtime_license_seal_state": {
+    "runtime_license_seal_state_ref": "runtime-license-seal-state/ref/sealed-limit-exceeded",
+    "runtime_license_check_response_ref": "runtime-license-check-response/ref/blocked-limit-exceeded",
+    "license_lease_ref": "license-lease/ref/lease-004",
+    "machine_authorization_ref": "machine-authorization/ref/authorization-004",
+    "local_machine_ref": "local-machine/ref/machine-004",
+    "limit_projection_ref": "limit-projection/ref/limit-004",
+    "seal_state": "sealed",
+    "seal_reason": "limit_exceeded",
+    "operational_readiness": "blocked",
+    "diagnostic_posture": "diagnostics_allowed",
+    "allowed_surface_posture": "diagnostics_only",
+    "blocked_surface_posture": "agent_flow_job_blocked",
+    "recovery_posture": "reduce_usage",
+    "next_action": "reduce_usage",
+    "response_freshness": "fresh",
+    "cache_posture": "not_applicable",
+    "offline_grace_posture": "blocked",
+    "warning_codes": [
+      "limit_near"
+    ],
+    "safe_status_projection": {
+      "seal_state": "sealed",
+      "seal_reason": "limit_exceeded",
+      "operational_readiness": "blocked",
+      "diagnostic_posture": "diagnostics_allowed",
+      "allowed_surface_posture": "diagnostics_only",
+      "blocked_surface_posture": "agent_flow_job_blocked",
+      "recovery_posture": "reduce_usage",
+      "next_action": "reduce_usage",
+      "response_freshness": "fresh",
+      "warning_codes": [
+        "limit_near"
+      ]
+    }
+  }
+}

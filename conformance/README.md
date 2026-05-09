@@ -33,6 +33,8 @@ Boundary:
 - `check_api_contracts.py` and `check_operation_registry.py` are API-owned checks.
 - `check_operation_transport_mapping.py` is an API-owned mapping conformance
   check for API.02 dispatch and transport policy.
+  It also enforces the explicit A1 RT.04 Local IPC RPC coverage markers for
+  the audited supported, deferred, and blocked operation subset.
 - `check_api_envelope_error_stream.py` is an API-owned contract conformance
   check for API.03 envelope, error, and stream-frame alignment.
 - `check_local_ipc_rpc_contract.py` is an API-owned contract conformance check

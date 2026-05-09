@@ -1,0 +1,30 @@
+{
+  "runtime_license_check_response": {
+    "runtime_license_check_response_ref": "runtime_license_check_response.expired_lease.v1",
+    "runtime_license_check_request_ref": "runtime_license_check_request.cached_lease_refresh.v1",
+    "decision": "blocked",
+    "reason": "license lease posture is expired and requires external refresh",
+    "blocked_reason": "license_lease_expired",
+    "next_action": "refresh_license_lease",
+    "response_freshness": "fresh",
+    "lease_posture": "expired",
+    "machine_authorization_posture": "authorized",
+    "entitlement_posture": "entitled",
+    "limit_posture": "within_limit",
+    "runtime_gate_posture": "gate_blocked",
+    "offline_grace_posture": "expired",
+    "cache_update_posture": "cache_invalidate_required",
+    "responded_at": "2026-05-08T09:02:00Z",
+    "warning_codes": [
+      "cache_update_required"
+    ],
+    "safe_license_lease_projection": {
+      "license_lease_ref": "license_lease.gamma",
+      "lease_posture": "expired"
+    },
+    "safe_machine_authorization_projection": {
+      "machine_authorization_ref": "machine_authorization.gamma",
+      "machine_authorization_posture": "authorized"
+    }
+  }
+}

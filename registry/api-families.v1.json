@@ -10,14 +10,18 @@
       "public_name": "auth",
       "internal_plane_hint": "identity",
       "status": "seed",
-      "description": "Authentication posture and session admission contracts",
+      "description": "Authentication posture, auth-context visibility, provider-auth adapter posture, and future device-login contracts",
       "canonical_resources": [
-        "status",
-        "whoami",
         "login",
-        "logout"
+        "auth",
+        "logout",
+        "status",
+        "context",
+        "provider",
+        "device_login",
+        "whoami"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical auth family. Auth is not session. Provider session is not YAI session. Auth does not own entitlement, machine authorization, license lease, runtime gate, case, operator context, client attachment, or shell attachment. `auth.whoami` remains deprecated compatibility only."
     },
     {
       "id": "identity",
@@ -41,15 +45,18 @@
       "ownership": "api",
       "public_name": "session",
       "internal_plane_hint": "runtime",
-      "status": "seed",
-      "description": "Client-session attachment and status contracts",
+      "status": "legacy",
+      "description": "Legacy client-session compatibility contracts retained for migration only",
       "canonical_resources": [
         "current",
         "status",
         "attach",
         "detach"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Legacy compatibility family only. Session is not a canonical domain family in V51; canonical public meaning is split across auth, case/context, shell/client, and system status surfaces.",
+      "legacy_aliases": [
+        "session"
+      ]
     },
     {
       "id": "client",
@@ -82,7 +89,7 @@
         "service",
         "runtime"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical system/runtime diagnostic family. Runtime lifecycle control actions such as start/stop/restart remain forbidden as canonical domain operations."
     },
     {
       "id": "case",
@@ -91,19 +98,38 @@
       "public_name": "case",
       "internal_plane_hint": "case",
       "status": "seed",
-      "description": "Case identity, selection, graph, and record context",
+      "description": "Case tree, root, open/close, and case inspection contracts with operator-context projections retained for CLI compatibility",
       "canonical_resources": [
+        "root",
         "list",
+        "open",
+        "enter",
+        "leave",
+        "status",
+        "close",
         "current",
-        "create",
-        "use",
         "show",
         "tree",
         "pending",
         "graph",
         "records"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical public case family. Case is not session. Active case belongs to operator context. `case.enter`, `case.leave`, and `case.status` remain valid public projections, but explicit API ownership of `active_case_ref` is now expressed by the `operator_context` family. `case.close` closes a case-tree entry only and must not imply evidence, knowledge, or records deletion by default. Older `case.create` and `case.use` naming remains compatibility-only."
+    },
+    {
+      "id": "operator_context",
+      "display_name": "Operator Context",
+      "ownership": "api",
+      "public_name": "operator_context",
+      "internal_plane_hint": "operator_context",
+      "status": "seed",
+      "description": "Operator-context posture and active-case selection contracts",
+      "canonical_resources": [
+        "status",
+        "current",
+        "active_case"
+      ],
+      "notes": "Canonical API family for active-case selection posture. Operator context owns `active_case_ref`. It does not own auth, authorization, runtime lifecycle, jobs, workflows, agents, provider/model execution, records, evidence, knowledge, analytics, client connection, or shell lifecycle."
     },
     {
       "id": "conversation",
@@ -158,7 +184,10 @@
         "runs",
         "steps"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical API family. `flow` remains a legacy compatibility alias only and must not be reintroduced as a canonical family.",
+      "legacy_aliases": [
+        "flow"
+      ]
     },
     {
       "id": "governance",
@@ -193,7 +222,7 @@
         "decisions",
         "evidence"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Control remains canonical for gates and decisions. Evidence inspection may project through a first-class `evidence` family while `control.evidence.*` is retained only for compatibility."
     },
     {
       "id": "knowledge",
@@ -210,7 +239,7 @@
         "graph",
         "memory"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Knowledge remains a public API family, but V51 also promotes lineage and recall as first-class families. `knowledge.lineage.*` remains compatibility-only when lineage is first-class."
     },
     {
       "id": "state",
@@ -226,7 +255,7 @@
         "snapshot",
         "records"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical semantic state family. `state.records.*` is canonical over any hypothetical root `records.*` family."
     },
     {
       "id": "skills",
@@ -260,7 +289,8 @@
         "connect",
         "probe"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical plural API family. CLI/TUI projections may use singular `provider` without changing the API family name.",
+      "preferred_cli_tui_projection": "provider"
     },
     {
       "id": "models",
@@ -276,7 +306,8 @@
         "capabilities",
         "evaluate"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical plural API family. CLI/TUI projections may use singular `model` without changing the API family name.",
+      "preferred_cli_tui_projection": "model"
     },
     {
       "id": "agents",
@@ -292,7 +323,8 @@
         "run",
         "trace"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Canonical plural API family. CLI/TUI projections may use singular `agent` without changing the API family name.",
+      "preferred_cli_tui_projection": "agent"
     },
     {
       "id": "orchestrator",
@@ -342,6 +374,210 @@
         "export"
       ],
       "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+    },
+    {
+      "id": "policy_pack",
+      "display_name": "Policy Pack",
+      "ownership": "api",
+      "public_name": "policy_pack",
+      "internal_plane_hint": "governance",
+      "status": "seed",
+      "description": "Policy-pack inventory, inspection, validation, and explanation projections",
+      "canonical_resources": [
+        "list",
+        "inspect",
+        "validate",
+        "explain"
+      ],
+      "notes": "Canonical API family spelling uses underscore. CLI/TUI projections may render `policy-pack` while the API family remains `policy_pack`."
+    },
+    {
+      "id": "intake",
+      "display_name": "Intake",
+      "ownership": "api",
+      "public_name": "intake",
+      "internal_plane_hint": "materialization",
+      "status": "seed",
+      "description": "Governed intake planning, execution, status, outputs, and lineage projections",
+      "canonical_resources": [
+        "plan",
+        "run",
+        "status",
+        "inspect",
+        "validate",
+        "outputs",
+        "lineage"
+      ],
+      "notes": "Intake is a first-class API family in V51 and must not be collapsed into generic query or knowledge surfaces."
+    },
+    {
+      "id": "materialization",
+      "display_name": "Materialization",
+      "ownership": "api",
+      "public_name": "materialization",
+      "internal_plane_hint": "materialization",
+      "status": "seed",
+      "description": "Materialization planning, execution, outputs, evidence, and lineage projections",
+      "canonical_resources": [
+        "plan",
+        "run",
+        "status",
+        "inspect",
+        "validate",
+        "outputs",
+        "evidence",
+        "lineage"
+      ],
+      "notes": "Canonical API family spelling is `materialization`. CLI/TUI projections may use `materialize` while the API family remains noun-based."
+    },
+    {
+      "id": "excerpt",
+      "display_name": "Excerpt",
+      "ownership": "api",
+      "public_name": "excerpt",
+      "internal_plane_hint": "state",
+      "status": "seed",
+      "description": "Case-bound excerpt listing, inspection, and lineage projections",
+      "canonical_resources": [
+        "list",
+        "show",
+        "inspect",
+        "lineage"
+      ],
+      "notes": "Excerpts are case-bound materialization outputs and must not be treated as free-floating documents."
+    },
+    {
+      "id": "evidence",
+      "display_name": "Evidence",
+      "ownership": "api",
+      "public_name": "evidence",
+      "internal_plane_hint": "control",
+      "status": "seed",
+      "description": "Evidence listing, inspection, and lineage projections",
+      "canonical_resources": [
+        "list",
+        "show",
+        "inspect",
+        "lineage"
+      ],
+      "notes": "Evidence is promoted to a first-class API family in V51. `control.evidence.*` remains compatibility-only where retained."
+    },
+    {
+      "id": "lineage",
+      "display_name": "Lineage",
+      "ownership": "api",
+      "public_name": "lineage",
+      "internal_plane_hint": "lineage",
+      "status": "seed",
+      "description": "First-class lineage trace, explain, show, and graph projections",
+      "canonical_resources": [
+        "trace",
+        "show",
+        "explain",
+        "graph"
+      ],
+      "notes": "Lineage becomes a first-class API family in V51 rather than remaining buried entirely under `knowledge.lineage.*`."
+    },
+    {
+      "id": "recall",
+      "display_name": "Recall",
+      "ownership": "api",
+      "public_name": "recall",
+      "internal_plane_hint": "knowledge",
+      "status": "seed",
+      "description": "Governed recall query, explain, and inspect projections",
+      "canonical_resources": [
+        "query",
+        "explain",
+        "inspect"
+      ],
+      "notes": "Recall is governed and case-bound. Root query remains forbidden as a standalone semantic owner."
+    },
+    {
+      "id": "job",
+      "display_name": "Job",
+      "ownership": "api",
+      "public_name": "job",
+      "internal_plane_hint": "orchestration",
+      "status": "seed",
+      "description": "Job planning, start, status, logs, outputs, evidence, and lineage projections",
+      "canonical_resources": [
+        "list",
+        "status",
+        "inspect",
+        "plan",
+        "start",
+        "cancel",
+        "logs",
+        "outputs",
+        "evidence",
+        "lineage"
+      ],
+      "notes": "Job becomes an explicit public API family in V51 instead of remaining an under-modeled runtime concept."
+    },
+    {
+      "id": "license",
+      "display_name": "License",
+      "ownership": "api",
+      "public_name": "license",
+      "internal_plane_hint": "identity",
+      "status": "seed",
+      "description": "License posture, lease status, cache status, and safe check projections",
+      "canonical_resources": [
+        "status",
+        "lease",
+        "check",
+        "cache"
+      ],
+      "notes": "License remains posture/projection only. Billing or subscription truth does not move into this family."
+    },
+    {
+      "id": "machine",
+      "display_name": "Machine",
+      "ownership": "api",
+      "public_name": "machine",
+      "internal_plane_hint": "identity",
+      "status": "seed",
+      "description": "Machine posture, identity status, evidence status, and authorization projections",
+      "canonical_resources": [
+        "status",
+        "identity",
+        "evidence",
+        "authorization",
+        "enroll"
+      ],
+      "notes": "Machine projections must remain safe and must not expose raw hardware, fingerprint, or secret material."
+    },
+    {
+      "id": "limits",
+      "display_name": "Limits",
+      "ownership": "api",
+      "public_name": "limits",
+      "internal_plane_hint": "identity",
+      "status": "seed",
+      "description": "Shared-account limits posture and explanation projections",
+      "canonical_resources": [
+        "status",
+        "explain"
+      ],
+      "notes": "Limits remains a safe projection family and must not become quota-ledger or billing truth."
+    },
+    {
+      "id": "logs",
+      "display_name": "Logs",
+      "ownership": "api",
+      "public_name": "logs",
+      "internal_plane_hint": "output",
+      "status": "seed",
+      "description": "Scoped runtime, job, workflow, agent, and provider log-watch projections",
+      "canonical_resources": [
+        "runtime",
+        "job",
+        "workflow",
+        "agent",
+        "provider"
+      ],
+      "notes": "Logs is scoped only. Generic root log ownership is forbidden; each log surface must remain attached to an explicit subject."
     }
   ]
 }

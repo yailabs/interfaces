@@ -53,7 +53,7 @@
       "clientExposureStatus": "planned",
       "apiSources": [
         "registry/api-operations.v1.json",
-        "docs/prompting-canonical-surface.md"
+        "Documentation/prompting-canonical-surface.md"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",
@@ -186,7 +186,7 @@
       "sdkAvailability": "typescript-readiness",
       "clientExposureStatus": "not-exposed",
       "apiSources": [
-        "docs/agent-orchestration-entry.md"
+        "Documentation/agent-orchestration-entry.md"
       ],
       "familiesStatus": "compatibility",
       "openApiStatus": "scaffolded",

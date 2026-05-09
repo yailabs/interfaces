@@ -20,7 +20,7 @@ required_files = [
     contract_root / "errors.v1.md",
     contract_root / "platform-bindings.v1.md",
     contract_root / "conformance-profile.v1.md",
-    root / "docs/local-ipc-rpc-contract.md",
+    root / "Documentation/local-ipc-rpc-contract.md",
 ]
 
 errors = []

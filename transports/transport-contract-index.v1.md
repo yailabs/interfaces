@@ -26,7 +26,7 @@ Runtime and SDK implementation remains deferred to named handoff waves.
 - Machine-readable readiness: `implementation-readiness-matrix.v1.json`
 - Human-readable readiness: `implementation-readiness-matrix.v1.md`
 - Runtime and SDK handoff: `implementation-handoff.v1.md`
-- Summary doc: `../docs/transport-contract-index-implementation-readiness.md`
+- Summary doc: `../Documentation/transport-contract-index-implementation-readiness.md`
 
 ## Freeze Closure Rule
 

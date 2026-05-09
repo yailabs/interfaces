@@ -11,6 +11,9 @@ runtime-provider/model transport.
 - Client-runtime operation mapping ends at runtime dispatch.
 - Provider/model routing begins only after `runtime/boundary/api` has accepted
   and dispatched a normalized API operation envelope.
+- RT.04 and A1 must not treat `providers.list` or `models.list` as provider or
+  model execution. Those entries stay in client-runtime mapping terms, but
+  their current Local IPC RPC coverage is explicitly deferred.
 
 ## Ownership Split
 

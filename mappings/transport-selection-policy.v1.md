@@ -16,6 +16,17 @@ set in `operation-transport-map.v1.json`.
 7. `in_process_test` is test-only.
 8. `subprocess_stdio_compat` is explicit compatibility/debug fallback only.
 
+## Runtime Truth Guard
+
+- Contract-allowed transport is not the same as currently audited runtime
+  support.
+- When `operation-transport-map.v1.json` carries `runtime_ipc_coverage`, SDK
+  and conformance consumers must treat it as the Local IPC RPC reality marker
+  for the current audited runtime state.
+- A1 records RT.04 Local IPC RPC truth only for the audited read/projection
+  subset; it does not promote deferred, blocked, or provider/model surfaces to
+  supported.
+
 ## Primary-Now Defaults
 
 - `local_ipc_rpc` is the default local native transport for CLI, Loom/TUI, and

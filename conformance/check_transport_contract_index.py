@@ -10,16 +10,16 @@ required_files = [
     root / "transports/implementation-readiness-matrix.v1.json",
     root / "transports/implementation-readiness-matrix.v1.md",
     root / "transports/implementation-handoff.v1.md",
-    root / "docs/transport-contract-index-implementation-readiness.md",
+    root / "Documentation/transport-contract-index-implementation-readiness.md",
 ]
 
 expected_transports = {
     "local_ipc_rpc": {
         "contract_status": "frozen",
         "implementation_priority": "primary_now",
-        "runtime_readiness": "ready_for_implementation",
-        "sdk_readiness": "ready_for_client_implementation",
-        "client_default": "cli_loom_native",
+        "runtime_readiness": "read_projection_probe_ready",
+        "sdk_readiness": "rust_client_available",
+        "client_default": "status_default_candidate_only",
     },
     "local_http_loopback": {
         "contract_status": "frozen",
@@ -84,6 +84,7 @@ allowed_priority = {
 allowed_runtime = {
     "ready_for_skeleton",
     "ready_for_implementation",
+    "read_projection_probe_ready",
     "future_only",
     "not_product",
     "separate_provider_boundary",
@@ -91,12 +92,13 @@ allowed_runtime = {
 allowed_sdk = {
     "ready_for_client_contract",
     "ready_for_client_implementation",
+    "rust_client_available",
     "future_only",
     "test_only",
     "compat_only",
     "separate_provider_boundary",
 }
-allowed_client_default = {"cli_loom_native", "dashboard_web", "realtime", "none"}
+allowed_client_default = {"cli_loom_native", "dashboard_web", "realtime", "none", "status_default_candidate_only"}
 
 errors = []
 
@@ -118,7 +120,7 @@ entries = {
 index_text = (root / "transports/transport-contract-index.v1.md").read_text() if (root / "transports/transport-contract-index.v1.md").exists() else ""
 matrix_md_text = (root / "transports/implementation-readiness-matrix.v1.md").read_text() if (root / "transports/implementation-readiness-matrix.v1.md").exists() else ""
 handoff_text = (root / "transports/implementation-handoff.v1.md").read_text() if (root / "transports/implementation-handoff.v1.md").exists() else ""
-summary_text = (root / "docs/transport-contract-index-implementation-readiness.md").read_text() if (root / "docs/transport-contract-index-implementation-readiness.md").exists() else ""
+summary_text = (root / "Documentation/transport-contract-index-implementation-readiness.md").read_text() if (root / "Documentation/transport-contract-index-implementation-readiness.md").exists() else ""
 
 for transport in expected_transports:
     if transport not in index_text:

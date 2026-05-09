@@ -1,0 +1,31 @@
+{
+  "runtime_license_seal_state": {
+    "runtime_license_seal_state_ref": "runtime-license-seal-state/ref/safe-seal-status-projection",
+    "seal_state": "partially_sealed",
+    "seal_reason": "runtime_gate_blocked",
+    "operational_readiness": "degraded",
+    "diagnostic_posture": "diagnostics_allowed",
+    "allowed_surface_posture": "limited_operational",
+    "blocked_surface_posture": "provider_actions_blocked",
+    "recovery_posture": "retry_online",
+    "next_action": "run_diagnostics",
+    "response_freshness": "fresh",
+    "warning_codes": [
+      "unknown"
+    ],
+    "safe_status_projection": {
+      "seal_state": "partially_sealed",
+      "seal_reason": "runtime_gate_blocked",
+      "operational_readiness": "degraded",
+      "diagnostic_posture": "diagnostics_allowed",
+      "allowed_surface_posture": "limited_operational",
+      "blocked_surface_posture": "provider_actions_blocked",
+      "recovery_posture": "retry_online",
+      "next_action": "run_diagnostics",
+      "response_freshness": "fresh",
+      "warning_codes": [
+        "unknown"
+      ]
+    }
+  }
+}

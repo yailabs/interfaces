@@ -1,0 +1,30 @@
+{
+  "runtime_license_check_response": {
+    "runtime_license_check_response_ref": "runtime_license_check_response.limit_exceeded.v1",
+    "runtime_license_check_request_ref": "runtime_license_check_request.limit_reconciliation.v1",
+    "decision": "blocked",
+    "reason": "shared account-global capacity is beyond the safe threshold",
+    "blocked_reason": "limit_exceeded",
+    "next_action": "reduce_usage",
+    "response_freshness": "fresh",
+    "lease_posture": "valid",
+    "machine_authorization_posture": "authorized",
+    "entitlement_posture": "entitled",
+    "limit_posture": "limit_exceeded",
+    "runtime_gate_posture": "gate_blocked",
+    "offline_grace_posture": "not_applicable",
+    "cache_update_posture": "no_cache_update",
+    "responded_at": "2026-05-08T09:03:00Z",
+    "safe_limit_projection": {
+      "limit_projection_ref": "limit_projection.max_parallel_jobs.account_global.v1",
+      "limit_posture": "limit_exceeded",
+      "warning_codes": [
+        "near_limit"
+      ]
+    },
+    "safe_runtime_gate_decision": {
+      "runtime_gate_decision_ref": "runtime_gate_decision.account_limit_blocked",
+      "runtime_gate_posture": "gate_blocked"
+    }
+  }
+}

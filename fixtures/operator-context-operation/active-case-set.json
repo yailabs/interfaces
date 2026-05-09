@@ -1,0 +1,35 @@
+{
+  "operator_context_operation": {
+    "operation_id": "operator_context.active_case.set",
+    "action_id": "context.switch",
+    "request_kind": "active_case_set",
+    "operation_status": "allowed",
+    "principal_ref": "principal://local-dev/francesco",
+    "auth_context_ref": "auth-context://local-dev/francesco",
+    "root_case_ref": "case://francesco",
+    "active_case_ref": "case://francesco/releases/preview",
+    "target_case_ref": "case://francesco/releases/preview",
+    "selected_case_ref": "case://francesco/releases/preview",
+    "operator_context_ref": "operator-context://local/francesco",
+    "operator_context_owner": "operator_context.active_case_ref",
+    "selection_mutated": true,
+    "session_mutated": false,
+    "client_mutated": false,
+    "shell_mutated": false,
+    "runtime_mutated": false,
+    "auth_mutated": false,
+    "reason": "Operator context active case was updated.",
+    "next_action": "Use case status to confirm combined case-tree and active-case posture.",
+    "safe_projection": {
+      "action_id": "context.switch",
+      "operation_status": "allowed",
+      "root_case_ref": "case://francesco",
+      "active_case_ref": "case://francesco/releases/preview",
+      "operator_context_ref": "operator-context://local/francesco",
+      "principal_ref": "principal://local-dev/francesco",
+      "auth_context_ref": "auth-context://local-dev/francesco",
+      "reason": "Operator context active case was updated.",
+      "next_action": "Use case status to confirm combined case-tree and active-case posture."
+    }
+  }
+}

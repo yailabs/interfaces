@@ -185,6 +185,62 @@
       "expected_idempotency": "idempotent",
       "common_use": "auditability",
       "incompatible_use_notes": "not replay execution"
+    },
+    {
+      "id": "inspect",
+      "meaning": "Inspect resource with diagnostic or detail emphasis",
+      "mutation_class": "read",
+      "expected_idempotency": "idempotent",
+      "common_use": "detail or diagnostic view",
+      "incompatible_use_notes": "root inspect is forbidden; use family-local inspect only"
+    },
+    {
+      "id": "explain",
+      "meaning": "Explain route, decision, or posture",
+      "mutation_class": "compute",
+      "expected_idempotency": "idempotent",
+      "common_use": "governed reasoning visibility",
+      "incompatible_use_notes": "explain does not execute the underlying action"
+    },
+    {
+      "id": "plan",
+      "meaning": "Create a plan or dry-run projection",
+      "mutation_class": "compute",
+      "expected_idempotency": "idempotent",
+      "common_use": "pre-execution planning",
+      "incompatible_use_notes": "plan must not imply execution or mutation"
+    },
+    {
+      "id": "validate",
+      "meaning": "Validate input, pack, or plan without executing it",
+      "mutation_class": "diagnostic",
+      "expected_idempotency": "idempotent",
+      "common_use": "safe contract validation",
+      "incompatible_use_notes": "validate does not create or run material"
+    },
+    {
+      "id": "cancel",
+      "meaning": "Cancel or stop a governed run or job",
+      "mutation_class": "control",
+      "expected_idempotency": "idempotent",
+      "common_use": "controlled cancellation",
+      "incompatible_use_notes": "not for runtime/service lifecycle control"
+    },
+    {
+      "id": "stop",
+      "meaning": "Stop a workflow run as a governed workload action",
+      "mutation_class": "control",
+      "expected_idempotency": "idempotent",
+      "common_use": "workflow run stop",
+      "incompatible_use_notes": "not for runtime/system lifecycle control"
+    },
+    {
+      "id": "enroll",
+      "meaning": "Request machine enrollment posture transition",
+      "mutation_class": "control",
+      "expected_idempotency": "non-idempotent",
+      "common_use": "machine authorization enrollment",
+      "incompatible_use_notes": "does not expose raw machine identity or issue authorization truth locally"
     }
   ]
 }

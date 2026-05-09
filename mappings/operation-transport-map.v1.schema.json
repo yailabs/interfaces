@@ -165,6 +165,22 @@
               "not_implemented"
             ]
           },
+          "runtime_ipc_coverage": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "deferred",
+              "blocked",
+              "unsupported",
+              "not_applicable"
+            ]
+          },
+          "runtime_ipc_readiness": {
+            "type": "string"
+          },
+          "operation_coverage_notes": {
+            "type": "string"
+          },
           "sdk_projection": {
             "type": "string"
           },
