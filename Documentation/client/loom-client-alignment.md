@@ -3,23 +3,29 @@
 ## Status
 
 * Delivery: V22
-* Status: active client alignment
-* Track: V — Core/runtime/API/SDK/CLI/identity/case
+* Status: historical compatibility note after A1
+* Track: V - Core/runtime/API/SDK/CLI/identity/case
 * Repo branch: `refoundation/phase-01`
 
 ## Purpose
 
-Align Loom as a governed long-lived client.
+This file is retained so V22 references keep resolving.
 
-## Client Role
+A1 canonicalizes the active terminal client as **YAI Console**. Loom is now a
+legacy product name and compatibility surface, not a separate canonical client.
+
+Active model: [console-client-alignment.md](console-client-alignment.md).
+
+## Compatibility Role
 
 ```text
-Loom is a long-lived client/TUI surface.
-It observes and presents runtime/auth/case/operator/readiness posture.
-It does not own domain truth.
+Loom is a historical long-lived client/TUI surface name.
+Console is the canonical terminal client.
+Legacy Loom compatibility surfaces may observe and present runtime/auth/case/
+operator/readiness posture, but they do not own domain truth.
 ```
 
-## Ownership Table
+## Compatibility Ownership Table
 
 | Concern | Owner |
 | ------- | ----- |
@@ -30,51 +36,22 @@ It does not own domain truth.
 | runtime lifecycle | runtime/service plane |
 | readiness projection | runtime/readiness plane |
 | entitlement/license/machine refs | E contracts consumed by V |
-| Loom connection state | Loom client state |
+| legacy Loom connection state | compatibility client state |
 | session | legacy compatibility only |
-
-## Loom Must Consume
-
-```text
-account_ref
-principal_ref
-auth_context
-entitlement_ref
-machine_authorization_ref
-license_lease
-runtime_gate_decision
-```
-
-when available through safe contracts.
-
-## Loom Must Not Consume
-
-```text
-pricing
-billing provider object
-Supabase user object
-account profile
-raw provider identity
-full commercial plan objects
-```
 
 ## Wording Rules
 
 | Avoid | Use |
 | ----- | --- |
+| `Loom terminal client` | `YAI Console` |
+| `Loom owns case` | `Console observes case posture` / `legacy Loom observes case posture` |
 | `session attached` | `client connected` / `runtime posture observed` |
 | `session selected case` | `operator_context.active_case_ref` |
 | `client logged in` | `auth posture: authenticated/local-dev/unauthenticated` |
 | `runtime ready because UI connected` | `readiness projection` |
-| `Loom owns case` | `Loom observes case posture` |
 
-## Deferred
+## Compatibility Rule
 
-| Deferred item | Future wave |
-| ------------- | ----------- |
-| VS Code client alignment | V23 |
-| desktop/long-lived client model | V24 |
-| machine authorization consumption | V39 |
-| license lease consumption | V40 |
-| SDK auth/case clients | V48/V49 |
-| entitlement/license clients | V50 |
+Legacy Loom wording may remain in historical wave reports, compatibility
+launchers, manifest aliases, and migration notes. Active API/SDK/client design
+must target Console.

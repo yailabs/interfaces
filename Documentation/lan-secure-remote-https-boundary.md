@@ -10,7 +10,7 @@ capability traffic.
 
 | Boundary | Role | Default posture | Notes |
 | -------- | ---- | --------------- | ----- |
-| Local IPC RPC | same-machine native local | primary native | CLI and Loom target default |
+| Local IPC RPC | same-machine native local | primary native | Console target default |
 | Local HTTP Loopback | same-machine browser/dev | primary browser/dev | not LAN |
 | Local Event Stream | realtime projection | primary realtime | not response envelope |
 | LAN Secure | paired local-network runtime access | disabled | explicit opt-in only |

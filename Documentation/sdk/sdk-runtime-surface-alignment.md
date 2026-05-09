@@ -52,7 +52,8 @@ Session is not readiness or authorization source.
 | Deferred item | Future wave |
 | ------------- | ----------- |
 | CLI SDK-first wiring | V21 |
-| Loom alignment | V22 |
+| Loom alignment | V22 historical |
+| Console canonicalization | A1 |
 | VS Code alignment | V23 |
 | API operator context surfaces | V37 |
 | SDK auth clients | V38 |

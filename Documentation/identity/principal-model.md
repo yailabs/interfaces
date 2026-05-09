@@ -12,7 +12,7 @@
 ## Purpose
 
 This document defines the canonical identity vocabulary used by YAI core,
-runtime, API, SDK, CLI and Loom.
+runtime, API, SDK, Console, and legacy CLI/Loom compatibility surfaces.
 
 V5 documents the model. It does not implement production account auth, external
 entitlements, machine authorization, root case creation or runtime enforcement.

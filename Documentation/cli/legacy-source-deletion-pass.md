@@ -59,4 +59,5 @@ removed or proven irrelevant.
 | Wave | Purpose |
 | ---- | ------- |
 | V21.6 | Add absence guardrail / prevent source recreation |
-| V22 | Loom client alignment after CLI cleanup branch |
+| V22 | historical Loom client alignment after CLI cleanup branch |
+| A1 | Console canonicalization / legacy CLI-Loom drain |

@@ -10,7 +10,7 @@ transports.
 
 | Boundary | Role | Default posture | Notes |
 | -------- | ---- | --------------- | ----- |
-| Local IPC RPC | native-local product transport | primary native | CLI and Loom target |
+| Local IPC RPC | native-local product transport | primary native | Console target |
 | Local HTTP Loopback | browser or dashboard product transport | primary browser/dev | request-response only |
 | Local Event Stream | realtime product transport | primary realtime | not response envelope |
 | In-process Test | direct harness or conformance transport | test-only | non-product |

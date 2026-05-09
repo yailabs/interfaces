@@ -117,5 +117,6 @@ Runtime then decides provider/model routing through `yai/providers/transport`.
 - no IPC/RPC/HTTP/SSE/WebSocket/LAN listener implementation
 - no SDK transport implementation
 - no OpenAPI route expansion
-- no CLI/Loom behavior change
+- no Console behavior change
+- no legacy CLI/Loom compatibility behavior change
 - no provider/model invocation behavior change

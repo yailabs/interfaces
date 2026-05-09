@@ -23,7 +23,8 @@ transport contract before implementation.
 - API owns the `local_ipc_rpc` contract.
 - Runtime implements the server/listener later.
 - SDK implements the client transport later.
-- CLI and Loom consume SDK later.
+- Console consumes the SDK later; legacy CLI/Loom surfaces remain
+  compatibility names.
 
 ## See Also
 

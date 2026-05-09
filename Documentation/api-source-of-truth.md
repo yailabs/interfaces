@@ -13,5 +13,7 @@ Rules:
 - `yai/protocols` defines transport-neutral protocol meaning.
 - `api` projects that meaning into API operation grammar and API-facing schemas.
 - runtime does not own API grammar.
-- CLI/Loom/SDK are projections or consumers, not API grammar owners.
+- Console/SDK are projections or consumers, not API grammar owners.
+- Legacy CLI/Loom names remain compatibility/history only and do not define
+  separate canonical clients.
 - C under `contracts/` is reference/helper implementation, not primary protocol truth.

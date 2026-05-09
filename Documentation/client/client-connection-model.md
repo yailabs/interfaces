@@ -25,8 +25,9 @@ It is a connection/execution surface, not a domain owner.
 
 | Client kind | Lifecycle | Example |
 | ----------- | --------- | ------- |
-| `cli-one-shot` | one-shot command | installed `yai case status` |
-| `loom-tui` | long-lived TUI | Loom |
+| `console-terminal` | terminal client | YAI Console |
+| `cli-one-shot` | legacy one-shot command compatibility | installed `yai case status` |
+| `loom-tui` | legacy long-lived TUI name | Loom compatibility |
 | `vscode-extension` | long-lived/editor client | VS Code |
 | `desktop-app` | long-lived app | Desktop |
 | `sdk-embedded` | library-managed | Rust/TS SDK client |
@@ -34,7 +35,22 @@ It is a connection/execution surface, not a domain owner.
 
 ## Local V12 Models
 
-Local CLI model:
+Local Console model:
+
+```json
+{
+  "client_ref": "console",
+  "client_kind": "console-terminal",
+  "connection_lifecycle": "terminal",
+  "source": "yai-console",
+  "operator_context_ref": "observed-or-local",
+  "auth_context": "observed-or-deferred",
+  "runtime_endpoint": "deferred-or-configured",
+  "session_ref": null
+}
+```
+
+Legacy CLI compatibility model:
 
 ```json
 {
@@ -49,7 +65,7 @@ Local CLI model:
 }
 ```
 
-Loom model:
+Legacy Loom compatibility model:
 
 ```json
 {
@@ -98,8 +114,9 @@ client connection != active case
 client connection != operator context
 client connection != runtime lifecycle
 client connection != runtime readiness
-CLI one-shot invocation may read/write operator context but does not own it
-Loom may hold long-lived UI state but must not own auth/case/domain state
+Console terminal state may read/write operator context but does not own it
+Legacy CLI one-shot invocation may read/write operator context but does not own it
+Legacy Loom may hold long-lived UI state but must not own auth/case/domain state
 SDK client is transport/client library, not domain owner
 shell attach/detach belongs to V13
 client attach/detach commands are deferred
@@ -140,16 +157,22 @@ that does not make the CLI the owner of operator context itself.
 
 ## Command Surface Consequences
 
-Installed CLI:
+Console:
+
+```text
+YAI Console = canonical terminal client
+```
+
+Legacy installed CLI:
 
 ```text
 installed `yai ...` = cli-one-shot
 ```
 
-Loom:
+Legacy Loom:
 
 ```text
-Loom = long-lived client/TUI surface
+Loom = historical long-lived client/TUI surface name
 ```
 
 SDK:
@@ -173,6 +196,7 @@ canonical name for client connection lifecycle
 | runtime sealed enforcement | V14 |
 | SDK runtime surface alignment | V20 |
 | CLI SDK-first wiring | V21 |
-| Loom alignment | V22 |
+| Loom alignment | V22 historical |
 | VS Code alignment | V23 |
+| Console canonicalization | A1 |
 | API operator context surfaces | V37 |

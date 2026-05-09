@@ -46,7 +46,8 @@ CLI must not claim runtime control execution unless SDK/API transport proves it.
 
 | Deferred item | Future wave |
 | ------------- | ----------- |
-| Loom alignment | V22 |
+| Loom alignment | V22 historical |
+| Console canonicalization | A1 |
 | VS Code alignment | V23 |
 | case-bound jobs | V24 |
 | API operator context surfaces | V37 |

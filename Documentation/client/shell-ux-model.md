@@ -108,6 +108,7 @@ session, active case, or runtime lifecycle ownership.
 | runtime readiness projection | V15 |
 | SDK runtime alignment | V20 |
 | CLI SDK-first wiring | V21 |
-| Loom alignment | V22 |
+| Loom alignment | V22 historical |
+| Console canonicalization | A1 |
 | detach semantics | V26 |
 | logout policy | V27 |
