@@ -11,7 +11,7 @@ transport.
   operations.
 - Generic request/response operations must not use `local_event_stream` as
   their default transport.
-- RT.04 and A1 Local IPC RPC coverage markers do not widen stream support;
+- RT.04 and A2 Local IPC RPC coverage markers do not widen stream support;
   request/response IPC audit must not be misread as Local Event Stream
   implementation coverage.
 - `local_event_stream` may carry only stream event frames.
@@ -26,7 +26,9 @@ transport.
 ## Binding Model
 
 - Web/dashboard first binding: SSE.
-- Native CLI/TUI binding: streaming over `local_ipc_rpc`.
+- Native Console/TUI binding: streaming over `local_ipc_rpc`.
+- CLI/Loom compatibility surfaces may reuse the same transport only where that
+  compatibility path still exists.
 - WebSocket remains future-only and must be justified before use.
 
 ## Stream Contract

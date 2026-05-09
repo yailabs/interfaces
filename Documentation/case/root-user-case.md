@@ -1,16 +1,22 @@
-# Root User Case
+# Work Root Case
 
 ## Status
 
-* Delivery: V6
-* Status: active local-dev model
-* Track: V - Core/runtime/API/SDK/CLI/identity/case
-* Repo branch: `feature/topology-refactor-8`
+* Delivery: A3
+* Status: active topology vocabulary
+* Track: A - system/work case boundary
+* Repo branch: `refoundation/phase-01`
 
 ## Definition
 
-`case://<account-username>` is the canonical root operational case for the authenticated
-principal.
+`case://<account-username>` is the canonical work root / operational root for
+the authenticated principal.
+
+It is separate from the constitutional system/root case:
+
+```text
+case://root
+```
 
 For the current local-dev principal used in this workspace, the concrete root
 case is:
@@ -22,8 +28,8 @@ case://francesco
 `case://user` is a generic placeholder / legacy provisional form. It is not the
 canonical persisted root case value.
 
-It is the root harness for nested cases, jobs, flows, agents, evidence, records,
-knowledge and governed work.
+It is the root harness for work cases, jobs, flows, agents, evidence, records,
+knowledge, and governed work.
 
 ## V6 Local-Dev Behavior
 
@@ -46,9 +52,12 @@ Logout clears local-dev auth but does not delete the root case marker.
 case://<account-username> != session
 case://<account-username> != account_ref
 case://<account-username> != shell/client attach
+case://<account-username> != client subject
+case://<account-username> != client connection
 case://<account-username> != production entitlement
 case://<account-username> != active case selection unless an operator context explicitly selects it
-case://<account-username> is the root harness, not a nested project case
+case://<account-username> != case://root
+case://<account-username> is the operational root harness, not the system/root case
 case://user is placeholder/provisional and must not be persisted as the concrete root
 ```
 

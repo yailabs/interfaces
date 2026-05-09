@@ -6,6 +6,12 @@ root = Path(__file__).resolve().parents[1]
 registry_file = root / "registry/api-operations.v1.json"
 mapping_file = root / "mappings/operation-transport-map.v1.json"
 schema_file = root / "mappings/operation-transport-map.v1.schema.json"
+operation_mapping_doc = root / "Documentation/operation-to-transport-mapping.md"
+a_series_map_doc = root / "Documentation/waves/a-series-map.md"
+a2_wave_doc = root / "Documentation/waves/a2-operation-transport-mapping-drift-reconciliation.md"
+transport_selection_policy_doc = root / "mappings/transport-selection-policy.v1.md"
+streamable_policy_doc = root / "mappings/streamable-operation-policy.v1.md"
+provider_exclusion_policy_doc = root / "mappings/provider-transport-exclusion-policy.v1.md"
 
 registry = json.loads(registry_file.read_text())
 mapping = json.loads(mapping_file.read_text())
@@ -182,6 +188,58 @@ supported_runtime_ipc_ops = {
     for opid, expectation in rt04_runtime_ipc_expectations.items()
     if expectation["runtime_ipc_coverage"] == "supported"
 }
+documentation_requirements = {
+    operation_mapping_doc: [
+        "A2 reconciles that mapping with the current runtime reality after RT.04 and A1",
+        "Console is the canonical terminal client.",
+        "Documentation/",
+    ],
+    a_series_map_doc: [
+        "| A1 | Console Canonicalization / Legacy CLI-Loom Drain | done |",
+        "| A2 | Operation Transport Mapping Drift Reconciliation | done |",
+        "| A3 | Case Topology Vocabulary / System Case vs Work Case Boundary | done |",
+        "| A4 | Protocol Contract for Client Attachment + System Call Record | next |",
+        "Console is the canonical terminal client.",
+    ],
+    a2_wave_doc: [
+        "# A2",
+        "Delivery: A2",
+        "Previous delivery: A1",
+        "Next delivery: A3",
+        "system.status",
+        "system.check",
+        "system.runtime.inspect",
+        "case.current",
+        "case.list",
+        "case.show",
+        "providers.list",
+        "models.list",
+        "Console is the canonical terminal client.",
+    ],
+    transport_selection_policy_doc: [
+        "A2 records RT.04 Local IPC RPC truth only for the audited read/projection",
+        "Console/TUI",
+    ],
+    streamable_policy_doc: [
+        "RT.04 and A2 Local IPC RPC coverage markers do not widen stream support",
+        "Native Console/TUI binding",
+    ],
+    provider_exclusion_policy_doc: [
+        "RT.04 and A2 must not treat `providers.list` or `models.list` as provider or",
+        "Console, CLI compatibility, and Loom compatibility do not bypass SDK",
+    ],
+}
+forbidden_console_claims = [
+    "Loom as canonical terminal client",
+    "CLI as canonical terminal client",
+]
+docs_with_active_console_naming = {
+    operation_mapping_doc,
+    a_series_map_doc,
+    transport_selection_policy_doc,
+    streamable_policy_doc,
+    provider_exclusion_policy_doc,
+}
 
 for opid, op in registry_by_id.items():
     entry = entry_by_id.get(opid)
@@ -336,6 +394,19 @@ for opid, expected_coverage_note in blocked_runtime_ipc_examples.items():
         errors.append(f"{opid}: notes must state current RT.04 IPC coverage is blocked or unsupported")
     if "runtime_ipc_readiness" in entry:
         errors.append(f"{opid}: blocked RT.04 examples must not claim runtime_ipc_readiness")
+
+for doc_path, required_fragments in documentation_requirements.items():
+    if not doc_path.exists():
+        errors.append(f"missing required documentation surface {doc_path.relative_to(root)}")
+        continue
+    doc_text = doc_path.read_text()
+    for fragment in required_fragments:
+        if fragment not in doc_text:
+            errors.append(f"{doc_path.relative_to(root)}: missing required fragment '{fragment}'")
+    if doc_path in docs_with_active_console_naming:
+        for forbidden_claim in forbidden_console_claims:
+            if forbidden_claim in doc_text:
+                errors.append(f"{doc_path.relative_to(root)}: forbidden canonical client claim '{forbidden_claim}'")
 
 if errors:
     print("operation-transport-map: FAIL")

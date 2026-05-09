@@ -23,14 +23,14 @@ set in `operation-transport-map.v1.json`.
 - When `operation-transport-map.v1.json` carries `runtime_ipc_coverage`, SDK
   and conformance consumers must treat it as the Local IPC RPC reality marker
   for the current audited runtime state.
-- A1 records RT.04 Local IPC RPC truth only for the audited read/projection
+- A2 records RT.04 Local IPC RPC truth only for the audited read/projection
   subset; it does not promote deferred, blocked, or provider/model surfaces to
   supported.
 
 ## Primary-Now Defaults
 
-- `local_ipc_rpc` is the default local native transport for CLI, Loom/TUI, and
-  future native desktop clients.
+- `local_ipc_rpc` is the default local native transport for Console/TUI,
+  CLI-compatibility, Loom-compatibility, and future native desktop clients.
 - `local_http_loopback` is the browser/dashboard/dev transport when the
   operation is safe for loopback-local exposure.
 - `local_event_stream` is reserved for streamable/watch/tail/status-event

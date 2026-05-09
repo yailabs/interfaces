@@ -2,14 +2,15 @@
 
 ## Status
 
-* Delivery: V10
-* Status: active local model
-* Track: V - Core/runtime/API/SDK/CLI/identity/case
-* Repo branch: `feature/topology-refactor-8`
+* Delivery: A3
+* Status: active topology vocabulary
+* Track: A - system/work case boundary
+* Repo branch: `refoundation/phase-01`
 
 ## Purpose
 
-Define active case ownership outside legacy session.
+Define active case ownership outside legacy session and outside client
+attachment.
 
 ## Decision
 
@@ -20,6 +21,7 @@ operator_context.active_case_ref
 ```
 
 It is not owned by session.
+It is not owned by client connection state.
 
 ## Local V10 Behavior
 
@@ -66,6 +68,9 @@ active case != session
 active case != auth login
 active case != root case creation
 active case != shell/client attach
+active case != client subject
+active case != client connection
+active case != system/root case
 active case != runtime readiness
 active case must reference an existing case
 case enter does not create cases

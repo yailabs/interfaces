@@ -19,6 +19,9 @@ Legacy CLI/Loom surfaces are compatibility names or historical references.
 Console observes and presents runtime/auth/case/operator/readiness/license/gate
 posture.
 Console does not own domain truth.
+Console is a client subject that may produce client connections and client
+attachments over time.
+Console is not a case.
 ```
 
 ## Ownership Table
@@ -29,6 +32,8 @@ Console does not own domain truth.
 | account_ref | E platform |
 | root case | case plane |
 | active_case_ref | operator context |
+| client subject identity | future control subject taxonomy |
+| client connection posture | runtime connection observation |
 | runtime lifecycle | runtime/service plane |
 | readiness projection | runtime/readiness plane |
 | entitlement_ref | E contract consumed by V |

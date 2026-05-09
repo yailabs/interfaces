@@ -4,7 +4,8 @@
 
 API.02 freezes the first canonical mapping between API operation ids and
 allowed transport classes.
-A1 reconciles that mapping with the current runtime reality after RT.04.
+A2 reconciles that mapping with the current runtime reality after RT.04 and A1
+Console canonicalization.
 
 Transport vocabulary was frozen in API.01.
 This document answers which operations may travel over which transport classes
@@ -29,7 +30,7 @@ The mapping is a contract surface plus readiness projection.
 It is not a claim that every allowed transport already has identical runtime
 implementation coverage.
 
-For A1, `operation-transport-map.v1.json` may additionally carry:
+For A2, `operation-transport-map.v1.json` may additionally carry:
 - `runtime_ipc_coverage`
 - `runtime_ipc_readiness`
 - `operation_coverage_notes`
@@ -51,6 +52,8 @@ or replace the broader contract mapping.
 - `runtime_ipc_coverage` is only populated where RT.04 reality was explicitly
   audited; absence means the contract map remains broader than the verified IPC
   runtime subset.
+- Console is the canonical terminal client. CLI and Loom remain compatibility
+  or historical names only and do not change transport truth.
 - RT.04 updates runtime truth for Local IPC RPC only on a narrow audited set of
   operations:
   - supported at `read_projection_probe_ready`:
@@ -71,7 +74,7 @@ or replace the broader contract mapping.
 
 The current `api` checkout uses `Documentation/` as the canonical
 documentation root. Earlier delivery boxes and older references may still say
-`docs/`; A1 updates the verified canonical surface rather than recreating a
+`docs/`; A2 updates the verified canonical surface rather than recreating a
 parallel `docs/` tree.
 
 ## Dispatch Boundary
