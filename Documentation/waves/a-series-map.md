@@ -12,7 +12,9 @@
 | A1 | Console Canonicalization / Legacy CLI-Loom Drain | done | Make Console the canonical terminal client; retain CLI/Loom only as legacy, compatibility, or historical names. |
 | A2 | Operation Transport Mapping Drift Reconciliation | done | Reconcile operation-to-transport mapping drift after RT.04 and A1 Console naming canonicalization. |
 | A3 | Case Topology Vocabulary / System Case vs Work Case Boundary | done | Establish the case topology vocabulary boundary without widening transport or runtime behavior. |
-| A4 | Protocol Contract for Client Attachment + System Call Record | next | Define protocol-facing client attachment and system call record contracts after A3 vocabulary freeze. |
+| A4 | Protocol Contract for Client Attachment + System Call Record | done | Define protocol-facing client attachment and system call record contracts after A3 vocabulary freeze. |
+| A5 | API Envelope / SDK Call Context Propagation | done | Project A4 refs into API envelopes and SDK call context without changing the A4 protocol source of truth. |
+| A6 | Runtime Control Plane Admission Hook | next | Add the runtime admission hook later without changing the A4/A5 protocol and envelope contracts. |
 
 ## Rule
 
@@ -27,4 +29,5 @@ That accepted report is left intact as historical remote state. The A-series
 map above records the accepted sequence now reflected in the tree: A1 Console
 canonicalization, A2 operation transport mapping reconciliation, A3 case
 topology vocabulary boundary, A4 client-attachment and system-call protocol
-contract next.
+contract done, A5 API envelope / SDK call context propagation done, and A6
+runtime Control Plane admission hook next.

@@ -19,6 +19,12 @@ return readiness-facing information.
 - `request_id`
 - `correlation_id`
 - `client_ref`
+- `system_call_ref`
+- `client_subject_ref`
+- `client_connection_ref`
+- `client_attachment_ref`
+- `system_root_context_ref`
+- `work_case_ref`
 - `message`
 - `readiness`
 - `data`
@@ -32,3 +38,7 @@ return readiness-facing information.
   later.
 - Readiness payloads remain API-facing projections; they do not become transport
   or runtime implementation truth by themselves.
+- A5 adds call-context projection fields to API envelopes.
+- A5 does not implement runtime admission/materialization.
+- A readiness envelope may project the same optional A4 refs as request and
+  response envelopes.

@@ -22,6 +22,12 @@ Optional fields:
 
 - `case_ref`
 - `principal_ref`
+- `client_subject_ref`
+- `client_connection_ref`
+- `client_attachment_ref`
+- `system_root_context_ref`
+- `work_case_ref`
+- `system_call_ref`
 - `metadata`
 
 ## Interpretation
@@ -33,6 +39,15 @@ Optional fields:
 - `client` identifies the API consumer surface.
 - `transport` identifies the transport class that carried the envelope.
 - `created_at` records envelope creation time in the transport-facing API layer.
+
+## A5 Call Context Projection
+
+A5 adds call-context projection fields to API envelopes.
+A5 does not implement runtime admission/materialization.
+
+The A5 fields project the A4 protocol meaning from `../yai/protocols` into API
+envelope shape. They do not create durable `system_call_record` instances and
+do not add Control Plane admission behavior.
 
 ## Status Boundary
 

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.work-case-ref.v1",
+  "title": "YAI Work Case Ref v1",
+  "x-yai-projection": {
+    "projection_role": "api_schema_mirror",
+    "source_of_truth": "../yai/protocols/refs/work-case-ref.v1.schema.json"
+  },
+  "description": "Optional ref to an operational/work case. If present on a system call, it binds the call to work context without merging lineages.",
+  "type": "string",
+  "pattern": "^case://(?!root(?:/|$))[A-Za-z0-9][A-Za-z0-9._~-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)*$",
+  "examples": [
+    "case://acme-inc/customer-onboarding",
+    "case://operator-a/readiness-check"
+  ]
+}

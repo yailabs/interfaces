@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.work-case-binding.v1",
+  "title": "YAI Work Case Binding v1",
+  "x-yai-projection": {
+    "projection_role": "api_schema_mirror",
+    "source_of_truth": "../yai/protocols/schemas/work-case-binding.v1.schema.json"
+  },
+  "description": "Optional binding between a technical system call and a work case. The binding references work context without merging system lineage and work-case lineage.",
+  "type": "object",
+  "required": [
+    "schema",
+    "system_call_ref",
+    "work_case_ref",
+    "binding_reason",
+    "binding_status",
+    "lineage_relation",
+    "created_at"
+  ],
+  "properties": {
+    "schema": {
+      "const": "yai.protocol.work-case-binding.v1"
+    },
+    "system_call_ref": {
+      "type": "string",
+      "pattern": "^system-call://[A-Za-z0-9][A-Za-z0-9._~:-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)*$"
+    },
+    "work_case_ref": {
+      "type": "string",
+      "pattern": "^case://(?!root(?:/|$))[A-Za-z0-9][A-Za-z0-9._~-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)*$"
+    },
+    "binding_reason": {
+      "type": "string"
+    },
+    "binding_status": {
+      "type": "string",
+      "enum": [
+        "bound",
+        "not_applicable",
+        "deferred",
+        "rejected"
+      ]
+    },
+    "lineage_relation": {
+      "type": "string",
+      "enum": [
+        "references_work_case",
+        "does_not_merge_lineage"
+      ]
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

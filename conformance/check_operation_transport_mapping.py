@@ -9,6 +9,8 @@ schema_file = root / "mappings/operation-transport-map.v1.schema.json"
 operation_mapping_doc = root / "Documentation/operation-to-transport-mapping.md"
 a_series_map_doc = root / "Documentation/waves/a-series-map.md"
 a2_wave_doc = root / "Documentation/waves/a2-operation-transport-mapping-drift-reconciliation.md"
+a4_wave_doc = root / "Documentation/waves/a4-protocol-contract-client-attachment-system-call-record.md"
+a5_wave_doc = root / "Documentation/waves/a5-api-envelope-sdk-call-context-propagation.md"
 transport_selection_policy_doc = root / "mappings/transport-selection-policy.v1.md"
 streamable_policy_doc = root / "mappings/streamable-operation-policy.v1.md"
 provider_exclusion_policy_doc = root / "mappings/provider-transport-exclusion-policy.v1.md"
@@ -198,7 +200,9 @@ documentation_requirements = {
         "| A1 | Console Canonicalization / Legacy CLI-Loom Drain | done |",
         "| A2 | Operation Transport Mapping Drift Reconciliation | done |",
         "| A3 | Case Topology Vocabulary / System Case vs Work Case Boundary | done |",
-        "| A4 | Protocol Contract for Client Attachment + System Call Record | next |",
+        "| A4 | Protocol Contract for Client Attachment + System Call Record | done |",
+        "| A5 | API Envelope / SDK Call Context Propagation | done |",
+        "| A6 | Runtime Control Plane Admission Hook | next |",
         "Console is the canonical terminal client.",
     ],
     a2_wave_doc: [
@@ -215,6 +219,24 @@ documentation_requirements = {
         "providers.list",
         "models.list",
         "Console is the canonical terminal client.",
+    ],
+    a4_wave_doc: [
+        "# A4",
+        "Delivery: A4",
+        "Status: done",
+        "Next delivery: A5",
+        "API does not own the A4 protocol meaning.",
+        "No API behavior changed.",
+        "No API mirror schemas were created for A4 in this delivery.",
+    ],
+    a5_wave_doc: [
+        "# A5",
+        "Delivery: A5",
+        "Status: done",
+        "Next delivery: A6",
+        "A5 adds call-context projection fields to API envelopes.",
+        "A5 does not implement runtime admission/materialization.",
+        "No Console behavior changed.",
     ],
     transport_selection_policy_doc: [
         "A2 records RT.04 Local IPC RPC truth only for the audited read/projection",

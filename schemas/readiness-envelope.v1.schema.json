@@ -28,6 +28,24 @@
     "client_ref": {
       "type": "string"
     },
+    "system_call_ref": {
+      "$ref": "schemas/system-call-ref.v1.schema.json"
+    },
+    "client_subject_ref": {
+      "$ref": "schemas/client-subject-ref.v1.schema.json"
+    },
+    "client_connection_ref": {
+      "$ref": "schemas/client-connection-ref.v1.schema.json"
+    },
+    "client_attachment_ref": {
+      "$ref": "schemas/client-attachment-ref.v1.schema.json"
+    },
+    "system_root_context_ref": {
+      "$ref": "schemas/system-root-context-ref.v1.schema.json"
+    },
+    "work_case_ref": {
+      "$ref": "schemas/work-case-ref.v1.schema.json"
+    },
     "status": {
       "enum": [
         "ok",

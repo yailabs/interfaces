@@ -5,6 +5,7 @@ Run:
 - `python3 conformance/check_api_contracts.py`
 - `python3 conformance/check_operation_transport_mapping.py`
 - `python3 conformance/check_api_envelope_error_stream.py`
+- `python3 conformance/check_client_call_context_projection.py`
 - `python3 conformance/check_local_ipc_rpc_contract.py`
 - `python3 conformance/check_local_http_loopback_contract.py`
 - `python3 conformance/check_local_event_stream_contract.py`
@@ -19,6 +20,7 @@ Coverage:
 - schema reference integrity
 - operation-to-transport mapping integrity
 - envelope/error/stream frame contract integrity
+- client call-context projection integrity
 - Local IPC RPC contract integrity
 - Local HTTP Loopback contract integrity
 - Local Event Stream contract integrity
@@ -37,6 +39,9 @@ Boundary:
   the audited supported, deferred, and blocked operation subset.
 - `check_api_envelope_error_stream.py` is an API-owned contract conformance
   check for API.03 envelope, error, and stream-frame alignment.
+- `check_client_call_context_projection.py` is an API-owned projection
+  conformance check for A5 request, response, readiness, and SDK-facing
+  call-context refs mirrored from `../yai/protocols`.
 - `check_local_ipc_rpc_contract.py` is an API-owned contract conformance check
   for API.04 Local IPC RPC discovery, handshake, frame, stream, and security
   alignment.

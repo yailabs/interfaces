@@ -12,6 +12,13 @@ transports.
 
 ## Optional Fields
 
+- `system_call_ref`
+- `client_subject_ref`
+- `client_connection_ref`
+- `client_attachment_ref`
+- `system_root_context_ref`
+- `work_case_ref`
+- `control_admission_ref`
 - `result`
 - `error`
 - `warnings`
@@ -27,6 +34,13 @@ transports.
   terminal payload.
 - Non-terminal stream delivery uses stream event frames, not response envelopes.
 - `stream_ref` is an acknowledgement/ref handoff, not a stream event frame.
+- A5 adds call-context projection fields to API envelopes.
+- A5 does not implement runtime admission/materialization.
+- `system_call_ref` is echoed if known or may be created by later runtime
+  admission/materialization.
+- `control_admission_ref` is a future hook and remains optional in A5.
+- `work_case_ref`, when present, does not merge system lineage with work-case
+  lineage.
 
 ## Status Vocabulary
 

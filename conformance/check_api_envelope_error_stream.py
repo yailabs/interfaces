@@ -17,6 +17,12 @@ schema_paths = {
     "operation_result": root / "schemas/operation-result.v1.schema.json",
     "readiness": root / "schemas/readiness-envelope.v1.schema.json",
     "watch_event": root / "schemas/watch-event.v1.schema.json",
+    "client_subject_ref": root / "schemas/client-subject-ref.v1.schema.json",
+    "client_connection_ref": root / "schemas/client-connection-ref.v1.schema.json",
+    "client_attachment_ref": root / "schemas/client-attachment-ref.v1.schema.json",
+    "system_call_ref": root / "schemas/system-call-ref.v1.schema.json",
+    "system_root_context_ref": root / "schemas/system-root-context-ref.v1.schema.json",
+    "work_case_ref": root / "schemas/work-case-ref.v1.schema.json",
 }
 registry_paths = {
     "api_envelopes": root / "registry/api-envelopes.v1.json",
@@ -52,6 +58,33 @@ if not schemas["response"].get("oneOf"):
     errors.append("response-envelope schema must encode terminal result/error exclusivity")
 if registries["api_envelopes"].get("response", {}).get("terminal_payload_rule") != "exactly_one_of_result_or_error":
     errors.append("api-envelopes registry must record the terminal result/error rule")
+
+call_context_fields = {
+    "client_subject_ref",
+    "client_connection_ref",
+    "client_attachment_ref",
+    "system_root_context_ref",
+    "work_case_ref",
+    "system_call_ref",
+}
+for field in call_context_fields:
+    if field not in schemas["request"].get("properties", {}):
+        errors.append(f"request-envelope schema must expose A5 call context field {field}")
+    if field in request_required:
+        errors.append(f"request-envelope schema must keep {field} optional")
+    if field not in response_props:
+        errors.append(f"response-envelope schema must expose A5 call context field {field}")
+    if field in response_required:
+        errors.append(f"response-envelope schema must keep {field} optional")
+    if field not in schemas["readiness"].get("properties", {}):
+        errors.append(f"readiness-envelope schema must expose A5 call context field {field}")
+    if field in schemas["readiness"].get("required", []):
+        errors.append(f"readiness-envelope schema must keep {field} optional")
+
+if "control_admission_ref" not in response_props:
+    errors.append("response-envelope schema must expose optional control_admission_ref")
+if "control_admission_ref" in response_required:
+    errors.append("response-envelope schema must keep control_admission_ref optional")
 
 watch_required = set(schemas["watch_event"].get("required", []))
 for field in (

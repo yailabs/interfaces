@@ -24,6 +24,38 @@ attachments over time.
 Console is not a case.
 ```
 
+## A4 Protocol Projection
+
+A4 defines the protocol meaning of:
+
+- `client_subject_ref`
+- `client_connection_ref`
+- `client_attachment_ref`
+- `system_call_ref`
+- `system_root_context_ref`
+- optional `work_case_ref`
+
+For API projection, Console remains `client-subject://console` when the protocol
+is later propagated into envelopes. A Console call may have a concrete
+`client_connection_ref` and `client_attachment_ref`, but those refs do not make
+Console a work case and do not make a session canonical.
+
+A4 is protocol meaning only. API/SDK propagation starts later in A5.
+
+## A5 Call Context Projection
+
+A5 adds call-context projection fields to API envelopes.
+A5 does not implement runtime admission/materialization.
+
+The API envelope projection may carry Console as `client-subject://console`,
+plus optional `client_connection_ref`, `client_attachment_ref`,
+`system_root_context_ref`, `work_case_ref`, and `system_call_ref`.
+`system_call_ref` remains optional because runtime-created refs start later.
+`work_case_ref` remains optional and separate from client attachment.
+
+Console remains canonical terminal client.
+CLI/Loom remain compatibility names.
+
 ## Ownership Table
 
 | Concern | Owner |

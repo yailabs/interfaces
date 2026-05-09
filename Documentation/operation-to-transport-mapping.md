@@ -109,6 +109,27 @@ For RT.04 specifically:
 - Provider transport and model execution remain separate from client-runtime
   transport selection.
 
+## A4 System Call Record Note
+
+A4 adds the protocol meaning of `system_call_record` in `../yai/protocols`.
+The record's `source_transport` identifies the client-runtime/API transport
+used for the technical client call. It does not widen this map, add runtime
+support, or turn provider/model transport into client-runtime transport.
+
+If a later API envelope carries `work_case_ref`, that binding remains optional
+and does not merge system lineage with work-case lineage.
+
+## A5 Call Context Projection Note
+
+A5 adds call-context projection fields to API envelopes.
+A5 does not implement runtime admission/materialization.
+
+The added fields project A4 refs into API request, response, and readiness
+envelopes. They do not widen transport support, add Control Plane admission,
+create durable system call records, or change Console behavior.
+
+Console remains canonical terminal client. CLI/Loom remain compatibility names.
+
 ## Non-Goals
 
 - no listener implementation

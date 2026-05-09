@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.client-attachment-ref.v1",
+  "title": "YAI Client Attachment Ref v1",
+  "x-yai-projection": {
+    "projection_role": "api_schema_mirror",
+    "source_of_truth": "../yai/protocols/refs/client-attachment-ref.v1.schema.json"
+  },
+  "description": "Relationship instance connecting a client subject, client connection, system/root context, and optional posture. Not work case ownership, a work case action, or a session domain object.",
+  "type": "string",
+  "pattern": "^client-attachment://[A-Za-z0-9][A-Za-z0-9._~-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)*$",
+  "examples": [
+    "client-attachment://console/local-ipc-rpc/a4-console-0001",
+    "client-attachment://sdk-rust/local-http-loopback/a4-sdk-0001"
+  ]
+}

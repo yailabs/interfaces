@@ -12,6 +12,12 @@ dispatch into `yai/runtime/boundary/api`.
 
 ## Optional Fields
 
+- `client_subject_ref`
+- `client_connection_ref`
+- `client_attachment_ref`
+- `system_root_context_ref`
+- `work_case_ref`
+- `system_call_ref`
 - `idempotency_key`
 - `stream_request`
 - `timeout_ms`
@@ -26,3 +32,11 @@ dispatch into `yai/runtime/boundary/api`.
   transport policy.
 - Request envelopes no longer treat legacy `session` as canonical envelope
   ownership.
+- A5 adds call-context projection fields to API envelopes.
+- A5 does not implement runtime admission/materialization.
+- `system_root_context_ref` defaults to `root-context://system/default` unless
+  explicitly set.
+- `system_call_ref` is optional because runtime admission/materialization may
+  create it later.
+- `work_case_ref` is optional and appears only when a call targets governed
+  work.

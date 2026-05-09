@@ -24,6 +24,12 @@
     "optional": [
       "case_ref",
       "principal_ref",
+      "client_subject_ref",
+      "client_connection_ref",
+      "client_attachment_ref",
+      "system_root_context_ref",
+      "work_case_ref",
+      "system_call_ref",
       "metadata"
     ]
   },
@@ -42,6 +48,12 @@
     "optional": [
       "case_ref",
       "principal_ref",
+      "client_subject_ref",
+      "client_connection_ref",
+      "client_attachment_ref",
+      "system_root_context_ref",
+      "work_case_ref",
+      "system_call_ref",
       "metadata",
       "idempotency_key",
       "stream_request",
@@ -65,6 +77,13 @@
     "optional": [
       "case_ref",
       "principal_ref",
+      "system_call_ref",
+      "client_subject_ref",
+      "client_connection_ref",
+      "client_attachment_ref",
+      "system_root_context_ref",
+      "work_case_ref",
+      "control_admission_ref",
       "metadata",
       "warnings",
       "records",
@@ -79,6 +98,14 @@
       "status",
       "execution_claim",
       "implementation_status"
+    ],
+    "optional": [
+      "system_call_ref",
+      "client_subject_ref",
+      "client_connection_ref",
+      "client_attachment_ref",
+      "system_root_context_ref",
+      "work_case_ref"
     ]
   },
   "error": {
