@@ -39,7 +39,7 @@ one machine-readable readiness matrix, and one implementation handoff sequence.
 - protocol meaning: `../yai/protocols`
 - API exposure grammar: `../registry/`
 - transport contract vocabulary: `api/transports/`
-- runtime server/listener behavior: `../yai/runtime/boundary/transport`, `../yai/runtime/boundary/service`
+- runtime server/listener behavior: `../yai/src/runtime/boundary/transport`, `../yai/src/runtime/boundary/service`
 - SDK client transports: `../sdk/packages/*`
 
 See also:

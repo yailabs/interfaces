@@ -7,6 +7,7 @@ The API layer is a contract and projection layer. It does not implement runtime 
 ## Canonical Model
 
 - Operation families are public protocol families such as case, identity, runtime, operator, client, SDK projection, and execution.
+- API `identity` is an upstream contract family for access/auth/account projections; it is not a native YAI runtime plane and projects to `../yai/src/runtime/access`.
 - Operations are expressed with a stable grammar and stored in registry artifacts.
 - Transports carry the same operation model through local IPC, loopback HTTP, event streams, secure remote paths, subprocess compatibility, and in-process tests.
 - Envelopes and errors provide a transport-neutral request/response contract.

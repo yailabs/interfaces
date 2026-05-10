@@ -26,7 +26,7 @@ Boundary:
 - `../transports/` owns the transport class vocabulary.
 - `../registry/` owns operation ids and API exposure grammar.
 - `../schemas/` owns API envelope/schema shape.
-- `../yai/runtime/boundary/transport` and `../yai/runtime/boundary/service`
+- `../yai/src/runtime/boundary/transport` and `../yai/src/runtime/boundary/service`
   will implement listeners later.
 - `../sdk` consumes this mapping; it does not invent a separate transport
   grammar.

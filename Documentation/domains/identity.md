@@ -2,6 +2,8 @@
 
 The identity domain documents API-facing auth, principal, account, machine, entitlement, license, lease, and safe status projection boundaries.
 
+This is an upstream API contract domain. It is not a native YAI runtime source plane. The runtime consumes bounded access projections from these contracts through `../yai/src/runtime/access`.
+
 ## Absorbed Semantics
 
 - Principal model and no-hidden-session boundary.

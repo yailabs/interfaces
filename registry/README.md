@@ -13,6 +13,7 @@ V51 alignment rules:
 - API registry must not preserve session as canonical domain truth.
 - API registry must distinguish API family names from CLI/TUI projection names.
 - API registry must expose legacy, deprecated, and forbidden status explicitly.
+- API identity/auth/account contracts project to `../yai/src/runtime/access`; `identity` is not a native YAI runtime plane.
 - Action alignment is seeded from `yai-actions.v1.json`.
 
 Primary files:

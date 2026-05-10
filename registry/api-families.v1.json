@@ -8,7 +8,7 @@
       "display_name": "Authentication",
       "ownership": "api",
       "public_name": "auth",
-      "internal_plane_hint": "identity",
+      "internal_plane_hint": "runtime_access",
       "status": "seed",
       "description": "Authentication posture, auth-context visibility, provider-auth adapter posture, and future device-login contracts",
       "canonical_resources": [
@@ -21,14 +21,14 @@
         "device_login",
         "whoami"
       ],
-      "notes": "Canonical auth family. Auth is not session. Provider session is not YAI session. Auth does not own entitlement, machine authorization, license lease, runtime gate, case, operator context, client attachment, or shell attachment. `auth.whoami` remains deprecated compatibility only."
+      "notes": "Canonical auth family. Auth is not session. Provider session is not YAI session. Auth does not own entitlement, machine authorization, license lease, runtime gate, case, operator context, client attachment, or shell attachment. Runtime-facing access projection is consumed by ../yai/src/runtime/access; this does not create a native identity plane. `auth.whoami` remains deprecated compatibility only."
     },
     {
       "id": "identity",
       "display_name": "Identity",
       "ownership": "api",
       "public_name": "identity",
-      "internal_plane_hint": "identity",
+      "internal_plane_hint": "runtime_access",
       "status": "seed",
       "description": "Principal, machine, entitlement, and authorization posture",
       "canonical_resources": [
@@ -37,7 +37,7 @@
         "entitlement",
         "authorization"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public API identity family for principal, machine, entitlement, and authorization projection grammar. It is upstream/API-owned and projects bounded access posture to ../yai/src/runtime/access; it must not imply ../yai/src/identity or a native identity plane."
     },
     {
       "id": "session",
@@ -72,7 +72,7 @@
         "case",
         "permissions"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/src/runtime/boundary/api handlers."
     },
     {
       "id": "system",
@@ -147,7 +147,7 @@
         "context",
         "workflow"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/src/runtime/boundary/api handlers."
     },
     {
       "id": "prompting",
@@ -170,7 +170,7 @@
       "display_name": "Workflow",
       "ownership": "api",
       "public_name": "workflow",
-      "internal_plane_hint": "flow",
+      "internal_plane_hint": "orchestrator/workflow",
       "status": "seed",
       "description": "Workflow composition, validation, execution, and watch contracts",
       "canonical_resources": [
@@ -184,7 +184,7 @@
         "runs",
         "steps"
       ],
-      "notes": "Canonical API family. `flow` remains a legacy compatibility alias only and must not be reintroduced as a canonical family.",
+      "notes": "Canonical API family. `flow` remains a legacy compatibility alias only and must not be reintroduced as a canonical family. Runtime implementation ownership maps to ../yai/src/orchestrator/workflow.",
       "legacy_aliases": [
         "flow"
       ]
@@ -204,7 +204,7 @@
         "decisions",
         "obligations"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/src/runtime/boundary/api handlers."
     },
     {
       "id": "control",
@@ -272,7 +272,7 @@
         "run",
         "proof-obligations"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/src/runtime/boundary/api handlers."
     },
     {
       "id": "providers",
@@ -331,7 +331,7 @@
       "display_name": "Orchestrator",
       "ownership": "api",
       "public_name": "orchestrator",
-      "internal_plane_hint": "orchestration",
+      "internal_plane_hint": "orchestrator",
       "status": "seed",
       "description": "Planning, routing, handoff, and recovery orchestration",
       "canonical_resources": [
@@ -340,7 +340,7 @@
         "handoffs",
         "recovery"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/src/runtime/boundary/api handlers."
     },
     {
       "id": "analytics",
@@ -356,7 +356,7 @@
         "workflows",
         "control"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/src/runtime/boundary/api handlers."
     },
     {
       "id": "output",
@@ -373,7 +373,7 @@
         "render",
         "export"
       ],
-      "notes": "Public operation grammar family; runtime implementation is in ../yai/runtime/boundary/api handlers."
+      "notes": "Public operation grammar family; runtime implementation is in ../yai/src/runtime/boundary/api handlers."
     },
     {
       "id": "policy_pack",
@@ -498,7 +498,7 @@
       "display_name": "Job",
       "ownership": "api",
       "public_name": "job",
-      "internal_plane_hint": "orchestration",
+      "internal_plane_hint": "orchestrator",
       "status": "seed",
       "description": "Job planning, start, status, logs, outputs, evidence, and lineage projections",
       "canonical_resources": [
@@ -520,7 +520,7 @@
       "display_name": "License",
       "ownership": "api",
       "public_name": "license",
-      "internal_plane_hint": "identity",
+      "internal_plane_hint": "runtime_access",
       "status": "seed",
       "description": "License posture, lease status, cache status, and safe check projections",
       "canonical_resources": [
@@ -529,14 +529,14 @@
         "check",
         "cache"
       ],
-      "notes": "License remains posture/projection only. Billing or subscription truth does not move into this family."
+      "notes": "License remains posture/projection only. Billing or subscription truth does not move into this family. Runtime-facing consumption projects through ../yai/src/runtime/access, not a native identity plane."
     },
     {
       "id": "machine",
       "display_name": "Machine",
       "ownership": "api",
       "public_name": "machine",
-      "internal_plane_hint": "identity",
+      "internal_plane_hint": "runtime_access",
       "status": "seed",
       "description": "Machine posture, identity status, evidence status, and authorization projections",
       "canonical_resources": [
@@ -546,21 +546,21 @@
         "authorization",
         "enroll"
       ],
-      "notes": "Machine projections must remain safe and must not expose raw hardware, fingerprint, or secret material."
+      "notes": "Machine projections must remain safe and must not expose raw hardware, fingerprint, or secret material. Runtime-facing machine authorization posture projects through ../yai/src/runtime/access."
     },
     {
       "id": "limits",
       "display_name": "Limits",
       "ownership": "api",
       "public_name": "limits",
-      "internal_plane_hint": "identity",
+      "internal_plane_hint": "runtime_access",
       "status": "seed",
       "description": "Shared-account limits posture and explanation projections",
       "canonical_resources": [
         "status",
         "explain"
       ],
-      "notes": "Limits remains a safe projection family and must not become quota-ledger or billing truth."
+      "notes": "Limits remains a safe projection family and must not become quota-ledger or billing truth. Runtime gate consumption projects through ../yai/src/runtime/access where access posture is required."
     },
     {
       "id": "logs",

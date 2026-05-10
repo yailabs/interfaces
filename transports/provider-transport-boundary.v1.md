@@ -16,7 +16,7 @@ Provider transport is runtime -> provider/model only.
 ## Classification
 
 - status: separate boundary
-- existing repository area: `../yai/providers/transport/`
+- existing repository area: `../yai/src/providers/transport/`
 
 ## Ownership
 
