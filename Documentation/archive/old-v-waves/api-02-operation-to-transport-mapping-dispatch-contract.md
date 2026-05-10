@@ -2,12 +2,12 @@
 
 ## Status
 
-Delivery: API.02  
-Status: done  
-Track: API / Transport / SDK / Runtime alignment  
-Repo branch: `refoundation/phase-01`  
-Repo change type: mapping contract + dispatch boundary documentation  
-Previous delivery: API.01 — Transport Boundary / Operation Surface Vocabulary Freeze  
+Delivery: API.02
+Status: done
+Track: API / Transport / SDK / Runtime alignment
+Repo branch: `refoundation/phase-01`
+Repo change type: mapping contract + dispatch boundary documentation
+Previous delivery: API.01 — Transport Boundary / Operation Surface Vocabulary Freeze
 Next delivery: API.03 — API Envelope / Error / Stream Frame Alignment
 
 ## Purpose
@@ -118,7 +118,7 @@ to `runtime/boundary/transport` or `runtime/boundary/service` rather than
 
 ## Provider Transport Exclusion
 
-Provider transport is runtime -> provider/model only.  
+Provider transport is runtime -> provider/model only.
 It is excluded from client-runtime operation mapping.
 
 ## Compatibility Findings
