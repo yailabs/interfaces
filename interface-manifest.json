@@ -1,7 +1,7 @@
 {
   "name": "yai-interfaces",
   "kind": "developer-interface-repository",
-  "status": "pre-sdk-drain",
+  "status": "intf-9-interfaces-closure-command-planning-unblock",
   "owns": [
     "protocol",
     "operations",
@@ -17,7 +17,7 @@
     "contracts",
     "lifecycle",
     "generated-surfaces",
-    "sdk-packages-after-drain",
+    "sdk-packages",
     "developer-examples"
   ],
   "does_not_own": [
@@ -26,6 +26,89 @@
     "terminal-client-ux",
     "web-account-product-surfaces"
   ],
-  "sdk_drain_status": "pending",
-  "source_base": "api-renamed-to-interfaces"
+  "sdk_drain_status": "tombstoned",
+  "source_base": "api-renamed-to-interfaces",
+  "conformance_profiles": {
+    "interface_package_alignment_v1": {
+      "path": "conformance/profiles/interface-package-alignment.v1.md",
+      "status": "active-intf-6-guardrail"
+    }
+  },
+  "guardrails": {
+    "generated_output_exclusion": {
+      "path": "tools/checks/check-generated-output-exclusion.sh",
+      "status": "active-intf-6-guardrail",
+      "excluded_paths": [
+        "packages/rust/target",
+        "packages/typescript/node_modules",
+        "packages/typescript/dist",
+        "packages/c/build",
+        "packages/c/dist"
+      ]
+    },
+    "package_protocol_drift": {
+      "path": "tools/checks/check-package-protocol-drift.sh",
+      "status": "manual-review-warning-guardrail"
+    },
+    "active_repo_references": {
+      "path": "tools/checks/check-active-repo-references.sh",
+      "status": "active-intf-8-reference-guard"
+    }
+  },
+  "packages": {
+    "rust": {
+      "path": "packages/rust",
+      "package_name": "yai-sdk-rust",
+      "status": "drained-from-sdk",
+      "validation_status": "passed",
+      "validation_residuals": [
+        "pending-provenance",
+        "pending-protocol-drift-check"
+      ]
+    },
+    "python": {
+      "path": "packages/python",
+      "distribution": "yailabs-yai-sdk",
+      "import": "yai_sdk",
+      "status": "drained-from-sdk",
+      "validation_status": "no-tests-discovered",
+      "validation_residuals": [
+        "pending-provenance",
+        "pending-protocol-drift-check"
+      ]
+    },
+    "typescript": {
+      "path": "packages/typescript",
+      "package_name": "@yailabs/sdk",
+      "status": "drained-from-sdk",
+      "validation_status": "dependency-install-required",
+      "validation_residuals": [
+        "dependency-install-required",
+        "pending-provenance",
+        "pending-protocol-drift-check"
+      ]
+    },
+    "c": {
+      "path": "packages/c",
+      "include_prefix": "<yai_sdk/...>",
+      "status": "drained-from-sdk",
+      "validation_status": "law-compatibility-export-required",
+      "validation_residuals": [
+        "law-compatibility-export-required",
+        "pending-provenance",
+        "pending-protocol-drift-check",
+        "manual-review"
+      ],
+      "compatibility_boundary": "Documentation/reference/c-sdk-command-compatibility.md"
+    }
+  },
+  "sdk_drain_archive": {
+    "old_sdk_manifest": "Documentation/archive/old-sdk/root/sdk-manifest.json",
+    "old_sdk_docs": "Documentation/archive/old-sdk",
+    "status": "historical-archive-not-protocol-truth"
+  },
+  "old_sdk_repo": {
+    "status": "historical-tombstone",
+    "canonical_replacement": "interfaces/packages"
+  }
 }

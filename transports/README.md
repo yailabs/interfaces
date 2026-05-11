@@ -1,14 +1,14 @@
 # Transports
 
-`api/transports/` is the canonical documentation root for YAI transport
+`interfaces/transports/` is the canonical documentation root for YAI transport
 contracts.
 
 Core rule:
 
 ```text
-API defines the transport contract.
+Interfaces defines the transport contract.
 Runtime implements server-side/local transport behavior.
-SDK implements client-side transport behavior.
+SDK packages implement client-side transport behavior.
 Clients consume SDK.
 Provider/model transport is runtime -> provider/model, not client -> runtime.
 ```
@@ -36,11 +36,12 @@ one machine-readable readiness matrix, and one implementation handoff sequence.
 
 ## Ownership Split
 
-- protocol meaning: `../yai/protocols`
+- protocol meaning: `../registry/`, `../schemas/`, `../envelopes`, and
+  `../errors`
 - API exposure grammar: `../registry/`
-- transport contract vocabulary: `api/transports/`
+- transport contract vocabulary: `interfaces/transports/`
 - runtime server/listener behavior: `../yai/src/runtime/boundary/transport`, `../yai/src/runtime/boundary/service`
-- SDK client transports: `../sdk/packages/*`
+- SDK client transports: `../packages/*`
 
 See also:
 

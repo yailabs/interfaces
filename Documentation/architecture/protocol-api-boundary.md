@@ -1,26 +1,20 @@
-# Protocol/API Boundary
+# Protocol API Boundary
 
-The protocol/API boundary separates public developer-interface contract truth
-from runtime, SDK package, Console, and Web implementations.
+The protocol/API boundary is the contract between client-facing interface
+artifacts and runtime/system implementation.
 
-## Interfaces Owns
+Interfaces owns:
 
-- Operation names, families, verbs, and projection records.
-- Request, response, readiness, error, and stream frame shape.
-- Transport contracts and operation-to-transport mapping.
-- Contract indexes for registries, schemas, fixtures, OpenAPI, and transport artifacts.
+- operation identity and semantics;
+- request, response, readiness, and stream envelope models;
+- error shape and status mapping;
+- transport contracts;
+- schema and registry artifacts;
+- compatibility mappings and lifecycle models.
 
-## Interfaces Does Not Own
+YAI runtime owns implementation behavior behind those contracts. Console owns
+terminal UX over those contracts. Web/account/product surfaces own their own
+product workflows.
 
-- Runtime system behavior beyond the protocol/API projection.
-- SDK package behavior beyond the protocol contract they consume.
-- Console terminal UX and interaction flow.
-- Web/account/product surfaces.
-- Historical product surfaces preserved in `archive/`.
-
-## Contract Taxonomy
-
-Canonical contract material is stored in `registry/`, `schemas/`,
-`envelopes/`, `errors/`, `mappings/`, `transports/`, `openapi/`,
-`contracts/`, `lifecycle/`, and `conformance/`. Documentation explains those
-contracts; it does not replace the artifacts.
+OpenAPI is projection. It can describe HTTP-facing protocol projections, but it
+does not replace the protocol registry, schema, mapping, or contract sources.

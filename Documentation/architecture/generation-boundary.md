@@ -1,30 +1,20 @@
 # Generation Boundary
 
-Generated surfaces are projections over YAI Interfaces artifacts and generator
-templates.
+Generated outputs are not source of truth.
 
-## Generated Surface Inputs
+Generated surfaces require provenance that identifies:
 
-- Interface operation and registry artifacts.
-- Interface schemas, envelopes, errors, mappings, lifecycle, and transport
-  contracts.
-- SDK package templates after SDK drain.
-- OpenAPI generation templates.
-- Registry and schema generation rules.
+- registry input;
+- schema input;
+- mapping input;
+- generator identity and version;
+- source commit or release;
+- conformance profile.
 
-## Boundary Rules
+OpenAPI is projection. SDK generated constants, generated clients, generated
+schemas, and generated registries must trace back to canonical protocol
+artifacts.
 
-- Generated code must not invent protocol grammar.
-- Generated clients must preserve operation ids, status, error, envelope, and
-  transport semantics from interface artifacts.
-- Generated outputs must record provenance before release claims.
-- Handwritten package code remains valid when generation is not yet available,
-  but it must not drift from interface contracts.
-
-## Artifact References
-
-- `projections/`
-- `generators/`
-- `openapi/`
-- `schemas/`
-- `interface-manifest.json`
+TypeScript `dist/`, C `dist/` and `build/`, and Rust `target/` are build
+outputs. They were intentionally excluded from INTF.4 and must not be treated
+as source.

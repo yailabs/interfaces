@@ -1,29 +1,19 @@
-# Packages
+# SDK Packages
 
-Packages documents official SDK package boundaries for YAI Interfaces.
+Official SDK packages live inside YAI Interfaces:
 
-## Current Phase
+- Rust: `packages/rust`
+- Python: `packages/python`
+- TypeScript: `packages/typescript`
+- C: `packages/c`
 
-This repository is `pre-sdk-drain`. SDK package source remains in `../sdk`
-until later INTF waves classify and move package material into
-`interfaces/packages/`.
+The old standalone SDK repository has been tombstoned. Active package work must
+use `interfaces/packages`.
 
-## Future Package Families
+SDK packages are typed consumption surfaces. They consume protocol contracts,
+operation registries, schemas, mappings, envelopes, errors, and transport
+contracts from this repository. They must not define protocol truth.
 
-- Rust SDK package.
-- Python SDK package.
-- TypeScript SDK package.
-- C SDK package.
-
-## Rules
-
-- Packages consume YAI Interfaces protocol/API contracts.
-- Packages do not define operation semantics, transport truth, envelope truth,
-  error truth, or protocol version.
-- Packages declare supported protocol and conformance versions.
-- Package release claims require validation evidence.
-
-## Deferred Work
-
-INTF.3 inventories SDK material. INTF.4 drains package source into
-`interfaces/packages/`.
+Package versions are language package versions and remain separate from
+protocol version, generated surface version, conformance profile version, and
+repository release version.

@@ -14,8 +14,7 @@ inputs. Hidden runtime state is not interface authority.
 ## Delegated Ownership
 
 Runtime/system truth belongs to YAI documentation. Terminal client UX truth
-belongs to Console documentation. Current SDK package source remains in `../sdk`
-until drain, then official SDK package truth belongs under
+belongs to Console documentation. Official SDK package truth belongs under
 `interfaces/packages/`.
 
 ## Historical Material

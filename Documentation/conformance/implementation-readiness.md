@@ -1,14 +1,16 @@
 # Implementation Readiness
 
-Implementation readiness tracks whether API contracts have corresponding artifacts, fixtures, mappings, and checks.
+Implementation readiness records whether protocol artifacts, generated
+surfaces, and SDK packages are ready for downstream runtime or client work.
 
-## Inputs
+Current package readiness after INTF.4:
 
-- `transports/implementation-readiness-matrix.v1.md`
-- `transports/implementation-readiness-matrix.v1.json`
-- `conformance/` check scripts
-- registry, schema, fixture, mapping, envelope, and error artifacts
+| Package | Readiness | Notes |
+| --- | --- | --- |
+| Rust | Ready for current package checks | `cargo fmt`, `cargo check`, and `cargo test` passed |
+| Python | Compile-ready | Python compile passed; no tests were discovered |
+| TypeScript | Blocked on dependency install | `tsc` unavailable because `node_modules` was not moved |
+| C | Blocked on law compatibility export | strict `make check-config` cannot pass without export |
 
-## Interpretation
-
-Readiness is API-contract readiness. It does not claim runtime feature completion unless runtime documentation and implementation evidence also support that claim.
+INTF.6 owns guardrails, provenance, and package validation hardening. Until
+then, residuals are explicit readiness constraints, not hidden failures.

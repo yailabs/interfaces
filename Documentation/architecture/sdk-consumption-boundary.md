@@ -1,27 +1,20 @@
 # SDK Consumption Boundary
 
-SDK packages are typed consumers of YAI Interfaces contracts.
+SDK packages are typed consumption/projection surfaces for the canonical
+developer interface.
 
-## Current Phase
+SDK packages must not define protocol truth. They must not invent operation
+identifiers, redefine envelope grammar, redefine transport grammar, create new
+runtime dispatch semantics, or promote compatibility-only vocabulary into
+protocol authority.
 
-The repository is currently `pre-sdk-drain`. SDK package source remains in
-`../sdk` until later INTF waves classify and move package material into
-`interfaces/packages/`.
+SDK packages may provide:
 
-## SDK Owns After Drain
+- typed clients;
+- package-level transport bindings;
+- language-native status and error wrappers;
+- generated or hand-maintained constants that are traceable to protocol inputs;
+- examples for consuming the canonical interface.
 
-After SDK drain, official SDK packages own language-specific package behavior,
-ergonomics, release metadata, and compatibility aliases under
-`interfaces/packages/`.
-
-## SDK Does Not Own
-
-SDK packages do not own protocol version, operation semantics, transport truth,
-envelope shape, error shape, registry truth, schema truth, or conformance truth.
-
-## Consumption Rule
-
-SDK packages consume protocol, operation, transport, schema, envelope, error,
-registry, mapping, lifecycle, and conformance definitions from YAI Interfaces.
-They must report unavailable, deferred, blocked, denied, and error states
-honestly.
+SDK package operation constants and envelope types are package projections
+pending INTF.6 validation hardening.

@@ -1,26 +1,22 @@
 # External Developer Boundary
 
-YAI Interfaces is the canonical surface for external developers building
-clients, UIs, integrations, automations, generated clients, or conformance
-tools.
+External developers consume YAI Interfaces through:
 
-## External Developers Consume
+- protocol documentation;
+- operation, transport, envelope, and error docs;
+- SDK packages;
+- examples;
+- conformance policy;
+- compatibility and package matrices;
+- generated and OpenAPI projections with provenance.
 
-- Protocol/API operation contracts.
-- Transport contracts.
-- Schemas, envelopes, errors, registries, and mappings.
-- OpenAPI projections.
-- Official SDK packages after SDK drain.
-- Examples and conformance profiles.
+Developer and client flow:
 
-## External Developers Do Not Consume
+```text
+external client or Console or future Studio
+  -> interfaces SDK/API
+  -> yai runtime/system effect
+```
 
-- YAI runtime internals as public API.
-- Console terminal UX internals as protocol truth.
-- Web/account/product internals as interface truth.
-- Historical SDK repository state after tombstone.
-
-## Rule
-
-External integrations should treat YAI Interfaces as the public developer
-contract axis and should use conformance profiles to prove compatibility.
+External developer docs must identify whether a surface is protocol truth,
+package projection, generated projection, or historical material.

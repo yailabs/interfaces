@@ -1,0 +1,2 @@
+class YaiSdkClient:
+    pass

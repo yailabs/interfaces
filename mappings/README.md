@@ -1,6 +1,6 @@
 # Mappings
 
-`api/mappings/` is the canonical API-owned mapping surface between operation
+`interfaces/mappings/` is the canonical mapping surface between operation
 grammar and transport classes.
 
 This root answers three questions:
@@ -22,11 +22,11 @@ Primary files:
 
 Boundary:
 
-- `api/mappings/` owns operation-to-transport contracts only.
+- `interfaces/mappings/` owns operation-to-transport contracts only.
 - `../transports/` owns the transport class vocabulary.
 - `../registry/` owns operation ids and API exposure grammar.
 - `../schemas/` owns API envelope/schema shape.
 - `../yai/src/runtime/boundary/transport` and `../yai/src/runtime/boundary/service`
   will implement listeners later.
-- `../sdk` consumes this mapping; it does not invent a separate transport
-  grammar.
+- SDK packages under `../packages/` consume this mapping; they do not invent a
+  separate transport grammar.

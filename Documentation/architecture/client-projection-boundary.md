@@ -16,10 +16,10 @@ YAI Interfaces owns:
 
 YAI Interfaces delegates:
 
-- current typed client/package source to `../sdk` until SDK drain
-- future official SDK package behavior to `interfaces/packages/`
-- terminal client UX truth to `../console/Documentation`
-- runtime behavior and system truth to `../yai/Documentation`
+- terminal client UX truth to Console documentation
+- runtime behavior and system truth to YAI runtime documentation
+
+Official SDK package behavior now lives under `interfaces/packages/`.
 
 ## Projection Rule
 

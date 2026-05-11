@@ -1,48 +1,36 @@
 # Interfaces Architecture Overview
 
-YAI Interfaces is the developer-interface surface for YAI clients, SDK
-packages, generated clients, external integrations, and runtime-facing
-adapters. It defines what operations exist, how they are named, how they are
-carried over transports, and how request, response, readiness, error, and
-stream data are shaped.
+YAI Interfaces is the canonical developer-interface repository. It unifies the
+protocol/API surface and the official SDK packages into one authority for
+external and internal client authors.
 
-The interfaces repository contains the protocol/API layer and prepares for
-official SDK packages after SDK drain. It does not implement runtime behavior,
-own terminal UX, or own web/account/product surfaces.
+The repository owns protocol contracts, operation semantics, transports,
+envelopes, errors, schemas, registries, fixtures, conformance, OpenAPI
+projections, mappings, contracts, lifecycle models, generated surfaces,
+official SDK packages, developer examples, and integration contracts.
 
-## Canonical Model
+It does not own YAI runtime implementation, YAI service lifecycle
+implementation, Console terminal UX, or web/account/product surfaces.
 
-- Operation families are public protocol families such as case, identity,
-  runtime, operator, client, SDK projection, and execution.
-- The protocol/API layer defines operation grammar, operation registries,
-  transport eligibility, envelopes, errors, schemas, and mappings.
-- API `identity` is an upstream contract family for access/auth/account
-  projections; it is not a native YAI runtime plane and projects to
-  `../yai/src/runtime/access`.
-- Transports carry the same operation model through local IPC, loopback HTTP,
-  event streams, secure remote paths, subprocess compatibility, and in-process
-  tests.
-- Envelopes and errors provide a transport-neutral request/response contract.
-- Conformance checks validate registry, schema, envelope, mapping, transport,
-  generated surface, and package alignment claims.
-- Official SDK packages consume interface contracts after SDK drain; they do
-  not redefine protocol truth.
+After INTF.4, SDK packages live under:
 
-## Ownership Summary
+- `packages/rust`
+- `packages/python`
+- `packages/typescript`
+- `packages/c`
 
-`interfaces` owns developer-interface truth.
+The architecture separates five versioned layers:
 
-`yai` owns runtime, system, governance, service lifecycle, packaging, and core
-architecture truth.
+- protocol version;
+- SDK package version;
+- generated surface version;
+- conformance profile version;
+- repository release version.
 
-`console` owns CLI mode, TUI mode, command UX, runtime attachment UX, terminal
-copy, routing, and help behavior.
+Developer and client flow:
 
-`web` owns public, account, download, home, dashboard, and commercial surfaces.
-
-## Source Material Absorbed
-
-DOCS.2 absorbed the pre-reset API plane, family, source-of-truth, and
-projection filesystem notes into this architecture section. INTF.2
-canonicalizes the local repository identity from the former API source base to
-YAI Interfaces. Historical originals are preserved under `archive/`.
+```text
+external client or Console or future Studio
+  -> interfaces SDK/API
+  -> yai runtime/system effect
+```

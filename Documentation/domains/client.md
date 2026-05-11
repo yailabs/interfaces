@@ -9,11 +9,11 @@ The client domain documents API-facing client references, connection references,
 - Call context fields carried in envelopes.
 - Protocol metadata used by clients.
 
-## API Delegates
+## Delegated Boundaries
 
-- Terminal client UX truth to `../console/Documentation`.
-- Typed client and package truth to `../sdk/Documentation`.
-- Runtime implementation truth to `../yai/Documentation`.
+- Terminal client UX truth belongs to Console documentation.
+- Typed SDK package truth belongs to `interfaces/packages/`.
+- Runtime implementation truth belongs to YAI runtime documentation.
 
 ## Artifact References
 

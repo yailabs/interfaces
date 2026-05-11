@@ -1,6 +1,6 @@
 # YAI Interfaces
 
-YAI Interfaces is the canonical developer-interface repository for YAI.
+YAI Interfaces is the canonical developer-interface repository.
 
 It owns:
 
@@ -12,13 +12,13 @@ It owns:
 - schemas;
 - registries;
 - fixtures;
-- OpenAPI projections;
 - conformance;
+- OpenAPI projections;
 - mappings;
 - contracts;
 - lifecycle models;
 - generated surfaces;
-- official SDK packages after SDK drain;
+- official SDK packages;
 - developer examples and integration contracts.
 
 It does not own:
@@ -30,18 +30,20 @@ It does not own:
 
 ## Repository Status
 
-This repository was locally canonicalized from the former `api` source base in
-INTF.2. It is currently `pre-sdk-drain`: API/protocol artifacts are present,
-while official SDK packages remain in the separate `sdk` repository until later
-INTF waves classify and drain them.
+This repository was canonicalized from the former API source base in INTF.2.
+After INTF.4, official SDK packages now live under:
 
-The remote may still point to the historical API repository until a separate
-remote rename is performed.
+- `packages/rust`
+- `packages/python`
+- `packages/typescript`
+- `packages/c`
+
+The previous SDK repository has been tombstoned and is historical only. It is
+not the active developer-interface authority.
 
 ## Source Of Truth
 
-Canonical developer-interface truth lives in the artifact and documentation
-roots in this repository:
+Canonical developer-interface truth lives in this repository:
 
 - `registry/`
 - `schemas/`
@@ -55,33 +57,41 @@ roots in this repository:
 - `conformance/`
 - `openapi/`
 - `projections/`
+- `packages/`
 - `Documentation/`
 
-OpenAPI is a projection over interface contracts. SDK packages consume these
-contracts after drain; they do not define protocol truth.
+Protocol, operation registry, schema, and mapping artifacts are source of
+truth. OpenAPI is a projection. SDK packages are typed consumption surfaces and
+must not define protocol truth.
 
 ## Boundaries
 
-YAI runtime and system behavior belong to `../yai`.
+YAI runtime and system behavior belong to the YAI runtime repository.
 
-Console terminal UX belongs to `../console`.
+Console terminal UX belongs to the Console repository.
 
 Web, account, download, dashboard, and commercial product surfaces belong to
-`../web`.
+their product repositories.
 
-SDK package source remains in `../sdk` until the SDK drain waves move package
-material into `interfaces/packages/`.
+Developer and client flow:
+
+```text
+external client or Console or future Studio
+  -> interfaces SDK/API
+  -> yai runtime/system effect
+```
 
 ## Build And Validation
 
-Typical validation during the pre-sdk-drain phase:
+Documentation validation for this repository starts with:
 
 ```sh
 python3 -m json.tool interface-manifest.json >/dev/null
-python3 -m json.tool registry/api-operations.v1.json >/dev/null
+git diff --check
 ```
 
-Conformance checks remain under `conformance/`.
+Protocol and package conformance checks are indexed under `conformance/` and
+`Documentation/conformance/`.
 
 ## Licensing
 

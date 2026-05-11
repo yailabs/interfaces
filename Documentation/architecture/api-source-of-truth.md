@@ -24,8 +24,7 @@ interfaces repository.
 ## Delegation
 
 YAI owns runtime implementation truth. Console owns terminal client UX truth.
-Current SDK package source remains in `../sdk` until SDK drain. After drain,
-official SDK packages live under `interfaces/packages/`.
+Official SDK packages live under `interfaces/packages/`.
 
 YAI Interfaces documents the protocol/API boundary these consumers use or
 implement.

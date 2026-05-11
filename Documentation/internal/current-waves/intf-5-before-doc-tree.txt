@@ -1,0 +1,443 @@
+Documentation
+├── INDEX.md
+├── README.md
+├── architecture
+│   ├── README.md
+│   ├── api-source-of-truth.md
+│   ├── client-projection-boundary.md
+│   ├── conformance-boundary.md
+│   ├── envelope-error-stream-model.md
+│   ├── external-developer-boundary.md
+│   ├── generation-boundary.md
+│   ├── interface-source-of-truth.md
+│   ├── operation-model.md
+│   ├── overview.md
+│   ├── package-boundary.md
+│   ├── protocol-api-boundary.md
+│   ├── runtime-implementation-boundary.md
+│   ├── sdk-consumption-boundary.md
+│   └── transport-model.md
+├── archive
+│   ├── README.md
+│   ├── historical-manifest.md
+│   ├── legacy-cli
+│   │   ├── MIGRATION_FROM_APPS_CLI_IPC.md
+│   │   ├── canonical-action-descriptor-registry.md
+│   │   ├── canonical-cli-command-inventory.md
+│   │   ├── canonical-cli-invocation.md
+│   │   ├── canonical-yai-command-system.md
+│   │   ├── capability-command-recovery.md
+│   │   ├── cli-runtime-binary-boundary.md
+│   │   ├── cli-sdk-first-wiring.md
+│   │   ├── cli-tui-command-projection-contract.md
+│   │   ├── command-system-refactor-readiness.md
+│   │   ├── final-cli-source-removal-absence-guardrail.md
+│   │   ├── legacy-api-sdk-surface-extraction.md
+│   │   ├── legacy-entrypoint-makefile-source-removal.md
+│   │   ├── legacy-runtime-core-extraction.md
+│   │   ├── legacy-source-deletion-pass.md
+│   │   ├── legacy-source-extraction-map.md
+│   │   ├── legacy-source-guardrail.md
+│   │   ├── legacy-source-quarantine.md
+│   │   └── residual-domain-source-deletion-pass.md
+│   ├── legacy-loom
+│   │   └── loom-client-alignment.md
+│   ├── old-client
+│   │   ├── client-connection-model.md
+│   │   ├── console-client-alignment.md
+│   │   ├── desktop-long-lived-client-alignment.md
+│   │   ├── shell-ux-model.md
+│   │   └── vscode-client-alignment.md
+│   ├── old-flat-root
+│   │   ├── CLIENT_INTEGRATION.md
+│   │   ├── FAMILY_MODEL.md
+│   │   ├── REQUEST_RESPONSE_MODEL.md
+│   │   ├── adr
+│   │   │   └── ADR-V1-session-death-decision.md
+│   │   ├── agent-orchestration-entry.md
+│   │   ├── api-auth-surfaces.md
+│   │   ├── api-case-expansion.md
+│   │   ├── api-contract-taxonomy.md
+│   │   ├── api-envelope-error-stream-model.md
+│   │   ├── api-operation-model.md
+│   │   ├── api-operator-context-surfaces.md
+│   │   ├── api-plane-surface-model.md
+│   │   ├── api-projection-filesystem.md
+│   │   ├── api-registry-refactor.md
+│   │   ├── api-source-of-truth.md
+│   │   ├── api-to-core-plane-map.md
+│   │   ├── build
+│   │   │   └── api-build-contract.md
+│   │   ├── case
+│   │   │   ├── case-commands.md
+│   │   │   ├── case-tree-model.md
+│   │   │   ├── case-uri-model.md
+│   │   │   └── root-user-case.md
+│   │   ├── command-projection-model.md
+│   │   ├── compat
+│   │   │   └── session-legacy-containment.md
+│   │   ├── enterprise-api-standard.md
+│   │   ├── execution
+│   │   │   ├── account-scoped-limit-reconciliation.md
+│   │   │   ├── agent-authority-binding.md
+│   │   │   ├── analytics-binding.md
+│   │   │   ├── case-bound-jobs.md
+│   │   │   ├── case-evidence-binding.md
+│   │   │   ├── case-job-flow-limit-boundary.md
+│   │   │   ├── cloud-compute-boundary.md
+│   │   │   ├── detach-continuation-semantics.md
+│   │   │   ├── execution-lease-model.md
+│   │   │   ├── flow-binding.md
+│   │   │   ├── knowledge-binding.md
+│   │   │   ├── license-lease-consumption.md
+│   │   │   ├── local-lease-cache-reboot-continuity.md
+│   │   │   ├── local-machine-identity-store.md
+│   │   │   ├── local-model-provider-access-boundary.md
+│   │   │   ├── logout-revocation-lease-invalidation.md
+│   │   │   ├── logout-seal-policy.md
+│   │   │   ├── machine-authorization-consumption.md
+│   │   │   ├── machine-enrollment-client-flow.md
+│   │   │   ├── machine-fingerprint-evidence-builder.md
+│   │   │   ├── offline-grace-stale-lease-behavior.md
+│   │   │   ├── provider-authority-binding.md
+│   │   │   ├── runtime-gate-registry.md
+│   │   │   ├── runtime-license-check-request.md
+│   │   │   ├── runtime-license-check-response.md
+│   │   │   └── runtime-sealed-by-license-behavior.md
+│   │   ├── identity
+│   │   │   └── principal-model.md
+│   │   ├── in-process-subprocess-compat-boundary.md
+│   │   ├── lan-secure-remote-https-boundary.md
+│   │   ├── local-event-stream-contract.md
+│   │   ├── local-http-loopback-contract.md
+│   │   ├── local-ipc-rpc-contract.md
+│   │   ├── operation-grammar.md
+│   │   ├── operation-to-transport-mapping.md
+│   │   ├── operator
+│   │   │   ├── active-case-ref.md
+│   │   │   └── operator-context-plane.md
+│   │   ├── prompting-canonical-surface.md
+│   │   ├── protocol-api-boundary.md
+│   │   ├── release-and-conformance-policy.md
+│   │   ├── runtime
+│   │   │   ├── allowed-blocked-surfaces.md
+│   │   │   ├── dev-wrapper-boundary.md
+│   │   │   ├── runtime-control-plan.md
+│   │   │   ├── runtime-readiness-projection.md
+│   │   │   ├── runtime-sealed-enforcement.md
+│   │   │   └── service-lifecycle-boundary.md
+│   │   ├── runtime-implementation-boundary.md
+│   │   ├── source-api-readme.md
+│   │   ├── transport-boundary-model.md
+│   │   ├── transport-contract-index-implementation-readiness.md
+│   │   └── versioning-and-compatibility.md
+│   ├── old-sdk
+│   │   ├── architecture
+│   │   │   └── architecture
+│   │   │       ├── README.md
+│   │   │       ├── api-consumption-model.md
+│   │   │       ├── generation-boundary.md
+│   │   │       ├── overview.md
+│   │   │       ├── package-taxonomy.md
+│   │   │       ├── runtime-resolution-model.md
+│   │   │       ├── sdk-architecture.md
+│   │   │       └── transport-consumption-model.md
+│   │   ├── conformance-root
+│   │   │   ├── CHECKLIST.md
+│   │   │   └── README.md
+│   │   ├── decisions
+│   │   │   └── decisions
+│   │   │       ├── README.md
+│   │   │       ├── active-decisions.md
+│   │   │       └── adr-index.md
+│   │   ├── docs-archive
+│   │   │   └── archive
+│   │   │       ├── README.md
+│   │   │       ├── historical-manifest.md
+│   │   │       ├── legacy-sdk
+│   │   │       │   ├── README.from-yai-sdk.md
+│   │   │       │   ├── README.md
+│   │   │       │   ├── RUNTIME_RESOLUTION_POLICY.md
+│   │   │       │   ├── SDK_ALIGNMENT_DX1_MODEL.md
+│   │   │       │   ├── SDK_API_DISCIPLINE.md
+│   │   │       │   ├── SDK_DEPENDENCY_MATRIX.md
+│   │   │       │   ├── SDK_PUBLIC_RUNTIME_SURFACE.md
+│   │   │       │   ├── SDK_SURFACE_CONTRACT.md
+│   │   │       │   ├── SOURCE_PLANE_SDK_MODEL.md
+│   │   │       │   ├── legacy-cli-surface-candidates.md
+│   │   │       │   └── repository-naming-realignment-report.md
+│   │   │       ├── old-flat-root
+│   │   │       │   ├── DOCS_INDEX.md
+│   │   │       │   ├── README.md
+│   │   │       │   ├── architecture
+│   │   │       │   │   ├── api-source-model.md
+│   │   │       │   │   ├── package-taxonomy.md
+│   │   │       │   │   ├── sdk-architecture.md
+│   │   │       │   │   └── transport-model.md
+│   │   │       │   ├── guides
+│   │   │       │   │   ├── client-adoption.md
+│   │   │       │   │   ├── integration-examples.md
+│   │   │       │   │   └── quickstart.md
+│   │   │       │   └── standards
+│   │   │       │       ├── compatibility-model.md
+│   │   │       │       ├── enterprise-sdk-standard.md
+│   │   │       │       ├── error-and-status-model.md
+│   │   │       │       ├── family-availability.md
+│   │   │       │       └── versioning-and-release-policy.md
+│   │   │       ├── old-reports
+│   │   │       │   ├── dx-reliability-checklist.md
+│   │   │       │   ├── refoundation-phase-3a-sdk-typed-operation-gate-audit.md
+│   │   │       │   ├── refoundation-phase-3b-sdk-canonical-surface-cleanup.md
+│   │   │       │   ├── refoundation-phase-3c-c-sdk-compat-isolation-plan.md
+│   │   │       │   └── sdk-api-inventory-v1.md
+│   │   │       ├── old-waves
+│   │   │       │   ├── a5-sdk-call-context-propagation.md
+│   │   │       │   └── sdk-01-rust-local-ipc-rpc-client-transport.md
+│   │   │       ├── old-workspace
+│   │   │       │   ├── THREADING_MEMORY.md
+│   │   │       │   ├── WORKSPACE_BOUNDARY_MEDIATION.md
+│   │   │       │   ├── WORKSPACE_DIGITAL_CONTROL_PATH.md
+│   │   │       │   ├── WORKSPACE_FINAL_DEMO_MATRIX.md
+│   │   │       │   ├── WORKSPACE_SCIENTIFIC_CONTROL_PATH.md
+│   │   │       │   └── WSV84_COMPOSITION_DEBT_DISPOSITION.md
+│   │   │       └── removed
+│   │   ├── docs-internal
+│   │   │   └── internal
+│   │   │       ├── README.md
+│   │   │       ├── current-reports
+│   │   │       ├── current-waves
+│   │   │       ├── docs-reset-before-file-list.txt
+│   │   │       ├── docs-reset-before-tree.txt
+│   │   │       ├── docs-reset-classification-sdk.tsv
+│   │   │       ├── docs-reset-report.md
+│   │   │       └── internal-manifest.md
+│   │   ├── extraction
+│   │   │   └── sdk-source-manifest.json
+│   │   ├── generated
+│   │   │   └── README.md
+│   │   ├── guides
+│   │   │   └── guides
+│   │   │       ├── README.md
+│   │   │       ├── client-adoption.md
+│   │   │       ├── error-handling.md
+│   │   │       ├── integration-examples.md
+│   │   │       ├── local-runtime-connection.md
+│   │   │       └── quickstart.md
+│   │   ├── reference-figures
+│   │   │   └── figures
+│   │   │       ├── yai-transp.png
+│   │   │       └── yai.svg
+│   │   ├── root
+│   │   │   ├── COMPATIBILITY.md
+│   │   │   ├── Documentation-INDEX.md
+│   │   │   ├── Documentation-README.md
+│   │   │   ├── README.md
+│   │   │   ├── VERSIONING.md
+│   │   │   ├── conformance-README.md
+│   │   │   ├── packages-README.md
+│   │   │   ├── reference-README.md
+│   │   │   └── sdk-manifest.json
+│   │   ├── sdk-runtime-surface-alignment.md
+│   │   ├── standards
+│   │   │   └── standards
+│   │   │       ├── README.md
+│   │   │       ├── compatibility-model.md
+│   │   │       ├── enterprise-sdk-standard.md
+│   │   │       ├── error-and-status-model.md
+│   │   │       ├── family-availability.md
+│   │   │       └── versioning-and-release-policy.md
+│   │   └── tools-manual-review
+│   ├── old-v-waves
+│   │   ├── a-series-map.md
+│   │   ├── a1-console-canonicalization-legacy-cli-loom-drain.md
+│   │   ├── a1-operation-transport-mapping-drift-reconciliation.md
+│   │   ├── a2-operation-transport-mapping-drift-reconciliation.md
+│   │   ├── a4-protocol-contract-client-attachment-system-call-record.md
+│   │   ├── a5-api-envelope-sdk-call-context-propagation.md
+│   │   ├── api-01-transport-boundary-operation-surface-vocabulary-freeze.md
+│   │   ├── api-02-operation-to-transport-mapping-dispatch-contract.md
+│   │   ├── api-03-api-envelope-error-stream-frame-alignment.md
+│   │   ├── api-04-local-ipc-rpc-contract-verticalization.md
+│   │   ├── api-05-local-http-loopback-contract-verticalization.md
+│   │   ├── api-06-local-event-stream-contract-verticalization.md
+│   │   ├── api-07-lan-secure-remote-https-boundary-split.md
+│   │   ├── api-08-in-process-test-subprocess-stdio-compatibility-boundary.md
+│   │   ├── api-09-transport-contract-index-implementation-readiness-matrix.md
+│   │   ├── api-10-operation-transport-mapping-drift-reconciliation.md
+│   │   ├── v0-command-reality-audit.md
+│   │   ├── v10-5-canonical-cli-install-and-invocation.md
+│   │   ├── v10-6-cli-binary-precedence-runtime-boundary.md
+│   │   ├── v10-active-case-refactor.md
+│   │   ├── v11-operator-context-plane.md
+│   │   ├── v12-client-connection-model.md
+│   │   ├── v13-shell-ux-model.md
+│   │   ├── v14-runtime-sealed-enforcement.md
+│   │   ├── v15-runtime-readiness-projection.md
+│   │   ├── v16-allowed-blocked-surfaces.md
+│   │   ├── v17-service-lifecycle-boundary.md
+│   │   ├── v18-dev-wrapper-boundary.md
+│   │   ├── v19-runtime-control-plan.md
+│   │   ├── v2-legacy-session-containment.md
+│   │   ├── v20-sdk-runtime-surface-alignment.md
+│   │   ├── v21-1-cli-legacy-source-extraction-map.md
+│   │   ├── v21-2-cli-legacy-source-quarantine.md
+│   │   ├── v21-3-runtime-core-logic-extraction.md
+│   │   ├── v21-4-api-sdk-surface-extraction.md
+│   │   ├── v21-5-legacy-source-deletion-pass.md
+│   │   ├── v21-6-cli-source-dependency-recreation-guardrail.md
+│   │   ├── v21-7-residual-domain-source-deletion-pass.md
+│   │   ├── v21-8-legacy-entrypoint-makefile-source-removal.md
+│   │   ├── v21-9-final-cli-source-removal-absence-guardrail.md
+│   │   ├── v21-cli-sdk-first-wiring.md
+│   │   ├── v22-loom-client-alignment.md
+│   │   ├── v23-vscode-client-alignment.md
+│   │   ├── v24-desktop-long-lived-client-alignment.md
+│   │   ├── v25-case-bound-jobs.md
+│   │   ├── v26-execution-lease-model.md
+│   │   ├── v27-detach-continuation-semantics.md
+│   │   ├── v28-5-protocol-cutover-api-projection-filesystem.md
+│   │   ├── v28-6-protocol-cutover-closure-api-projection-reshape.md
+│   │   ├── v28-logout-seal-policy.md
+│   │   ├── v29-case-evidence-binding.md
+│   │   ├── v3-auth-command-model.md
+│   │   ├── v30-knowledge-binding.md
+│   │   ├── v31-provider-authority-binding.md
+│   │   ├── v32-agent-authority-binding.md
+│   │   ├── v33-flow-binding.md
+│   │   ├── v34-analytics-binding.md
+│   │   ├── v35-runtime-gate-registry.md
+│   │   ├── v36-case-job-flow-limit-boundary.md
+│   │   ├── v37-local-model-provider-access-boundary.md
+│   │   ├── v38-cloud-compute-boundary.md
+│   │   ├── v39-local-machine-identity-store.md
+│   │   ├── v4-local-dev-auth.md
+│   │   ├── v40-machine-fingerprint-evidence-builder.md
+│   │   ├── v41-machine-enrollment-client-flow.md
+│   │   ├── v42-machine-authorization-consumption.md
+│   │   ├── v43-license-lease-consumption.md
+│   │   ├── v44-local-lease-cache-reboot-continuity.md
+│   │   ├── v45-account-scoped-limit-reconciliation.md
+│   │   ├── v46-runtime-license-check-request.md
+│   │   ├── v47-runtime-license-check-response.md
+│   │   ├── v48-runtime-sealed-by-license-behavior.md
+│   │   ├── v49-offline-grace-stale-lease-behavior.md
+│   │   ├── v5-principal-model.md
+│   │   ├── v50-10-command-system-refactor-readiness.md
+│   │   ├── v50-5-canonical-cli-command-surface-audit.md
+│   │   ├── v50-6-canonical-yai-command-system.md
+│   │   ├── v50-7-cli-tui-command-projection-contract.md
+│   │   ├── v50-8-capability-command-recovery.md
+│   │   ├── v50-9-canonical-action-descriptor-registry-seed.md
+│   │   ├── v50-logout-revocation-lease-invalidation.md
+│   │   ├── v51-api-registry-refactor.md
+│   │   ├── v52-api-case-expansion.md
+│   │   ├── v53-api-auth-surfaces.md
+│   │   ├── v54-api-operator-context-surfaces.md
+│   │   ├── v6-root-user-case.md
+│   │   ├── v7-case-uri-model.md
+│   │   ├── v8-case-tree-model.md
+│   │   └── v9-case-commands.md
+│   ├── refoundation
+│   │   ├── refoundation-phase-2a-api-contract-reconciliation-audit.md
+│   │   ├── refoundation-phase-2b-api-registry-canonicalization-patch.md
+│   │   └── refoundation-phase-2c-prompting-canonical-surface-plan.md
+│   └── removed
+├── conformance
+│   ├── README.md
+│   ├── api-inventory.md
+│   ├── check-index.md
+│   ├── conformance-policy.md
+│   ├── dx-reliability-checklist.md
+│   ├── generated-surface.md
+│   ├── implementation-readiness.md
+│   ├── release-policy.md
+│   ├── sdk-conformance.md
+│   ├── sdk-package-conformance.md
+│   └── versioning-and-compatibility.md
+├── decisions
+│   ├── README.md
+│   ├── active-decisions.md
+│   └── adr-index.md
+├── domains
+│   ├── README.md
+│   ├── case.md
+│   ├── client.md
+│   ├── execution.md
+│   ├── identity.md
+│   ├── operator.md
+│   ├── runtime.md
+│   └── sdk.md
+├── envelopes
+│   ├── README.md
+│   ├── readiness-envelope.md
+│   ├── request-envelope.md
+│   ├── request-response-model.md
+│   ├── response-envelope.md
+│   └── stream-frame-model.md
+├── errors
+│   ├── README.md
+│   ├── error-code-registry.md
+│   ├── error-model.md
+│   ├── http-status-map.md
+│   └── transport-error-mapping.md
+├── examples
+│   └── README.md
+├── generation
+│   ├── README.md
+│   └── sdk-generation.md
+├── internal
+│   ├── README.md
+│   ├── current-audits
+│   │   └── api-leakage-audit.md
+│   ├── current-waves
+│   │   ├── intf-2-api-repository-rename-interfaces-canonicalization.md
+│   │   ├── intf-4-sdk-drain-into-interfaces-packages.md
+│   │   ├── intf-5-before-doc-file-list.txt
+│   │   └── intf-5-before-doc-tree.txt
+│   ├── docs-reset-before-file-list.txt
+│   ├── docs-reset-before-tree.txt
+│   ├── docs-reset-classification-api.tsv
+│   ├── docs-reset-report.md
+│   └── internal-manifest.md
+├── operations
+│   ├── README.md
+│   ├── action-descriptor-model.md
+│   ├── command-projection-model.md
+│   ├── operation-grammar.md
+│   ├── operation-registry.md
+│   └── operation-to-transport-mapping.md
+├── packages
+│   ├── README.md
+│   ├── c.md
+│   ├── package-release-model.md
+│   ├── python.md
+│   ├── rust.md
+│   ├── sdk-drain-package-notes.md
+│   └── typescript.md
+├── reference
+│   ├── README.md
+│   ├── api-inventory-index.md
+│   ├── contract-index.md
+│   ├── figures
+│   │   ├── yai-transp.png
+│   │   └── yai.svg
+│   ├── fixture-index.md
+│   ├── generated-surface-index.md
+│   ├── openapi-index.md
+│   ├── package-index.md
+│   ├── registry-index.md
+│   ├── schema-index.md
+│   ├── sdk-package-index.md
+│   └── transport-artifact-index.md
+└── transports
+    ├── README.md
+    ├── in-process-test.md
+    ├── lan-secure-remote.md
+    ├── local-event-stream.md
+    ├── local-http-loopback.md
+    ├── local-ipc-rpc.md
+    ├── remote-https.md
+    ├── subprocess-stdio-compat.md
+    └── transport-contract-index.md
+
+64 directories, 377 files

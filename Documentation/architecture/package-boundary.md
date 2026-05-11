@@ -1,24 +1,16 @@
 # Package Boundary
 
-Official SDK packages belong under `interfaces/packages/` after SDK drain.
+Official SDK packages live under `packages/`:
 
-## Current Phase
+- Rust: `packages/rust`, package name `yai-sdk-rust`;
+- Python: `packages/python`, distribution `yailabs-yai-sdk`, import
+  `yai_sdk`;
+- TypeScript: `packages/typescript`, package name `@yailabs/sdk`;
+- C: `packages/c`, include prefix `<yai_sdk/...>`.
 
-YAI Interfaces is `pre-sdk-drain`. Package source still lives in `../sdk`.
-INTF.2 does not move SDK packages.
+Package versions are separate from protocol version. A package version records
+language package release state. It must declare the protocol version,
+generated-surface version, and conformance profile it supports.
 
-## Package Scope After Drain
-
-- `packages/rust/`: Rust client package behavior.
-- `packages/python/`: Python client package behavior.
-- `packages/typescript/`: TypeScript client package behavior.
-- `packages/c/`: C client package behavior and compatibility posture.
-
-## Package Rules
-
-- Packages consume interface protocol and conformance definitions.
-- Packages declare supported protocol and conformance versions.
-- Packages do not define protocol truth.
-- Packages must keep compatibility aliases explicit and non-canonical.
-- Package release claims require package-local validation and interface
-  conformance evidence.
+Package manifests and README files may describe package usage. They do not
+replace protocol registry, schema, mapping, or conformance authority.

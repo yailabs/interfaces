@@ -1,39 +1,22 @@
 # Interface Source Of Truth
 
-YAI Interfaces source of truth lives in this repository's artifacts and
-documentation tree.
+YAI Interfaces owns developer-interface truth.
 
-## Normative Artifact Roots
+Source-of-truth artifacts are:
 
-- `registry/` defines families, verbs, operations, projections, clients,
-  envelopes, errors, surfaces, and action descriptors.
-- `schemas/` defines operation, envelope, reference, and domain payload schema
-  contracts.
-- `mappings/` defines operation dispatch, transport selection, exposure, and
-  streamability policy.
-- `transports/`, `envelopes/`, and `errors/` define transport and wire-level
-  contracts.
-- `contracts/` defines foundation, identity, runtime, and client contract
-  material.
-- `lifecycle/` defines operation result and compatibility lifecycle material.
-- `openapi/` defines OpenAPI projection output.
-- `conformance/` defines checks that validate the artifacts.
+- protocol contracts;
+- operation registry;
+- operation-to-transport mappings;
+- schemas;
+- envelopes;
+- errors;
+- registries;
+- lifecycle and compatibility contracts.
 
-## Documentation Authority
+Protocol, operation registry, schema, and mapping artifacts define interface
+truth. OpenAPI, generated clients, SDK operation constants, SDK envelope types,
+and package reference docs are projections over that truth.
 
-- `architecture/` explains ownership and boundary rules.
-- `operations/` explains operation grammar and registry semantics.
-- `transports/`, `envelopes/`, and `errors/` explain wire behavior.
-- `domains/` explains protocol/API-facing domain projection semantics.
-- `packages/` explains official SDK package boundaries after SDK drain.
-- `generation/` explains generated surface boundaries and provenance.
-- `reference/` indexes artifact roots without moving or rewriting them.
-
-## Delegation
-
-YAI owns runtime implementation truth. Console owns terminal client UX truth.
-Web owns public/account/product surfaces. SDK package source remains in `../sdk`
-until SDK drain, then package truth moves under `interfaces/packages/`.
-
-YAI Interfaces documents the developer-interface boundary these consumers use
-or implement.
+SDK packages consume the interface truth as typed language surfaces. They must
+not redefine protocol semantics, operation identifiers, transport grammar,
+envelope grammar, error semantics, or runtime dispatch targets.

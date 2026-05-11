@@ -1,15 +1,13 @@
 # Projections
 
-`api/projections/` is the documentation root for API-facing projection models.
+`projections/` records interface projection surfaces derived from canonical
+protocol artifacts.
 
-Typical contents for later waves may include operation projections, payload
-shape guidance, and projection release notes.
+Projection roots do not define protocol truth. They consume registry, schema,
+mapping, transport, envelope, and error artifacts and must preserve provenance
+when generated outputs are retained.
 
-SDK client packages consume these projections through SDK-owned client
-transports. This root does not own transport implementation.
+Generated projection policy:
 
-Test-only `in_process_test` and compatibility-only
-`subprocess_stdio_compat` do not redefine projection ownership or become
-canonical projection transports.
-
-This root is intentionally documentation-only in V28.6/API.01.
+- `projections/generated/README.md`
+- `generators/provenance-policy.md`

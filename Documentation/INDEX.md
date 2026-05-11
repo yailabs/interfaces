@@ -26,7 +26,6 @@
 
 - `architecture/overview.md`
 - `architecture/interface-source-of-truth.md`
-- `architecture/api-source-of-truth.md`
 - `architecture/protocol-api-boundary.md`
 - `architecture/sdk-consumption-boundary.md`
 - `architecture/generation-boundary.md`
@@ -87,18 +86,37 @@
 - `conformance/versioning-and-compatibility.md`
 - `conformance/implementation-readiness.md`
 - `conformance/check-index.md`
+- `conformance/sdk-conformance.md`
+- `conformance/package-validation-residuals.md`
 
 ## Packages
 
 - `packages/README.md`
+- `packages/package-taxonomy.md`
+- `packages/package-release-model.md`
+- `packages/rust.md`
+- `packages/python.md`
+- `packages/typescript.md`
+- `packages/c.md`
+- `packages/package-compatibility.md`
 
 ## Generation
 
 - `generation/README.md`
+- `generation/generated-surface.md`
+- `generation/sdk-generation.md`
+- `generation/schema-generation.md`
+- `generation/openapi-generation.md`
+- `generation/registry-generation.md`
+- `generation/provenance-requirements.md`
 
 ## Examples
 
 - `examples/README.md`
+- `examples/external-client-authoring.md`
+- `examples/local-runtime-connection.md`
+- `examples/protocol-examples.md`
+- `examples/sdk-examples.md`
 
 ## Reference
 
@@ -107,11 +125,20 @@
 - `reference/fixture-index.md`
 - `reference/openapi-index.md`
 - `reference/contract-index.md`
+- `reference/package-index.md`
+- `reference/sdk-package-index.md`
+- `reference/generated-surface-index.md`
 - `reference/transport-artifact-index.md`
 
-## Cross-Repo Pointers
+## Cross-Repo Model
 
-- `../yai/Documentation` owns runtime and system truth.
-- `../sdk` owns current SDK package source until SDK drain.
-- `../console/Documentation` owns terminal client UX truth.
-- `../web` owns web, account, dashboard, download, and commercial surfaces.
+YAI owns runtime and system truth. Console owns terminal client UX truth. Product
+repositories own web, account, dashboard, download, and commercial surfaces.
+
+Developer and client flow:
+
+```text
+external client or Console or future Studio
+  -> interfaces SDK/API
+  -> yai runtime/system effect
+```

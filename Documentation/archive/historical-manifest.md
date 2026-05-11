@@ -1,5 +1,27 @@
 # Historical Manifest
 
+## INTF.4 SDK Drain Archive
+
+Historical standalone SDK documentation and metadata were archived under
+`Documentation/archive/old-sdk/` during INTF.4 and retained as historical
+material during INTF.5. These paths are not active developer-interface
+authority.
+
+Archived SDK material:
+
+- `Documentation/archive/old-sdk/architecture/`
+- `Documentation/archive/old-sdk/conformance-root/`
+- `Documentation/archive/old-sdk/decisions/`
+- `Documentation/archive/old-sdk/docs-archive/`
+- `Documentation/archive/old-sdk/docs-internal/`
+- `Documentation/archive/old-sdk/extraction/`
+- `Documentation/archive/old-sdk/generated/`
+- `Documentation/archive/old-sdk/guides/`
+- `Documentation/archive/old-sdk/reference-figures/`
+- `Documentation/archive/old-sdk/root/`
+- `Documentation/archive/old-sdk/standards/`
+- `Documentation/archive/old-sdk/sdk-runtime-surface-alignment.md`
+
 DOCS.2 inspected these files before archival. No file was deleted by name or path.
 
 | old_path | new_path | classification | absorbed_by | reason | delete_allowed | validation_note |

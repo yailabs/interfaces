@@ -1,10 +1,16 @@
-# SDK Generation Gate (Wave 14 Input)
+# SDK Generation Gate
 
-Wave 14 SDK generation is allowed only when the following gate is satisfied.
+Current status: superseded by the unified `interfaces` repository.
+
+SDK generation inputs now come from the protocol registry, schemas, mappings,
+and provenance policy in this repository. The old standalone `api` repository
+name and the old standalone `sdk` workspace are historical only.
 
 ## Mandatory source
 
-- SDK input repository: `../api`.
+- SDK input repository: `interfaces` (this repository).
+- SDK package roots: `packages/rust`, `packages/python`,
+  `packages/typescript`, and `packages/c`.
 - `yai/api` is not a canonical SDK input source.
 
 ## Prohibited SDK sources
@@ -22,14 +28,15 @@ Wave 14 SDK generation is allowed only when the following gate is satisfied.
 - conformance remains scaffolded and must be reported as such
 
 
-Wave 13D prerequisite: root `yai/api/` removed. SDK generation input remains `../api` only.
+Wave 13D removed root `yai/api/`. SDK generation input is now the
+`interfaces` registry/schema/mapping surface.
 
-## Wave 14 Handoff
+## Current Package Handoff
 
-- SDK workspace path: `../sdk`.
-- SDK source mode: contract-bound from `api`.
-- Initial SDK languages: TypeScript, Python.
-- Initial SDK transport: abstract placeholder.
+- SDK workspace path: `packages/`.
+- SDK source mode: package projection from `interfaces`.
+- SDK languages: Rust, Python, TypeScript, and C.
+- SDK transport: package projection over interface transport contracts.
 - `sdkGeneratedFromOpenApi`: false.
 - `sdkGeneratedFromCli`: false.
 - `sdkGeneratedFromCoreStructs`: false.

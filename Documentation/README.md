@@ -1,29 +1,51 @@
 # YAI Interfaces Documentation
 
-`interfaces/Documentation` is the canonical documentation surface for YAI
-Interfaces. It covers the developer-interface surface: protocol/API layer,
-operations, transports, envelopes, errors, schemas, registries, fixtures,
-conformance, OpenAPI projections, mappings, generated surfaces, official SDK
-packages after SDK drain, examples, and developer integration contracts.
+`interfaces/Documentation` is the canonical documentation surface for the YAI
+developer interface. It covers protocol truth, operation semantics, transports,
+envelopes, errors, schemas, registries, fixtures, conformance, OpenAPI
+projections, mappings, contracts, lifecycle models, generated surfaces,
+official SDK packages, developer examples, and integration contracts.
 
 ## Ownership
 
-YAI Interfaces owns:
+YAI Interfaces is the canonical developer-interface repository.
 
-- protocol contracts and operation semantics;
-- operation registry and operation-to-transport mapping;
-- transports, envelopes, errors, readiness, and stream frame semantics;
-- registries, schemas, fixtures, mappings, and contracts;
-- conformance policy and OpenAPI projection documentation;
-- generated surface and SDK package boundaries;
-- developer examples and external integration contracts.
+It owns:
 
-YAI Interfaces delegates:
+- protocol contracts;
+- operation semantics;
+- transports;
+- envelopes;
+- errors;
+- schemas;
+- registries;
+- fixtures;
+- conformance;
+- OpenAPI projections;
+- mappings;
+- contracts;
+- lifecycle models;
+- generated surfaces;
+- official SDK packages;
+- developer examples and integration contracts.
 
-- runtime and system truth to `../yai/Documentation`;
-- terminal client UX truth to `../console/Documentation`;
-- web, account, download, dashboard, and commercial product truth to `../web`;
-- current SDK package source to `../sdk` until SDK drain is complete.
+It does not own:
+
+- YAI runtime implementation;
+- YAI service lifecycle implementation;
+- Console terminal UX;
+- Web/account/product surfaces.
+
+After INTF.4, SDK packages now live under:
+
+- `packages/rust`
+- `packages/python`
+- `packages/typescript`
+- `packages/c`
+
+The previous SDK repository has been tombstoned and is historical only.
+Historical material is kept under `archive/` and `internal/`; active
+documentation uses this repository as the developer-interface authority.
 
 ## Official Reading Path
 
@@ -55,7 +77,7 @@ YAI Interfaces delegates:
 - `errors/` defines error shape, codes, status mapping, and transport mapping.
 - `domains/` defines protocol/API-facing domain projections.
 - `conformance/` defines release, compatibility, readiness, and checks.
-- `packages/` defines official SDK package boundaries after SDK drain.
+- `packages/` defines official SDK package boundaries.
 - `generation/` defines generated surface and generator boundaries.
 - `examples/` defines protocol and SDK example boundaries.
 - `reference/` indexes artifact roots without moving them.
