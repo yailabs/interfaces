@@ -1,0 +1,23 @@
+{
+  "cloud_compute_decision": {
+    "cloud_compute_decision_ref": "cloud-compute.blocked-002",
+    "compute_target": "cloud_job",
+    "compute_mode": "cloud_required",
+    "case_ref": "case.local-002",
+    "job_ref": "job.local-002",
+    "requested_action": "request_cloud_capacity",
+    "requested_at": "2026-05-07T13:05:00Z",
+    "requested_by_principal_ref": "principal.local-002",
+    "requested_from_client_ref": "client.cli.local-002",
+    "compute_region": "eu-west-1",
+    "cloud_compute_ref": "cloud-compute.local-002",
+    "runtime_action_key": "cloud.capacity.request",
+    "runtime_gate_decision_ref": "runtime-gate.local-002",
+    "limit_projection_ref": "limit.local-002",
+    "decision": "requires_entitlement",
+    "reason": "cloud compute requires entitlement posture before admission",
+    "blocked_reason": "missing_entitlement",
+    "output_posture": "output_blocked",
+    "infrastructure_boundary": "platform_managed_infrastructure"
+  }
+}

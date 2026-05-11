@@ -1,0 +1,22 @@
+{
+  "limit_projection": {
+    "limit_projection_ref": "limit-proj.agent.004",
+    "limit_key": "max_concurrent_agents",
+    "limit_family": "agent",
+    "scope": "case",
+    "subject_ref": "agent.agent-instance-004",
+    "case_ref": "case.case-004",
+    "agent_instance_ref": "agent.agent-instance-004",
+    "runtime_action_key": "agent.spawn",
+    "runtime_gate_decision_ref": "gate.agent.spawn.004",
+    "window": "hour",
+    "current_usage": 12,
+    "max_allowed": 12,
+    "remaining": 0,
+    "hard_limit": 12,
+    "decision": "blocked",
+    "blocked_reason": "quota_exhausted",
+    "observed_at": "2026-05-07T10:15:00Z",
+    "source_ref": "projection.limit.agent.concurrency"
+  }
+}

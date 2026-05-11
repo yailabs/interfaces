@@ -1,0 +1,55 @@
+Documentation
+├── DOCS_INDEX.md
+├── README.md
+├── architecture
+│   ├── api-source-model.md
+│   ├── package-taxonomy.md
+│   ├── sdk-architecture.md
+│   └── transport-model.md
+├── guides
+│   ├── client-adoption.md
+│   ├── integration-examples.md
+│   └── quickstart.md
+├── internal
+│   ├── docs-reset-before-file-list.txt
+│   ├── docs-reset-before-tree.txt
+│   └── docs-reset-classification-sdk.tsv
+├── legacy
+│   ├── README.from-yai-sdk.md
+│   ├── README.md
+│   ├── RUNTIME_RESOLUTION_POLICY.md
+│   ├── SDK_ALIGNMENT_DX1_MODEL.md
+│   ├── SDK_API_DISCIPLINE.md
+│   ├── SDK_DEPENDENCY_MATRIX.md
+│   ├── SDK_PUBLIC_RUNTIME_SURFACE.md
+│   ├── SDK_SURFACE_CONTRACT.md
+│   ├── SOURCE_PLANE_SDK_MODEL.md
+│   ├── THREADING_MEMORY.md
+│   ├── WORKSPACE_BOUNDARY_MEDIATION.md
+│   ├── WORKSPACE_DIGITAL_CONTROL_PATH.md
+│   ├── WORKSPACE_FINAL_DEMO_MATRIX.md
+│   ├── WORKSPACE_SCIENTIFIC_CONTROL_PATH.md
+│   ├── WSV84_COMPOSITION_DEBT_DISPOSITION.md
+│   └── repository-naming-realignment-report.md
+├── legacy-cli-surface-candidates.md
+├── reference
+│   └── figures
+│       ├── yai-transp.png
+│       └── yai.svg
+├── reports
+│   ├── dx-reliability-checklist.md
+│   ├── refoundation-phase-3a-sdk-typed-operation-gate-audit.md
+│   ├── refoundation-phase-3b-sdk-canonical-surface-cleanup.md
+│   ├── refoundation-phase-3c-c-sdk-compat-isolation-plan.md
+│   └── sdk-api-inventory-v1.md
+├── standards
+│   ├── compatibility-model.md
+│   ├── enterprise-sdk-standard.md
+│   ├── error-and-status-model.md
+│   ├── family-availability.md
+│   └── versioning-and-release-policy.md
+└── waves
+    ├── a5-sdk-call-context-propagation.md
+    └── sdk-01-rust-local-ipc-rpc-client-transport.md
+
+10 directories, 43 files

@@ -4,24 +4,57 @@
   "title": "YAI Readiness Envelope v1",
   "type": "object",
   "required": [
-    "operation_id",
+    "schema",
     "status",
-    "execution_claim"
+    "execution_claim",
+    "implementation_status"
   ],
   "properties": {
+    "schema": {
+      "const": "yai.readiness-envelope.v1"
+    },
+    "envelope_id": {
+      "type": "string"
+    },
     "operation_id": {
       "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "correlation_id": {
+      "type": "string"
+    },
+    "client_ref": {
+      "type": "string"
+    },
+    "system_call_ref": {
+      "$ref": "schemas/system-call-ref.v1.schema.json"
+    },
+    "client_subject_ref": {
+      "$ref": "schemas/client-subject-ref.v1.schema.json"
+    },
+    "client_connection_ref": {
+      "$ref": "schemas/client-connection-ref.v1.schema.json"
+    },
+    "client_attachment_ref": {
+      "$ref": "schemas/client-attachment-ref.v1.schema.json"
+    },
+    "system_root_context_ref": {
+      "$ref": "schemas/system-root-context-ref.v1.schema.json"
+    },
+    "work_case_ref": {
+      "$ref": "schemas/work-case-ref.v1.schema.json"
     },
     "status": {
       "enum": [
         "ok",
+        "accepted",
         "partial",
-        "pending",
-        "ready",
         "unavailable",
         "blocked",
-        "denied",
-        "error"
+        "invalid",
+        "failed"
       ]
     },
     "execution_claim": {
@@ -33,7 +66,38 @@
     "message": {
       "type": "string"
     },
-    "data": {}
+    "readiness": {
+      "$ref": "schemas/runtime-service-status.v1.schema.json"
+    },
+    "data": {},
+    "refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "details": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
   },
   "additionalProperties": false
 }

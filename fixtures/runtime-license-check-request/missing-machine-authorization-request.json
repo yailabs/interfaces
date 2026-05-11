@@ -1,0 +1,25 @@
+{
+  "runtime_license_check_request": {
+    "runtime_license_check_request_ref": "runtime_license_check_request.missing_machine_authorization.v1",
+    "request_kind": "machine_authorization_check",
+    "check_scope": "machine",
+    "request_context": "before_operational_action",
+    "request_freshness": "fresh",
+    "connectivity_posture": "online",
+    "privacy_posture": "no_raw_hardware",
+    "requested_at": "2026-05-07T10:01:00Z",
+    "local_machine_ref": "local_machine.beta",
+    "local_machine_identity_ref": "local_machine_identity.beta",
+    "license_lease_ref": "license_lease.beta",
+    "account_ref": "account.acct_primary",
+    "principal_ref": "principal.ops_owner",
+    "requested_actions": [
+      "case_open"
+    ],
+    "client_ref": "client.cli.local-001",
+    "next_expected_response": "runtime_license_check_response",
+    "warning_codes": [
+      "machine_authorization_missing"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "agent_authority": {
+    "agent_authority_ref": "agent-authority.local-001",
+    "agent_ref": "agent.local-001",
+    "agent_instance_ref": "agent-instance.local-001",
+    "case_ref": "case.local-001",
+    "agent_role": "assistant",
+    "requested_action": "spawn",
+    "requested_at": "2026-05-07T10:30:00Z",
+    "requested_by_principal_ref": "principal.local-001",
+    "requested_from_client_ref": "client.cli.local-001",
+    "job_ref": "job.local-001",
+    "auth_context_ref": "auth-context.local-001",
+    "entitlement_ref": "entitlement.local-001",
+    "machine_authorization_ref": "machine-authorization.local-001",
+    "license_lease_ref": "license-lease.local-001",
+    "runtime_gate_decision_ref": "runtime-gate.local-001",
+    "limit_projection_ref": "agent-limit.local-001",
+    "decision": "allowed",
+    "reason": "agent spawn admitted under governed case-bound posture",
+    "agent_output_posture": "output_not_persisted",
+    "allowed_provider_action_refs": [
+      "provider-authority.local-001/complete"
+    ],
+    "allowed_tool_action_refs": [
+      "tool-authority.local-001/read-only"
+    ]
+  }
+}

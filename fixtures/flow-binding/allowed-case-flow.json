@@ -1,0 +1,27 @@
+{
+  "flow_binding": {
+    "flow_ref": "flow.local-001",
+    "flow_run_ref": "flow-run.local-001",
+    "case_ref": "case.local-001",
+    "flow_kind": "manual_workflow",
+    "requested_action": "start",
+    "requested_at": "2026-05-07T10:00:00Z",
+    "requested_by_principal_ref": "principal.local-001",
+    "requested_from_client_ref": "client.cli.local-001",
+    "job_refs": [
+      "job.local-001"
+    ],
+    "execution_lease_refs": [
+      "execution-lease.local-001"
+    ],
+    "auth_context_ref": "auth-context.local-001",
+    "entitlement_ref": "entitlement.local-001",
+    "machine_authorization_ref": "machine-authorization.local-001",
+    "license_lease_ref": "license-lease.local-001",
+    "runtime_gate_decision_ref": "runtime-gate.local-001",
+    "limit_projection_ref": "limit.local-001",
+    "decision": "allowed",
+    "reason": "case-bound flow admission is allowed under current governed posture",
+    "flow_output_posture": "output_not_persisted"
+  }
+}

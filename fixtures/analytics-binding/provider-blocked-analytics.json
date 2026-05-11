@@ -1,0 +1,29 @@
+{
+  "analytics_binding": {
+    "analytics_ref": "analytics.local-004",
+    "analytics_kind": "gate_block",
+    "analytics_scope": "case",
+    "case_ref": "case.local-004",
+    "metric_key": "provider.blocked.events",
+    "metric_value": 1,
+    "measurement_unit": "count",
+    "observed_at": "2026-05-07T11:15:00Z",
+    "source_provider_call_refs": [
+      "provider-call.local-004"
+    ],
+    "runtime_gate_decision_refs": [
+      "runtime-gate.local-004"
+    ],
+    "license_lease_refs": [
+      "license-lease.local-004"
+    ],
+    "limit_projection_refs": [
+      "limit.local-004"
+    ],
+    "visibility": "admin_visible",
+    "retention_posture": "redact_later",
+    "decision": "blocked",
+    "reason": "blocked provider activity may be summarized as derived analytics without becoming authority",
+    "blocked_reason": "runtime_gate_blocked"
+  }
+}

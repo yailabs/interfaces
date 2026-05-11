@@ -1,0 +1,25 @@
+{
+  "machine_enrollment_request": {
+    "machine_enrollment_request_ref": "machine_enrollment_request/blocked-auth-004",
+    "local_machine_identity_ref": "local_machine_identity/new-001",
+    "local_machine_ref": "local_machine/workstation-01",
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/minimized-001",
+    "enrollment_intent": "authorize_machine",
+    "enrollment_channel": "local_preview",
+    "enrollment_status": "blocked",
+    "account_confirmation_posture": "not_required",
+    "browser_handoff_posture": "not_required",
+    "device_code_posture": "not_required",
+    "privacy_posture": "privacy_bounded",
+    "consent_posture": "not_required",
+    "requested_at": "2026-05-07T10:15:00Z",
+    "requested_from_client_ref": "client.cli.local-004",
+    "blocked_reason": "missing_auth_context",
+    "next_actions": [
+      "cancel"
+    ],
+    "warning_codes": [
+      "unknown"
+    ]
+  }
+}

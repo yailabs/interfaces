@@ -1,0 +1,17 @@
+{
+  "agent_authority": {
+    "agent_authority_ref": "agent-authority.local-002",
+    "agent_ref": "agent.local-002",
+    "agent_instance_ref": "agent-instance.local-002",
+    "case_ref": "",
+    "agent_role": "researcher",
+    "requested_action": "spawn",
+    "requested_at": "2026-05-07T10:35:00Z",
+    "requested_from_client_ref": "client.loom.local-002",
+    "auth_context_ref": "auth-context.local-002",
+    "decision": "requires_case",
+    "reason": "case boundary is required before agent admission",
+    "blocked_reason": "missing_case_ref",
+    "agent_output_posture": "output_blocked"
+  }
+}

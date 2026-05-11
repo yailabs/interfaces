@@ -1,0 +1,21 @@
+{
+  "model_access_decision": {
+    "model_access_decision_ref": "model-access.custom-005",
+    "access_target": "custom_model",
+    "access_mode": "hosted_platform",
+    "case_ref": "case.local-005",
+    "provider_ref": "provider.custom.local-005",
+    "model_ref": "model.custom.local-005",
+    "custom_model_ref": "custom-model.local-005",
+    "requested_action": "invoke_custom_model",
+    "requested_at": "2026-05-07T12:20:00Z",
+    "requested_by_principal_ref": "principal.local-005",
+    "requested_from_client_ref": "client.cli.local-005",
+    "runtime_action_key": "model.custom.invoke",
+    "decision": "not_implemented",
+    "reason": "custom and fine-tuned model access remains a future optional capability",
+    "blocked_reason": "custom_model_not_implemented",
+    "output_posture": "no_output",
+    "credential_boundary": "not_applicable"
+  }
+}

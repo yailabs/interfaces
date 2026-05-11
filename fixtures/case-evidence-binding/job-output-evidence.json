@@ -1,0 +1,24 @@
+{
+  "evidence": {
+    "evidence_ref": "evidence.local-002",
+    "case_ref": "case.local-002",
+    "evidence_kind": "job_output",
+    "title": "Case-bound job output excerpt",
+    "summary": "Captured output from a case-bound job remains evidence owned by the case.",
+    "created_at": "2026-05-06T11:05:00Z",
+    "created_by_principal_ref": "principal.operator.local-002",
+    "created_from_client_ref": "client.desktop.local-002",
+    "job_ref": "job.local-002",
+    "execution_lease_ref": "execution-lease.local-002",
+    "record_ref": "record.local-002",
+    "artifact_refs": [
+      "artifact.local-002/output.log"
+    ],
+    "lineage_refs": [
+      "lineage.local-002/job-output"
+    ],
+    "content_digest": "sha256:job-output-local-002",
+    "visibility": "case_visible",
+    "retention_posture": "retain"
+  }
+}

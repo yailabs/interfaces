@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/flow-binding.v1.schema.json",
+  "title": "YAI Flow Binding v1",
+  "type": "object",
+  "required": [
+    "flow_binding"
+  ],
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "flowKind": {
+      "type": "string",
+      "enum": [
+        "manual_workflow",
+        "agentic_workflow",
+        "job_pipeline",
+        "review_flow",
+        "approval_flow",
+        "provider_pipeline",
+        "knowledge_pipeline",
+        "release_flow",
+        "system_flow"
+      ]
+    },
+    "requestedAction": {
+      "type": "string",
+      "enum": [
+        "create",
+        "start",
+        "resume",
+        "pause",
+        "stop",
+        "cancel",
+        "add_step",
+        "remove_step",
+        "run_step",
+        "delegate_to_agent",
+        "request_provider_call",
+        "write_evidence",
+        "propose_knowledge",
+        "inspect_status"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "requires_auth",
+        "requires_case",
+        "requires_entitlement",
+        "requires_machine_authorization",
+        "requires_license_lease",
+        "requires_runtime_gate",
+        "requires_limit_capacity",
+        "requires_manual_review",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_auth_context",
+        "missing_case_ref",
+        "missing_operator_context",
+        "missing_entitlement",
+        "machine_not_authorized",
+        "license_lease_expired",
+        "runtime_gate_blocked",
+        "flow_kind_not_allowed",
+        "flow_limit_exceeded",
+        "agent_authority_missing",
+        "provider_authority_missing",
+        "job_limit_exceeded",
+        "manual_review_required",
+        "unsafe_request",
+        "unknown"
+      ]
+    },
+    "flowOutputPosture": {
+      "type": "string",
+      "enum": [
+        "no_output",
+        "output_not_persisted",
+        "output_as_evidence",
+        "output_as_knowledge_candidate",
+        "output_requires_review",
+        "output_redacted",
+        "output_blocked"
+      ]
+    },
+    "flowBinding": {
+      "type": "object",
+      "required": [
+        "flow_ref",
+        "case_ref",
+        "flow_kind",
+        "requested_action",
+        "requested_at",
+        "decision",
+        "reason",
+        "flow_output_posture"
+      ],
+      "properties": {
+        "flow_ref": {
+          "type": "string"
+        },
+        "flow_run_ref": {
+          "type": "string"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "flow_kind": {
+          "$ref": "#/$defs/flowKind"
+        },
+        "requested_action": {
+          "$ref": "#/$defs/requestedAction"
+        },
+        "requested_at": {
+          "type": "string"
+        },
+        "requested_by_principal_ref": {
+          "type": "string"
+        },
+        "requested_from_client_ref": {
+          "type": "string"
+        },
+        "job_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "agent_instance_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "provider_call_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "execution_lease_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "knowledge_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "flow_step_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "auth_context_ref": {
+          "type": "string"
+        },
+        "entitlement_ref": {
+          "type": "string"
+        },
+        "machine_authorization_ref": {
+          "type": "string"
+        },
+        "license_lease_ref": {
+          "type": "string"
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string"
+        },
+        "limit_projection_ref": {
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "flow_output_posture": {
+          "$ref": "#/$defs/flowOutputPosture"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "flow_binding": {
+      "$ref": "#/$defs/flowBinding"
+    }
+  },
+  "additionalProperties": false
+}

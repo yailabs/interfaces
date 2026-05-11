@@ -1,0 +1,22 @@
+{
+  "auth_operation": {
+    "operation_id": "auth.login",
+    "action_id": "auth.login",
+    "request_kind": "login",
+    "operation_status": "unavailable",
+    "auth_posture": "unauthenticated",
+    "provider_posture": "not_configured",
+    "auth_context_posture": "not_issued",
+    "reason": "Production auth is not configured in this environment.",
+    "next_action": "Use local-dev login only for development.",
+    "safe_projection": {
+      "action_id": "auth.login",
+      "operation_status": "unavailable",
+      "auth_posture": "unauthenticated",
+      "provider_posture": "not_configured",
+      "auth_context_posture": "not_issued",
+      "reason": "Production auth is not configured in this environment.",
+      "next_action": "Use local-dev login only for development."
+    }
+  }
+}

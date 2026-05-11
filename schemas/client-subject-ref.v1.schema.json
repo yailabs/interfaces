@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.client-subject-ref.v1",
+  "title": "YAI Client Subject Ref v1",
+  "x-yai-projection": {
+    "projection_role": "api_schema_mirror",
+    "source_of_truth": "../yai/protocols/refs/client-subject-ref.v1.schema.json"
+  },
+  "description": "Stable system subject identity for a client surface. Not a case_ref, principal_ref, session_ref, or machine_ref.",
+  "type": "string",
+  "pattern": "^client-subject://[a-z0-9][a-z0-9._-]*(?:/[a-z0-9][a-z0-9._-]*)*$",
+  "examples": [
+    "client-subject://console",
+    "client-subject://sdk-rust",
+    "client-subject://sdk-typescript",
+    "client-subject://vscode",
+    "client-subject://dashboard"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "cloud_compute_decision": {
+    "cloud_compute_decision_ref": "cloud-compute.dedicated-005",
+    "compute_target": "dedicated_capacity",
+    "compute_mode": "managed_execution",
+    "case_ref": "case.local-005",
+    "flow_ref": "flow.local-005",
+    "requested_action": "use_dedicated_capacity",
+    "requested_at": "2026-05-07T13:20:00Z",
+    "requested_by_principal_ref": "principal.local-005",
+    "requested_from_client_ref": "client.cli.local-005",
+    "compute_region": "us-west-2",
+    "dedicated_capacity_ref": "dedicated-capacity.local-005",
+    "runtime_action_key": "cloud.capacity.dedicated",
+    "decision": "not_implemented",
+    "reason": "dedicated capacity remains a future optional capability",
+    "blocked_reason": "dedicated_capacity_required",
+    "output_posture": "no_output",
+    "infrastructure_boundary": "platform_managed_infrastructure"
+  }
+}

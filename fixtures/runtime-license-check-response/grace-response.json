@@ -1,0 +1,37 @@
+{
+  "runtime_license_check_response": {
+    "runtime_license_check_response_ref": "runtime_license_check_response.grace.v1",
+    "runtime_license_check_request_ref": "runtime_license_check_request.offline_stale.v1",
+    "decision": "degraded",
+    "reason": "offline grace posture is active but fresh online evaluation remains deferred",
+    "next_action": "retry_later",
+    "response_freshness": "stale",
+    "lease_posture": "grace_active",
+    "machine_authorization_posture": "authorized",
+    "entitlement_posture": "entitled",
+    "limit_posture": "stale_projection",
+    "runtime_gate_posture": "gate_degraded",
+    "offline_grace_posture": "active",
+    "cache_update_posture": "cache_update_required",
+    "responded_at": "2026-05-08T09:04:00Z",
+    "warning_codes": [
+      "grace_active",
+      "stale_projection",
+      "cache_update_required"
+    ],
+    "safe_license_lease_projection": {
+      "license_lease_ref": "license_lease.delta",
+      "lease_posture": "grace_active",
+      "warning_codes": [
+        "grace_active"
+      ]
+    },
+    "safe_limit_projection": {
+      "limit_projection_ref": "limit_projection.cloud_compute_minutes.account_global.v1",
+      "limit_posture": "stale_projection",
+      "warning_codes": [
+        "stale_projection"
+      ]
+    }
+  }
+}

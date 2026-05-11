@@ -1,0 +1,24 @@
+{
+  "knowledge": {
+    "knowledge_ref": "knowledge.local-004",
+    "case_ref": "case.local-004",
+    "knowledge_kind": "derived_fact",
+    "title": "Provider-derived governed fact",
+    "summary": "Provider output contributes derivation input but does not own knowledge.",
+    "created_at": "2026-05-07T09:40:00Z",
+    "source_provider_call_refs": [
+      "provider-call.local-004"
+    ],
+    "source_evidence_refs": [
+      "evidence.local-004"
+    ],
+    "source_artifact_refs": [
+      "artifact.local-004/provider-response.json"
+    ],
+    "retention_policy_ref": "retention.local-004",
+    "visibility": "admin_visible",
+    "recall_policy": "authorized_context_recallable",
+    "write_policy": "explicit_approval_required",
+    "derivation_status": "derived"
+  }
+}

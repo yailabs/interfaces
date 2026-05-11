@@ -1,0 +1,55 @@
+{
+  "runtime_gate_registry": {
+    "registry_version": "v1",
+    "runtime_actions": [
+      {
+        "runtime_action_key": "provider.call",
+        "runtime_action_family": "provider",
+        "runtime_action_label": "Request governed provider call",
+        "action_category": "provider_action",
+        "gate_classification": "entitlement_required",
+        "allowed_during_sealed": false,
+        "required_context": [
+          "case_ref",
+          "provider_call_ref"
+        ],
+        "required_refs": [
+          "case_ref",
+          "entitlement_ref",
+          "machine_authorization_ref",
+          "license_lease_ref",
+          "runtime_gate_decision_ref"
+        ],
+        "required_postures": [
+          "provider_authority_resolved",
+          "gate_posture_resolved"
+        ],
+        "blocked_reasons": [
+          "missing_entitlement",
+          "machine_not_authorized",
+          "license_lease_missing",
+          "license_lease_expired",
+          "runtime_gate_blocked",
+          "runtime_sealed",
+          "unknown"
+        ],
+        "decision_outputs": [
+          "allowed",
+          "blocked",
+          "requires_entitlement",
+          "requires_machine_authorization",
+          "requires_license_lease",
+          "requires_runtime_gate",
+          "unknown"
+        ],
+        "limit_sensitive": true,
+        "metering_sensitive": true,
+        "cloud_sensitive": false,
+        "writes_state": false,
+        "writes_evidence": false,
+        "writes_knowledge": false,
+        "controls_runtime": false
+      }
+    ]
+  }
+}

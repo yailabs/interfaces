@@ -1,0 +1,25 @@
+{
+  "local_machine_identity": {
+    "local_machine_identity_ref": "local_machine_identity/revoked-004",
+    "local_machine_ref": "local_machine/workstation-04",
+    "machine_identity_store_ref": "machine_identity_store/runtime-state",
+    "store_status": "revoked",
+    "identity_status": "revoked",
+    "created_at": "2026-03-12T11:30:00Z",
+    "updated_at": "2026-05-07T08:20:00Z",
+    "revoked_at": "2026-05-07T08:18:00Z",
+    "storage_posture": "runtime_state_store",
+    "rotation_posture": "rotation_blocked",
+    "privacy_posture": "privacy_bounded",
+    "evidence_builder_status": "evidence_blocked",
+    "enrollment_readiness": "blocked",
+    "machine_authorization_ref": "machine_authorization/ma-004",
+    "machine_authorization_status": "revoked",
+    "license_lease_ref": "license_lease/lease-004",
+    "runtime_gate_decision_ref": "runtime_gate_decision/rgd-004",
+    "warning_codes": [
+      "machine_authorization_missing",
+      "license_lease_missing"
+    ]
+  }
+}

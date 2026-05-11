@@ -24,12 +24,14 @@ Legend:
 
 ## Wave 13B Mirror Note
 
-- Canonical contract repository: `../api`.
-- In-repo `yai/api` remains a compatibility mirror while build/runtime consumers still compile against `api/contracts` and `api/families`.
+- Canonical contract repository: `interfaces`.
+- Historical in-repo `yai/api` mirror references do not own current interface
+  truth.
 - `implementation copied` in this table remains `no` or `reference-only`; runtime implementation is not moved in 13B.
 
 
-## 13C Contract Ownership Note
+## Current Contract Ownership Note
 
-Family contract classification in this map is canonical in `api`.
-Runtime adapter implementation remains in `yai/api` until split/migration.
+Family contract classification belongs to `interfaces`.
+Runtime adapter implementation belongs to `yai`; old `yai/api` wording is
+historical compatibility debt, not current repository topology.

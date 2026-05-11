@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/runtime-gate-registry.v1.schema.json",
+  "title": "YAI Runtime Gate Registry v1",
+  "type": "object",
+  "required": [
+    "runtime_gate_registry"
+  ],
+  "$defs": {
+    "runtimeActionFamily": {
+      "type": "string",
+      "enum": [
+        "diagnostics",
+        "auth",
+        "case",
+        "operator_context",
+        "job",
+        "execution_lease",
+        "provider",
+        "agent",
+        "flow",
+        "evidence",
+        "knowledge",
+        "analytics",
+        "runtime_control",
+        "machine_authorization",
+        "license",
+        "release_update",
+        "cloud_compute",
+        "admin"
+      ]
+    },
+    "actionCategory": {
+      "type": "string",
+      "enum": [
+        "diagnostic_read",
+        "safe_read",
+        "case_read",
+        "case_write",
+        "operational",
+        "execution",
+        "provider_action",
+        "agent_action",
+        "flow_action",
+        "evidence_write",
+        "knowledge_write",
+        "analytics_read",
+        "runtime_control",
+        "release_update",
+        "admin_control"
+      ]
+    },
+    "gateClassification": {
+      "type": "string",
+      "enum": [
+        "ungated_diagnostic",
+        "auth_required",
+        "case_required",
+        "operator_context_required",
+        "entitlement_required",
+        "machine_authorization_required",
+        "license_lease_required",
+        "runtime_gate_required",
+        "limit_required",
+        "manual_review_required",
+        "admin_required",
+        "blocked_always_until_implemented"
+      ]
+    },
+    "requiredContext": {
+      "type": "string",
+      "enum": [
+        "none",
+        "auth_context",
+        "case_ref",
+        "operator_context",
+        "active_case_ref",
+        "job_ref",
+        "execution_lease_ref",
+        "provider_call_ref",
+        "agent_instance_ref",
+        "flow_ref"
+      ]
+    },
+    "requiredRef": {
+      "type": "string",
+      "enum": [
+        "principal_ref",
+        "account_ref",
+        "auth_context_ref",
+        "case_ref",
+        "operator_context_ref",
+        "entitlement_ref",
+        "machine_authorization_ref",
+        "license_lease_ref",
+        "runtime_gate_decision_ref",
+        "limit_projection_ref",
+        "release_channel_ref",
+        "cloud_capacity_ref"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "degraded",
+        "diagnostic_allowed",
+        "read_only_allowed",
+        "requires_auth",
+        "requires_case",
+        "requires_operator_context",
+        "requires_entitlement",
+        "requires_machine_authorization",
+        "requires_license_lease",
+        "requires_runtime_gate",
+        "requires_limit_capacity",
+        "requires_manual_review",
+        "admin_only",
+        "not_implemented",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_auth_context",
+        "missing_case_ref",
+        "missing_operator_context",
+        "missing_entitlement",
+        "machine_not_authorized",
+        "license_lease_missing",
+        "license_lease_expired",
+        "runtime_gate_blocked",
+        "limit_exceeded",
+        "quota_exhausted",
+        "manual_review_required",
+        "admin_required",
+        "cloud_capacity_unavailable",
+        "release_channel_not_allowed",
+        "operation_not_implemented",
+        "runtime_sealed",
+        "unsafe_request",
+        "unknown"
+      ]
+    },
+    "contextArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/requiredContext"
+      }
+    },
+    "refArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/requiredRef"
+      }
+    },
+    "decisionArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/decisionStatus"
+      }
+    },
+    "blockedReasonArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/blockedReason"
+      }
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "runtimeAction": {
+      "type": "object",
+      "required": [
+        "runtime_action_key",
+        "runtime_action_family",
+        "action_category",
+        "gate_classification",
+        "allowed_during_sealed",
+        "decision_outputs",
+        "limit_sensitive",
+        "metering_sensitive",
+        "cloud_sensitive",
+        "writes_state",
+        "writes_evidence",
+        "writes_knowledge",
+        "controls_runtime"
+      ],
+      "properties": {
+        "runtime_action_key": {
+          "type": "string"
+        },
+        "runtime_action_family": {
+          "$ref": "#/$defs/runtimeActionFamily"
+        },
+        "runtime_action_label": {
+          "type": "string"
+        },
+        "action_category": {
+          "$ref": "#/$defs/actionCategory"
+        },
+        "gate_classification": {
+          "$ref": "#/$defs/gateClassification"
+        },
+        "allowed_during_sealed": {
+          "type": "boolean"
+        },
+        "required_context": {
+          "$ref": "#/$defs/contextArray"
+        },
+        "required_refs": {
+          "$ref": "#/$defs/refArray"
+        },
+        "required_postures": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "blocked_reasons": {
+          "$ref": "#/$defs/blockedReasonArray"
+        },
+        "decision_outputs": {
+          "$ref": "#/$defs/decisionArray"
+        },
+        "limit_sensitive": {
+          "type": "boolean"
+        },
+        "metering_sensitive": {
+          "type": "boolean"
+        },
+        "cloud_sensitive": {
+          "type": "boolean"
+        },
+        "writes_state": {
+          "type": "boolean"
+        },
+        "writes_evidence": {
+          "type": "boolean"
+        },
+        "writes_knowledge": {
+          "type": "boolean"
+        },
+        "controls_runtime": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "runtimeGateRegistry": {
+      "type": "object",
+      "required": [
+        "registry_version",
+        "runtime_actions"
+      ],
+      "properties": {
+        "registry_version": {
+          "type": "string"
+        },
+        "runtime_actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/runtimeAction"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "runtime_gate_registry": {
+      "$ref": "#/$defs/runtimeGateRegistry"
+    }
+  },
+  "additionalProperties": false
+}

@@ -12,7 +12,9 @@ for p in list(registry.glob("*.json")) + list(schemas.glob("*.schema.json")):
     json.loads(p.read_text())
 
 ops = json.loads((registry / "api-operations.v1.json").read_text())["operations"]
-families = {f["id"] for f in json.loads((registry / "api-families.v1.json").read_text())["families"]}
+family_rows = json.loads((registry / "api-families.v1.json").read_text())["families"]
+families = {f["id"] for f in family_rows}
+family_status = {f["id"]: f.get("status") for f in family_rows}
 errors = set(json.loads((registry / "api-errors.v1.json").read_text())["errors"])
 subset = set(json.loads((registry / "api-operations.v1.json").read_text()).get("openapi_vertical_subset", []))
 
@@ -20,8 +22,7 @@ errors_out=[]
 plane_surfaces = json.loads((registry / "api-plane-surfaces.v1.json").read_text())
 surfaces = json.loads((registry / "api-surfaces.v1.json").read_text())
 forbidden_public_planes = {"flow","records","orchestration"}
-forbidden_surface_keys = {"ai","flow","runtime","govern","provider","agent","inspect","records","orchestration"}
-canonical_surface_keys = {"system","case","conversation","prompting","workflow","governance","control","knowledge","state","skills","providers","models","agents","orchestrator","analytics","output","identity","auth","session","client"}
+forbidden_surface_keys = {"ai","flow","runtime","govern","provider","model","agent","inspect","query","records","policy","orchestration"}
 for pl in plane_surfaces.get("planes", []):
     name = pl.get("plane")
     if name in forbidden_public_planes:
@@ -30,8 +31,18 @@ for key in surfaces.get("surfaces", {}).keys():
     if key in forbidden_surface_keys:
         errors_out.append(f"forbidden canonical surface key: {key}")
 for key in surfaces.get("surfaces", {}).keys():
-    if key not in canonical_surface_keys:
+    if key not in families:
         errors_out.append(f"unknown canonical surface key: {key}")
+for key in surfaces.get("surface_status", {}).keys():
+    if key not in surfaces.get("surfaces", {}):
+        errors_out.append(f"surface_status entry without matching surface: {key}")
+if family_status.get("session") not in {"legacy", "deprecated"}:
+    errors_out.append("session family must be legacy/deprecated in registry")
+if surfaces.get("surface_status", {}).get("session") not in {"legacy", "deprecated"}:
+    errors_out.append("session surface must be marked legacy/deprecated")
+for forbidden_family in {"flow","records","policy","query","inspect","runtime"}:
+    if forbidden_family in families:
+        errors_out.append(f"forbidden canonical family present: {forbidden_family}")
 
 # yaml parsing with fallback
 raw = openapi_file.read_text()

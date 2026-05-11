@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/local-model-provider-access-boundary.v1.schema.json",
+  "title": "YAI Local Model Provider Access Boundary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_access_decision"
+  ],
+  "properties": {
+    "model_access_decision": {
+      "$ref": "#/$defs/modelAccessDecision"
+    }
+  },
+  "$defs": {
+    "accessTarget": {
+      "type": "string",
+      "enum": [
+        "local_model",
+        "external_provider",
+        "hosted_model",
+        "custom_model",
+        "fine_tuned_model",
+        "provider_status",
+        "model_status"
+      ]
+    },
+    "accessMode": {
+      "type": "string",
+      "enum": [
+        "local_runtime",
+        "user_owned_provider",
+        "platform_managed_provider",
+        "hosted_platform",
+        "offline_cached",
+        "diagnostic_status"
+      ]
+    },
+    "requestedAction": {
+      "type": "string",
+      "enum": [
+        "inspect_status",
+        "load_local_model",
+        "invoke_local_model",
+        "invoke_external_provider",
+        "invoke_hosted_model",
+        "invoke_custom_model",
+        "embed",
+        "rerank",
+        "summarize",
+        "classify",
+        "extract",
+        "tool_call"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "degraded",
+        "diagnostic_allowed",
+        "requires_auth",
+        "requires_case",
+        "requires_entitlement",
+        "requires_machine_authorization",
+        "requires_license_lease",
+        "requires_runtime_gate",
+        "requires_limit_capacity",
+        "requires_provider_budget",
+        "requires_credentials",
+        "requires_manual_review",
+        "not_implemented",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_auth_context",
+        "missing_case_ref",
+        "missing_entitlement",
+        "machine_not_authorized",
+        "license_lease_expired",
+        "runtime_gate_blocked",
+        "limit_exceeded",
+        "provider_budget_exceeded",
+        "provider_not_configured",
+        "credentials_missing",
+        "credentials_forbidden",
+        "model_not_available",
+        "model_not_allowed",
+        "hosted_model_not_enabled",
+        "custom_model_not_implemented",
+        "cloud_capacity_unavailable",
+        "manual_review_required",
+        "unsafe_request",
+        "unknown"
+      ]
+    },
+    "outputPosture": {
+      "type": "string",
+      "enum": [
+        "no_output",
+        "output_not_persisted",
+        "output_as_evidence_candidate",
+        "output_as_knowledge_candidate",
+        "output_redacted",
+        "output_blocked",
+        "diagnostic_only"
+      ]
+    },
+    "credentialBoundary": {
+      "type": "string",
+      "enum": [
+        "no_credentials_required",
+        "user_owned_credentials_required",
+        "platform_managed_credentials_required",
+        "credentials_present_but_not_exposed",
+        "credentials_missing",
+        "credentials_forbidden",
+        "not_applicable"
+      ]
+    },
+    "modelAccessDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_access_decision_ref",
+        "access_target",
+        "access_mode",
+        "requested_action",
+        "requested_at",
+        "decision",
+        "reason",
+        "output_posture",
+        "credential_boundary"
+      ],
+      "properties": {
+        "model_access_decision_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "access_target": {
+          "$ref": "#/$defs/accessTarget"
+        },
+        "access_mode": {
+          "$ref": "#/$defs/accessMode"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "provider_ref": {
+          "type": "string"
+        },
+        "model_ref": {
+          "type": "string"
+        },
+        "local_model_ref": {
+          "type": "string"
+        },
+        "hosted_model_ref": {
+          "type": "string"
+        },
+        "custom_model_ref": {
+          "type": "string"
+        },
+        "requested_action": {
+          "$ref": "#/$defs/requestedAction"
+        },
+        "requested_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requested_by_principal_ref": {
+          "type": "string"
+        },
+        "requested_from_client_ref": {
+          "type": "string"
+        },
+        "runtime_action_key": {
+          "type": "string"
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string"
+        },
+        "entitlement_ref": {
+          "type": "string"
+        },
+        "machine_authorization_ref": {
+          "type": "string"
+        },
+        "license_lease_ref": {
+          "type": "string"
+        },
+        "limit_projection_ref": {
+          "type": "string"
+        },
+        "provider_budget_ref": {
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "output_posture": {
+          "$ref": "#/$defs/outputPosture"
+        },
+        "credential_boundary": {
+          "$ref": "#/$defs/credentialBoundary"
+        }
+      }
+    }
+  }
+}

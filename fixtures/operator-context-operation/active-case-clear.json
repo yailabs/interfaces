@@ -1,0 +1,34 @@
+{
+  "operator_context_operation": {
+    "operation_id": "operator_context.active_case.clear",
+    "action_id": "context.clear",
+    "request_kind": "active_case_clear",
+    "operation_status": "allowed",
+    "principal_ref": "principal://local-dev/francesco",
+    "auth_context_ref": "auth-context://local-dev/francesco",
+    "root_case_ref": "case://francesco",
+    "active_case_ref": null,
+    "cleared_case_ref": "case://francesco/projects/site-e0-cleanup",
+    "operator_context_ref": "operator-context://local/francesco",
+    "operator_context_owner": "operator_context.active_case_ref",
+    "selection_mutated": true,
+    "session_mutated": false,
+    "client_mutated": false,
+    "shell_mutated": false,
+    "runtime_mutated": false,
+    "auth_mutated": false,
+    "reason": "Operator context active case was cleared.",
+    "next_action": "Select another active case if governed work needs one.",
+    "safe_projection": {
+      "action_id": "context.clear",
+      "operation_status": "allowed",
+      "root_case_ref": "case://francesco",
+      "active_case_ref": null,
+      "operator_context_ref": "operator-context://local/francesco",
+      "principal_ref": "principal://local-dev/francesco",
+      "auth_context_ref": "auth-context://local-dev/francesco",
+      "reason": "Operator context active case was cleared.",
+      "next_action": "Select another active case if governed work needs one."
+    }
+  }
+}

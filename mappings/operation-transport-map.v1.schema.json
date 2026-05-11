@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.operation-transport-map.v1",
+  "type": "object",
+  "required": [
+    "kind",
+    "version",
+    "source_registry",
+    "transport_classes",
+    "entries"
+  ],
+  "properties": {
+    "kind": {
+      "type": "string",
+      "const": "yai.api.operation_transport_map"
+    },
+    "version": {
+      "type": "string",
+      "const": "v1"
+    },
+    "source_registry": {
+      "type": "string",
+      "const": "registry/api-operations.v1.json"
+    },
+    "transport_classes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "local_ipc_rpc",
+          "local_http_loopback",
+          "local_event_stream",
+          "lan_secure",
+          "remote_https",
+          "in_process_test",
+          "subprocess_stdio_compat"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 7
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "operation_id",
+          "family",
+          "default_transport",
+          "allowed_transports",
+          "disallowed_transports",
+          "streamable",
+          "local_native_recommended",
+          "browser_recommended",
+          "lan_exposure",
+          "remote_exposure",
+          "provider_transport_boundary",
+          "dispatch_target",
+          "runtime_handler_readiness",
+          "sdk_projection",
+          "cli_projection",
+          "tui_projection",
+          "notes"
+        ],
+        "properties": {
+          "operation_id": {
+            "type": "string"
+          },
+          "family": {
+            "type": "string"
+          },
+          "default_transport": {
+            "type": "string",
+            "enum": [
+              "local_ipc_rpc",
+              "local_http_loopback",
+              "local_event_stream",
+              "remote_https",
+              "none"
+            ]
+          },
+          "allowed_transports": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "local_ipc_rpc",
+                "local_http_loopback",
+                "local_event_stream",
+                "lan_secure",
+                "remote_https",
+                "in_process_test",
+                "subprocess_stdio_compat"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "disallowed_transports": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "local_ipc_rpc",
+                "local_http_loopback",
+                "local_event_stream",
+                "lan_secure",
+                "remote_https",
+                "in_process_test",
+                "subprocess_stdio_compat"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "streamable": {
+            "type": "boolean"
+          },
+          "local_native_recommended": {
+            "type": "boolean"
+          },
+          "browser_recommended": {
+            "type": "boolean"
+          },
+          "lan_exposure": {
+            "type": "string",
+            "enum": [
+              "blocked_by_default",
+              "allowed_with_pairing",
+              "not_applicable"
+            ]
+          },
+          "remote_exposure": {
+            "type": "string",
+            "enum": [
+              "local_only",
+              "platform_boundary",
+              "future_remote_capability",
+              "not_applicable"
+            ]
+          },
+          "provider_transport_boundary": {
+            "type": "string",
+            "enum": [
+              "excluded",
+              "runtime_provider_only",
+              "not_applicable"
+            ]
+          },
+          "dispatch_target": {
+            "type": "string",
+            "enum": [
+              "runtime_boundary_api",
+              "platform_remote_api",
+              "sdk_local_only",
+              "test_only",
+              "compat_only",
+              "not_implemented"
+            ]
+          },
+          "runtime_handler_readiness": {
+            "type": "string",
+            "enum": [
+              "implemented",
+              "partial",
+              "planned",
+              "not_implemented"
+            ]
+          },
+          "runtime_ipc_coverage": {
+            "type": "string",
+            "enum": [
+              "supported",
+              "deferred",
+              "blocked",
+              "unsupported",
+              "not_applicable"
+            ]
+          },
+          "runtime_ipc_readiness": {
+            "type": "string"
+          },
+          "operation_coverage_notes": {
+            "type": "string"
+          },
+          "sdk_projection": {
+            "type": "string"
+          },
+          "cli_projection": {
+            "type": "string"
+          },
+          "tui_projection": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

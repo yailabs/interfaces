@@ -1,0 +1,47 @@
+{
+  "runtime_gate_registry": {
+    "registry_version": "v1",
+    "runtime_actions": [
+      {
+        "runtime_action_key": "job.start",
+        "runtime_action_family": "job",
+        "runtime_action_label": "Start governed job",
+        "action_category": "execution",
+        "gate_classification": "runtime_gate_required",
+        "allowed_during_sealed": false,
+        "required_context": [
+          "case_ref",
+          "job_ref"
+        ],
+        "required_refs": [
+          "case_ref",
+          "runtime_gate_decision_ref"
+        ],
+        "required_postures": [
+          "case_bound",
+          "runtime_gate_resolved"
+        ],
+        "blocked_reasons": [
+          "missing_case_ref",
+          "runtime_gate_blocked",
+          "runtime_sealed",
+          "unknown"
+        ],
+        "decision_outputs": [
+          "allowed",
+          "blocked",
+          "requires_case",
+          "requires_runtime_gate",
+          "unknown"
+        ],
+        "limit_sensitive": true,
+        "metering_sensitive": false,
+        "cloud_sensitive": false,
+        "writes_state": true,
+        "writes_evidence": false,
+        "writes_knowledge": false,
+        "controls_runtime": false
+      }
+    ]
+  }
+}

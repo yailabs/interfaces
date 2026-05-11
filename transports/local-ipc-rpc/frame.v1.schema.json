@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.local-ipc-rpc.frame.v1",
+  "title": "YAI Local IPC RPC Frame v1",
+  "type": "object",
+  "required": [
+    "frame_schema",
+    "frame_id",
+    "frame_type",
+    "frame_version",
+    "payload_encoding",
+    "payload",
+    "payload_size"
+  ],
+  "properties": {
+    "frame_schema": {
+      "const": "yai.local-ipc-rpc.frame.v1"
+    },
+    "frame_id": {
+      "type": "string"
+    },
+    "frame_type": {
+      "type": "string",
+      "enum": [
+        "handshake.request",
+        "handshake.response",
+        "operation.request",
+        "operation.response",
+        "stream.open",
+        "stream.frame",
+        "stream.close",
+        "cancel.request",
+        "heartbeat",
+        "error"
+      ]
+    },
+    "frame_version": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "correlation_id": {
+      "type": "string"
+    },
+    "stream_id": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "payload_encoding": {
+      "type": "string",
+      "enum": [
+        "json"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "payload_size": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

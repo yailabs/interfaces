@@ -1,0 +1,44 @@
+{
+  "runtime_invalidation_event": {
+    "runtime_invalidation_event_ref": "runtime-invalidation-event/ref/case-evidence-knowledge-preserved",
+    "invalidation_kind": "logout",
+    "invalidation_reason": "user_logout",
+    "affected_refs": [
+      "case/ref/project-alpha",
+      "evidence/ref/gate-decision-001",
+      "knowledge/ref/workset-001"
+    ],
+    "auth_context_ref": "auth-context/ref/local-dev",
+    "local_machine_ref": "local-machine/ref/machine-205",
+    "seal_state": "partially_sealed",
+    "operational_readiness": "degraded",
+    "diagnostic_posture": "diagnostics_allowed",
+    "cache_invalidation_posture": "not_applicable",
+    "lease_invalidation_posture": "not_applicable",
+    "machine_authorization_posture": "not_applicable",
+    "logout_posture": "logout_preserves_records",
+    "preservation_posture": "preserve_cases_records_evidence_knowledge",
+    "recovery_posture": "manual_review",
+    "next_action": "resolve_active_work",
+    "warning_codes": [
+      "active_work_present"
+    ],
+    "safe_invalidation_projection": {
+      "invalidation_kind": "logout",
+      "invalidation_reason": "user_logout",
+      "seal_state": "partially_sealed",
+      "operational_readiness": "degraded",
+      "diagnostic_posture": "diagnostics_allowed",
+      "cache_invalidation_posture": "not_applicable",
+      "lease_invalidation_posture": "not_applicable",
+      "machine_authorization_posture": "not_applicable",
+      "logout_posture": "logout_preserves_records",
+      "preservation_posture": "preserve_cases_records_evidence_knowledge",
+      "recovery_posture": "manual_review",
+      "next_action": "resolve_active_work",
+      "warning_codes": [
+        "active_work_present"
+      ]
+    }
+  }
+}

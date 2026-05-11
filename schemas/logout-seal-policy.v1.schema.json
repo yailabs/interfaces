@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.logout-seal-policy.v1",
+  "title": "YAI Logout Seal Policy v1",
+  "type": "object",
+  "required": [
+    "logout_request",
+    "logout_policy_decision"
+  ],
+  "properties": {
+    "logout_request": {
+      "$ref": "#/$defs/logoutRequest"
+    },
+    "logout_policy_decision": {
+      "$ref": "#/$defs/logoutPolicyDecision"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requestedMode": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "wait",
+        "pause",
+        "stop",
+        "force"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "requires_confirmation",
+        "requires_wait",
+        "requires_pause",
+        "requires_stop",
+        "force_allowed",
+        "force_denied"
+      ]
+    },
+    "safeReason": {
+      "type": "string",
+      "enum": [
+        "no_active_work",
+        "active_case_present",
+        "active_job_present",
+        "active_execution_lease_present",
+        "license_lease_active",
+        "license_lease_expired",
+        "runtime_gate_blocked",
+        "machine_authorization_missing",
+        "policy_requires_confirmation",
+        "insufficient_authority",
+        "unknown"
+      ]
+    },
+    "authContextAction": {
+      "type": "string",
+      "enum": [
+        "clear_auth_context",
+        "retain_until_expiry",
+        "refresh_required",
+        "revoke_later",
+        "not_applicable"
+      ]
+    },
+    "licenseLeaseAction": {
+      "type": "string",
+      "enum": [
+        "retain_until_expiry",
+        "mark_stale",
+        "invalidate_on_revoke",
+        "refresh_required",
+        "not_applicable"
+      ]
+    },
+    "runtimeSealAction": {
+      "type": "string",
+      "enum": [
+        "seal_operational_actions",
+        "allow_diagnostics_only",
+        "retain_current_readonly",
+        "no_runtime_change"
+      ]
+    },
+    "recordsEvidenceAction": {
+      "type": "string",
+      "enum": [
+        "preserve",
+        "flush_pending",
+        "seal_writes",
+        "not_applicable"
+      ]
+    },
+    "knowledgeAction": {
+      "type": "string",
+      "enum": [
+        "preserve",
+        "flush_pending",
+        "seal_writes",
+        "not_applicable"
+      ]
+    },
+    "logoutRequest": {
+      "type": "object",
+      "required": [
+        "logout_request_ref",
+        "principal_ref",
+        "auth_context_ref",
+        "requested_mode",
+        "requested_at"
+      ],
+      "properties": {
+        "logout_request_ref": {
+          "type": "string"
+        },
+        "principal_ref": {
+          "type": "string"
+        },
+        "account_ref": {
+          "type": "string"
+        },
+        "auth_context_ref": {
+          "type": "string"
+        },
+        "operator_context_ref": {
+          "type": "string"
+        },
+        "active_case_ref": {
+          "type": "string"
+        },
+        "observed_job_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "observed_execution_lease_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "observed_license_lease_ref": {
+          "type": "string"
+        },
+        "requested_mode": {
+          "$ref": "#/$defs/requestedMode"
+        },
+        "requested_at": {
+          "type": "string"
+        },
+        "requested_by_client_ref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "logoutPolicyDecision": {
+      "type": "object",
+      "required": [
+        "logout_policy_decision_ref",
+        "logout_request_ref",
+        "decision",
+        "reason",
+        "required_confirmation",
+        "next_actions",
+        "affected_case_refs",
+        "affected_job_refs",
+        "affected_execution_lease_refs",
+        "auth_context_action",
+        "license_lease_action",
+        "runtime_seal_action",
+        "records_evidence_action",
+        "knowledge_action",
+        "created_at"
+      ],
+      "properties": {
+        "logout_policy_decision_ref": {
+          "type": "string"
+        },
+        "logout_request_ref": {
+          "type": "string"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "reason": {
+          "$ref": "#/$defs/safeReason"
+        },
+        "required_confirmation": {
+          "type": "boolean"
+        },
+        "next_actions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "affected_case_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "affected_job_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "affected_execution_lease_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "auth_context_action": {
+          "$ref": "#/$defs/authContextAction"
+        },
+        "license_lease_action": {
+          "$ref": "#/$defs/licenseLeaseAction"
+        },
+        "runtime_seal_action": {
+          "$ref": "#/$defs/runtimeSealAction"
+        },
+        "records_evidence_action": {
+          "$ref": "#/$defs/recordsEvidenceAction"
+        },
+        "knowledge_action": {
+          "$ref": "#/$defs/knowledgeAction"
+        },
+        "created_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

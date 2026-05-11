@@ -1,0 +1,41 @@
+{
+  "kind": "yai.local-event-stream.event_types",
+  "version": "v1",
+  "event_types": [
+    {
+      "type": "stream.open",
+      "terminal": false,
+      "heartbeat": false
+    },
+    {
+      "type": "stream.heartbeat",
+      "terminal": false,
+      "heartbeat": true
+    },
+    {
+      "type": "stream.data",
+      "terminal": false,
+      "heartbeat": false
+    },
+    {
+      "type": "stream.warning",
+      "terminal": false,
+      "heartbeat": false
+    },
+    {
+      "type": "stream.error",
+      "terminal": true,
+      "heartbeat": false
+    },
+    {
+      "type": "stream.cancelled",
+      "terminal": true,
+      "heartbeat": false
+    },
+    {
+      "type": "stream.closed",
+      "terminal": true,
+      "heartbeat": false
+    }
+  ]
+}

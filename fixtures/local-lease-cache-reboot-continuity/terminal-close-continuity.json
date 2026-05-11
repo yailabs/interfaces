@@ -1,0 +1,20 @@
+{
+  "local_lease_cache": {
+    "local_lease_cache_ref": "lease-cache.local-005",
+    "license_lease_ref": "license-lease.local-005",
+    "cache_status": "cached",
+    "continuity_status": "continuity_limited",
+    "reboot_posture": "does_not_survive_reboot",
+    "terminal_close_posture": "survives_terminal_close",
+    "runtime_restart_posture": "survives_runtime_restart",
+    "offline_grace_posture": "not_applicable",
+    "stale_posture": "not_stale",
+    "refresh_required_posture": "not_required",
+    "invalidation_posture": "not_invalidated",
+    "cached_at": "2026-05-07T11:00:00Z",
+    "machine_authorization_ref": "machine-authorization.safe-005",
+    "warning_codes": [
+      "unknown"
+    ]
+  }
+}

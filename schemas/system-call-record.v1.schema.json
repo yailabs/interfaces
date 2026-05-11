@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.system-call-record.v1",
+  "title": "YAI System Call Record v1",
+  "x-yai-projection": {
+    "projection_role": "api_schema_mirror",
+    "source_of_truth": "../yai/protocols/schemas/system-call-record.v1.schema.json"
+  },
+  "description": "Technical record that a client system call happened. It does not prove semantic work succeeded, a work-case action was allowed, a provider/model call occurred, or evidence was created.",
+  "type": "object",
+  "required": [
+    "schema",
+    "system_call_ref",
+    "operation_id",
+    "request_id",
+    "correlation_id",
+    "client_subject_ref",
+    "client_connection_ref",
+    "client_attachment_ref",
+    "source_transport",
+    "system_root_context_ref",
+    "outcome_status",
+    "created_at"
+  ],
+  "properties": {
+    "schema": {
+      "const": "yai.protocol.system-call-record.v1"
+    },
+    "system_call_ref": {
+      "type": "string",
+      "pattern": "^system-call://[A-Za-z0-9][A-Za-z0-9._~:-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)*$"
+    },
+    "operation_id": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "correlation_id": {
+      "type": "string"
+    },
+    "client_subject_ref": {
+      "type": "string",
+      "pattern": "^client-subject://[a-z0-9][a-z0-9._-]*(?:/[a-z0-9][a-z0-9._-]*)*$"
+    },
+    "client_connection_ref": {
+      "type": "string",
+      "pattern": "^client-connection://[A-Za-z0-9][A-Za-z0-9._~-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)+$"
+    },
+    "client_attachment_ref": {
+      "type": "string",
+      "pattern": "^client-attachment://[A-Za-z0-9][A-Za-z0-9._~-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)*$"
+    },
+    "source_transport": {
+      "$ref": "#/$defs/sourceTransport"
+    },
+    "system_root_context_ref": {
+      "type": "string",
+      "pattern": "^root-context://system/[a-z0-9][a-z0-9._-]*$",
+      "default": "root-context://system/default"
+    },
+    "work_case_ref": {
+      "type": "string",
+      "pattern": "^case://(?!root(?:/|$))[A-Za-z0-9][A-Za-z0-9._~-]*(?:/[A-Za-z0-9][A-Za-z0-9._~:-]*)*$"
+    },
+    "principal_ref": {
+      "type": "string"
+    },
+    "operator_context_ref": {
+      "type": "string"
+    },
+    "control_admission_ref": {
+      "type": "string"
+    },
+    "runtime_dispatch_ref": {
+      "type": "string"
+    },
+    "outcome_status": {
+      "$ref": "#/$defs/outcomeStatus"
+    },
+    "error_ref": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sourceTransport": {
+      "type": "string",
+      "enum": [
+        "local_ipc_rpc",
+        "local_http_loopback",
+        "local_event_stream",
+        "lan_secure",
+        "remote_https",
+        "in_process_test",
+        "subprocess_stdio_compat"
+      ]
+    },
+    "outcomeStatus": {
+      "type": "string",
+      "enum": [
+        "accepted",
+        "rejected",
+        "blocked",
+        "deferred",
+        "unsupported",
+        "failed",
+        "completed"
+      ]
+    }
+  }
+}

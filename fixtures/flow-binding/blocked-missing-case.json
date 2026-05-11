@@ -1,0 +1,16 @@
+{
+  "flow_binding": {
+    "flow_ref": "flow.local-002",
+    "case_ref": "",
+    "flow_kind": "review_flow",
+    "requested_action": "create",
+    "requested_at": "2026-05-07T10:05:00Z",
+    "requested_by_principal_ref": "principal.local-002",
+    "requested_from_client_ref": "client.loom.local-002",
+    "auth_context_ref": "auth-context.local-002",
+    "decision": "requires_case",
+    "reason": "flow admission requires a governed case boundary",
+    "blocked_reason": "missing_case_ref",
+    "flow_output_posture": "output_blocked"
+  }
+}

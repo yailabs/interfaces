@@ -1,0 +1,24 @@
+{
+  "model_access_decision": {
+    "model_access_decision_ref": "model-access.hosted-004",
+    "access_target": "hosted_model",
+    "access_mode": "hosted_platform",
+    "case_ref": "case.local-004",
+    "provider_ref": "provider.hosted.local-004",
+    "model_ref": "model.hosted.local-004",
+    "hosted_model_ref": "hosted-model.local-004",
+    "requested_action": "invoke_hosted_model",
+    "requested_at": "2026-05-07T12:15:00Z",
+    "requested_by_principal_ref": "principal.local-004",
+    "requested_from_client_ref": "client.cli.local-004",
+    "runtime_action_key": "model.hosted.invoke",
+    "runtime_gate_decision_ref": "runtime-gate.local-004",
+    "entitlement_ref": "entitlement.local-004",
+    "limit_projection_ref": "limit.local-004",
+    "decision": "requires_runtime_gate",
+    "reason": "hosted model access is future optional and requires explicit cloud/runtime gate posture",
+    "blocked_reason": "cloud_capacity_unavailable",
+    "output_posture": "output_blocked",
+    "credential_boundary": "platform_managed_credentials_required"
+  }
+}

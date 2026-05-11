@@ -1,0 +1,22 @@
+# SDK Docs Index
+
+- Architecture:
+  - `architecture/sdk-architecture.md`
+  - `architecture/transport-model.md`
+  - `architecture/api-source-model.md`
+  - `architecture/package-taxonomy.md`
+- Guides:
+  - `guides/quickstart.md`
+  - `guides/client-adoption.md`
+  - `guides/integration-examples.md`
+- Standards:
+  - `standards/enterprise-sdk-standard.md`
+  - `standards/compatibility-model.md`
+  - `standards/versioning-and-release-policy.md`
+  - `standards/error-and-status-model.md`
+  - `standards/family-availability.md`
+- Reports:
+  - `reports/sdk-api-inventory-v1.md`
+  - `reports/dx-reliability-checklist.md`
+- Legacy:
+  - `legacy/README.md`

@@ -1,0 +1,23 @@
+{
+  "model_access_decision": {
+    "model_access_decision_ref": "model-access.local-001",
+    "access_target": "local_model",
+    "access_mode": "local_runtime",
+    "case_ref": "case.local-001",
+    "model_ref": "model.local.qwen2.5-7b-instruct",
+    "local_model_ref": "local-model.qwen2.5-7b-instruct",
+    "requested_action": "invoke_local_model",
+    "requested_at": "2026-05-07T12:00:00Z",
+    "requested_by_principal_ref": "principal.local-001",
+    "requested_from_client_ref": "client.cli.local-001",
+    "runtime_action_key": "model.local.invoke",
+    "runtime_gate_decision_ref": "runtime-gate.local-001",
+    "machine_authorization_ref": "machine.local-001",
+    "license_lease_ref": "license.local-001",
+    "limit_projection_ref": "limit.local-001",
+    "decision": "allowed",
+    "reason": "local model access is admitted under governed runtime posture",
+    "output_posture": "output_not_persisted",
+    "credential_boundary": "no_credentials_required"
+  }
+}

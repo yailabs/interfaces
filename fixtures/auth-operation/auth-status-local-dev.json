@@ -1,0 +1,27 @@
+{
+  "auth_operation": {
+    "operation_id": "auth.status",
+    "action_id": "auth.status",
+    "request_kind": "status",
+    "operation_status": "allowed",
+    "auth_posture": "local_dev_authenticated",
+    "provider_posture": "provider_session_absent",
+    "auth_context_posture": "present",
+    "principal_ref": "principal://local-dev/francesco",
+    "auth_context_ref": "auth-context://local-dev/francesco",
+    "local_dev_principal_ref": "principal://local-dev/francesco",
+    "reason": "Local development auth posture is active.",
+    "next_action": "Select a case separately if work admission is needed.",
+    "safe_projection": {
+      "action_id": "auth.status",
+      "operation_status": "allowed",
+      "auth_posture": "local_dev_authenticated",
+      "provider_posture": "provider_session_absent",
+      "auth_context_posture": "present",
+      "principal_ref": "principal://local-dev/francesco",
+      "auth_context_ref": "auth-context://local-dev/francesco",
+      "reason": "Local development auth posture is active.",
+      "next_action": "Select a case separately if work admission is needed."
+    }
+  }
+}

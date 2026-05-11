@@ -1,0 +1,26 @@
+{
+  "machine_enrollment_request": {
+    "machine_enrollment_request_ref": "machine_enrollment_request/local-001",
+    "local_machine_identity_ref": "local_machine_identity/existing-002",
+    "local_machine_ref": "local_machine/workstation-02",
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/minimized-001",
+    "enrollment_intent": "authorize_machine",
+    "enrollment_channel": "local_preview",
+    "enrollment_status": "ready",
+    "account_confirmation_posture": "not_required",
+    "browser_handoff_posture": "not_required",
+    "device_code_posture": "not_required",
+    "privacy_posture": "privacy_bounded",
+    "consent_posture": "not_required",
+    "requested_at": "2026-05-07T10:00:00Z",
+    "requested_by_principal_ref": "principal.local-001",
+    "requested_from_client_ref": "client.cli.local-001",
+    "auth_context_ref": "auth-context.local-001",
+    "account_ref": "account.local-001",
+    "principal_ref": "principal.local-001",
+    "next_actions": [
+      "none"
+    ],
+    "warning_codes": []
+  }
+}

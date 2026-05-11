@@ -1,0 +1,25 @@
+{
+  "agent_authority": {
+    "agent_authority_ref": "agent-authority.local-004",
+    "agent_ref": "agent.local-004",
+    "agent_instance_ref": "agent-instance.local-004",
+    "case_ref": "case.local-004",
+    "agent_role": "specialist",
+    "requested_action": "request_provider_call",
+    "requested_at": "2026-05-07T10:45:00Z",
+    "requested_by_principal_ref": "principal.local-004",
+    "job_ref": "job.local-004",
+    "execution_lease_ref": "execution-lease.local-004",
+    "auth_context_ref": "auth-context.local-004",
+    "entitlement_ref": "entitlement.local-004",
+    "machine_authorization_ref": "machine-authorization.local-004",
+    "license_lease_ref": "license-lease.local-004",
+    "runtime_gate_decision_ref": "runtime-gate.local-004",
+    "decision": "allowed",
+    "reason": "agent may request provider access only through governed provider authority",
+    "agent_output_posture": "no_output",
+    "allowed_provider_action_refs": [
+      "provider-authority.local-004/extract"
+    ]
+  }
+}

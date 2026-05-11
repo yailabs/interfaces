@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/case-job-flow-limit-boundary.v1.schema.json",
+  "title": "YAI Case Job Flow Limit Boundary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "limit_projection"
+  ],
+  "properties": {
+    "limit_projection": {
+      "$ref": "#/$defs/limitProjection"
+    }
+  },
+  "$defs": {
+    "limitFamily": {
+      "type": "string",
+      "enum": [
+        "case",
+        "job",
+        "flow",
+        "agent",
+        "provider_call",
+        "knowledge",
+        "evidence",
+        "runtime_action",
+        "machine",
+        "release_update",
+        "cloud_compute",
+        "admin"
+      ]
+    },
+    "limitScope": {
+      "type": "string",
+      "enum": [
+        "account_global",
+        "principal",
+        "machine",
+        "case_tree",
+        "case",
+        "runtime_instance",
+        "team",
+        "organization",
+        "system_internal"
+      ]
+    },
+    "limitKey": {
+      "type": "string",
+      "enum": [
+        "max_open_cases",
+        "max_active_cases",
+        "max_nested_cases",
+        "max_parallel_jobs",
+        "max_active_flows",
+        "max_concurrent_agents",
+        "max_provider_calls",
+        "max_knowledge_writes",
+        "max_evidence_writes",
+        "max_authorized_machines",
+        "max_runtime_actions",
+        "max_release_downloads",
+        "cloud_compute_minutes"
+      ]
+    },
+    "windowKind": {
+      "type": "string",
+      "enum": [
+        "none",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "billing_period",
+        "lease_period",
+        "release_period",
+        "custom"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "warning",
+        "blocked",
+        "requires_entitlement",
+        "requires_license_lease",
+        "requires_machine_authorization",
+        "requires_limit_projection",
+        "requires_manual_review",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "limit_exceeded",
+        "quota_exhausted",
+        "missing_limit_projection",
+        "missing_entitlement",
+        "license_lease_expired",
+        "machine_not_authorized",
+        "manual_review_required",
+        "plan_package_unavailable",
+        "billing_required_but_unavailable",
+        "unknown"
+      ]
+    },
+    "limitProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "limit_projection_ref",
+        "limit_key",
+        "limit_family",
+        "scope",
+        "subject_ref",
+        "window",
+        "decision",
+        "observed_at"
+      ],
+      "properties": {
+        "limit_projection_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limit_key": {
+          "$ref": "#/$defs/limitKey"
+        },
+        "limit_family": {
+          "$ref": "#/$defs/limitFamily"
+        },
+        "scope": {
+          "$ref": "#/$defs/limitScope"
+        },
+        "subject_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "job_ref": {
+          "type": "string"
+        },
+        "flow_ref": {
+          "type": "string"
+        },
+        "agent_instance_ref": {
+          "type": "string"
+        },
+        "provider_ref": {
+          "type": "string"
+        },
+        "runtime_action_key": {
+          "type": "string"
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string"
+        },
+        "entitlement_ref": {
+          "type": "string"
+        },
+        "machine_authorization_ref": {
+          "type": "string"
+        },
+        "license_lease_ref": {
+          "type": "string"
+        },
+        "window": {
+          "$ref": "#/$defs/windowKind"
+        },
+        "current_usage": {
+          "type": "number"
+        },
+        "max_allowed": {
+          "type": "number"
+        },
+        "remaining": {
+          "type": "number"
+        },
+        "soft_limit": {
+          "type": "number"
+        },
+        "hard_limit": {
+          "type": "number"
+        },
+        "warning_threshold": {
+          "type": "number"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "observed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expires_at": {
+          "type": "string"
+        },
+        "source_ref": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

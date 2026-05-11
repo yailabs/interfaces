@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/case-operation.v1.schema.json",
+  "title": "YAI Case Operation v1",
+  "type": "object",
+  "required": [
+    "case_operation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "case_operation": {
+      "$ref": "#/$defs/caseOperation"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nullableRef": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "outcome": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "accepted",
+        "partial",
+        "unavailable",
+        "blocked",
+        "invalid",
+        "failed"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "session_unchanged",
+        "knowledge_preserved",
+        "evidence_preserved",
+        "records_preserved",
+        "root_case_protected",
+        "active_case_protected",
+        "operator_context_required",
+        "compatibility_projection",
+        "unknown"
+      ]
+    },
+    "nextAction": {
+      "type": "string",
+      "enum": [
+        "none",
+        "open_case",
+        "enter_case",
+        "leave_active_case",
+        "inspect_case_tree",
+        "inspect_operator_context",
+        "retry_with_case_ref",
+        "unknown"
+      ]
+    },
+    "caseNodeKind": {
+      "type": "string",
+      "enum": [
+        "root-user-case",
+        "project-case",
+        "research-case",
+        "release-case",
+        "private-case",
+        "generic-case"
+      ]
+    },
+    "caseNode": {
+      "type": "object",
+      "required": [
+        "case_ref",
+        "kind",
+        "parent_case_ref",
+        "path",
+        "active"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "case_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "kind": {
+          "$ref": "#/$defs/caseNodeKind"
+        },
+        "parent_case_ref": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "principal": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "caseOperation": {
+      "type": "object",
+      "required": [
+        "operation_id",
+        "outcome",
+        "summary",
+        "root_case_ref",
+        "active_case_ref",
+        "operator_context_owner",
+        "session_mutated",
+        "case_tree_mutated",
+        "operator_context_mutated",
+        "evidence_deleted",
+        "knowledge_deleted",
+        "records_deleted"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "type": "string",
+          "pattern": "^case\\."
+        },
+        "outcome": {
+          "$ref": "#/$defs/outcome"
+        },
+        "summary": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "root_case_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "active_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "target_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "opened_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "entered_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "left_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "closed_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "case_tree_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "operator_context_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "operator_context_owner": {
+          "const": "operator_context.active_case_ref"
+        },
+        "session_mutated": {
+          "const": false
+        },
+        "case_tree_mutated": {
+          "type": "boolean"
+        },
+        "operator_context_mutated": {
+          "type": "boolean"
+        },
+        "evidence_deleted": {
+          "const": false
+        },
+        "knowledge_deleted": {
+          "const": false
+        },
+        "records_deleted": {
+          "const": false
+        },
+        "cases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/caseNode"
+          }
+        },
+        "refs": {
+          "$ref": "#/$defs/refs"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "next_actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nextAction"
+          }
+        }
+      }
+    }
+  }
+}

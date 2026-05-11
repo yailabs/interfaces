@@ -1,0 +1,47 @@
+{
+  "case_operation": {
+    "operation_id": "case.status",
+    "outcome": "ok",
+    "summary": "Reported case and operator-context posture.",
+    "root_case_ref": "case://francesco",
+    "active_case_ref": "case://francesco/projects/site-e0-cleanup",
+    "target_case_ref": null,
+    "case_tree_ref": "local-case-tree:francesco",
+    "operator_context_ref": "local-operator-context:francesco",
+    "operator_context_owner": "operator_context.active_case_ref",
+    "session_mutated": false,
+    "case_tree_mutated": false,
+    "operator_context_mutated": false,
+    "evidence_deleted": false,
+    "knowledge_deleted": false,
+    "records_deleted": false,
+    "cases": [
+      {
+        "case_ref": "case://francesco",
+        "kind": "root-user-case",
+        "parent_case_ref": null,
+        "path": "",
+        "active": false,
+        "principal": "local-dev:francesco"
+      },
+      {
+        "case_ref": "case://francesco/projects/site-e0-cleanup",
+        "kind": "project-case",
+        "parent_case_ref": "case://francesco",
+        "path": "projects/site-e0-cleanup",
+        "active": true,
+        "principal": "local-dev:francesco"
+      }
+    ],
+    "refs": {
+      "root_case_ref": "case://francesco",
+      "active_case_ref": "case://francesco/projects/site-e0-cleanup"
+    },
+    "warnings": [
+      "session_unchanged"
+    ],
+    "next_actions": [
+      "none"
+    ]
+  }
+}

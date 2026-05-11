@@ -1,0 +1,21 @@
+{
+  "local_lease_cache": {
+    "local_lease_cache_ref": "lease-cache.local-003",
+    "license_lease_ref": "license-lease.local-003",
+    "cache_status": "cache_expired",
+    "continuity_status": "continuity_blocked",
+    "reboot_posture": "reboot_blocked",
+    "terminal_close_posture": "terminal_close_blocks_operations",
+    "runtime_restart_posture": "restart_blocks_operations",
+    "offline_grace_posture": "offline_grace_expired",
+    "stale_posture": "stale_rejected",
+    "refresh_required_posture": "required",
+    "invalidation_posture": "invalidated_by_expiry",
+    "expires_at": "2026-05-06T08:00:00Z",
+    "blocked_reason": "lease_cache_expired",
+    "warning_codes": [
+      "refresh_required",
+      "diagnostics_only"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "local_lease_cache": {
+    "local_lease_cache_ref": "lease-cache.local-006",
+    "license_lease_ref": "license-lease.local-006",
+    "cache_status": "cached",
+    "continuity_status": "continuity_available",
+    "reboot_posture": "survives_reboot",
+    "terminal_close_posture": "survives_terminal_close",
+    "runtime_restart_posture": "survives_runtime_restart",
+    "offline_grace_posture": "offline_grace_available",
+    "stale_posture": "not_stale",
+    "refresh_required_posture": "not_required",
+    "invalidation_posture": "not_invalidated",
+    "safe_cache_projection": {
+      "license_lease_ref": "license-lease.local-006",
+      "cache_status": "cached",
+      "continuity_status": "continuity_available",
+      "reboot_posture": "survives_reboot",
+      "offline_grace_posture": "offline_grace_available",
+      "stale_posture": "not_stale",
+      "refresh_required_posture": "not_required",
+      "expires_at": "2026-06-20T12:00:00Z",
+      "warning_codes": [
+        "cache_near_expiry"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "cloud_compute_decision": {
+    "cloud_compute_decision_ref": "cloud-compute.blocked-003",
+    "compute_target": "cloud_evaluation",
+    "compute_mode": "cloud_optional",
+    "case_ref": "case.local-003",
+    "flow_ref": "flow.local-003",
+    "requested_action": "run_cloud_evaluation",
+    "requested_at": "2026-05-07T13:10:00Z",
+    "requested_by_principal_ref": "principal.local-003",
+    "requested_from_client_ref": "client.cli.local-003",
+    "compute_region": "us-east-1",
+    "cloud_compute_ref": "cloud-compute.local-003",
+    "compute_capacity_ref": "cloud-capacity.local-003",
+    "cloud_compute_minutes_ref": "cloud-minutes.local-003",
+    "runtime_action_key": "cloud.evaluation.run",
+    "runtime_gate_decision_ref": "runtime-gate.local-003",
+    "entitlement_ref": "entitlement.local-003",
+    "limit_projection_ref": "limit.local-003",
+    "decision": "requires_cloud_capacity",
+    "reason": "cloud capacity posture is unavailable for this evaluation request",
+    "blocked_reason": "cloud_capacity_unavailable",
+    "output_posture": "output_blocked",
+    "infrastructure_boundary": "platform_managed_infrastructure"
+  }
+}

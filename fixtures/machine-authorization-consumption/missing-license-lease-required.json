@@ -1,0 +1,22 @@
+{
+  "machine_authorization_consumption": {
+    "machine_authorization_consumption_ref": "machine_authorization_consumption/license-005",
+    "machine_authorization_ref": "machine_authorization/issued-005",
+    "local_machine_ref": "local_machine/workstation-05",
+    "local_machine_identity_ref": "local_machine_identity/existing-002",
+    "authorization_status": "authorized",
+    "consumption_status": "consumed_readonly",
+    "authorization_scope": "provider_access",
+    "authorization_source": "platform_issued",
+    "lease_requirement_posture": "missing",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "sealed_license_required",
+    "consumed_at": "2026-05-07T11:20:00Z",
+    "account_ref": "account.local-005",
+    "principal_ref": "principal.local-005",
+    "blocked_reason": "license_lease_missing",
+    "warning_codes": [
+      "license_lease_required"
+    ]
+  }
+}

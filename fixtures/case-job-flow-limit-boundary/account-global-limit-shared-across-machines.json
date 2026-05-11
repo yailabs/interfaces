@@ -1,0 +1,20 @@
+{
+  "limit_projection": {
+    "limit_projection_ref": "limit-proj.account-global.006",
+    "limit_key": "max_authorized_machines",
+    "limit_family": "machine",
+    "scope": "account_global",
+    "subject_ref": "account.account-006",
+    "machine_authorization_ref": "machine.auth.shared-006",
+    "window": "month",
+    "current_usage": 3,
+    "max_allowed": 5,
+    "remaining": 2,
+    "soft_limit": 4,
+    "hard_limit": 5,
+    "warning_threshold": 4,
+    "decision": "allowed",
+    "observed_at": "2026-05-07T10:25:00Z",
+    "source_ref": "projection.limit.account-global.shared-capacity"
+  }
+}

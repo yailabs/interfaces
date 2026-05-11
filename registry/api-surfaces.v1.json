@@ -1,16 +1,40 @@
 {
   "version": "v1",
+  "surface_status": {
+    "auth": "seed",
+    "case": "seed",
+    "operator_context": "seed",
+    "session": "legacy"
+  },
   "surfaces": {
     "system": [
       "status",
       "check",
-      "runtime.inspect"
+      "doctor",
+      "runtime.inspect",
+      "service.status",
+      "readiness"
     ],
     "case": [
-      "current",
+      "root",
       "list",
+      "open",
+      "enter",
+      "leave",
+      "status",
+      "close",
+      "current",
       "show",
+      "tree",
+      "graph.show",
+      "pending",
       "records.tail"
+    ],
+    "operator_context": [
+      "status",
+      "current",
+      "active_case.set",
+      "active_case.clear"
     ],
     "conversation": [
       "current",
@@ -21,29 +45,63 @@
     ],
     "workflow": [
       "list",
+      "status",
       "show",
+      "inspect",
+      "plan",
+      "compose",
+      "validate",
+      "nodes.add",
+      "branches.fork",
+      "loops.add",
+      "runs.start",
+      "runs.stop",
+      "runs.watch",
       "steps.pending",
-      "runs.watch"
+      "outputs.show",
+      "evidence.show",
+      "lineage.trace"
     ],
     "governance": [
       "posture",
       "policy.resolve"
     ],
     "control": [
-      "decisions.explain",
+      "status",
+      "subjects.attach",
+      "boundaries.detect",
       "gates.list",
-      "gates.show"
+      "gates.show",
+      "gates.approve",
+      "decisions.explain",
+      "evidence.show"
     ],
     "knowledge": [
+      "status",
+      "list",
+      "show",
+      "inspect",
+      "query",
       "lineage.trace",
-      "query"
+      "rebuild.plan",
+      "rebuild"
     ],
     "state": [
+      "status",
+      "list",
+      "show",
+      "inspect",
+      "snapshot",
+      "diff",
       "records.query",
       "records.tail",
-      "show",
-      "snapshot",
-      "diff"
+      "projections.show",
+      "materialized.show",
+      "substrate.status",
+      "substrate.inspect.shm",
+      "substrate.inspect.lmdb",
+      "substrate.inspect.duckdb",
+      "substrate.inspect.ladybug"
     ],
     "skills": [
       "list",
@@ -57,19 +115,45 @@
       "status",
       "set",
       "connect",
-      "probe"
+      "probe",
+      "inspect",
+      "capabilities.show",
+      "config.status",
+      "routes.explain",
+      "calls.plan",
+      "calls.run",
+      "calls.inspect",
+      "calls.logs.watch",
+      "calls.evidence.show",
+      "calls.lineage.trace"
     ],
     "models": [
       "list",
-      "capabilities.show",
+      "status",
       "use",
-      "evaluate"
+      "evaluate",
+      "inspect",
+      "check",
+      "capabilities.show",
+      "routes.explain",
+      "runs.plan",
+      "runs.run",
+      "runs.inspect",
+      "runs.evidence.show",
+      "runs.lineage.trace"
     ],
     "agents": [
       "list",
+      "status",
       "plan",
       "run",
-      "trace"
+      "trace",
+      "inspect",
+      "cancel",
+      "logs.watch",
+      "outputs.show",
+      "evidence.show",
+      "lineage.trace"
     ],
     "orchestrator": [
       "plans.create",
@@ -96,10 +180,16 @@
       "entitlement.status"
     ],
     "auth": [
-      "status",
-      "whoami",
       "login",
-      "logout"
+      "login.local_dev",
+      "status",
+      "logout",
+      "context.inspect",
+      "provider.status",
+      "device_login.start",
+      "device_login.status",
+      "device_login.cancel",
+      "whoami"
     ],
     "session": [
       "current",
@@ -112,6 +202,90 @@
       "status",
       "case.show",
       "permissions.check"
+    ],
+    "policy_pack": [
+      "list",
+      "inspect",
+      "validate",
+      "explain"
+    ],
+    "intake": [
+      "plan",
+      "run",
+      "status",
+      "inspect",
+      "validate",
+      "outputs.show",
+      "lineage.trace"
+    ],
+    "materialization": [
+      "plan",
+      "run",
+      "status",
+      "inspect",
+      "validate",
+      "outputs.show",
+      "evidence.show",
+      "lineage.trace"
+    ],
+    "excerpt": [
+      "list",
+      "show",
+      "inspect",
+      "lineage.trace"
+    ],
+    "evidence": [
+      "list",
+      "show",
+      "inspect",
+      "lineage.trace"
+    ],
+    "lineage": [
+      "trace",
+      "show",
+      "explain",
+      "graph.show"
+    ],
+    "recall": [
+      "query",
+      "explain",
+      "inspect"
+    ],
+    "job": [
+      "list",
+      "status",
+      "inspect",
+      "plan",
+      "start",
+      "cancel",
+      "logs.watch",
+      "outputs.show",
+      "evidence.show",
+      "lineage.trace"
+    ],
+    "license": [
+      "status",
+      "lease.status",
+      "check",
+      "cache.status"
+    ],
+    "machine": [
+      "status",
+      "identity.status",
+      "evidence.status",
+      "authorization.status",
+      "enroll"
+    ],
+    "limits": [
+      "status",
+      "explain"
+    ],
+    "logs": [
+      "runtime.watch",
+      "job.watch",
+      "workflow.watch",
+      "agent.watch",
+      "provider.watch"
     ]
   }
 }

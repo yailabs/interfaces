@@ -1,0 +1,29 @@
+{
+  "license_lease_consumption": {
+    "license_lease_consumption_ref": "lease-consumption.local-001",
+    "license_lease_ref": "license-lease.local-001",
+    "lease_status": "valid",
+    "consumption_status": "consumed",
+    "scope": "local_runtime",
+    "lease_source": "platform_issued",
+    "grace_posture": "not_applicable",
+    "stale_posture": "not_stale",
+    "refresh_posture": "not_required",
+    "revocation_posture": "not_revoked",
+    "diagnostic_posture": "diagnostics_allowed",
+    "sealed_posture": "unsealed_for_authorized_actions",
+    "issued_at": "2026-05-07T08:00:00Z",
+    "expires_at": "2026-06-07T08:00:00Z",
+    "last_validated_at": "2026-05-07T08:15:00Z",
+    "consumed_at": "2026-05-07T08:16:00Z",
+    "account_ref": "account.safe-001",
+    "principal_ref": "principal.safe-001",
+    "machine_authorization_ref": "machine-authorization.safe-001",
+    "local_machine_ref": "local-machine.safe-001",
+    "runtime_gate_decision_ref": "runtime-gate.safe-001",
+    "limit_projection_ref": "limit.safe-001",
+    "warning_codes": [
+      "unknown"
+    ]
+  }
+}

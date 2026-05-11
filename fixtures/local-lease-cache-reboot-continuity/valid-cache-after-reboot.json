@@ -1,0 +1,27 @@
+{
+  "local_lease_cache": {
+    "local_lease_cache_ref": "lease-cache.local-001",
+    "license_lease_ref": "license-lease.local-001",
+    "cache_status": "cached",
+    "continuity_status": "continuity_active",
+    "reboot_posture": "survives_reboot",
+    "terminal_close_posture": "survives_terminal_close",
+    "runtime_restart_posture": "survives_runtime_restart",
+    "offline_grace_posture": "offline_grace_available",
+    "stale_posture": "not_stale",
+    "refresh_required_posture": "not_required",
+    "invalidation_posture": "not_invalidated",
+    "cached_at": "2026-05-07T10:00:00Z",
+    "expires_at": "2026-06-07T10:00:00Z",
+    "last_validated_at": "2026-05-07T10:15:00Z",
+    "local_machine_ref": "local-machine.safe-001",
+    "machine_authorization_ref": "machine-authorization.safe-001",
+    "account_ref": "account.safe-001",
+    "principal_ref": "principal.safe-001",
+    "runtime_gate_decision_ref": "runtime-gate.safe-001",
+    "limit_projection_ref": "limit.safe-001",
+    "warning_codes": [
+      "unknown"
+    ]
+  }
+}

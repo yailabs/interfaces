@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/analytics-binding.v1.schema.json",
+  "title": "YAI Analytics Binding v1",
+  "type": "object",
+  "required": [
+    "analytics_binding"
+  ],
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "analyticsKind": {
+      "type": "string",
+      "enum": [
+        "case_activity",
+        "job_progress",
+        "flow_progress",
+        "agent_activity",
+        "provider_activity",
+        "evidence_growth",
+        "knowledge_growth",
+        "gate_block",
+        "limit_pressure",
+        "runtime_readiness",
+        "review_activity",
+        "system_observation"
+      ]
+    },
+    "analyticsScope": {
+      "type": "string",
+      "enum": [
+        "case",
+        "case_tree",
+        "account_projection",
+        "machine_projection",
+        "runtime_projection",
+        "system_internal"
+      ]
+    },
+    "decisionStatus": {
+      "type": "string",
+      "enum": [
+        "recorded",
+        "blocked",
+        "requires_case",
+        "requires_auth",
+        "requires_gate",
+        "redacted",
+        "aggregated_only",
+        "unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "missing_case_ref",
+        "missing_auth_context",
+        "runtime_gate_blocked",
+        "insufficient_visibility",
+        "privacy_redaction_required",
+        "raw_provider_identity_forbidden",
+        "billing_object_forbidden",
+        "outside_scope",
+        "unknown"
+      ]
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "private",
+        "case_visible",
+        "team_visible",
+        "admin_visible",
+        "system_internal",
+        "aggregated"
+      ]
+    },
+    "retentionPosture": {
+      "type": "string",
+      "enum": [
+        "retain",
+        "aggregate_only",
+        "redact_later",
+        "delete_only_by_explicit_policy",
+        "system_internal",
+        "unknown"
+      ]
+    },
+    "analyticsBinding": {
+      "type": "object",
+      "required": [
+        "analytics_ref",
+        "analytics_kind",
+        "analytics_scope",
+        "metric_key",
+        "observed_at",
+        "visibility",
+        "retention_posture",
+        "decision",
+        "reason"
+      ],
+      "properties": {
+        "analytics_ref": {
+          "type": "string"
+        },
+        "analytics_kind": {
+          "$ref": "#/$defs/analyticsKind"
+        },
+        "analytics_scope": {
+          "$ref": "#/$defs/analyticsScope"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "metric_key": {
+          "type": "string"
+        },
+        "metric_value": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "measurement_unit": {
+          "type": "string"
+        },
+        "observed_at": {
+          "type": "string"
+        },
+        "window_start": {
+          "type": "string"
+        },
+        "window_end": {
+          "type": "string"
+        },
+        "source_record_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_evidence_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_knowledge_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_job_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_flow_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_agent_instance_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_provider_call_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "runtime_gate_decision_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "license_lease_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "machine_authorization_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "limit_projection_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "derived_from_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "visibility": {
+          "$ref": "#/$defs/visibility"
+        },
+        "retention_posture": {
+          "$ref": "#/$defs/retentionPosture"
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionStatus"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "analytics_binding": {
+      "$ref": "#/$defs/analyticsBinding"
+    }
+  },
+  "additionalProperties": false
+}

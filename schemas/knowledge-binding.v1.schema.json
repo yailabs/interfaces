@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.knowledge-binding.v1",
+  "title": "YAI Knowledge Binding v1",
+  "type": "object",
+  "required": [
+    "knowledge"
+  ],
+  "properties": {
+    "knowledge": {
+      "$ref": "#/$defs/knowledge"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "knowledgeKind": {
+      "type": "string",
+      "enum": [
+        "manual_note",
+        "summary",
+        "decision_note",
+        "case_memory",
+        "derived_fact",
+        "working_state",
+        "research_note",
+        "code_context",
+        "runbook",
+        "artifact_index",
+        "evidence_summary",
+        "system_observation"
+      ]
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "private",
+        "case_visible",
+        "team_visible",
+        "admin_visible",
+        "system_internal"
+      ]
+    },
+    "recallPolicy": {
+      "type": "string",
+      "enum": [
+        "not_recallable",
+        "case_recallable",
+        "active_case_recallable",
+        "authorized_context_recallable",
+        "admin_only",
+        "unknown"
+      ]
+    },
+    "writePolicy": {
+      "type": "string",
+      "enum": [
+        "append_only",
+        "mutable_with_lineage",
+        "sealed_writes",
+        "system_only",
+        "explicit_approval_required",
+        "unknown"
+      ]
+    },
+    "derivationStatus": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "derived",
+        "materialized",
+        "stale",
+        "superseded",
+        "retracted",
+        "unknown"
+      ]
+    },
+    "knowledge": {
+      "type": "object",
+      "required": [
+        "knowledge_ref",
+        "case_ref",
+        "knowledge_kind",
+        "created_at",
+        "visibility",
+        "recall_policy",
+        "write_policy",
+        "derivation_status"
+      ],
+      "properties": {
+        "knowledge_ref": {
+          "type": "string"
+        },
+        "case_ref": {
+          "type": "string"
+        },
+        "knowledge_kind": {
+          "$ref": "#/$defs/knowledgeKind"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "body_ref": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "created_by_principal_ref": {
+          "type": "string"
+        },
+        "created_from_client_ref": {
+          "type": "string"
+        },
+        "source_evidence_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_record_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_job_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_provider_call_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "source_artifact_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "lineage_refs": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "content_digest": {
+          "type": "string"
+        },
+        "retention_policy_ref": {
+          "type": "string"
+        },
+        "visibility": {
+          "$ref": "#/$defs/visibility"
+        },
+        "recall_policy": {
+          "$ref": "#/$defs/recallPolicy"
+        },
+        "write_policy": {
+          "$ref": "#/$defs/writePolicy"
+        },
+        "derivation_status": {
+          "$ref": "#/$defs/derivationStatus"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

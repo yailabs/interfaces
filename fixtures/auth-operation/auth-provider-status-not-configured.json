@@ -1,0 +1,22 @@
+{
+  "auth_operation": {
+    "operation_id": "auth.provider.status",
+    "action_id": "auth.provider.status",
+    "request_kind": "provider_status",
+    "operation_status": "allowed",
+    "auth_posture": "unauthenticated",
+    "provider_posture": "not_configured",
+    "auth_context_posture": "not_issued",
+    "reason": "No provider-auth adapter is configured.",
+    "next_action": "Use local-dev auth or configure a provider later.",
+    "safe_projection": {
+      "action_id": "auth.provider.status",
+      "operation_status": "allowed",
+      "auth_posture": "unauthenticated",
+      "provider_posture": "not_configured",
+      "auth_context_posture": "not_issued",
+      "reason": "No provider-auth adapter is configured.",
+      "next_action": "Use local-dev auth or configure a provider later."
+    }
+  }
+}

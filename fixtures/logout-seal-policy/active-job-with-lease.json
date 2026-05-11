@@ -1,0 +1,46 @@
+{
+  "logout_request": {
+    "logout_request_ref": "logout-request-003",
+    "principal_ref": "principal.operator.local-003",
+    "account_ref": "account.local-003",
+    "auth_context_ref": "auth-context.local-003",
+    "operator_context_ref": "operator-context.local-003",
+    "active_case_ref": "case.local-003",
+    "observed_job_refs": [
+      "job.local-003"
+    ],
+    "observed_execution_lease_refs": [
+      "execution-lease.local-003"
+    ],
+    "observed_license_lease_ref": "license-lease.local-003",
+    "requested_mode": "wait",
+    "requested_at": "2026-05-06T10:10:00Z",
+    "requested_by_client_ref": "client.desktop.local-003"
+  },
+  "logout_policy_decision": {
+    "logout_policy_decision_ref": "logout-decision-003",
+    "logout_request_ref": "logout-request-003",
+    "decision": "requires_wait",
+    "reason": "active_execution_lease_present",
+    "required_confirmation": true,
+    "next_actions": [
+      "inspect active job posture",
+      "wait for execution lease policy outcome"
+    ],
+    "affected_case_refs": [
+      "case.local-003"
+    ],
+    "affected_job_refs": [
+      "job.local-003"
+    ],
+    "affected_execution_lease_refs": [
+      "execution-lease.local-003"
+    ],
+    "auth_context_action": "retain_until_expiry",
+    "license_lease_action": "retain_until_expiry",
+    "runtime_seal_action": "allow_diagnostics_only",
+    "records_evidence_action": "preserve",
+    "knowledge_action": "preserve",
+    "created_at": "2026-05-06T10:10:10Z"
+  }
+}

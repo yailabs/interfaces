@@ -1,0 +1,37 @@
+{
+  "runtime_gate_registry": {
+    "registry_version": "v1",
+    "runtime_actions": [
+      {
+        "runtime_action_key": "system.status.inspect",
+        "runtime_action_family": "diagnostics",
+        "runtime_action_label": "Inspect runtime status",
+        "action_category": "diagnostic_read",
+        "gate_classification": "ungated_diagnostic",
+        "allowed_during_sealed": true,
+        "required_context": [
+          "none"
+        ],
+        "required_refs": [],
+        "required_postures": [
+          "truthful_projection_only"
+        ],
+        "blocked_reasons": [
+          "unknown"
+        ],
+        "decision_outputs": [
+          "diagnostic_allowed",
+          "degraded",
+          "unknown"
+        ],
+        "limit_sensitive": false,
+        "metering_sensitive": false,
+        "cloud_sensitive": false,
+        "writes_state": false,
+        "writes_evidence": false,
+        "writes_knowledge": false,
+        "controls_runtime": false
+      }
+    ]
+  }
+}

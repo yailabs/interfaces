@@ -1,0 +1,28 @@
+{
+  "runtime_license_check_response": {
+    "runtime_license_check_response_ref": "runtime_license_check_response.safe_projection.v1",
+    "runtime_license_check_request_ref": "runtime_license_check_request.safe_projection.v1",
+    "decision": "diagnostics_only",
+    "reason": "safe diagnostic response posture is available without operational enforcement",
+    "next_action": "diagnostics_only",
+    "response_freshness": "unknown",
+    "lease_posture": "unknown",
+    "machine_authorization_posture": "unknown",
+    "entitlement_posture": "unknown",
+    "limit_posture": "unknown",
+    "runtime_gate_posture": "gate_unknown",
+    "offline_grace_posture": "unknown",
+    "cache_update_posture": "unknown",
+    "responded_at": "2026-05-08T09:05:00Z",
+    "warning_codes": [
+      "diagnostics_only"
+    ],
+    "safe_runtime_gate_decision": {
+      "runtime_gate_decision_ref": "runtime_gate_decision.diagnostic_only",
+      "runtime_gate_posture": "gate_unknown",
+      "warning_codes": [
+        "diagnostics_only"
+      ]
+    }
+  }
+}

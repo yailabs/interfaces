@@ -1,0 +1,23 @@
+{
+  "auth_operation": {
+    "operation_id": "auth.device_login.start",
+    "action_id": "auth.device_login.start",
+    "request_kind": "device_login_start",
+    "operation_status": "not_implemented",
+    "auth_posture": "unauthenticated",
+    "provider_posture": "configured",
+    "auth_context_posture": "not_issued",
+    "device_login_ref": "device-login://pending/example",
+    "reason": "Device login is a future contract only in V53.",
+    "next_action": "Wait for a later implementation wave.",
+    "safe_projection": {
+      "action_id": "auth.device_login.start",
+      "operation_status": "not_implemented",
+      "auth_posture": "unauthenticated",
+      "provider_posture": "configured",
+      "auth_context_posture": "not_issued",
+      "reason": "Device login is a future contract only in V53.",
+      "next_action": "Wait for a later implementation wave."
+    }
+  }
+}

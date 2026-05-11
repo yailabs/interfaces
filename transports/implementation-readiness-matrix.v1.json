@@ -1,0 +1,94 @@
+{
+  "schema": "yai.api.transport-implementation-readiness.v1",
+  "phase": "API.09",
+  "transports": [
+    {
+      "transport": "local_ipc_rpc",
+      "contract_status": "frozen",
+      "implementation_priority": "primary_now",
+      "runtime_readiness": "read_projection_probe_ready",
+      "sdk_readiness": "rust_client_available",
+      "client_default": "status_default_candidate_only",
+      "next_runtime_wave": "RT.04",
+      "next_sdk_wave": "SDK.01",
+      "next_client_wave": "CLI.02 / LOOM.02"
+    },
+    {
+      "transport": "local_http_loopback",
+      "contract_status": "frozen",
+      "implementation_priority": "primary_now",
+      "runtime_readiness": "ready_for_implementation",
+      "sdk_readiness": "ready_for_client_implementation",
+      "client_default": "dashboard_web",
+      "next_runtime_wave": "RT.03",
+      "next_sdk_wave": "SDK.02",
+      "next_client_wave": "WEB.01"
+    },
+    {
+      "transport": "local_event_stream",
+      "contract_status": "frozen",
+      "implementation_priority": "primary_now",
+      "runtime_readiness": "ready_for_implementation",
+      "sdk_readiness": "ready_for_client_implementation",
+      "client_default": "realtime",
+      "next_runtime_wave": "RT.04",
+      "next_sdk_wave": "SDK.03",
+      "next_client_wave": "WEB.01 / CLI.01 / LOOM.01"
+    },
+    {
+      "transport": "lan_secure",
+      "contract_status": "frozen",
+      "implementation_priority": "controlled_future",
+      "runtime_readiness": "future_only",
+      "sdk_readiness": "future_only",
+      "client_default": "none",
+      "next_runtime_wave": null,
+      "next_sdk_wave": null,
+      "next_client_wave": null
+    },
+    {
+      "transport": "remote_https",
+      "contract_status": "frozen",
+      "implementation_priority": "controlled_future",
+      "runtime_readiness": "future_only",
+      "sdk_readiness": "future_only",
+      "client_default": "none",
+      "next_runtime_wave": null,
+      "next_sdk_wave": null,
+      "next_client_wave": null
+    },
+    {
+      "transport": "provider_transport_boundary",
+      "contract_status": "frozen",
+      "implementation_priority": "separate_boundary",
+      "runtime_readiness": "separate_provider_boundary",
+      "sdk_readiness": "separate_provider_boundary",
+      "client_default": "none",
+      "next_runtime_wave": null,
+      "next_sdk_wave": null,
+      "next_client_wave": null
+    },
+    {
+      "transport": "in_process_test",
+      "contract_status": "frozen",
+      "implementation_priority": "test_only",
+      "runtime_readiness": "not_product",
+      "sdk_readiness": "test_only",
+      "client_default": "none",
+      "next_runtime_wave": null,
+      "next_sdk_wave": null,
+      "next_client_wave": null
+    },
+    {
+      "transport": "subprocess_stdio_compat",
+      "contract_status": "frozen",
+      "implementation_priority": "compat_only",
+      "runtime_readiness": "not_product",
+      "sdk_readiness": "compat_only",
+      "client_default": "none",
+      "next_runtime_wave": null,
+      "next_sdk_wave": null,
+      "next_client_wave": null
+    }
+  ]
+}

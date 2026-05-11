@@ -1,0 +1,48 @@
+{
+  "runtime_invalidation_event": {
+    "runtime_invalidation_event_ref": "runtime-invalidation-event/ref/lease-revoked-invalidates-cache",
+    "invalidation_kind": "license_lease_revoked",
+    "invalidation_reason": "lease_revoked",
+    "affected_refs": [
+      "license-lease/ref/lease-203",
+      "local-lease-cache/ref/cache-203"
+    ],
+    "license_lease_ref": "license-lease/ref/lease-203",
+    "machine_authorization_ref": "machine-authorization/ref/authorization-203",
+    "local_machine_ref": "local-machine/ref/machine-203",
+    "local_lease_cache_ref": "local-lease-cache/ref/cache-203",
+    "runtime_license_check_response_ref": "runtime-license-check-response/ref/blocked-expired-lease",
+    "seal_state": "sealed",
+    "operational_readiness": "blocked",
+    "diagnostic_posture": "diagnostics_limited",
+    "cache_invalidation_posture": "cache_must_not_be_used",
+    "lease_invalidation_posture": "lease_revoked",
+    "machine_authorization_posture": "machine_authorization_retained",
+    "logout_posture": "not_logout",
+    "preservation_posture": "preserve_cases_records_evidence_knowledge",
+    "recovery_posture": "refresh_license_lease",
+    "next_action": "refresh_license_lease",
+    "warning_codes": [
+      "lease_invalidated",
+      "cache_invalidated"
+    ],
+    "safe_invalidation_projection": {
+      "invalidation_kind": "license_lease_revoked",
+      "invalidation_reason": "lease_revoked",
+      "seal_state": "sealed",
+      "operational_readiness": "blocked",
+      "diagnostic_posture": "diagnostics_limited",
+      "cache_invalidation_posture": "cache_must_not_be_used",
+      "lease_invalidation_posture": "lease_revoked",
+      "machine_authorization_posture": "machine_authorization_retained",
+      "logout_posture": "not_logout",
+      "preservation_posture": "preserve_cases_records_evidence_knowledge",
+      "recovery_posture": "refresh_license_lease",
+      "next_action": "refresh_license_lease",
+      "warning_codes": [
+        "lease_invalidated",
+        "cache_invalidated"
+      ]
+    }
+  }
+}

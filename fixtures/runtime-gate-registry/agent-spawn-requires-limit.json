@@ -1,0 +1,54 @@
+{
+  "runtime_gate_registry": {
+    "registry_version": "v1",
+    "runtime_actions": [
+      {
+        "runtime_action_key": "agent.spawn",
+        "runtime_action_family": "agent",
+        "runtime_action_label": "Spawn governed agent instance",
+        "action_category": "agent_action",
+        "gate_classification": "limit_required",
+        "allowed_during_sealed": false,
+        "required_context": [
+          "case_ref",
+          "agent_instance_ref"
+        ],
+        "required_refs": [
+          "case_ref",
+          "auth_context_ref",
+          "limit_projection_ref",
+          "runtime_gate_decision_ref"
+        ],
+        "required_postures": [
+          "agent_authority_resolved",
+          "limit_posture_resolved"
+        ],
+        "blocked_reasons": [
+          "missing_case_ref",
+          "missing_auth_context",
+          "limit_exceeded",
+          "quota_exhausted",
+          "runtime_gate_blocked",
+          "runtime_sealed",
+          "unknown"
+        ],
+        "decision_outputs": [
+          "allowed",
+          "blocked",
+          "requires_case",
+          "requires_auth",
+          "requires_runtime_gate",
+          "requires_limit_capacity",
+          "unknown"
+        ],
+        "limit_sensitive": true,
+        "metering_sensitive": false,
+        "cloud_sensitive": false,
+        "writes_state": true,
+        "writes_evidence": false,
+        "writes_knowledge": false,
+        "controls_runtime": false
+      }
+    ]
+  }
+}

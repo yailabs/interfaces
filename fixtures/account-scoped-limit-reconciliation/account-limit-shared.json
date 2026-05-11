@@ -1,0 +1,28 @@
+{
+  "account_limit_reconciliation": {
+    "account_limit_reconciliation_ref": "account_limit_reconciliation.account_global.shared.v1",
+    "account_ref": "account.acct_primary",
+    "principal_ref": "principal.ops_owner",
+    "limit_projection_ref": "limit_projection.max_parallel_jobs.account_global.v1",
+    "limit_key": "max_parallel_jobs",
+    "scope": "account_global",
+    "subject_ref": "account.acct_primary",
+    "machine_authorization_ref": "machine_authorization.machine_alpha",
+    "local_machine_ref": "local_machine.alpha",
+    "license_lease_ref": "license_lease.shared_parallel_jobs",
+    "runtime_gate_decision_ref": "runtime_gate_decision.parallel_jobs_allowed",
+    "account_global_usage": 6,
+    "local_observed_usage": 2,
+    "remote_observed_usage": 4,
+    "remaining": 2,
+    "max_allowed": 8,
+    "reconciliation_status": "reconciled",
+    "conflict_status": "none",
+    "staleness_posture": "fresh",
+    "offline_posture": "online",
+    "cache_posture": "cache_not_used",
+    "decision": "allowed",
+    "observed_at": "2026-05-07T09:00:00Z",
+    "expires_at": "2026-05-07T09:10:00Z"
+  }
+}

@@ -64,5 +64,264 @@
       ],
       "status": "seed"
     }
+  ],
+  "family_projection_rules": [
+    {
+      "concept": "auth",
+      "canonical_api_family": "auth",
+      "cli_tui_projection": "auth",
+      "status": "canonical",
+      "notes": "Auth is canonical. Auth is not session. Provider session is not YAI session. Auth posture does not imply entitlement, machine authorization, license lease, runtime gate, case, operator context, or client/shell attachment."
+    },
+    {
+      "concept": "case",
+      "canonical_api_family": "case",
+      "cli_tui_projection": "case",
+      "status": "canonical",
+      "notes": "Case is canonical for case-tree truth. Active case belongs to operator context, not session. `case.enter`, `case.leave`, and `case.status` remain public CLI/TUI projections, while explicit API ownership of active-case posture lives under `operator_context`."
+    },
+    {
+      "concept": "operator_context",
+      "canonical_api_family": "operator_context",
+      "cli_tui_projection": "context",
+      "status": "canonical",
+      "notes": "Operator context is the canonical API family for active-case selection posture. It owns `active_case_ref` and does not own auth, authorization, runtime lifecycle, client attachment, or shell attachment."
+    },
+    {
+      "concept": "session",
+      "canonical_api_family": "session",
+      "cli_tui_projection": "session-legacy",
+      "legacy_alias": "session",
+      "status": "legacy",
+      "notes": "Compatibility only. Session is not a canonical public domain family after V51."
+    },
+    {
+      "concept": "workflow",
+      "canonical_api_family": "workflow",
+      "cli_tui_projection": "workflow",
+      "legacy_alias": "flow",
+      "status": "canonical",
+      "notes": "`flow` is retained only as a legacy alias and must not be reintroduced as a canonical API family."
+    },
+    {
+      "concept": "records",
+      "canonical_api_family": "state",
+      "canonical_operation_prefix": "state.records",
+      "cli_tui_projection": "records -> state.records",
+      "legacy_alias": "records",
+      "status": "canonical",
+      "notes": "Root records is not a canonical public family. State owns canonical record query/tail operations."
+    },
+    {
+      "concept": "providers",
+      "canonical_api_family": "providers",
+      "cli_tui_projection": "provider",
+      "status": "canonical",
+      "notes": "Plural API family is preserved while CLI/TUI may project singular names."
+    },
+    {
+      "concept": "models",
+      "canonical_api_family": "models",
+      "cli_tui_projection": "model",
+      "status": "canonical",
+      "notes": "Plural API family is preserved while CLI/TUI may project singular names."
+    },
+    {
+      "concept": "agents",
+      "canonical_api_family": "agents",
+      "cli_tui_projection": "agent",
+      "status": "canonical",
+      "notes": "Plural API family is preserved while CLI/TUI may project singular names."
+    },
+    {
+      "concept": "policy_pack",
+      "canonical_api_family": "policy_pack",
+      "cli_tui_projection": "policy-pack",
+      "status": "canonical",
+      "notes": "API family stays underscore-based while CLI/TUI may render the hyphenated spelling."
+    },
+    {
+      "concept": "materialization",
+      "canonical_api_family": "materialization",
+      "cli_tui_projection": "materialize",
+      "status": "canonical",
+      "notes": "API family stays noun-based while CLI/TUI may use the verb `materialize`."
+    },
+    {
+      "concept": "lineage",
+      "canonical_api_family": "lineage",
+      "cli_tui_projection": "lineage",
+      "legacy_alias": "knowledge.lineage",
+      "status": "canonical",
+      "notes": "Lineage is first-class in V51. `knowledge.lineage.*` is compatibility-only where retained."
+    },
+    {
+      "concept": "evidence",
+      "canonical_api_family": "evidence",
+      "cli_tui_projection": "evidence",
+      "legacy_alias": "control.evidence",
+      "status": "canonical",
+      "notes": "Evidence is first-class in V51. `control.evidence.*` is compatibility-only where retained."
+    },
+    {
+      "concept": "logs",
+      "canonical_api_family": "logs",
+      "cli_tui_projection": "logs",
+      "status": "scoped_only",
+      "notes": "Logs must stay scoped to runtime/job/workflow/agent/provider. Generic root logs ownership is forbidden."
+    }
+  ],
+  "legacy_alias_mappings": [
+    {
+      "alias": "auth.whoami",
+      "canonical_operation_id": "auth.context.inspect",
+      "status": "deprecated",
+      "notes": "Use `auth.context.inspect` for safe auth-context posture instead of legacy `whoami` wording."
+    },
+    {
+      "alias": "case.create",
+      "canonical_operation_id": "case.open",
+      "status": "deprecated",
+      "notes": "Use `case.open` for nested case manifest creation or ensure semantics. `case.create` is older naming."
+    },
+    {
+      "alias": "case.use",
+      "canonical_operation_id": "case.enter",
+      "status": "deprecated",
+      "notes": "Use `case.enter` for operator-context active-case selection. `case.use` predates the explicit operator-context split."
+    },
+    {
+      "alias": "flow.*",
+      "canonical_operation_prefix": "workflow.",
+      "status": "legacy",
+      "notes": "Flow remains a compatibility alias only."
+    },
+    {
+      "alias": "knowledge.lineage.trace",
+      "canonical_operation_id": "lineage.trace",
+      "status": "legacy",
+      "notes": "Compatibility trace retained while lineage becomes first-class."
+    },
+    {
+      "alias": "control.evidence.show",
+      "canonical_operation_id": "evidence.show",
+      "status": "legacy",
+      "notes": "Compatibility evidence projection retained while evidence becomes first-class."
+    },
+    {
+      "alias": "session.*",
+      "canonical_operation_id": null,
+      "status": "deprecated",
+      "notes": "No single replacement family exists. Replacement meaning is split across auth, case/context, client/shell, and system surfaces."
+    },
+    {
+      "alias": "records.*",
+      "canonical_operation_prefix": "state.records.",
+      "status": "legacy",
+      "notes": "Root records is transitional only; state.records is canonical."
+    },
+    {
+      "alias": "runtime.status",
+      "canonical_operation_id": "system.status",
+      "status": "compatibility_projection_only",
+      "notes": "Runtime status remains a CLI/TUI compatibility projection over canonical system status."
+    },
+    {
+      "alias": "policy.root",
+      "canonical_operation_id": null,
+      "status": "forbidden",
+      "notes": "Use `policy_pack.*` or `governance.policy.resolve` instead of a root policy family."
+    },
+    {
+      "alias": "query.root",
+      "canonical_operation_id": null,
+      "status": "forbidden",
+      "notes": "Use recall or family-local query surfaces instead of a root query family."
+    },
+    {
+      "alias": "inspect.root",
+      "canonical_operation_id": null,
+      "status": "forbidden",
+      "notes": "Use family-local inspect operations instead of a root inspect family."
+    }
+  ],
+  "projection_bridges": [
+    {
+      "source_action_or_command": "case.enter",
+      "canonical_api_operation_id": "operator_context.active_case.set",
+      "status": "canonical_projection",
+      "notes": "`yai case enter <case>` remains the primary CLI projection while API ownership of active-case mutation lives under `operator_context`."
+    },
+    {
+      "source_action_or_command": "case.leave",
+      "canonical_api_operation_id": "operator_context.active_case.clear",
+      "status": "canonical_projection",
+      "notes": "`yai case leave` remains the primary CLI projection while API ownership of active-case clearing lives under `operator_context`."
+    },
+    {
+      "source_action_or_command": "case.status",
+      "canonical_api_operation_id": "operator_context.status",
+      "status": "canonical_projection",
+      "notes": "`yai case status` remains a public posture view while explicit active-case ownership is surfaced under `operator_context`."
+    },
+    {
+      "source_action_or_command": "context.switch",
+      "canonical_api_operation_id": "operator_context.active_case.set",
+      "status": "canonical_projection",
+      "notes": "Future `yai context switch <case>` projects the same active-case mutation boundary."
+    },
+    {
+      "source_action_or_command": "context.clear",
+      "canonical_api_operation_id": "operator_context.active_case.clear",
+      "status": "canonical_projection",
+      "notes": "Future `yai context clear` projects the same active-case clear boundary."
+    }
+  ],
+  "forbidden_actions": [
+    {
+      "action_id": "runtime.start",
+      "status": "forbidden",
+      "notes": "Runtime lifecycle is not a canonical domain action."
+    },
+    {
+      "action_id": "runtime.stop",
+      "status": "forbidden",
+      "notes": "Runtime lifecycle is not a canonical domain action."
+    },
+    {
+      "action_id": "runtime.restart",
+      "status": "forbidden",
+      "notes": "Runtime lifecycle is not a canonical domain action."
+    },
+    {
+      "action_id": "query.root",
+      "status": "forbidden",
+      "notes": "Root query is forbidden; use recall or family-local query surfaces."
+    },
+    {
+      "action_id": "inspect.root",
+      "status": "forbidden",
+      "notes": "Root inspect is forbidden; use family-local inspect surfaces."
+    },
+    {
+      "action_id": "policy.root",
+      "status": "forbidden",
+      "notes": "Root policy is forbidden; use policy_pack or governance policy resolution."
+    },
+    {
+      "action_id": "substrate.inspect.raw",
+      "status": "forbidden",
+      "notes": "Raw substrate mutation or raw substrate semantic ownership is forbidden."
+    }
+  ],
+  "forbidden_operation_ids": [
+    "runtime.start",
+    "runtime.stop",
+    "runtime.restart",
+    "system.start",
+    "system.stop",
+    "system.restart",
+    "system.service.start",
+    "system.service.stop"
   ]
 }

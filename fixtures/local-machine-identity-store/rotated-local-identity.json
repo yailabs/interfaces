@@ -1,0 +1,21 @@
+{
+  "local_machine_identity": {
+    "local_machine_identity_ref": "local_machine_identity/rotated-003",
+    "local_machine_ref": "local_machine/workstation-03",
+    "machine_identity_store_ref": "machine_identity_store/platform-keychain",
+    "store_status": "rotated",
+    "identity_status": "enrollment_pending",
+    "created_at": "2026-04-01T10:00:00Z",
+    "updated_at": "2026-05-07T08:15:00Z",
+    "rotated_at": "2026-05-07T08:10:00Z",
+    "storage_posture": "platform_keychain",
+    "rotation_posture": "rotated",
+    "privacy_posture": "raw_hardware_forbidden",
+    "evidence_builder_status": "evidence_builder_required",
+    "enrollment_readiness": "pending_account_confirmation",
+    "warning_codes": [
+      "identity_rotation_required",
+      "raw_hardware_forbidden"
+    ]
+  }
+}

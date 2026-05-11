@@ -1,0 +1,18 @@
+{
+  "local_machine_identity": {
+    "local_machine_identity_ref": "local_machine_identity/reboot-006",
+    "local_machine_ref": "local_machine/workstation-06",
+    "machine_identity_store_ref": "machine_identity_store/local-file",
+    "store_status": "loaded",
+    "identity_status": "local_only",
+    "created_at": "2026-05-06T20:00:00Z",
+    "updated_at": "2026-05-07T08:30:00Z",
+    "last_seen_at": "2026-05-07T08:30:00Z",
+    "storage_posture": "local_file",
+    "rotation_posture": "not_rotated",
+    "privacy_posture": "minimized",
+    "evidence_builder_status": "ready_for_evidence_builder",
+    "enrollment_readiness": "not_ready",
+    "warning_codes": []
+  }
+}

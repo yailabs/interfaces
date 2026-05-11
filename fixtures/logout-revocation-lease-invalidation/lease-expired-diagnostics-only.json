@@ -1,0 +1,46 @@
+{
+  "runtime_invalidation_event": {
+    "runtime_invalidation_event_ref": "runtime-invalidation-event/ref/lease-expired-diagnostics-only",
+    "invalidation_kind": "license_lease_expired",
+    "invalidation_reason": "lease_expired",
+    "affected_refs": [
+      "license-lease/ref/lease-204"
+    ],
+    "license_lease_ref": "license-lease/ref/lease-204",
+    "machine_authorization_ref": "machine-authorization/ref/authorization-204",
+    "local_machine_ref": "local-machine/ref/machine-204",
+    "runtime_gate_decision_ref": "runtime-gate-decision/ref/gate-204",
+    "seal_state": "diagnostics_only",
+    "operational_readiness": "diagnostics_only",
+    "diagnostic_posture": "diagnostics_allowed",
+    "cache_invalidation_posture": "cache_marked_invalid",
+    "lease_invalidation_posture": "lease_expired",
+    "machine_authorization_posture": "machine_authorization_retained",
+    "logout_posture": "not_logout",
+    "preservation_posture": "preserve_cases_records_evidence_knowledge",
+    "recovery_posture": "retry_online_check",
+    "next_action": "run_diagnostics",
+    "warning_codes": [
+      "diagnostics_only",
+      "lease_invalidated"
+    ],
+    "safe_invalidation_projection": {
+      "invalidation_kind": "license_lease_expired",
+      "invalidation_reason": "lease_expired",
+      "seal_state": "diagnostics_only",
+      "operational_readiness": "diagnostics_only",
+      "diagnostic_posture": "diagnostics_allowed",
+      "cache_invalidation_posture": "cache_marked_invalid",
+      "lease_invalidation_posture": "lease_expired",
+      "machine_authorization_posture": "machine_authorization_retained",
+      "logout_posture": "not_logout",
+      "preservation_posture": "preserve_cases_records_evidence_knowledge",
+      "recovery_posture": "retry_online_check",
+      "next_action": "run_diagnostics",
+      "warning_codes": [
+        "diagnostics_only",
+        "lease_invalidated"
+      ]
+    }
+  }
+}

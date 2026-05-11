@@ -1,0 +1,22 @@
+{
+  "auth_operation": {
+    "operation_id": "auth.status",
+    "action_id": "auth.status",
+    "request_kind": "status",
+    "operation_status": "allowed",
+    "auth_posture": "unauthenticated",
+    "provider_posture": "provider_session_absent",
+    "auth_context_posture": "missing",
+    "reason": "No authenticated principal is present.",
+    "next_action": "Log in or use local-dev auth for development.",
+    "safe_projection": {
+      "action_id": "auth.status",
+      "operation_status": "allowed",
+      "auth_posture": "unauthenticated",
+      "provider_posture": "provider_session_absent",
+      "auth_context_posture": "missing",
+      "reason": "No authenticated principal is present.",
+      "next_action": "Log in or use local-dev auth for development."
+    }
+  }
+}

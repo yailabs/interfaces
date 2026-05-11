@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/operator-context-operation.v1.schema.json",
+  "title": "YAI Operator Context Operation v1",
+  "type": "object",
+  "required": [
+    "operator_context_operation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "operator_context_operation": {
+      "$ref": "#/$defs/operatorContextOperation"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nullableRef": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "requestKind": {
+      "type": "string",
+      "enum": [
+        "status",
+        "current",
+        "active_case_set",
+        "active_case_clear"
+      ]
+    },
+    "operationStatus": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "blocked",
+        "unavailable",
+        "not_implemented",
+        "legacy_alias",
+        "forbidden"
+      ]
+    },
+    "safeProjection": {
+      "type": "object",
+      "required": [
+        "action_id",
+        "operation_status",
+        "root_case_ref",
+        "active_case_ref",
+        "operator_context_ref"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "action_id": {
+          "type": "string",
+          "pattern": "^context\\."
+        },
+        "operation_status": {
+          "$ref": "#/$defs/operationStatus"
+        },
+        "root_case_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "active_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "operator_context_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "operatorContextOperation": {
+      "type": "object",
+      "required": [
+        "operation_id",
+        "action_id",
+        "request_kind",
+        "operation_status",
+        "root_case_ref",
+        "active_case_ref",
+        "operator_context_ref",
+        "operator_context_owner",
+        "selection_mutated",
+        "session_mutated",
+        "client_mutated",
+        "shell_mutated",
+        "runtime_mutated",
+        "auth_mutated",
+        "safe_projection"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "type": "string",
+          "pattern": "^operator_context\\."
+        },
+        "action_id": {
+          "type": "string",
+          "pattern": "^context\\."
+        },
+        "request_kind": {
+          "$ref": "#/$defs/requestKind"
+        },
+        "operation_status": {
+          "$ref": "#/$defs/operationStatus"
+        },
+        "principal_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "root_case_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "active_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "target_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "selected_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "cleared_case_ref": {
+          "$ref": "#/$defs/nullableRef"
+        },
+        "operator_context_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "operator_context_owner": {
+          "const": "operator_context.active_case_ref"
+        },
+        "selection_mutated": {
+          "type": "boolean"
+        },
+        "session_mutated": {
+          "const": false
+        },
+        "client_mutated": {
+          "const": false
+        },
+        "shell_mutated": {
+          "const": false
+        },
+        "runtime_mutated": {
+          "const": false
+        },
+        "auth_mutated": {
+          "const": false
+        },
+        "safe_projection": {
+          "$ref": "#/$defs/safeProjection"
+        },
+        "reason": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

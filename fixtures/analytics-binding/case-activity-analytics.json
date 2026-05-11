@@ -1,0 +1,33 @@
+{
+  "analytics_binding": {
+    "analytics_ref": "analytics.local-001",
+    "analytics_kind": "case_activity",
+    "analytics_scope": "case",
+    "case_ref": "case.local-001",
+    "metric_key": "case.activity.events_per_window",
+    "metric_value": 14,
+    "measurement_unit": "count",
+    "observed_at": "2026-05-07T11:00:00Z",
+    "window_start": "2026-05-07T10:00:00Z",
+    "window_end": "2026-05-07T11:00:00Z",
+    "source_record_refs": [
+      "record.local-001"
+    ],
+    "source_evidence_refs": [
+      "evidence.local-001"
+    ],
+    "source_flow_refs": [
+      "flow.local-001"
+    ],
+    "runtime_gate_decision_refs": [
+      "runtime-gate.local-001"
+    ],
+    "derived_from_refs": [
+      "projection.local-001"
+    ],
+    "visibility": "case_visible",
+    "retention_posture": "retain",
+    "decision": "recorded",
+    "reason": "case activity analytics is derived from governed case-bound source material"
+  }
+}

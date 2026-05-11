@@ -1,0 +1,48 @@
+repo_name: api
+repo_role: API/platform boundary and service contract projection
+canonical_entrypoint: .agents/AGENTS.md
+human_readme: .agents/README.md
+truth_policy: .agents/policies/truth-maintenance.md
+drift_checks: .agents/validation/drift-checks.md
+fake_path_policy: forbidden
+fake_module_policy: forbidden
+stale_agents_policy: forbidden
+update_agents_on_repo_change: required
+policy_files:
+  - .agents/policies/edit-policy.md
+  - .agents/policies/deletion-policy.md
+  - .agents/policies/safety-security.md
+  - .agents/policies/no-fake-state.md
+  - .agents/policies/escalation-policy.md
+  - .agents/policies/truth-maintenance.md
+workflow_files:
+  - .agents/workflows/delivery.md
+  - .agents/workflows/audit.md
+  - .agents/workflows/migration.md
+  - .agents/workflows/validation.md
+  - .agents/workflows/completion-report.md
+validation_files:
+  - .agents/validation/commands.md
+  - .agents/validation/drift-checks.md
+  - .agents/validation/forbidden-scans.md
+  - .agents/validation/quality-gates.md
+  - .agents/validation/repo-local-checklist.md
+skill_names:
+  - repo-audit
+  - delivery-box
+  - validation-pass
+  - boundary-review
+forbidden_surfaces:
+  - .agents/codex/
+  - .agents/claude/
+  - .agents/cursor/
+  - .agents/copilot/
+  - local runtime internals
+  - console UI
+  - SDK behavior authority
+  - catalog truth unless explicitly projected
+related_repos:
+  - yai
+  - sdk
+  - console
+  - catalog

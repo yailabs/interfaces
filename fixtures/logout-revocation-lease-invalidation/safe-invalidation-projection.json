@@ -1,0 +1,42 @@
+{
+  "runtime_invalidation_event": {
+    "runtime_invalidation_event_ref": "runtime-invalidation-event/ref/safe-invalidation-projection",
+    "invalidation_kind": "policy_invalidated",
+    "invalidation_reason": "runtime_gate_blocked",
+    "affected_refs": [
+      "runtime-gate-decision/ref/gate-206"
+    ],
+    "seal_state": "partially_sealed",
+    "operational_readiness": "degraded",
+    "diagnostic_posture": "diagnostics_allowed",
+    "cache_invalidation_posture": "cache_requires_refresh",
+    "lease_invalidation_posture": "lease_marked_invalid",
+    "machine_authorization_posture": "machine_authorization_pending_review",
+    "logout_posture": "not_logout",
+    "preservation_posture": "requires_explicit_deletion_policy",
+    "recovery_posture": "manual_review",
+    "next_action": "manual_review",
+    "warning_codes": [
+      "manual_review_required",
+      "unknown"
+    ],
+    "safe_invalidation_projection": {
+      "invalidation_kind": "policy_invalidated",
+      "invalidation_reason": "runtime_gate_blocked",
+      "seal_state": "partially_sealed",
+      "operational_readiness": "degraded",
+      "diagnostic_posture": "diagnostics_allowed",
+      "cache_invalidation_posture": "cache_requires_refresh",
+      "lease_invalidation_posture": "lease_marked_invalid",
+      "machine_authorization_posture": "machine_authorization_pending_review",
+      "logout_posture": "not_logout",
+      "preservation_posture": "requires_explicit_deletion_policy",
+      "recovery_posture": "manual_review",
+      "next_action": "manual_review",
+      "warning_codes": [
+        "manual_review_required",
+        "unknown"
+      ]
+    }
+  }
+}

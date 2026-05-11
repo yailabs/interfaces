@@ -1,0 +1,45 @@
+{
+  "logout_request": {
+    "logout_request_ref": "logout-request-005",
+    "principal_ref": "principal.operator.local-005",
+    "account_ref": "account.local-005",
+    "auth_context_ref": "auth-context.local-005",
+    "operator_context_ref": "operator-context.local-005",
+    "active_case_ref": "case.local-005",
+    "observed_job_refs": [
+      "job.local-005"
+    ],
+    "observed_execution_lease_refs": [
+      "execution-lease.local-005"
+    ],
+    "requested_mode": "force",
+    "requested_at": "2026-05-06T10:20:00Z",
+    "requested_by_client_ref": "client.cli.local-005"
+  },
+  "logout_policy_decision": {
+    "logout_policy_decision_ref": "logout-decision-005",
+    "logout_request_ref": "logout-request-005",
+    "decision": "requires_confirmation",
+    "reason": "policy_requires_confirmation",
+    "required_confirmation": true,
+    "next_actions": [
+      "confirm force-mode intent",
+      "review active work before sealing further operations"
+    ],
+    "affected_case_refs": [
+      "case.local-005"
+    ],
+    "affected_job_refs": [
+      "job.local-005"
+    ],
+    "affected_execution_lease_refs": [
+      "execution-lease.local-005"
+    ],
+    "auth_context_action": "retain_until_expiry",
+    "license_lease_action": "mark_stale",
+    "runtime_seal_action": "allow_diagnostics_only",
+    "records_evidence_action": "preserve",
+    "knowledge_action": "preserve",
+    "created_at": "2026-05-06T10:20:10Z"
+  }
+}

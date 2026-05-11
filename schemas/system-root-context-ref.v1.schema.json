@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "yai.system-root-context-ref.v1",
+  "title": "YAI System Root Context Ref v1",
+  "x-yai-projection": {
+    "projection_role": "api_schema_mirror",
+    "source_of_truth": "../yai/protocols/refs/system-root-context-ref.v1.schema.json"
+  },
+  "description": "Ref for the governed system/root context where system-level technical records materialize. Not a work case root, user root case, or provider context.",
+  "type": "string",
+  "pattern": "^root-context://system/[a-z0-9][a-z0-9._-]*$",
+  "default": "root-context://system/default",
+  "examples": [
+    "root-context://system/default"
+  ]
+}

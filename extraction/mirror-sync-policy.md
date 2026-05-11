@@ -1,16 +1,22 @@
-# API Mirror Sync Policy (Wave 13B)
+# API Mirror Sync Policy (Historical)
+
+Current status: superseded by `interfaces`.
+
+The former `api` repository name has been replaced by `interfaces`. The former
+root `yai/api` compatibility mirror is not the canonical contract source.
 
 ## Canonical and Mirror Roles
 
-- Canonical API contract repository after Wave 13: `../api`.
-- Temporary in-repo compatibility mirror: `yai/api`.
+- Canonical developer-interface repository: `interfaces`.
+- Temporary in-repo compatibility mirror: historical `yai/api`.
 - Runtime implementation source of truth: `yai` (`core/`, `include/`, `experience/clients/cli` integration points).
-- Wave 14 SDK source: `../api`.
+- SDK package source: `interfaces/packages`.
 
 ## Scope Ownership
 
-- Contract/docs/schema/envelope/lifecycle changes should be authored against `../api` first.
-- `yai/api` must mirror canonical contract changes when compatibility/build consumers still depend on local paths.
+- Contract/docs/schema/envelope/lifecycle changes should be authored against
+  `interfaces` first.
+- Historical `yai/api` mirror references must not define canonical contracts.
 - API family implementation C files remain implementation-owned in `yai` unless explicitly converted to contract-only reference material.
 
 ## Safety Rules
@@ -22,7 +28,7 @@
 
 ## Drain Gate
 
-`yai/api` can be fully drained only after:
+Historical `yai/api` compatibility material can be fully retired only after:
 - runtime/build consumer audit is complete and green,
 - include and Makefile dependencies on `api/` are migrated or replaced,
 - compatibility surfaces are explicitly retired with verification.
@@ -30,9 +36,10 @@
 
 ## 13C Ownership Clarification
 
-- `../api` owns contract surfaces.
-- `yai/api` does not own canonical contracts.
-- `yai/api` retains runtime adapters and compatibility mirror surfaces until consumer migration is complete.
+- `interfaces` owns contract surfaces.
+- Historical `yai/api` does not own canonical contracts.
+- Any remaining `yai/api` references are compatibility/runtime-adapter debt, not
+  interface truth.
 
 
 Wave 13D: mirrorBackToYaiApi=false because root `yai/api/` no longer exists.

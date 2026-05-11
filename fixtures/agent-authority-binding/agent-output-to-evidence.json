@@ -1,0 +1,30 @@
+{
+  "agent_authority": {
+    "agent_authority_ref": "agent-authority.local-005",
+    "agent_ref": "agent.local-005",
+    "agent_instance_ref": "agent-instance.local-005",
+    "case_ref": "case.local-005",
+    "agent_role": "summarizer",
+    "requested_action": "write_evidence",
+    "requested_at": "2026-05-07T10:50:00Z",
+    "requested_by_principal_ref": "principal.local-005",
+    "requested_from_client_ref": "client.cli.local-005",
+    "job_ref": "job.local-005",
+    "flow_ref": "flow.local-005",
+    "auth_context_ref": "auth-context.local-005",
+    "entitlement_ref": "entitlement.local-005",
+    "runtime_gate_decision_ref": "runtime-gate.local-005",
+    "decision": "allowed",
+    "reason": "agent output is allowed to materialize as downstream evidence candidate",
+    "agent_output_posture": "output_as_evidence",
+    "output_evidence_refs": [
+      "evidence.local-005"
+    ],
+    "output_knowledge_refs": [
+      "knowledge.local-005-candidate"
+    ],
+    "allowed_tool_action_refs": [
+      "tool-authority.local-005/write-evidence"
+    ]
+  }
+}

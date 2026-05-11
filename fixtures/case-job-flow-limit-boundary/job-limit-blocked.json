@@ -1,0 +1,22 @@
+{
+  "limit_projection": {
+    "limit_projection_ref": "limit-proj.job.002",
+    "limit_key": "max_parallel_jobs",
+    "limit_family": "job",
+    "scope": "case",
+    "subject_ref": "job.job-002",
+    "case_ref": "case.case-002",
+    "job_ref": "job.job-002",
+    "runtime_action_key": "job.start",
+    "runtime_gate_decision_ref": "gate.job.start.002",
+    "window": "hour",
+    "current_usage": 8,
+    "max_allowed": 8,
+    "remaining": 0,
+    "hard_limit": 8,
+    "decision": "blocked",
+    "blocked_reason": "limit_exceeded",
+    "observed_at": "2026-05-07T10:05:00Z",
+    "source_ref": "projection.limit.job.hourly"
+  }
+}

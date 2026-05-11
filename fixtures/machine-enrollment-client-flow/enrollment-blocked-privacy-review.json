@@ -1,0 +1,31 @@
+{
+  "machine_enrollment_request": {
+    "machine_enrollment_request_ref": "machine_enrollment_request/privacy-005",
+    "local_machine_identity_ref": "local_machine_identity/privacy-005",
+    "local_machine_ref": "local_machine/workstation-05",
+    "machine_fingerprint_evidence_ref": "machine_fingerprint_evidence/rejected-005",
+    "enrollment_intent": "rotate_machine_identity",
+    "enrollment_channel": "manual_review",
+    "enrollment_status": "blocked",
+    "account_confirmation_posture": "not_required",
+    "browser_handoff_posture": "not_required",
+    "device_code_posture": "not_required",
+    "privacy_posture": "requires_privacy_review",
+    "consent_posture": "required",
+    "requested_at": "2026-05-07T10:20:00Z",
+    "requested_by_principal_ref": "principal.local-005",
+    "requested_from_client_ref": "client.cli.local-005",
+    "auth_context_ref": "auth-context.local-005",
+    "account_ref": "account.local-005",
+    "principal_ref": "principal.local-005",
+    "blocked_reason": "privacy_review_required",
+    "next_actions": [
+      "retry_with_fresh_evidence",
+      "wait_for_manual_review"
+    ],
+    "warning_codes": [
+      "consent_required",
+      "manual_review_possible"
+    ]
+  }
+}

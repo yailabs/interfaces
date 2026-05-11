@@ -1,0 +1,22 @@
+{
+  "limit_projection": {
+    "limit_projection_ref": "limit-proj.flow.003",
+    "limit_key": "max_active_flows",
+    "limit_family": "flow",
+    "scope": "case_tree",
+    "subject_ref": "flow.flow-003",
+    "case_ref": "case.case-003",
+    "flow_ref": "flow.flow-003",
+    "window": "day",
+    "current_usage": 7,
+    "max_allowed": 8,
+    "remaining": 1,
+    "soft_limit": 6,
+    "hard_limit": 8,
+    "warning_threshold": 7,
+    "decision": "warning",
+    "observed_at": "2026-05-07T10:10:00Z",
+    "expires_at": "2026-05-08T00:00:00Z",
+    "source_ref": "projection.limit.flow.case-tree"
+  }
+}

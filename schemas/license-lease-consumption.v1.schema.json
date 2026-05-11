@@ -1,0 +1,317 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.foundation/schemas/license-lease-consumption.v1.schema.json",
+  "title": "YAI License Lease Consumption v1",
+  "type": "object",
+  "required": [
+    "license_lease_consumption"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "license_lease_consumption": {
+      "type": "object",
+      "required": [
+        "license_lease_consumption_ref",
+        "license_lease_ref",
+        "lease_status",
+        "consumption_status",
+        "scope",
+        "lease_source",
+        "grace_posture",
+        "stale_posture",
+        "refresh_posture",
+        "revocation_posture",
+        "diagnostic_posture",
+        "sealed_posture"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "license_lease_consumption_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license_lease_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lease_status": {
+          "$ref": "#/$defs/leaseStatus"
+        },
+        "consumption_status": {
+          "$ref": "#/$defs/consumptionStatus"
+        },
+        "scope": {
+          "$ref": "#/$defs/leaseScope"
+        },
+        "lease_source": {
+          "$ref": "#/$defs/leaseSource"
+        },
+        "grace_posture": {
+          "$ref": "#/$defs/gracePosture"
+        },
+        "stale_posture": {
+          "$ref": "#/$defs/stalePosture"
+        },
+        "refresh_posture": {
+          "$ref": "#/$defs/refreshPosture"
+        },
+        "revocation_posture": {
+          "$ref": "#/$defs/revocationPosture"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "sealed_posture": {
+          "$ref": "#/$defs/sealedPosture"
+        },
+        "issued_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expires_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "last_validated_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "consumed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "account_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "principal_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "auth_context_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entitlement_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "machine_authorization_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "local_machine_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtime_gate_decision_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limit_projection_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocked_reason": {
+          "$ref": "#/$defs/blockedReason"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "safe_lease_projection": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "license_lease_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lease_status": {
+              "$ref": "#/$defs/leaseStatus"
+            },
+            "consumption_status": {
+              "$ref": "#/$defs/consumptionStatus"
+            },
+            "scope": {
+              "$ref": "#/$defs/leaseScope"
+            },
+            "grace_posture": {
+              "$ref": "#/$defs/gracePosture"
+            },
+            "stale_posture": {
+              "$ref": "#/$defs/stalePosture"
+            },
+            "refresh_posture": {
+              "$ref": "#/$defs/refreshPosture"
+            },
+            "diagnostic_posture": {
+              "$ref": "#/$defs/diagnosticPosture"
+            },
+            "sealed_posture": {
+              "$ref": "#/$defs/sealedPosture"
+            },
+            "expires_at": {
+              "type": "string",
+              "minLength": 1
+            },
+            "warning_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/warningCode"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "leaseStatus": {
+      "type": "string",
+      "enum": [
+        "not_present",
+        "valid",
+        "expired",
+        "revoked",
+        "stale",
+        "pending_refresh",
+        "blocked",
+        "unknown"
+      ]
+    },
+    "consumptionStatus": {
+      "type": "string",
+      "enum": [
+        "not_consumed",
+        "consumed",
+        "consumed_readonly",
+        "diagnostics_only",
+        "blocked",
+        "grace_active",
+        "stale_accepted",
+        "stale_rejected",
+        "unknown"
+      ]
+    },
+    "leaseScope": {
+      "type": "string",
+      "enum": [
+        "local_runtime",
+        "account_linked_runtime",
+        "machine",
+        "principal",
+        "case_tree",
+        "provider_access",
+        "cloud_compute",
+        "release_update",
+        "system_internal"
+      ]
+    },
+    "leaseSource": {
+      "type": "string",
+      "enum": [
+        "platform_issued",
+        "cached_projection",
+        "manual_preview",
+        "admin_override",
+        "not_applicable",
+        "unknown"
+      ]
+    },
+    "gracePosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "grace_available",
+        "grace_active",
+        "grace_expired",
+        "grace_blocked",
+        "unknown"
+      ]
+    },
+    "stalePosture": {
+      "type": "string",
+      "enum": [
+        "not_stale",
+        "stale_accepted",
+        "stale_rejected",
+        "stale_requires_refresh",
+        "unknown"
+      ]
+    },
+    "refreshPosture": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "refresh_available",
+        "refresh_required",
+        "refresh_pending",
+        "refresh_failed",
+        "unknown"
+      ]
+    },
+    "revocationPosture": {
+      "type": "string",
+      "enum": [
+        "not_revoked",
+        "revoked",
+        "revocation_pending",
+        "revocation_unknown",
+        "unknown"
+      ]
+    },
+    "diagnosticPosture": {
+      "type": "string",
+      "enum": [
+        "diagnostics_allowed",
+        "diagnostics_limited",
+        "diagnostics_blocked",
+        "unknown"
+      ]
+    },
+    "sealedPosture": {
+      "type": "string",
+      "enum": [
+        "unsealed_for_authorized_actions",
+        "sealed_missing_lease",
+        "sealed_expired_lease",
+        "sealed_revoked_lease",
+        "sealed_stale_lease",
+        "sealed_refresh_required",
+        "sealed_unknown"
+      ]
+    },
+    "blockedReason": {
+      "type": "string",
+      "enum": [
+        "license_lease_missing",
+        "license_lease_expired",
+        "license_lease_revoked",
+        "license_lease_stale",
+        "refresh_required",
+        "machine_authorization_required",
+        "machine_authorization_revoked",
+        "entitlement_missing",
+        "runtime_gate_blocked",
+        "unsafe_projection",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "lease_near_expiry",
+        "grace_active",
+        "stale_projection",
+        "refresh_required",
+        "machine_authorization_required",
+        "entitlement_required",
+        "diagnostics_only",
+        "unknown"
+      ]
+    }
+  }
+}

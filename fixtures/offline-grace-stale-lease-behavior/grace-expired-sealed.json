@@ -1,0 +1,45 @@
+{
+  "offline_grace_state": {
+    "offline_grace_state_ref": "offline-grace-state/ref/grace-expired-sealed",
+    "license_lease_ref": "license-lease/ref/lease-102",
+    "local_lease_cache_ref": "local-lease-cache/ref/cache-102",
+    "runtime_license_check_response_ref": "runtime-license-check-response/ref/blocked-expired-lease",
+    "machine_authorization_ref": "machine-authorization/ref/authorization-102",
+    "local_machine_ref": "local-machine/ref/machine-102",
+    "grace_status": "grace_expired",
+    "stale_lease_status": "stale_rejected",
+    "offline_status": "offline",
+    "connectivity_posture": "offline_blocked",
+    "operational_readiness": "blocked",
+    "diagnostic_posture": "diagnostics_limited",
+    "allowed_surface_posture": "diagnostics_only",
+    "blocked_surface_posture": "all_operational_blocked",
+    "refresh_posture": "required",
+    "recovery_posture": "refresh_license_lease",
+    "next_action": "retry_online_check",
+    "grace_started_at": "2026-05-07T20:00:00Z",
+    "grace_expires_at": "2026-05-08T00:00:00Z",
+    "last_online_at": "2026-05-07T19:55:00Z",
+    "last_validated_at": "2026-05-07T19:55:00Z",
+    "warning_codes": [
+      "refresh_required",
+      "online_check_required"
+    ],
+    "safe_grace_projection": {
+      "grace_status": "grace_expired",
+      "stale_lease_status": "stale_rejected",
+      "offline_status": "offline",
+      "operational_readiness": "blocked",
+      "diagnostic_posture": "diagnostics_limited",
+      "allowed_surface_posture": "diagnostics_only",
+      "blocked_surface_posture": "all_operational_blocked",
+      "refresh_posture": "required",
+      "next_action": "retry_online_check",
+      "grace_expires_at": "2026-05-08T00:00:00Z",
+      "warning_codes": [
+        "refresh_required",
+        "online_check_required"
+      ]
+    }
+  }
+}

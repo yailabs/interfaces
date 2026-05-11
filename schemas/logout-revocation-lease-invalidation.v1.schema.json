@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yai.dev/schemas/logout-revocation-lease-invalidation.v1.schema.json",
+  "title": "YAI Logout Revocation Lease Invalidation v1",
+  "type": "object",
+  "required": [
+    "runtime_invalidation_event"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "runtime_invalidation_event": {
+      "$ref": "#/$defs/runtimeInvalidationEvent"
+    }
+  },
+  "$defs": {
+    "refString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invalidationKind": {
+      "type": "string",
+      "enum": [
+        "logout",
+        "machine_authorization_revoked",
+        "machine_authorization_expired",
+        "license_lease_revoked",
+        "license_lease_expired",
+        "cache_invalidated",
+        "auth_context_expired",
+        "policy_invalidated",
+        "manual_admin_revocation",
+        "unknown"
+      ]
+    },
+    "invalidationReason": {
+      "type": "string",
+      "enum": [
+        "user_logout",
+        "provider_logout",
+        "auth_context_expired",
+        "machine_revoked",
+        "machine_expired",
+        "lease_revoked",
+        "lease_expired",
+        "lease_stale_rejected",
+        "cache_expired",
+        "cache_corrupt",
+        "runtime_gate_blocked",
+        "account_disabled",
+        "manual_review_required",
+        "admin_revocation",
+        "unsafe_projection",
+        "unknown"
+      ]
+    },
+    "sealState": {
+      "type": "string",
+      "enum": [
+        "unsealed",
+        "sealed",
+        "partially_sealed",
+        "diagnostics_only",
+        "unknown"
+      ]
+    },
+    "operationalReadiness": {
+      "type": "string",
+      "enum": [
+        "ready",
+        "blocked",
+        "degraded",
+        "diagnostics_only",
+        "unknown"
+      ]
+    },
+    "diagnosticPosture": {
+      "type": "string",
+      "enum": [
+        "diagnostics_allowed",
+        "diagnostics_limited",
+        "diagnostics_blocked",
+        "unknown"
+      ]
+    },
+    "cacheInvalidationPosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "cache_retained",
+        "cache_marked_invalid",
+        "cache_requires_refresh",
+        "cache_must_not_be_used",
+        "unknown"
+      ]
+    },
+    "leaseInvalidationPosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "lease_retained",
+        "lease_marked_invalid",
+        "lease_revoked",
+        "lease_expired",
+        "lease_must_not_be_used",
+        "unknown"
+      ]
+    },
+    "machineAuthorizationPosture": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "machine_authorization_retained",
+        "machine_authorization_revoked",
+        "machine_authorization_expired",
+        "machine_authorization_pending_review",
+        "machine_authorization_must_refresh",
+        "unknown"
+      ]
+    },
+    "logoutPosture": {
+      "type": "string",
+      "enum": [
+        "not_logout",
+        "logout_clears_auth_context",
+        "logout_preserves_cases",
+        "logout_preserves_records",
+        "logout_requires_work_policy",
+        "logout_blocks_operational_actions",
+        "unknown"
+      ]
+    },
+    "preservationPosture": {
+      "type": "string",
+      "enum": [
+        "preserve_cases_records_evidence_knowledge",
+        "preserve_cases_only",
+        "requires_explicit_deletion_policy",
+        "not_applicable",
+        "unknown"
+      ]
+    },
+    "recoveryPosture": {
+      "type": "string",
+      "enum": [
+        "none",
+        "reauthenticate",
+        "refresh_license_lease",
+        "reenroll_machine",
+        "retry_online_check",
+        "contact_support",
+        "manual_review",
+        "unknown"
+      ]
+    },
+    "nextAction": {
+      "type": "string",
+      "enum": [
+        "none",
+        "run_diagnostics",
+        "reauthenticate",
+        "refresh_license_lease",
+        "request_machine_enrollment",
+        "retry_license_check",
+        "leave_active_case",
+        "resolve_active_work",
+        "contact_support",
+        "manual_review",
+        "unknown"
+      ]
+    },
+    "warningCode": {
+      "type": "string",
+      "enum": [
+        "diagnostics_only",
+        "active_work_present",
+        "lease_invalidated",
+        "machine_authorization_invalidated",
+        "cache_invalidated",
+        "reauthentication_required",
+        "manual_review_required",
+        "unknown"
+      ]
+    },
+    "safeInvalidationProjection": {
+      "type": "object",
+      "required": [
+        "invalidation_kind",
+        "invalidation_reason",
+        "seal_state",
+        "operational_readiness",
+        "diagnostic_posture",
+        "cache_invalidation_posture",
+        "lease_invalidation_posture",
+        "machine_authorization_posture",
+        "logout_posture",
+        "preservation_posture",
+        "recovery_posture",
+        "next_action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "invalidation_kind": {
+          "$ref": "#/$defs/invalidationKind"
+        },
+        "invalidation_reason": {
+          "$ref": "#/$defs/invalidationReason"
+        },
+        "seal_state": {
+          "$ref": "#/$defs/sealState"
+        },
+        "operational_readiness": {
+          "$ref": "#/$defs/operationalReadiness"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "cache_invalidation_posture": {
+          "$ref": "#/$defs/cacheInvalidationPosture"
+        },
+        "lease_invalidation_posture": {
+          "$ref": "#/$defs/leaseInvalidationPosture"
+        },
+        "machine_authorization_posture": {
+          "$ref": "#/$defs/machineAuthorizationPosture"
+        },
+        "logout_posture": {
+          "$ref": "#/$defs/logoutPosture"
+        },
+        "preservation_posture": {
+          "$ref": "#/$defs/preservationPosture"
+        },
+        "recovery_posture": {
+          "$ref": "#/$defs/recoveryPosture"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nextAction"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        }
+      }
+    },
+    "runtimeInvalidationEvent": {
+      "type": "object",
+      "required": [
+        "runtime_invalidation_event_ref",
+        "invalidation_kind",
+        "invalidation_reason",
+        "affected_refs",
+        "seal_state",
+        "operational_readiness",
+        "diagnostic_posture",
+        "cache_invalidation_posture",
+        "lease_invalidation_posture",
+        "machine_authorization_posture",
+        "logout_posture",
+        "preservation_posture",
+        "recovery_posture",
+        "next_action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "runtime_invalidation_event_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "invalidation_kind": {
+          "$ref": "#/$defs/invalidationKind"
+        },
+        "invalidation_reason": {
+          "$ref": "#/$defs/invalidationReason"
+        },
+        "affected_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/refString"
+          }
+        },
+        "auth_context_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "license_lease_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "machine_authorization_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_machine_identity_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "local_lease_cache_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_license_check_response_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "runtime_gate_decision_ref": {
+          "$ref": "#/$defs/refString"
+        },
+        "seal_state": {
+          "$ref": "#/$defs/sealState"
+        },
+        "operational_readiness": {
+          "$ref": "#/$defs/operationalReadiness"
+        },
+        "diagnostic_posture": {
+          "$ref": "#/$defs/diagnosticPosture"
+        },
+        "cache_invalidation_posture": {
+          "$ref": "#/$defs/cacheInvalidationPosture"
+        },
+        "lease_invalidation_posture": {
+          "$ref": "#/$defs/leaseInvalidationPosture"
+        },
+        "machine_authorization_posture": {
+          "$ref": "#/$defs/machineAuthorizationPosture"
+        },
+        "logout_posture": {
+          "$ref": "#/$defs/logoutPosture"
+        },
+        "preservation_posture": {
+          "$ref": "#/$defs/preservationPosture"
+        },
+        "recovery_posture": {
+          "$ref": "#/$defs/recoveryPosture"
+        },
+        "next_action": {
+          "$ref": "#/$defs/nextAction"
+        },
+        "warning_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/warningCode"
+          }
+        },
+        "safe_invalidation_projection": {
+          "$ref": "#/$defs/safeInvalidationProjection"
+        }
+      }
+    }
+  }
+}

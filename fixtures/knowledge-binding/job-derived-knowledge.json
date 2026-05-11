@@ -1,0 +1,27 @@
+{
+  "knowledge": {
+    "knowledge_ref": "knowledge.local-003",
+    "case_ref": "case.local-003",
+    "knowledge_kind": "working_state",
+    "title": "Job-derived working state",
+    "summary": "Job output may materialize case knowledge without owning it.",
+    "body_ref": "record.local-003/knowledge-body",
+    "created_at": "2026-05-07T09:30:00Z",
+    "source_job_refs": [
+      "job.local-003"
+    ],
+    "source_record_refs": [
+      "record.local-003"
+    ],
+    "source_artifact_refs": [
+      "artifact.local-003/job-output.json"
+    ],
+    "lineage_refs": [
+      "lineage.local-003/job-knowledge"
+    ],
+    "visibility": "case_visible",
+    "recall_policy": "active_case_recallable",
+    "write_policy": "mutable_with_lineage",
+    "derivation_status": "materialized"
+  }
+}

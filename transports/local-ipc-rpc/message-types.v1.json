@@ -1,0 +1,56 @@
+{
+  "kind": "yai.local-ipc-rpc.message_types",
+  "version": "v1",
+  "frame_types": [
+    {
+      "type": "handshake.request",
+      "role": "client_to_runtime",
+      "payload_contract": "handshake request"
+    },
+    {
+      "type": "handshake.response",
+      "role": "runtime_to_client",
+      "payload_contract": "handshake response"
+    },
+    {
+      "type": "operation.request",
+      "role": "client_to_runtime",
+      "payload_contract": "API.03 request envelope"
+    },
+    {
+      "type": "operation.response",
+      "role": "runtime_to_client",
+      "payload_contract": "API.03 response envelope"
+    },
+    {
+      "type": "stream.open",
+      "role": "runtime_to_client",
+      "payload_contract": "stream acknowledgement or opening watch-event posture"
+    },
+    {
+      "type": "stream.frame",
+      "role": "runtime_to_client",
+      "payload_contract": "API.03 watch-event frame"
+    },
+    {
+      "type": "stream.close",
+      "role": "runtime_to_client",
+      "payload_contract": "terminal stream closure posture"
+    },
+    {
+      "type": "cancel.request",
+      "role": "client_to_runtime",
+      "payload_contract": "cancellation request"
+    },
+    {
+      "type": "heartbeat",
+      "role": "runtime_to_client",
+      "payload_contract": "connection or stream liveness signal"
+    },
+    {
+      "type": "error",
+      "role": "bidirectional",
+      "payload_contract": "transport-level error frame"
+    }
+  ]
+}

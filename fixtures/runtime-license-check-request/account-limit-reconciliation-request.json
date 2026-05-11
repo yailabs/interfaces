@@ -1,0 +1,32 @@
+{
+  "runtime_license_check_request": {
+    "runtime_license_check_request_ref": "runtime_license_check_request.limit_reconciliation.v1",
+    "request_kind": "limit_reconciliation_check",
+    "check_scope": "account",
+    "request_context": "before_operational_action",
+    "request_freshness": "fresh",
+    "connectivity_posture": "degraded",
+    "privacy_posture": "privacy_bounded_evidence",
+    "requested_at": "2026-05-07T10:04:00Z",
+    "local_machine_ref": "local_machine.epsilon",
+    "machine_authorization_ref": "machine_authorization.epsilon",
+    "license_lease_ref": "license_lease.epsilon",
+    "auth_context_ref": "auth_context.operator_alpha",
+    "account_ref": "account.acct_primary",
+    "principal_ref": "principal.ops_owner",
+    "limit_projection_refs": [
+      "limit_projection.max_parallel_jobs.account_global.v1",
+      "limit_projection.max_runtime_actions.account_global.v1"
+    ],
+    "account_limit_reconciliation_ref": "account_limit_reconciliation.parallel_jobs.v1",
+    "runtime_gate_decision_ref": "runtime_gate_decision.account_limit_recheck",
+    "requested_actions": [
+      "parallel_job_launch"
+    ],
+    "client_ref": "client.cli.local-001",
+    "next_expected_response": "runtime_license_check_response",
+    "warning_codes": [
+      "stale_limit_projection"
+    ]
+  }
+}

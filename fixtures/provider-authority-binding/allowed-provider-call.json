@@ -1,0 +1,22 @@
+{
+  "provider_authority": {
+    "provider_call_ref": "provider-call.local-001",
+    "case_ref": "case.local-001",
+    "provider_ref": "provider.local-001",
+    "model_ref": "model.local-001",
+    "requested_action": "complete",
+    "requested_at": "2026-05-07T10:00:00Z",
+    "requested_by_principal_ref": "principal.local-001",
+    "requested_from_client_ref": "client.cli.local-001",
+    "job_ref": "job.local-001",
+    "auth_context_ref": "auth-context.local-001",
+    "entitlement_ref": "entitlement.local-001",
+    "machine_authorization_ref": "machine-authorization.local-001",
+    "license_lease_ref": "license-lease.local-001",
+    "runtime_gate_decision_ref": "runtime-gate.local-001",
+    "decision": "allowed",
+    "reason": "governed provider call admitted under case-bound posture",
+    "provider_output_posture": "output_not_persisted",
+    "limit_projection_ref": "limit.local-001"
+  }
+}

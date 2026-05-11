@@ -1,0 +1,38 @@
+{
+  "runtime_license_seal_state": {
+    "runtime_license_seal_state_ref": "runtime-license-seal-state/ref/sealed-expired-license-lease",
+    "runtime_license_check_response_ref": "runtime-license-check-response/ref/blocked-expired-lease",
+    "license_lease_ref": "license-lease/ref/lease-003",
+    "machine_authorization_ref": "machine-authorization/ref/authorization-003",
+    "local_machine_ref": "local-machine/ref/machine-003",
+    "runtime_gate_decision_ref": "runtime-gate-decision/ref/gate-003",
+    "seal_state": "sealed",
+    "seal_reason": "license_lease_expired",
+    "operational_readiness": "blocked",
+    "diagnostic_posture": "diagnostics_limited",
+    "allowed_surface_posture": "read_only_only",
+    "blocked_surface_posture": "operational_write_blocked",
+    "recovery_posture": "refresh_license_lease",
+    "next_action": "refresh_license_lease",
+    "response_freshness": "fresh",
+    "cache_posture": "cache_invalidated",
+    "offline_grace_posture": "expired",
+    "warning_codes": [
+      "cache_update_required"
+    ],
+    "safe_status_projection": {
+      "seal_state": "sealed",
+      "seal_reason": "license_lease_expired",
+      "operational_readiness": "blocked",
+      "diagnostic_posture": "diagnostics_limited",
+      "allowed_surface_posture": "read_only_only",
+      "blocked_surface_posture": "operational_write_blocked",
+      "recovery_posture": "refresh_license_lease",
+      "next_action": "refresh_license_lease",
+      "response_freshness": "fresh",
+      "warning_codes": [
+        "cache_update_required"
+      ]
+    }
+  }
+}
