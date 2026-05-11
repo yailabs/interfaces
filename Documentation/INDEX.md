@@ -1,27 +1,38 @@
-# API Documentation Index
+# YAI Interfaces Documentation Index
 
-## Official API Reading Path
+## Official Interfaces Reading Path
 
 1. `README.md`
 2. `INDEX.md`
 3. `architecture/overview.md`
-4. `architecture/api-source-of-truth.md`
+4. `architecture/interface-source-of-truth.md`
 5. `architecture/protocol-api-boundary.md`
-6. `architecture/operation-model.md`
-7. `operations/operation-grammar.md`
-8. `operations/operation-to-transport-mapping.md`
-9. `architecture/transport-model.md`
-10. `transports/local-ipc-rpc.md`
-11. `envelopes/request-response-model.md`
-12. `errors/error-model.md`
-13. `conformance/conformance-policy.md`
-14. `reference/registry-index.md`
+6. `architecture/sdk-consumption-boundary.md`
+7. `architecture/generation-boundary.md`
+8. `architecture/package-boundary.md`
+9. `architecture/external-developer-boundary.md`
+10. `operations/operation-grammar.md`
+11. `operations/operation-to-transport-mapping.md`
+12. `transports/local-ipc-rpc.md`
+13. `envelopes/request-response-model.md`
+14. `errors/error-model.md`
+15. `conformance/conformance-policy.md`
+16. `packages/README.md`
+17. `generation/README.md`
+18. `examples/README.md`
+19. `reference/registry-index.md`
 
 ## Architecture
 
 - `architecture/overview.md`
+- `architecture/interface-source-of-truth.md`
 - `architecture/api-source-of-truth.md`
 - `architecture/protocol-api-boundary.md`
+- `architecture/sdk-consumption-boundary.md`
+- `architecture/generation-boundary.md`
+- `architecture/conformance-boundary.md`
+- `architecture/package-boundary.md`
+- `architecture/external-developer-boundary.md`
 - `architecture/operation-model.md`
 - `architecture/transport-model.md`
 - `architecture/envelope-error-stream-model.md`
@@ -77,6 +88,18 @@
 - `conformance/implementation-readiness.md`
 - `conformance/check-index.md`
 
+## Packages
+
+- `packages/README.md`
+
+## Generation
+
+- `generation/README.md`
+
+## Examples
+
+- `examples/README.md`
+
 ## Reference
 
 - `reference/registry-index.md`
@@ -89,5 +112,6 @@
 ## Cross-Repo Pointers
 
 - `../yai/Documentation` owns runtime and system truth.
-- `../sdk/Documentation` owns typed client and package truth.
+- `../sdk` owns current SDK package source until SDK drain.
 - `../console/Documentation` owns terminal client UX truth.
+- `../web` owns web, account, dashboard, download, and commercial surfaces.

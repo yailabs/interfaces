@@ -1,0 +1,31 @@
+{
+  "name": "yai-interfaces",
+  "kind": "developer-interface-repository",
+  "status": "pre-sdk-drain",
+  "owns": [
+    "protocol",
+    "operations",
+    "transports",
+    "envelopes",
+    "errors",
+    "schemas",
+    "registries",
+    "fixtures",
+    "conformance",
+    "openapi-projections",
+    "mappings",
+    "contracts",
+    "lifecycle",
+    "generated-surfaces",
+    "sdk-packages-after-drain",
+    "developer-examples"
+  ],
+  "does_not_own": [
+    "runtime-implementation",
+    "service-lifecycle-implementation",
+    "terminal-client-ux",
+    "web-account-product-surfaces"
+  ],
+  "sdk_drain_status": "pending",
+  "source_base": "api-renamed-to-interfaces"
+}

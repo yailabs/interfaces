@@ -1,115 +1,91 @@
-<!--
-YAI API — Canonical Contract Surface for Governed Action
+# YAI Interfaces
 
-Copyright (c) 2026 Francesco Maiomascio.
-All rights reserved.
+YAI Interfaces is the canonical developer-interface repository for YAI.
 
-This file is part of the YAI Community Source Tree.
-Use, copying, modification, distribution, and production operation
-are governed by the repository licensing documents, including
-LICENSE, LICENSING.md, and COMMERCIAL.md.
+It owns:
 
-Development and non-production use is permitted under the applicable
-YAI license terms. Production, organizational, persistent,
-collaborative, customer-affecting, or business-critical use requires
-a commercial license.
--->
+- protocol contracts;
+- operation semantics;
+- transports;
+- envelopes;
+- errors;
+- schemas;
+- registries;
+- fixtures;
+- OpenAPI projections;
+- conformance;
+- mappings;
+- contracts;
+- lifecycle models;
+- generated surfaces;
+- official SDK packages after SDK drain;
+- developer examples and integration contracts.
 
-<div align="center">
-  <img
-    src="Documentation/reference/figures/yai-transp.png"
-    alt="YAI"
-    width="180"
-  />
-  <br />
+It does not own:
 
-  <strong>YAI API</strong>
-  <br />
-  <span>API projection for accountable runtime interaction.</span>
+- YAI runtime implementation;
+- YAI service lifecycle implementation;
+- Console terminal UX;
+- Web/account/product surfaces.
 
-  <br /><br />
+## Repository Status
 
-  ![Stage](https://img.shields.io/badge/stage-active%20development-2563eb?style=flat&labelColor=1f2937)
-  ![Scope](https://img.shields.io/badge/scope-contracts%20%2F%20schemas%20%2F%20lifecycle-0f766e?style=flat&labelColor=1f2937)
-  ![Repo](https://img.shields.io/badge/repo-yai--labs%2Fapi-334155?style=flat&labelColor=1f2937)
-  ![License](https://img.shields.io/badge/license-community%20source-374151?style=flat&labelColor=1f2937)
+This repository was locally canonicalized from the former `api` source base in
+INTF.2. It is currently `pre-sdk-drain`: API/protocol artifacts are present,
+while official SDK packages remain in the separate `sdk` repository until later
+INTF waves classify and drain them.
 
-  <br /><br />
+The remote may still point to the historical API repository until a separate
+remote rename is performed.
 
+## Source Of Truth
 
-</div>
+Canonical developer-interface truth lives in the artifact and documentation
+roots in this repository:
 
-## Contents
-
-- [Why this repository exists](#why-this-repository-exists)
-- [Repository identity](#repository-identity-local-vs-remote)
-- [Contract boundary](#contract-boundary)
-- [SDK consumption boundary](#sdk-consumption-boundary)
-- [Wave status](#wave-status)
-- [Build and validation](#build-and-validation)
-- [Licensing](#licensing)
-
-<br />
-
-## Why This Repository Exists
-
-`api` is the API projection surface for YAI. It owns API exposure grammar
-(families, verbs, operations, projections), OpenAPI projection, API registry,
-projection mappings, transport-facing documentation roots, and API-specific
-conformance used by SDK and client surfaces.
-
-Canonical protocol meaning now lives in `yai/protocols`. Runtime
-implementation remains in `yai-labs/yai`.
-
-## Repository Identity (Local vs Remote)
-
-- Remote repository identity: `yai-labs/api`
-- Conceptual product identity may still reference: `yai-api`
-
-## Contract Boundary
-
-Canonical API projection source lives here (`api`).
-
-- Owns: OpenAPI, `registry/api-*.json`, API projection docs, projection/mapping root definitions, HTTP/transport request-response mapping, API-specific conformance.
-- Mirrors or projects: selected protocol-neutral schemas, fixtures, and conformance as API-side compatibility surfaces over `yai/protocols`.
-- Does not own: transport-neutral protocol meaning, runtime execution, client product behavior, SDK package implementations, provider backends, account backend behavior.
-
-Transport vocabulary and transport-class ownership are frozen in:
+- `registry/`
+- `schemas/`
+- `mappings/`
 - `transports/`
-- `Documentation/transport-boundary-model.md`
+- `envelopes/`
+- `errors/`
+- `contracts/`
+- `lifecycle/`
+- `fixtures/`
+- `conformance/`
+- `openapi/`
+- `projections/`
+- `Documentation/`
 
-Boundary guarantees:
-- Root `yai/api` remains physically drained.
-- `yai/core/api` remains absent.
-- Runtime adapters remain in `yai/runtime/boundary/api`.
+OpenAPI is a projection over interface contracts. SDK packages consume these
+contracts after drain; they do not define protocol truth.
 
-## SDK Consumption Boundary
+## Boundaries
 
-SDK is the official client consumption layer.
-Clients should normally consume SDK packages, not runtime adapters directly.
+YAI runtime and system behavior belong to `../yai`.
 
-- SDK packages: `packages/c`, `packages/typescript`, `packages/python`
-- Direct API usage policy: debug/conformance/bootstrap only
+Console terminal UX belongs to `../console`.
 
-## Wave Status
+Web, account, download, dashboard, and commercial product surfaces belong to
+`../web`.
 
-- Wave 13: contract extraction and lifecycle closure completed.
-- Wave 14: SDK contract-bound generation/normalization in progress.
+SDK package source remains in `../sdk` until the SDK drain waves move package
+material into `interfaces/packages/`.
 
-## Build and Validation
+## Build And Validation
 
-Typical validation in this repository:
+Typical validation during the pre-sdk-drain phase:
 
 ```sh
-python3 -m json.tool extraction/source-manifest.json >/dev/null
+python3 -m json.tool interface-manifest.json >/dev/null
+python3 -m json.tool registry/api-operations.v1.json >/dev/null
 ```
+
+Conformance checks remain under `conformance/`.
 
 ## Licensing
 
-> [!IMPORTANT]
-> YAI is the **YAI Community Source Tree**. Development and non-production use are permitted under the applicable license terms. Commercial licensing is required for production, organizational, persistent, collaborative, customer-affecting, or business-critical use.
-
-
-## Branch Alignment
-
-Active cross-repo hardening branch: `refoundation/phase-01`.
+YAI is the YAI Community Source Tree. Development and non-production use are
+permitted under the applicable license terms. Commercial licensing is required
+for production, organizational, persistent, collaborative, customer-affecting,
+or business-critical use.

@@ -1,6 +1,8 @@
-# API Source Of Truth
+# Protocol/API Source Of Truth
 
-API source of truth lives in the API repository artifacts and this documentation tree.
+Protocol/API source of truth now lives in YAI Interfaces artifacts and this
+documentation tree. This file preserves the API-layer view inside the broader
+interfaces repository.
 
 ## Normative Artifact Roots
 
@@ -21,4 +23,9 @@ API source of truth lives in the API repository artifacts and this documentation
 
 ## Delegation
 
-YAI owns runtime implementation truth, SDK owns typed package truth, and Console owns terminal client UX truth. API documents the protocol boundary they consume or implement.
+YAI owns runtime implementation truth. Console owns terminal client UX truth.
+Current SDK package source remains in `../sdk` until SDK drain. After drain,
+official SDK packages live under `interfaces/packages/`.
+
+YAI Interfaces documents the protocol/API boundary these consumers use or
+implement.

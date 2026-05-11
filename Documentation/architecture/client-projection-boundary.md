@@ -1,10 +1,12 @@
 # Client Projection Boundary
 
-API defines what clients can project from the protocol. It does not own client implementation, package shape, screen layout, or terminal interaction design.
+YAI Interfaces defines what clients can project from the protocol/API layer. It
+does not own client implementation, package ergonomics, screen layout, or
+terminal interaction design.
 
-## API Client Boundary
+## Interfaces Client Boundary
 
-API owns:
+YAI Interfaces owns:
 
 - operation and action descriptor semantics
 - client references and attachment references
@@ -12,12 +14,15 @@ API owns:
 - operation projection metadata used by clients
 - compatibility boundaries for older transport paths
 
-API delegates:
+YAI Interfaces delegates:
 
-- typed client/package truth to `../sdk/Documentation/README.md` and the expected `../sdk/Documentation/INDEX.md`
+- current typed client/package source to `../sdk` until SDK drain
+- future official SDK package behavior to `interfaces/packages/`
 - terminal client UX truth to `../console/Documentation`
 - runtime behavior and system truth to `../yai/Documentation`
 
 ## Projection Rule
 
-Client projections must be derived from API operation and action descriptor records. A client may choose presentation, command wording, navigation, or UI grouping, but those choices do not redefine protocol truth.
+Client projections must be derived from interface operation and action
+descriptor records. A client may choose presentation, command wording,
+navigation, or UI grouping, but those choices do not redefine protocol truth.
